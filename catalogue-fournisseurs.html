@@ -1,16 +1,9 @@
-<div class="no-print w-full flex justify-center py-4 bg-white border-b-4 border-[#1e40af] sticky top-0 z-10">
-        </div>
-    <div class="no-print text-center text-sm text-gray-500 mb-4">
-        </div>
-
-    <div class="catalog-page">
-            
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue des Fournisseurs Stratégiques pour Projets Miniers</title>
+    <title>Catalogue des Marques Stratégiques pour Projets Miniers</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Configuration générale pour l'écran */
@@ -42,13 +35,13 @@
                 color: #000000 !important;
             }
             .catalog-page {
+                /* Supprimé page-break-after: always de .catalog-page pour autoriser le contenu fluide */
                 box-shadow: none;
                 margin: 0;
                 padding: 0;
                 max-width: 100%;
                 min-height: auto;
-                height: 297mm;
-                page-break-after: always;
+                height: auto; /* Permet au contenu de s'étendre sur plusieurs pages */
                 page-break-inside: avoid;
             }
 
@@ -61,7 +54,7 @@
             /* Masquer les éléments non-imprimables et supprimer leur espace */
             .no-print {
                 display: none !important; /* Assure la suppression du bouton */
-                height: 0 !important; /* Supprime la hauteur résiduelle */
+                height: 0 !important;     /* Supprime la hauteur résiduelle */
                 overflow: hidden !important; /* S'assure que rien ne déborde */
             }
             
@@ -91,7 +84,7 @@
             }
         }
 
-        /* Classe pour forcer le saut de page à des endroits précis */
+        /* Classe pour forcer le saut de page à des endroits précis (non utilisée dans le corps, mais laissée ici) */
         .page-break-after-section {
             page-break-after: always;
         }
@@ -141,7 +134,7 @@
 
     <div class="catalog-page">
         <header class="header">
-            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
+            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE MARQUES STRATÉGIQUES</h1>
             <h2 class="text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
         </header>
 
@@ -248,16 +241,7 @@
                 </tr>
             </tbody>
         </table>
-        
-        <div class="page-break-after-section"></div> 
-    </div>
 
-    <div class="catalog-page">
-        <header class="header no-print">
-            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
-            <h2 class="text-xl font-semibold text-gray-700 mt-1">Page 2 : Fluides et Systèmes</h2>
-        </header>
-        
         <div class="section-header">
              <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
              <h3>3. POMPES & VANNES SPÉCIALISÉES (Fluides Agressifs)</h3>
@@ -345,15 +329,6 @@
                 </tr>
             </tbody>
         </table>
-        
-        <div class="page-break-after-section"></div>
-    </div>
-
-    <div class="catalog-page">
-        <header class="header no-print">
-            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
-            <h2 class="text-xl font-semibold text-gray-700 mt-1">Page 3 : Outillage et Législation</h2>
-        </header>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
@@ -453,58 +428,16 @@
     </div>
 
     <script type="module">
-        // ... (votre code Gemini/Firebase existant) ...
-
-        // Function to attach listener when the document loads
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.getElementById('generatePdfButton');
             if (button) {
-                // Associe la fonction d'impression à l'événement clic du bouton
                 button.addEventListener('click', () => {
                     window.print();
                 });
             }
-            // --- Firebase Mandatory Setup (Even if not used for storage) ---
-            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-            const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
-            let app; 
-
-            if (firebaseConfig) {
-                import('https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js')
-                    .then(module => {
-                        const { initializeApp } = module;
-                        app = initializeApp(firebaseConfig); 
-                        return import('https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js');
-                    })
-                    .then(module => {
-                        const { getAuth, signInWithCustomToken, signInAnonymously } = module;
-                        const auth = getAuth(app); 
-
-                        // Sign in anonymously or with custom token
-                        if (initialAuthToken) {
-                            return signInWithCustomToken(auth, initialAuthToken).catch(error => {
-                                console.error("Firebase Custom Token Sign-In Failed:", error);
-                                return signInAnonymously(auth); 
-                            });
-                        } else {
-                            return signInAnonymously(auth);
-                        }
-                    })
-                    .then(userCredential => {
-                        console.log("Firebase Auth Ready. User ID:", userCredential.user.uid);
-                    })
-                    .catch(error => {
-                        console.error("Firebase Initialization Failed:", error);
-                    });
-            } else {
-                console.warn("Firebase config not found. Skipping initialization.");
-            }
         });
+        
+        // ... (votre code Firebase/Gemini ici si nécessaire)
     </script>
 </body>
-</html> 
-
-
-
+</html>

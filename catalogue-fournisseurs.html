@@ -140,20 +140,34 @@
             margin: 0;
             padding-left: 10px;
         }
+        /* Conteneur principal du bouton PDF pour gérer le défilement */
+        .pdf-button-container {
+            /* Retrait de 'sticky top-0 z-10' des éléments internes */
+            width: 100%;
+            background-color: white;
+            border-bottom: 4px solid #1e40af;
+            padding: 10px 0;
+            position: sticky; /* Rendu 'sticky' sur le conteneur parent */
+            top: 0;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
 
-    <div class="no-print w-full flex justify-center py-4 bg-white border-b-4 border-[#1e40af] sticky top-0 z-10">
-        <button id="generatePdfButton" 
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-            Générer PDF (Impression)
-        </button>
+    <div class="pdf-button-container no-print">
+        <div class="w-full flex justify-center">
+            <button id="generatePdfButton" 
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Générer PDF (Impression)
+            </button>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-2 mb-2">
+            Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
+        </div>
     </div>
-    <div class="no-print text-center text-sm text-gray-500 mb-4">
-        Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
-    </div>
+
 
     <div class="catalog-page">
         <header class="header">
@@ -206,46 +220,106 @@
         <div class="table-container"> <table class="w-full table-custom">
                 <thead>
                     <tr>
-                        <th class="w-1/4">Famille</th>
-                        <th class="w-1/4">Marque Leader (L)</th>
-                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pelles / Chargeuses / Camions</td>
-                        <td>**Caterpillar**, **Komatsu**, **Hitachi**</td>
-                        <td>Bell Equipment (Afrique du Sud), Volvo (Europe), XCMG (Chine)</td>
+                        <td><strong>Caterpillar</strong></td>
+                        <td>Équipements (Pelles, Chargeuses, Camions)</td>
                     </tr>
                     <tr>
+                        <td><strong>Komatsu</strong></td>
+                        <td>Équipements (Pelles, Chargeuses, Camions)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hitachi</strong></td>
+                        <td>Équipements (Pelles, Chargeuses, Camions)</td>
+                    </tr>
+                    <tr>
+                        <td>Bell Equipment</td>
+                        <td>Équipements (Afrique du Sud)</td>
+                    </tr>
+                    <tr>
+                        <td>Volvo</td>
+                        <td>Équipements (Europe)</td>
+                    </tr>
+                    <tr>
+                        <td>XCMG</td>
+                        <td>Équipements (Chine)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Epiroc</strong></td>
                         <td>Forage & Excavation</td>
-                        <td>**Epiroc**, **Sandvik**</td>
-                        <td>Atlas Copco, Boart Longyear (Forage de Sondage)</td>
                     </tr>
                     <tr>
+                        <td><strong>Sandvik</strong></td>
+                        <td>Forage & Excavation</td>
+                    </tr>
+                    <tr>
+                        <td>Atlas Copco</td>
+                        <td>Forage & Excavation</td>
+                    </tr>
+                    <tr>
+                        <td>Boart Longyear</td>
+                        <td>Forage de Sondage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cummins</strong></td>
                         <td>Moteurs Diesel & Puissance</td>
-                        <td>**Cummins**, **MTU (Rolls-Royce)**</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MTU (Rolls-Royce)</strong></td>
+                        <td>Moteurs Diesel & Puissance</td>
+                    </tr>
+                    <tr>
                         <td>Yaskawa, WEG Electric, Kubota</td>
+                        <td>Alternatives Électriques & Moteurs</td>
                     </tr>
                     <tr>
+                        <td><strong>Manitou</strong></td>
                         <td>Manutention Spécialisée</td>
-                        <td>**Manitou**</td>
-                        <td>Loaders Australia, MacLean Engineering (Souterrain)</td>
                     </tr>
                     <tr>
-                        <td>Composants Châssis</td>
-                        <td>**Metso Outotec**, **FLSmidth**</td>
+                        <td>Loaders Australia</td>
+                        <td>Manutention Spécialisée</td>
+                    </tr>
+                    <tr>
+                        <td>MacLean Engineering</td>
+                        <td>Manutention (Souterrain)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metso Outotec</strong></td>
+                        <td>Composants Châssis / Pièces dures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FLSmidth</strong></td>
+                        <td>Composants Châssis / Pièces dures</td>
+                    </tr>
+                    <tr>
                         <td>Polydeck, Trelleborg</td>
+                        <td>Composants Châssis / Pièces dures</td>
                     </tr>
                     <tr>
+                        <td><strong>Rema Tip Top</strong></td>
                         <td>Bandes Transporteuses</td>
-                        <td>**Rema Tip Top**</td>
-                        <td>Flexco (Raccords), Trelleborg (Caoutchouc)</td>
                     </tr>
                     <tr>
+                        <td>Flexco</td>
+                        <td>Raccords pour Bandes Transporteuses</td>
+                    </tr>
+                    <tr>
+                        <td>Trelleborg</td>
+                        <td>Caoutchouc pour Bandes Transporteuses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trelleborg</strong></td>
                         <td>Protection Anti-Usure</td>
-                        <td>**Trelleborg**</td>
+                    </tr>
+                    <tr>
                         <td>Wear-Tek, Vecor</td>
+                        <td>Protection Anti-Usure</td>
                     </tr>
                 </tbody>
             </table>
@@ -260,31 +334,62 @@
             <table class="w-full table-custom">
                 <thead>
                     <tr>
-                        <th class="w-1/4">Famille</th>
-                        <th class="w-1/4">Marque Leader (L)</th>
-                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td><strong>Metso Outotec</strong></td>
                         <td>Concassage & Criblage</td>
-                        <td>**Metso Outotec**, **FLSmidth**</td>
-                        <td>Terex / Finlay, Haver & Boecker, Polydeck (Panneaux)</td>
                     </tr>
                     <tr>
+                        <td><strong>FLSmidth</strong></td>
+                        <td>Concassage & Criblage</td>
+                    </tr>
+                    <tr>
+                        <td>Terex / Finlay, Haver & Boecker</td>
+                        <td>Concassage & Criblage</td>
+                    </tr>
+                    <tr>
+                        <td>Polydeck</td>
+                        <td>Panneaux de criblage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FLSmidth</strong></td>
                         <td>Extraction Gravimétrique</td>
-                        <td>**FLSmidth**</td>
-                        <td>Gekko Systems (Australie)</td>
                     </tr>
                     <tr>
+                        <td>Gekko Systems</td>
+                        <td>Extraction Gravimétrique (Australie)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Endress + Hauser</strong></td>
                         <td>Instrumentation Process</td>
-                        <td>**Endress + Hauser**, **Wika**</td>
-                        <td>Krohne, Jumo, Yokogawa</td>
                     </tr>
                     <tr>
+                        <td><strong>Wika</strong></td>
+                        <td>Instrumentation Process</td>
+                    </tr>
+                    <tr>
+                        <td>Krohne, Jumo, Yokogawa</td>
+                        <td>Instrumentation Process</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mettler Toledo</strong></td>
                         <td>Équipement Laboratoire</td>
-                        <td>**Mettler Toledo**, **Retsch**</td>
-                        <td>Gilson (Tamisage), Vaisala, Lhoist (Réactifs)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retsch</strong></td>
+                        <td>Équipement Laboratoire</td>
+                    </tr>
+                    <tr>
+                        <td>Gilson</td>
+                        <td>Tamisage Laboratoire</td>
+                    </tr>
+                    <tr>
+                        <td>Vaisala, Lhoist</td>
+                        <td>Réactifs Laboratoire</td>
                     </tr>
                 </tbody>
             </table>
@@ -299,41 +404,82 @@
             <table class="w-full table-custom">
                 <thead>
                     <tr>
-                        <th class="w-1/4">Famille</th>
-                        <th class="w-1/4">Marque Leader (L)</th>
-                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td><strong>Weir Minerals (Warman)</strong></td>
                         <td>Pompes à Boues / Abrasives</td>
-                        <td>**Weir Minerals (Warman)**, **ITT Goulds**</td>
-                        <td>KSB Etabloc, EDDY Pump (USA), Andritz</td>
                     </tr>
                     <tr>
+                        <td><strong>ITT Goulds</strong></td>
+                        <td>Pompes à Boues / Abrasives</td>
+                    </tr>
+                    <tr>
+                        <td>KSB Etabloc, EDDY Pump, Andritz</td>
+                        <td>Pompes à Boues / Abrasives</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LEWA</strong></td>
                         <td>Pompes Doseuses (Réactifs)</td>
-                        <td>**LEWA**, **ProMinent**</td>
-                        <td>NETZSCH (Péristaltiques), Debem (Italie)</td>
                     </tr>
                     <tr>
+                        <td><strong>ProMinent</strong></td>
+                        <td>Pompes Doseuses (Réactifs)</td>
+                    </tr>
+                    <tr>
+                        <td>NETZSCH, Debem</td>
+                        <td>Pompes Doseuses (Péristaltiques, Italie)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Orbinox</strong></td>
                         <td>Vannes Boues (Guillotine)</td>
-                        <td>**Orbinox**, **Weir Minerals (Isogate)**</td>
-                        <td>KDV, Richter (Corrosifs), Samson (Régulation)</td>
                     </tr>
                     <tr>
+                        <td><strong>Weir Minerals (Isogate)</strong></td>
+                        <td>Vannes Boues (Guillotine)</td>
+                    </tr>
+                    <tr>
+                        <td>KDV, Richter, Samson</td>
+                        <td>Vannes (Corrosifs, Régulation)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xylem (Flygt)</strong></td>
                         <td>Pompes Eaux / Drainage</td>
-                        <td>**Xylem (Flygt)**, **Grundfos**</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grundfos</strong></td>
+                        <td>Pompes Eaux / Drainage</td>
+                    </tr>
+                    <tr>
                         <td>Wilo, Lowara, Piusi</td>
+                        <td>Pompes Eaux / Drainage</td>
                     </tr>
                     <tr>
+                        <td><strong>Parker</strong></td>
                         <td>Hydraulique / Raccords</td>
-                        <td>**Parker**, **Victaulic**</td>
-                        <td>Klinger (Étanchéité), Dixon (Raccords), Swagelok</td>
                     </tr>
                     <tr>
+                        <td><strong>Victaulic</strong></td>
+                        <td>Raccords pour Tuyauterie (Joints)</td>
+                    </tr>
+                    <tr>
+                        <td>Klinger, Dixon, Swagelok</td>
+                        <td>Étanchéité / Raccords</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rotork</strong></td>
                         <td>Actionneurs de Vannes</td>
-                        <td>**Rotork**, **Topworx**</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Topworx</strong></td>
+                        <td>Actionneurs de Vannes</td>
+                    </tr>
+                    <tr>
                         <td>A-T Controls, Emerson</td>
+                        <td>Actionneurs de Vannes</td>
                     </tr>
                 </tbody>
             </table>
@@ -347,36 +493,82 @@
             <table class="w-full table-custom">
                 <thead>
                     <tr>
-                        <th class="w-1/4">Famille</th>
-                        <th class="w-1/4">Marque Leader (L)</th>
-                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td><strong>Siemens</strong></td>
                         <td>Automates (PLC/DCS)</td>
-                        <td>**Siemens**, **Schneider Electric**, **Rockwell (Allen-Bradley)**</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Schneider Electric</strong></td>
+                        <td>Automates (PLC/DCS)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rockwell (Allen-Bradley)</strong></td>
+                        <td>Automates (PLC/DCS)</td>
+                    </tr>
+                    <tr>
                         <td>Yokogawa, Beckhoff, Vipa, Unitronics</td>
+                        <td>Alternatives Automates</td>
                     </tr>
                     <tr>
+                        <td><strong>ABB</strong></td>
                         <td>Variateurs & Moteurs</td>
-                        <td>**ABB**, **SEW Eurodrive**, **Danfoss**</td>
-                        <td>Voith (Transmissions), WEG Electric, Lenze</td>
                     </tr>
                     <tr>
+                        <td><strong>SEW Eurodrive</strong></td>
+                        <td>Variateurs & Moteurs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Danfoss</strong></td>
+                        <td>Variateurs & Moteurs</td>
+                    </tr>
+                    <tr>
+                        <td>Voith, WEG Electric, Lenze</td>
+                        <td>Transmissions & Moteurs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pilz</strong></td>
                         <td>Sécurité Critique</td>
-                        <td>**Pilz**, **Triconex**, **Sick**</td>
-                        <td>Hima, Pepperl Fuchs, Eaton (Protection)</td>
                     </tr>
                     <tr>
+                        <td><strong>Triconex</strong></td>
+                        <td>Sécurité Critique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sick</strong></td>
+                        <td>Sécurité Critique</td>
+                    </tr>
+                    <tr>
+                        <td>Hima, Pepperl Fuchs, Eaton</td>
+                        <td>Sécurité & Protection Électrique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wago</strong></td>
                         <td>Connectivité & I/O</td>
-                        <td>**Wago**, **Weidmuller**, **Phoenix Contact**</td>
-                        <td>Turck, Moxa (Réseaux), Wieland</td>
                     </tr>
                     <tr>
+                        <td><strong>Weidmuller</strong></td>
+                        <td>Connectivité & I/O</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phoenix Contact</strong></td>
+                        <td>Connectivité & I/O</td>
+                    </tr>
+                    <tr>
+                        <td>Turck, Moxa, Wieland</td>
+                        <td>Réseaux & Connecteurs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fluke</strong></td>
                         <td>Matériel de Calibration & Mesure</td>
-                        <td>**Fluke**</td>
-                        <td>Bruel & Kjaer (Vibration), Yokogawa</td>
+                    </tr>
+                    <tr>
+                        <td>Bruel & Kjaer, Yokogawa</td>
+                        <td>Vibration & Mesure</td>
                     </tr>
                 </tbody>
             </table>
@@ -391,6 +583,215 @@
             <table class="w-full table-custom">
                 <thead>
                     <tr>
-                        <th class="w-1/4">Famille</th>
-                        <th class="w-1/4">Marque Leader (L)</th>
-                        <th class="w-1/2">Alternatives / Spécialisation (A/S
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mitutoyo</strong></td>
+                        <td>Métrologie & Contrôle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Starrett</strong></td>
+                        <td>Métrologie & Contrôle</td>
+                    </tr>
+                    <tr>
+                        <td>Renishaw</td>
+                        <td>Alignement Laser</td>
+                    </tr>
+                    <tr>
+                        <td>Heidenhain</td>
+                        <td>Codeurs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mettler Toledo</strong></td>
+                        <td>Équipement Laboratoire (Balances)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retsch</strong></td>
+                        <td>Équipement Laboratoire</td>
+                    </tr>
+                    <tr>
+                        <td>Gilson</td>
+                        <td>Tamisage Laboratoire</td>
+                    </tr>
+                    <tr>
+                        <td>Vaisala, Lhoist</td>
+                        <td>Réactifs Laboratoire</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
+             <h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
+        </div>
+        
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Enerpac</strong></td>
+                        <td>Hydraulique & Serrage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Norbar</strong></td>
+                        <td>Hydraulique & Serrage</td>
+                    </tr>
+                    <tr>
+                        <td>SKF</td>
+                        <td>Alignement/Extraction</td>
+                    </tr>
+                    <tr>
+                        <td>Parker</td>
+                        <td>Hydraulique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lincoln Electric</strong></td>
+                        <td>Soudage & Coupage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Miller Electric</strong></td>
+                        <td>Soudage & Coupage</td>
+                    </tr>
+                    <tr>
+                        <td>Magmaweld, Hypertherm, Leister</td>
+                        <td>Plasma, Soudage Plastique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Snap-on</strong></td>
+                        <td>Outillage à Main / Lourd</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hilti</strong></td>
+                        <td>Outillage à Main / Lourd</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Husqvarna</strong></td>
+                        <td>Outillage à Main / Lourd</td>
+                    </tr>
+                    <tr>
+                        <td>Catu, DeWalt, Makita</td>
+                        <td>Sécurité Électrique, Outillage Standard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
+             <h3>7. Services & Structure</h3>
+        </div>
+        
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/2">Marque</th>
+                        <th class="w-1/2">Spécialisation dans le secteur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Agnico Eagle</strong></td>
+                        <td>Influence des standards d'achat des grands mineurs</td>
+                    </tr>
+                    <tr>
+                        <td>Micromine</td>
+                        <td>Logiciels de modélisation et planification minière (Australie)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voith</strong></td>
+                        <td>Systèmes d'entraînement et transmissions spécialisées</td>
+                    </tr>
+                    <tr>
+                        <td>Woodward</td>
+                        <td>Systèmes de gestion de moteurs et de turbines</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer class="mt-16 border-t pt-4 text-xs text-gray-600">
+            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div>
+                    <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
+                    <p>La société **MULTIPARTS** n'est ni un distributeur agréé ni un représentant officiel des marques mentionnées. Nous fournissons des services de **sourcing et de revente indépendants** de matériel neuf, reconditionné ou obsolète.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
+                    <p>Tous les produits fournis bénéficient d'une **garantie de 12 mois**.</p>
+                    <p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
+                    <p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
+                    <p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
+                </div>
+            </div>
+            
+            <p class="mt-4 text-center">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttonPdf = document.getElementById('generatePdfButton');
+            if (buttonPdf) {
+                buttonPdf.addEventListener('click', () => {
+                    window.print();
+                });
+            }
+            
+            // 🛑 REMPLACER CETTE VALEUR PAR L'URL RÉELLE DE VOTRE FONCTION CLOUD GEMINI SANS SERVEUR
+            const GEMINI_FUNCTION_URL = 'https://VOTRE_URL_API_GEMINI.cloudfunctions.net/votre-fonction';
+
+            const iaButton = document.getElementById('iaAnalysisButton1');
+            const iaResultDiv = document.getElementById('iaResult1');
+
+            if (iaButton) {
+                iaButton.addEventListener('click', async () => {
+                    iaResultDiv.classList.remove('hidden');
+                    iaResultDiv.innerHTML = 'Chargement de l\'analyse du marché...';
+                    iaButton.disabled = true; // Désactive le bouton pendant le chargement
+
+                    const prompt = "Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds Caterpillar, Komatsu, et Hitachi dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.";
+
+                    try {
+                        const response = await fetch(GEMINI_FUNCTION_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ prompt: prompt })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Erreur HTTP: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        
+                        // Assurez-vous que la réponse est formatée correctement par votre fonction serveur
+                        iaResultDiv.innerHTML = '<strong>Analyse de l\'IA :</strong><br>' + data.result;
+
+                    } catch (error) {
+                        iaResultDiv.innerHTML = `Erreur: Impossible d'obtenir l'analyse. Veuillez vérifier la console (F12) et l'URL de la fonction Cloud.`;
+                        console.error("Erreur d'appel API IA:", error);
+                    } finally {
+                        iaButton.disabled = false; // Réactive le bouton
+                    }
+                });
+            }
+            
+            // ... (votre code Firebase/Gemini existant si nécessaire) ...
+        });
+    </script>
+</body>
+</html>

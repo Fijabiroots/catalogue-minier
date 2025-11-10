@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue des Fournisseurs Stratégiques pour Projets Miniers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configuration générale pour l'écran */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        .catalog-page {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 900px;
+            padding: 40px;
+            min-height: 1200px; /* Taille approximative d'une page A4 pour l'écran */
+            position: relative;
+        }
+        .header {
+            border-bottom: 4px solid #1e40af; /* Couleur industrielle */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Styles spécifiques pour l'impression (Impression A4) */
+        @media print {
+            body {
+                background-color: white;
+                color: #000000 !important; /* Force le texte en noir */
+            }
+            .catalog-page {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+                min-height: auto;
+                height: 297mm; /* Hauteur A4 standard */
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+
+            /* Force l'impression des fonds pour les images et headers */
+            .header, .section-header, .table-custom th {
+                -webkit-print-color-adjust: exact !important; /* Tente de forcer l'impression des couleurs exactes */
+                print-color-adjust: exact !important;
+            }
+
+            /* Forçage des sauts de page aux marqueurs */
+            .page-break {
+                page-break-before: always;
+            }
+
+            /* Masquer les éléments non-imprimables si nécessaire */
+            .no-print {
+                display: none;
+            }
+            
+            /* Réajuster les marges d'impression */
+            @page {
+                margin: 10mm 15mm 10mm 15mm;
+            }
+
+            /* Styles des tableaux pour garantir la visibilité */
+            .table-custom {
+                border-collapse: collapse !important;
+                width: 100% !important;
+                table-layout: fixed;
+            }
+            .table-custom th {
+                background-color: #f0f4f8 !important; /* Fond très clair si couleur non imprimée */
+                color: #000000 !important;
+                border: 1px solid #555 !important; /* Bordure forte pour délimiter les cellules */
+            }
+            .table-custom td {
+                color: #000000 !important;
+                border: 1px solid #ddd !important;
+                padding: 5px !important;
+            }
+            .text-xl, .text-2xl, .text-4xl {
+                color: #000000 !important;
+            }
+        }
+
+        /* Classe pour forcer le saut de page à des endroits précis */
+        .page-break-after-section {
+            page-break-after: always;
+        }
+
+        /* Styles pour les tableaux */
+        .table-custom th {
+            background-color: #e0e7ff; /* Bleu clair */
+            color: #1e40af;
+            font-weight: 700;
+            padding: 8px;
+            text-align: left;
+        }
+        .table-custom td {
+            padding: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        /* Style pour les en-têtes de section avec icônes */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1e40af;
+            padding-left: 10px;
+        }
+        .section-header h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin: 0;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print w-full flex justify-center py-4 bg-white border-b-4 border-[#1e40af] sticky top-0 z-10">
+        <button id="generatePdfButton" 
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            Générer PDF (Impression)
+        </button>
+    </div>
+    <div class="no-print text-center text-sm text-gray-500 mb-4">
+        Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
+    </div>
+
+    <div class="catalog-page">
+        <header class="header">
+            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
+            <h2 class="text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
+        </header>
+
+        <img class="w-full h-auto rounded-lg mb-6" 
+             src="https://placehold.co/850x300/1e40af/ffffff?text=MINE+D'OR+%C3%80+CIEL+OUVERT+%7C+Vue+G%C3%A9n%C3%A9rale" 
+             alt="Image d'une vue 3D d'une mine à ciel ouvert.">
+
+        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
+            <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
+            <div class="grid grid-cols-2 gap-x-4 text-sm">
+                <div>
+                    <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, spécialisé dans l'approvisionnement en pièces de rechange, en composants mécaniques, électriques et en services logistiques pour les grands projets industriels.</p>
+                </div>
+                <div>
+                    <p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
+                    <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
+                    <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES</h3>
+        <ol class="list-decimal ml-6 space-y-1 text-gray-700">
+            <li>Équipements Lourds & Mobiles (Extraction, Forage)</li>
+            <li>Traitement des Minerais & Matériel d'Usure (Concentrateur)</li>
+            <li>Pompes & Vannes Spécialisées (Fluides Agressifs, Boues)</li>
+            <li>Automatisation, Contrôle & Électrique (Infrastructures)</li>
+            <li>Instrumentation, Laboratoire & Analyse</li>
+            <li>Outillage Spécialisé, Soudage & Métrologie</li>
+            <li>Logiciels & Services Stratégiques</li>
+        </ol>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
+             <h3>1. ÉQUIPEMENTS LOURDS & MOBILES</h3>
+        </div>
+        
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pelles / Chargeuses / Camions</td>
+                    <td>**Caterpillar (CAT)**, **Komatsu**, **Hitachi**</td>
+                    <td>**XCMG** (Asie), **Bell Equipment** (Afrique du Sud), **Volvo**</td>
+                </tr>
+                <tr>
+                    <td>Forage & Excavation</td>
+                    <td>**Epiroc**, **Sandvik**, **Atlas Copco**</td>
+                    <td>**Boart Longyear** (Forage de sondage), **Husqvarna** (Outils de coupe)</td>
+                </tr>
+                <tr>
+                    <td>Moteurs & Puissance</td>
+                    <td>**Cummins**, **MTU (Rolls-Royce)**</td>
+                    <td>**Yaskawa**, **WEG Electric**, **Kubota**</td>
+                </tr>
+                <tr>
+                    <td>Manutention Spécialisée</td>
+                    <td>**Manitou**</td>
+                    <td>**Loaders Australia**, **MacLean Engineering** (Souterrain)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md" alt="Icône d'un broyeur de minerais">
+             <h3>2. TRAITEMENT DES MINERAIS & USURE</h3>
+        </div>
+        
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Concassage & Criblage</td>
+                    <td>**Metso Outotec**, **FLSmidth**</td>
+                    <td>**Terex / Finlay**, **Haver & Boecker**, **Polydeck** (Panneaux)</td>
+                </tr>
+                <tr>
+                    <td>Bandes Transporteuses</td>
+                    <td>**REMA TIP TOP**</td>
+                    <td>**Flexco** (Raccords), **Trelleborg** (Revêtements, caoutchouc)</td>
+                </tr>
+                <tr>
+                    <td>Consommables Anti-Usure</td>
+                    <td>**Trelleborg** (Revêtements)</td>
+                    <td>**Wear-Tek** (Afrique du Sud), **Vecor** (Matériaux réfractaires)</td>
+                </tr>
+                <tr>
+                    <td>Extraction Spécialisée</td>
+                    <td>**Metso Outotec**</td>
+                    <td>**Gekko Systems** (Extraction par gravité, Australie)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-break-after-section"></div> 
+    </div>
+
+    <div class="catalog-page">
+        <header class="header no-print">
+            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
+            <h2 class="text-xl font-semibold text-gray-700 mt-1">Page 2 : Fluides et Systèmes</h2>
+        </header>
+        
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
+             <h3>3. POMPES & VANNES SPÉCIALISÉES (Fluides Agressifs)</h3>
+        </div>
+        
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pompes à Boues / Abrasives</td>
+                    <td>**Weir Minerals** (*Warman*), **ITT Goulds Pumps**</td>
+                    <td>**KSB Etabloc**, **EDDY Pump** (USA), **Andritz**</td>
+                </tr>
+                <tr>
+                    <td>Pompes Doseuses (Réactifs)</td>
+                    <td>**LEWA**, **ProMinent**</td>
+                    <td>**NETZSCH** (Péristaltiques), **Debem** (Italie)</td>
+                </tr>
+                <tr>
+                    <td>Vannes Boues (Guillotine)</td>
+                    <td>**Orbinox**, **Weir Minerals** (*Isogate*)</td>
+                    <td>**KDV**, **Richter** (Corrosifs), **Samson** (Régulation)</td>
+                </tr>
+                <tr>
+                    <td>Pompes Eaux/Drainage</td>
+                    <td>**Xylem** (*Flygt*), **Grundfos**</td>
+                    <td>**Wilo**, **Lowara**, **Piusi**</td>
+                </tr>
+                <tr>
+                    <td>Hydraulique / Raccords</td>
+                    <td>**Parker**, **Victaulic** (Joints)</td>
+                    <td>**Klinger** (Étanchéité), **Dixon** (Raccords), **Swagelok**</td>
+                </tr>
+                <tr>
+                    <td>Actionneurs de Vannes</td>
+                    <td>**Rotork**, **Topworx**</td>
+                    <td>**A-T Controls**, **Emerson**</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
+             <h3>4. AUTOMATISATION, CONTRÔLE & ÉLECTRIQUE</h3>
+        </div>
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Automates (PLC/DCS)</td>
+                    <td>**Siemens**, **Schneider Electric**, **Rockwell (Allen-Bradley)**</td>
+                    <td>**Yokogawa**, **Beckhoff**, **Vipa**, **Unitronics**</td>
+                </tr>
+                <tr>
+                    <td>Variateurs & Moteurs</td>
+                    <td>**ABB**, **SEW Eurodrive**, **Danfoss**</td>
+                    <td>**Voith** (Transmissions), **WEG Electric**, **Lenze**</td>
+                </tr>
+                <tr>
+                    <td>Instrumentation Process</td>
+                    <td>**Endress + Hauser**, **Wika**, **Krohne**</td>
+                    <td>**Jumo**, **Yokogawa**, **Vaisala**</td>
+                </tr>
+                <tr>
+                    <td>Sécurité Critique</td>
+                    <td>**Pilz**, **Triconex**, **Sick**</td>
+                    <td>**Hima**, **Pepperl Fuchs**, **Eaton** (Protection)</td>
+                </tr>
+                <tr>
+                    <td>Connectivité & I/O</td>
+                    <td>**Wago**, **Weidmuller**, **Phoenix Contact**</td>
+                    <td>**Turck**, **Moxa** (Réseaux), **Wieland**</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-break-after-section"></div>
+    </div>
+
+    <div class="catalog-page">
+        <header class="header no-print">
+            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE FOURNISSEURS STRATÉGIQUES</h1>
+            <h2 class="text-xl font-semibold text-gray-700 mt-1">Page 3 : Outillage et Législation</h2>
+        </header>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
+             <h3>5. OUTILLAGE SPÉCIALISÉ & SOUDAGE</h3>
+        </div>
+        
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hydraulique & Serrage</td>
+                    <td>**Enerpac**, **Norbar**</td>
+                    <td>**SKF** (Alignement/Extraction), **Parker** (Hydraulique)</td>
+                </tr>
+                <tr>
+                    <td>Soudage & Coupage</td>
+                    <td>**Lincoln Electric**, **Miller Electric**</td>
+                    <td>**Magmaweld**, **Hypertherm** (Plasma), **Leister** (Soudage Plastique)</td>
+                </tr>
+                <tr>
+                    <td>Outillage à Main / Lourd</td>
+                    <td>**Snap-on**, **Hilti**, **Husqvarna**</td>
+                    <td>**Catu** (Sécurité Électrique), **DeWalt**, **Makita**</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
+             <h3>6. INSTRUMENTATION & MÉTROLOGIE</h3>
+        </div>
+        
+        <table class="w-full table-custom">
+            <thead>
+                <tr>
+                    <th class="w-1/4">Famille</th>
+                    <th class="w-1/4">Marque Principale (M)</th>
+                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mesure Électrique & Diagnostic</td>
+                    <td>**Fluke**</td>
+                    <td>**Bruel & Kjaer** (Vibration), **Yokogawa**</td>
+                </tr>
+                <tr>
+                    <td>Métrologie & Contrôle</td>
+                    <td>**Mitutoyo**, **Starrett**</td>
+                    <td>**Renishaw** (Alignement Laser), **Heidenhain** (Codeurs)</td>
+                </tr>
+                <tr>
+                    <td>Équipement Laboratoire</td>
+                    <td>**Mettler Toledo** (Balances), **Retsch**</td>
+                    <td>**Gilson** (Tamisage), **Lhoist** (Réactifs), **Vaisala**</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="section-header">
+             <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
+             <h3>7. LOGICIELS & SERVICES STRATÉGIQUES</h3>
+        </div>
+        
+        <ul class="list-disc ml-6 space-y-1 text-gray-700 mt-4">
+            <li>**Agnico Eagle** (Influence des standards d'achat des grands mineurs)</li>
+            <li>**Micromine** (Logiciels de modélisation et planification minière, Australie)</li>
+            <li>**Voith** (Systèmes d'entraînement et transmissions spécialisées)</li>
+            <li>**Woodward** (Systèmes de gestion de moteurs et de turbines)</li>
+        </ul>
+        
+        <footer class="mt-16 border-t pt-4 text-xs text-gray-600">
+            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
+                    <p>La société **MULTIPARTS** n'est ni un distributeur agréé ni un représentant officiel des marques mentionnées. Nous fournissons des services de **sourcing et de revente indépendants** de matériel neuf, reconditionné ou obsolète.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
+                    <p>Tous les produits fournis bénéficient d'une **garantie de 12 mois**.</p>
+                    <p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
+                    <p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
+                    <p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
+                </div>
+            </div>
+            
+            <p class="mt-4 text-center">Document Référence [MP-MINE-STRAT-2025] - Version 1.0 - © 2025 MULTIPARTS. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('generatePdfButton');
+            if (button) {
+                // Associe la fonction d'impression à l'événement clic du bouton
+                button.addEventListener('click', () => {
+                    // La fonction window.print() ouvre la boîte de dialogue d'impression.
+                    // L'utilisateur peut ensuite choisir "Enregistrer au format PDF" comme destination.
+                    window.print();
+                });
+            }
+        });
+        
+        // Le reste de votre script (Gemini/Firebase) est conservé pour référence technique
+        // mais n'est pas nécessaire pour la fonction PDF.
+        // ... (votre script type="module" existant ici)
+    </script>
+</body>
+</html>

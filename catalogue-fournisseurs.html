@@ -1,3 +1,18 @@
+<div class="no-print w-full flex justify-center py-4 bg-white border-b-4 border-[#1e40af] sticky top-0 z-10">
+        </div>
+    <div class="no-print text-center text-sm text-gray-500 mb-4">
+        </div>
+
+    <div class="catalog-page">
+    ```
+
+En ajoutant `!important` à la règle `display: none` de la classe `.no-print` (voir section 1), nous forçons le navigateur à masquer ces éléments.
+
+## 🌟 Code Final Corrigé
+
+Voici le code mis à jour avec les ajustements de style pour éliminer la page blanche initiale et garantir que le bouton est invisible à l'impression :
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,11 +34,11 @@
             margin: 20px auto;
             max-width: 900px;
             padding: 40px;
-            min-height: 1200px; /* Taille approximative d'une page A4 pour l'écran */
+            min-height: 1200px;
             position: relative;
         }
         .header {
-            border-bottom: 4px solid #1e40af; /* Couleur industrielle */
+            border-bottom: 4px solid #1e40af;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -32,7 +47,7 @@
         @media print {
             body {
                 background-color: white;
-                color: #000000 !important; /* Force le texte en noir */
+                color: #000000 !important;
             }
             .catalog-page {
                 box-shadow: none;
@@ -40,25 +55,22 @@
                 padding: 0;
                 max-width: 100%;
                 min-height: auto;
-                height: 297mm; /* Hauteur A4 standard */
+                height: 297mm;
                 page-break-after: always;
                 page-break-inside: avoid;
             }
 
             /* Force l'impression des fonds pour les images et headers */
             .header, .section-header, .table-custom th {
-                -webkit-print-color-adjust: exact !important; /* Tente de forcer l'impression des couleurs exactes */
+                -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
 
-            /* Forçage des sauts de page aux marqueurs */
-            .page-break {
-                page-break-before: always;
-            }
-
-            /* Masquer les éléments non-imprimables si nécessaire */
+            /* Masquer les éléments non-imprimables et supprimer leur espace */
             .no-print {
-                display: none;
+                display: none !important; /* Assure la suppression du bouton */
+                height: 0 !important; /* Supprime la hauteur résiduelle */
+                overflow: hidden !important; /* S'assure que rien ne déborde */
             }
             
             /* Réajuster les marges d'impression */
@@ -73,9 +85,9 @@
                 table-layout: fixed;
             }
             .table-custom th {
-                background-color: #f0f4f8 !important; /* Fond très clair si couleur non imprimée */
+                background-color: #f0f4f8 !important;
                 color: #000000 !important;
-                border: 1px solid #555 !important; /* Bordure forte pour délimiter les cellules */
+                border: 1px solid #555 !important;
             }
             .table-custom td {
                 color: #000000 !important;
@@ -94,7 +106,7 @@
 
         /* Styles pour les tableaux */
         .table-custom th {
-            background-color: #e0e7ff; /* Bleu clair */
+            background-color: #e0e7ff;
             color: #1e40af;
             font-weight: 700;
             padding: 8px;
@@ -448,22 +460,56 @@
         </footer>
     </div>
 
-    <script>
+    <script type="module">
+        // ... (votre code Gemini/Firebase existant) ...
+
+        // Function to attach listener when the document loads
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.getElementById('generatePdfButton');
             if (button) {
                 // Associe la fonction d'impression à l'événement clic du bouton
                 button.addEventListener('click', () => {
-                    // La fonction window.print() ouvre la boîte de dialogue d'impression.
-                    // L'utilisateur peut ensuite choisir "Enregistrer au format PDF" comme destination.
                     window.print();
                 });
             }
+            // --- Firebase Mandatory Setup (Even if not used for storage) ---
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+            const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+            let app; 
+
+            if (firebaseConfig) {
+                import('https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js')
+                    .then(module => {
+                        const { initializeApp } = module;
+                        app = initializeApp(firebaseConfig); 
+                        return import('https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js');
+                    })
+                    .then(module => {
+                        const { getAuth, signInWithCustomToken, signInAnonymously } = module;
+                        const auth = getAuth(app); 
+
+                        // Sign in anonymously or with custom token
+                        if (initialAuthToken) {
+                            return signInWithCustomToken(auth, initialAuthToken).catch(error => {
+                                console.error("Firebase Custom Token Sign-In Failed:", error);
+                                return signInAnonymously(auth); 
+                            });
+                        } else {
+                            return signInAnonymously(auth);
+                        }
+                    })
+                    .then(userCredential => {
+                        console.log("Firebase Auth Ready. User ID:", userCredential.user.uid);
+                    })
+                    .catch(error => {
+                        console.error("Firebase Initialization Failed:", error);
+                    });
+            } else {
+                console.warn("Firebase config not found. Skipping initialization.");
+            }
         });
-        
-        // Le reste de votre script (Gemini/Firebase) est conservé pour référence technique
-        // mais n'est pas nécessaire pour la fonction PDF.
-        // ... (votre script type="module" existant ici)
     </script>
 </body>
-</html>
+</html> 

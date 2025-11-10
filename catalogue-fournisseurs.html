@@ -72,24 +72,6 @@
                 height: auto;
                 page-break-inside: avoid;
             }
-            
-            /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
-            /* Force la rupture après un certain nombre de lignes (évite les titres seuls) */
-            .section-header h3 {
-                page-break-after: avoid;
-            }
-            /* Garantit que le titre reste solidaire avec le bloc suivant (tableau ou liste) */
-            .section-header {
-                page-break-inside: avoid;
-                page-break-after: avoid; /* Empêche un saut de page immédiatement après le titre */
-            }
-            /* Gère les orphelins et les veuves dans les blocs de contenu (par ex. le tableau ou la liste UL/OL) */
-            .table-container, ul, ol {
-                orphans: 3; /* Minimum de 3 lignes en bas de page */
-                widows: 3;  /* Minimum de 3 lignes en haut de page */
-                page-break-inside: auto;
-            }
-
 
             /* Force l'impression des fonds pour les images et headers */
             .header, .section-header, .table-custom th {
@@ -122,17 +104,6 @@
             }
             .text-xl, .text-2xl, .text-4xl {
                 color: #000000 !important;
-            }
-
-            /* 🌟 STYLE DE PAGINATION */
-            /* Place le compteur de page dans le coin inférieur droit de chaque page */
-            .page-number::after {
-                content: "Page " counter(page) " sur " counter(pages);
-                position: fixed;
-                bottom: 5mm;
-                right: 15mm;
-                font-size: 9pt;
-                color: #555;
             }
         }
 
@@ -195,17 +166,31 @@
         .back-to-top:hover {
             background-color: #1e3a8a;
         }
+        /* Style pour le texte d'expertise */
+        .expertise-box {
+            border-left: 4px solid #22c55e;
+            padding-left: 10px;
+            margin-bottom: 15px;
+            background-color: #f0fdf4;
+            padding: 10px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
 
     <div class="pdf-button-container no-print">
-        <div class="w-full flex justify-center">
+        <div class="w-full flex justify-center space-x-4">
             <button id="generatePdfButton" 
                     class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 Générer PDF (Impression)
             </button>
+             <a href="mailto:rafiou.oyeossi@multipartsci.com?subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
+               class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Contact Direct
+            </a>
         </div>
         <div class="text-center text-sm text-gray-500 mt-2 mb-2">
             Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
@@ -256,14 +241,26 @@
              <h3>1. Équipements Lourds & Mobiles (Extraction, Forage et Transport)</h3>
         </div>
         
-        <button id="iaAnalysisButton1" 
-                class="no-print bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-lg mb-4 transition duration-150">
-            ⚡ Analyse IA du Marché (Équipements Lourds)
-        </button>
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button id="iaAnalysisButton1" 
+                    class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                ⚡ Analyse IA du Marché
+            </button>
+            <button onclick="generateCSV('section-1')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
 
         <div id="iaResult1" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
             Chargement de l'analyse...
         </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** Notre expertise couvre les trois piliers mondiaux (Caterpillar, Komatsu, Hitachi) pour assurer l'interchangeabilité des pièces et minimiser les temps d'arrêt. Nous maîtrisons également l'intégration des solutions de forage avancées d'Epiroc et Sandvik.
+            </p>
+        </div>
+
         <div class="table-container"> <table class="w-full table-custom">
                 <thead>
                     <tr>
@@ -376,6 +373,18 @@
              <h3>2. Traitement des Minerais & Séparation (Concentrateur)</h3>
         </div>
         
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button onclick="generateCSV('section-2')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** Le concentrateur est le cœur de l'opération. Nous fournissons des consommables Metso Outotec et FLSmidth ainsi que des solutions d'analyse laboratoire de pointe (Mettler, Retsch) pour garantir une récupération optimale et un contrôle qualité rigoureux.
+            </p>
+        </div>
+
         <div class="table-container">
             <table class="w-full table-custom">
                 <thead>
@@ -445,6 +454,18 @@
              <h3>3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</h3>
         </div>
         
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button onclick="generateCSV('section-3')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** La gestion des boues et fluides agressifs est critique. Nous nous spécialisons dans le sourcing de Warman (Weir) et ITT Goulds, leaders en abrasion, et des systèmes de dosage LEWA et ProMinent, garantissant l'intégrité de vos procédés chimiques.
+            </p>
+        </div>
+
         <div class="table-container">
             <table class="w-full table-custom">
                 <thead>
@@ -533,6 +554,26 @@
         <div class="section-header" id="section-4"> <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
              <h3>4. Automatisation, Contrôle & Électronique</h3>
         </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button id="iaRiskButton4" 
+                    class="bg-red-600 hover:bg-red-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                🛡️ Risque Fournisseur (IA)
+            </button>
+            <button onclick="generateCSV('section-4')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div id="iaRiskResult4" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
+            Chargement de l'analyse...
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** La fiabilité électrique et le contrôle sont non négociables. Notre réseau garantit l'accès aux systèmes PLC/DCS Siemens, Schneider et Rockwell, ainsi qu'aux composants de sécurité (Pilz, Triconex), essentiels pour la continuité des opérations minières.
+            </p>
+        </div>
+        
         <div class="table-container">
             <table class="w-full table-custom">
                 <thead>
@@ -621,6 +662,18 @@
         <div class="section-header" id="section-5"> <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
              <h3>5. Instrumentation, Laboratoire & Consommables</h3>
         </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button onclick="generateCSV('section-5')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** La précision de la métrologie (Mitutoyo, Starrett) et l'équipement de laboratoire sont fondamentaux pour le contrôle de la teneur. Nous assurons la fourniture de solutions qui soutiennent l'accréditation et la fiabilité des données de votre site.
+            </p>
+        </div>
         
         <div class="table-container">
             <table class="w-full table-custom">
@@ -669,6 +722,18 @@
 
         <div class="section-header" id="section-6"> <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
              <h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+            <button onclick="generateCSV('section-6')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** L'efficacité de la maintenance repose sur des outils de qualité industrielle. Nous fournissons les marques leaders (Enerpac, Norbar, Snap-on) ainsi que l'équipement de soudage critique (Lincoln, Miller) pour garantir des réparations rapides et durables.
+            </p>
         </div>
         
         <div class="table-container">
@@ -731,6 +796,25 @@
         <div class="section-header" id="section-7"> <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
              <h3>7. Services & Structure</h3>
         </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 no-print">
+             <button id="iaTCOButton7" 
+                    class="bg-orange-600 hover:bg-orange-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                ⚖️ Analyse TCO (IA)
+            </button>
+            <button onclick="generateCSV('section-7')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150">
+                📋 Extraire pour Commande (CSV)
+            </button>
+        </div>
+        <div id="iaTCOResult7" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
+            Chargement de l'analyse...
+        </div>
+        <div class="expertise-box">
+            <p class="text-gray-700 italic text-sm">
+                **Notre expertise :** Notre rôle s'étend au-delà du matériel. Nous exploitons notre connaissance des standards des grands mineurs (Agnico Eagle) et des solutions logicielles spécialisées (Micromine) pour vous offrir une stratégie d'approvisionnement plus intelligente et sécurisée.
+            </p>
+        </div>
         
         <div class="table-container">
             <table class="w-full table-custom">
@@ -782,6 +866,34 @@
     </div>
 
     <script type="module">
+        
+        // Fonction d'extraction CSV - COPIE LES DONNÉES DU TABLEAU DANS LE PRESSE-PAPIERS
+        function generateCSV(sectionId) {
+            const table = document.querySelector(`#${sectionId} + .table-container .table-custom`);
+            if (!table) return "Erreur: Tableau non trouvé.";
+
+            // Crée l'en-tête CSV avec une colonne vide pour la quantité
+            let csv = "Marque;Spécialisation;Quantité Souhaitée\n";
+
+            // Ajoute les données des lignes du corps du tableau
+            table.querySelectorAll('tbody tr').forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const marque = cells[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+                const specialisation = cells[1].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+                csv += `"${marque}";"${specialisation}"; \n`;
+            });
+
+            // Tente de copier le CSV dans le presse-papiers
+            navigator.clipboard.writeText(csv).then(() => {
+                alert(`Les données du tableau ont été copiées dans votre presse-papiers au format CSV.\nVous pouvez maintenant les coller dans Excel ou votre système d'achat.`);
+            }).catch(err => {
+                console.error('Erreur de copie:', err);
+                alert('Erreur: Impossible de copier dans le presse-papiers. Voir console.');
+            });
+
+            return csv;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const buttonPdf = document.getElementById('generatePdfButton');
             if (buttonPdf) {
@@ -790,52 +902,72 @@
                 });
             }
             
-            // 🛑 REMPLACER CETTE VALEUR PAR L'URL RÉELLE DE VOTRE FONCTION CLOUD GEMINI SANS SERVEUR
-            const GEMINI_FUNCTION_URL = 'https://VOTRE_URL_API_GEMINI.cloudfunctions.net/votre-fonction';
+            // 🛑 BASE URL GÉNÉRIQUE POUR TOUTES LES FONCTIONS CLOUD GEMINI
+            const BASE_GEMINI_FUNCTION_URL = 'https://VOTRE_URL_API_GEMINI.cloudfunctions.net/'; 
+            
+            // --- FONCTION D'APPEL GÉNÉRIQUE POUR L'IA ---
+            const callGeminiFunction = async (endpoint, prompt, resultDiv, buttonElement) => {
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = 'Chargement de l\'analyse...';
+                buttonElement.disabled = true;
 
-            const iaButton = document.getElementById('iaAnalysisButton1');
-            const iaResultDiv = document.getElementById('iaResult1');
+                try {
+                    const response = await fetch(BASE_GEMINI_FUNCTION_URL + endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ prompt: prompt })
+                    });
 
-            if (iaButton) {
-                iaButton.addEventListener('click', async () => {
-                    iaResultDiv.classList.remove('hidden');
-                    iaResultDiv.innerHTML = 'Chargement de l\'analyse du marché...';
-                    iaButton.disabled = true; // Désactive le bouton pendant le chargement
-
-                    const prompt = "Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds Caterpillar, Komatsu, et Hitachi dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.";
-
-                    try {
-                        const response = await fetch(GEMINI_FUNCTION_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ prompt: prompt })
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`Erreur HTTP: ${response.status}`);
-                        }
-
-                        const data = await response.json();
-                        
-                        // Assurez-vous que la réponse est formatée correctement par votre fonction serveur
-                        iaResultDiv.innerHTML = '<strong>Analyse de l\'IA :</strong><br>' + data.result;
-
-                    } catch (error) {
-                        iaResultDiv.innerHTML = `Erreur: Impossible d'obtenir l'analyse. Veuillez vérifier la console (F12) et l'URL de la fonction Cloud.`;
-                        console.error("Erreur d'appel API IA:", error);
-                    } finally {
-                        iaButton.disabled = false; // Réactive le bouton
+                    if (!response.ok) {
+                        throw new Error(`Erreur HTTP: ${response.status} (Vérifiez l'endpoint: ${endpoint})`);
                     }
+
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<strong>Analyse de l'IA :</strong><br>${data.result}`;
+
+                } catch (error) {
+                    resultDiv.innerHTML = `Erreur IA : Le service n'est pas configuré. Veuillez contacter l'administrateur. (Erreur: ${error.message})`;
+                    console.error("Erreur d'appel API IA:", error);
+                } finally {
+                    buttonElement.disabled = false;
+                }
+            };
+            
+            // --- 1. FONCTION ANALYSE MARCHE (SECTION 1) ---
+            const iaButton1 = document.getElementById('iaAnalysisButton1');
+            const iaResultDiv1 = document.getElementById('iaResult1');
+            if (iaButton1) {
+                iaButton1.addEventListener('click', () => {
+                    const prompt = "Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds Caterpillar, Komatsu, et Hitachi dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.";
+                    callGeminiFunction('analyse-marche-equipements-lourds', prompt, iaResultDiv1, iaButton1);
+                });
+            }
+
+            // --- 2. FONCTION RISQUE FOURNISSEUR (SECTION 4) ---
+            const iaRiskButton4 = document.getElementById('iaRiskButton4');
+            const iaRiskResult4 = document.getElementById('iaRiskResult4');
+            if (iaRiskButton4) {
+                iaRiskButton4.addEventListener('click', () => {
+                    const prompt = "Analyse les marques Siemens, Rockwell et Schneider Electric dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?";
+                    callGeminiFunction('analyse-risque-fournisseur-plc', prompt, iaRiskResult4, iaRiskButton4);
                 });
             }
             
-            // ... (votre code Firebase/Gemini existant si nécessaire) ...
+            // --- 3. FONCTION ANALYSE TCO (SECTION 7) ---
+            const iaTCOButton7 = document.getElementById('iaTCOButton7');
+            const iaTCOResult7 = document.getElementById('iaTCOResult7');
+            if (iaTCOButton7) {
+                iaTCOButton7.addEventListener('click', () => {
+                    const prompt = "Rédigez une analyse TCO comparative sur 5 ans pour les marques premium (Voith, Woodward) versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.";
+                    callGeminiFunction('analyse-tco-services', prompt, iaTCOResult7, iaTCOButton7);
+                });
+            }
+            
+            // REND LA FONCTION CSV ACCESSIBLE GLOBALEMENT
+            window.generateCSV = generateCSV;
         });
         
         // 🌟 SCRIPT DE PAGINATION 🌟
-        // Démarre la numérotation des pages à 1 pour l'impression
         document.addEventListener('DOMContentLoaded', () => {
             const catalogPage = document.querySelector('.catalog-page');
             if (catalogPage && window.matchMedia('print').matches) {

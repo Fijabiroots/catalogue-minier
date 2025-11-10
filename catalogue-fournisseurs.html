@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Catalogue MULTIPARTS - Marques Minières</title>
-    
+    <title>Catalogue MULTIPARTS - Marques du Secteur Minier</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -21,28 +19,54 @@
         .catalog-page {
             background-color: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
+            margin: 10px auto; /* Marge réduite sur mobile */
             max-width: 900px;
-            padding: 40px;
+            padding: 20px; /* Padding réduit sur mobile */
             min-height: 1200px;
             position: relative;
         }
         .header {
             border-bottom: 4px solid #1e40af;
             padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Marge réduite sur mobile */
         }
 
+        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
+        @media screen and (max-width: 639px) {
+            .table-custom {
+                display: block;
+                overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
+                white-space: nowrap; /* Empêche les cellules de revenir à la ligne */
+            }
+            .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
+                display: block;
+            }
+            .table-custom th, .table-custom td {
+                padding: 6px;
+            }
+            /* Rétablit l'affichage normal sur les tableaux pour une lecture plus fluide */
+            .table-custom tr {
+                border-bottom: 1px solid #e5e7eb;
+            }
+        }
+        
         /* Styles spécifiques pour l'impression (Impression A4) */
         @media print {
             body {
                 background-color: white;
                 color: #000000 !important;
             }
+            
+            /* Tente de supprimer les en-têtes/pieds de page automatiques (URL, date) en définissant les marges du navigateur à zéro */
+            @page {
+                margin: 0;
+            }
+
             .catalog-page {
                 box-shadow: none;
                 margin: 0;
-                padding: 0;
+                /* Simule les marges de 10mm/15mm/10mm/15mm en utilisant un padding au lieu des marges du navigateur */
+                padding: 10mm 15mm 10mm 15mm; 
                 max-width: 100%;
                 min-height: auto;
                 height: auto;
@@ -62,11 +86,6 @@
                 overflow: hidden !important; 
             }
             
-            /* Réajuster les marges d'impression */
-            @page {
-                margin: 10mm 15mm 10mm 15mm;
-            }
-
             /* Styles des tableaux pour garantir la visibilité */
             .table-custom {
                 border-collapse: collapse !important;
@@ -138,8 +157,8 @@
 
     <div class="catalog-page">
         <header class="header">
-            <h1 class="text-4xl font-extrabold text-[#1e40af]">CATALOGUE MARQUES STRATÉGIQUES</h1>
-            <h2 class="text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
+            <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">CATALOGUE MARQUES MINIERES</h1>
+            <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
         </header>
 
         <img class="w-full h-auto rounded-lg mb-6" 
@@ -148,8 +167,7 @@
 
         <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
             <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
-            <div class="grid grid-cols-2 gap-x-4 text-sm">
-                <div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm"> <div>
                     <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, spécialisé dans l'approvisionnement en pièces de rechange, en composants mécaniques, électriques et en services logistiques pour les grands projets industriels.</p>
                 </div>
                 <div>
@@ -177,226 +195,237 @@
              <h3>1. ÉQUIPEMENTS LOURDS & MOBILES</h3>
         </div>
         
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Pelles / Chargeuses / Camions</td>
-                    <td>**Caterpillar (CAT)**, **Komatsu**, **Hitachi**</td>
-                    <td>**XCMG** (Asie), **Bell Equipment** (Afrique du Sud), **Volvo**</td>
-                </tr>
-                <tr>
-                    <td>Forage & Excavation</td>
-                    <td>**Epiroc**, **Sandvik**, **Atlas Copco**</td>
-                    <td>**Boart Longyear** (Forage de sondage), **Husqvarna** (Outils de coupe)</td>
-                </tr>
-                <tr>
-                    <td>Moteurs & Puissance</td>
-                    <td>**Cummins**, **MTU (Rolls-Royce)**</td>
-                    <td>**Yaskawa**, **WEG Electric**, **Kubota**</td>
-                </tr>
-                <tr>
-                    <td>Manutention Spécialisée</td>
-                    <td>**Manitou**</td>
-                    <td>**Loaders Australia**, **MacLean Engineering** (Souterrain)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container"> <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pelles / Chargeuses / Camions</td>
+                        <td>**Caterpillar (CAT)**, **Komatsu**, **Hitachi**</td>
+                        <td>**XCMG** (Asie), **Bell Equipment** (Afrique du Sud), **Volvo**</td>
+                    </tr>
+                    <tr>
+                        <td>Forage & Excavation</td>
+                        <td>**Epiroc**, **Sandvik**, **Atlas Copco**</td>
+                        <td>**Boart Longyear** (Forage de sondage), **Husqvarna** (Outils de coupe)</td>
+                    </tr>
+                    <tr>
+                        <td>Moteurs & Puissance</td>
+                        <td>**Cummins**, **MTU (Rolls-Royce)**</td>
+                        <td>**Yaskawa**, **WEG Electric**, **Kubota**</td>
+                    </tr>
+                    <tr>
+                        <td>Manutention Spécialisée</td>
+                        <td>**Manitou**</td>
+                        <td>**Loaders Australia**, **MacLean Engineering** (Souterrain)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md" alt="Icône d'un broyeur de minerais">
              <h3>2. TRAITEMENT DES MINERAIS & USURE</h3>
         </div>
         
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Concassage & Criblage</td>
-                    <td>**Metso Outotec**, **FLSmidth**</td>
-                    <td>**Terex / Finlay**, **Haver & Boecker**, **Polydeck** (Panneaux)</td>
-                </tr>
-                <tr>
-                    <td>Bandes Transporteuses</td>
-                    <td>**REMA TIP TOP**</td>
-                    <td>**Flexco** (Raccords), **Trelleborg** (Revêtements, caoutchouc)</td>
-                </tr>
-                <tr>
-                    <td>Consommables Anti-Usure</td>
-                    <td>**Trelleborg** (Revêtements)</td>
-                    <td>**Wear-Tek** (Afrique du Sud), **Vecor** (Matériaux réfractaires)</td>
-                </tr>
-                <tr>
-                    <td>Extraction Spécialisée</td>
-                    <td>**Metso Outotec**</td>
-                    <td>**Gekko Systems** (Extraction par gravité, Australie)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Concassage & Criblage</td>
+                        <td>**Metso Outotec**, **FLSmidth**</td>
+                        <td>**Terex / Finlay**, **Haver & Boecker**, **Polydeck** (Panneaux)</td>
+                    </tr>
+                    <tr>
+                        <td>Bandes Transporteuses</td>
+                        <td>**REMA TIP TOP**</td>
+                        <td>**Flexco** (Raccords), **Trelleborg** (Revêtements, caoutchouc)</td>
+                    </tr>
+                    <tr>
+                        <td>Consommables Anti-Usure</td>
+                        <td>**Trelleborg** (Revêtements)</td>
+                        <td>**Wear-Tek** (Afrique du Sud), **Vecor** (Matériaux réfractaires)</td>
+                    </tr>
+                    <tr>
+                        <td>Extraction Spécialisée</td>
+                        <td>**Metso Outotec**</td>
+                        <td>**Gekko Systems** (Extraction par gravité, Australie)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
              <h3>3. POMPES & VANNES SPÉCIALISÉES (Fluides Agressifs)</h3>
         </div>
         
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Pompes à Boues / Abrasives</td>
-                    <td>**Weir Minerals** (*Warman*), **ITT Goulds Pumps**</td>
-                    <td>**KSB Etabloc**, **EDDY Pump** (USA), **Andritz**</td>
-                </tr>
-                <tr>
-                    <td>Pompes Doseuses (Réactifs)</td>
-                    <td>**LEWA**, **ProMinent**</td>
-                    <td>**NETZSCH** (Péristaltiques), **Debem** (Italie)</td>
-                </tr>
-                <tr>
-                    <td>Vannes Boues (Guillotine)</td>
-                    <td>**Orbinox**, **Weir Minerals** (*Isogate*)</td>
-                    <td>**KDV**, **Richter** (Corrosifs), **Samson** (Régulation)</td>
-                </tr>
-                <tr>
-                    <td>Pompes Eaux/Drainage</td>
-                    <td>**Xylem** (*Flygt*), **Grundfos**</td>
-                    <td>**Wilo**, **Lowara**, **Piusi**</td>
-                </tr>
-                <tr>
-                    <td>Hydraulique / Raccords</td>
-                    <td>**Parker**, **Victaulic** (Joints)</td>
-                    <td>**Klinger** (Étanchéité), **Dixon** (Raccords), **Swagelok**</td>
-                </tr>
-                <tr>
-                    <td>Actionneurs de Vannes</td>
-                    <td>**Rotork**, **Topworx**</td>
-                    <td>**A-T Controls**, **Emerson**</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pompes à Boues / Abrasives</td>
+                        <td>**Weir Minerals** (*Warman*), **ITT Goulds Pumps**</td>
+                        <td>**KSB Etabloc**, **EDDY Pump** (USA), **Andritz**</td>
+                    </tr>
+                    <tr>
+                        <td>Pompes Doseuses (Réactifs)</td>
+                        <td>**LEWA**, **ProMinent**</td>
+                        <td>**NETZSCH** (Péristaltiques), **Debem** (Italie)</td>
+                    </tr>
+                    <tr>
+                        <td>Vannes Boues (Guillotine)</td>
+                        <td>**Orbinox**, **Weir Minerals** (*Isogate*)</td>
+                        <td>**KDV**, **Richter** (Corrosifs), **Samson** (Régulation)</td>
+                    </tr>
+                    <tr>
+                        <td>Pompes Eaux/Drainage</td>
+                        <td>**Xylem** (*Flygt*), **Grundfos**</td>
+                        <td>**Wilo**, **Lowara**, **Piusi**</td>
+                    </tr>
+                    <tr>
+                        <td>Hydraulique / Raccords</td>
+                        <td>**Parker**, **Victaulic** (Joints)</td>
+                        <td>**Klinger** (Étanchéité), **Dixon** (Raccords), **Swagelok**</td>
+                    </tr>
+                    <tr>
+                        <td>Actionneurs de Vannes</td>
+                        <td>**Rotork**, **Topworx**</td>
+                        <td>**A-T Controls**, **Emerson**</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
              <h3>4. AUTOMATISATION, CONTRÔLE & ÉLECTRIQUE</h3>
         </div>
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Automates (PLC/DCS)</td>
-                    <td>**Siemens**, **Schneider Electric**, **Rockwell (Allen-Bradley)**</td>
-                    <td>**Yokogawa**, **Beckhoff**, **Vipa**, **Unitronics**</td>
-                </tr>
-                <tr>
-                    <td>Variateurs & Moteurs</td>
-                    <td>**ABB**, **SEW Eurodrive**, **Danfoss**</td>
-                    <td>**Voith** (Transmissions), **WEG Electric**, **Lenze**</td>
-                </tr>
-                <tr>
-                    <td>Instrumentation Process</td>
-                    <td>**Endress + Hauser**, **Wika**, **Krohne**</td>
-                    <td>**Jumo**, **Yokogawa**, **Vaisala**</td>
-                </tr>
-                <tr>
-                    <td>Sécurité Critique</td>
-                    <td>**Pilz**, **Triconex**, **Sick**</td>
-                    <td>**Hima**, **Pepperl Fuchs**, **Eaton** (Protection)</td>
-                </tr>
-                <tr>
-                    <td>Connectivité & I/O</td>
-                    <td>**Wago**, **Weidmuller**, **Phoenix Contact**</td>
-                    <td>**Turck**, **Moxa** (Réseaux), **Wieland**</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Automates (PLC/DCS)</td>
+                        <td>**Siemens**, **Schneider Electric**, **Rockwell (Allen-Bradley)**</td>
+                        <td>**Yokogawa**, **Beckhoff**, **Vipa**, **Unitronics**</td>
+                    </tr>
+                    <tr>
+                        <td>Variateurs & Moteurs</td>
+                        <td>**ABB**, **SEW Eurodrive**, **Danfoss**</td>
+                        <td>**Voith** (Transmissions), **WEG Electric**, **Lenze**</td>
+                    </tr>
+                    <tr>
+                        <td>Instrumentation Process</td>
+                        <td>**Endress + Hauser**, **Wika**, **Krohne**</td>
+                        <td>**Jumo**, **Yokogawa**, **Vaisala**</td>
+                    </tr>
+                    <tr>
+                        <td>Sécurité Critique</td>
+                        <td>**Pilz**, **Triconex**, **Sick**</td>
+                        <td>**Hima**, **Pepperl Fuchs**, **Eaton** (Protection)</td>
+                    </tr>
+                    <tr>
+                        <td>Connectivité & I/O</td>
+                        <td>**Wago**, **Weidmuller**, **Phoenix Contact**</td>
+                        <td>**Turck**, **Moxa** (Réseaux), **Wieland**</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
              <h3>5. OUTILLAGE SPÉCIALISÉ & SOUDAGE</h3>
         </div>
         
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Hydraulique & Serrage</td>
-                    <td>**Enerpac**, **Norbar**</td>
-                    <td>**SKF** (Alignement/Extraction), **Parker** (Hydraulique)</td>
-                </tr>
-                <tr>
-                    <td>Soudage & Coupage</td>
-                    <td>**Lincoln Electric**, **Miller Electric**</td>
-                    <td>**Magmaweld**, **Hypertherm** (Plasma), **Leister** (Soudage Plastique)</td>
-                </tr>
-                <tr>
-                    <td>Outillage à Main / Lourd</td>
-                    <td>**Snap-on**, **Hilti**, **Husqvarna**</td>
-                    <td>**Catu** (Sécurité Électrique), **DeWalt**, **Makita**</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hydraulique & Serrage</td>
+                        <td>**Enerpac**, **Norbar**</td>
+                        <td>**SKF** (Alignement/Extraction), **Parker** (Hydraulique)</td>
+                    </tr>
+                    <tr>
+                        <td>Soudage & Coupage</td>
+                        <td>**Lincoln Electric**, **Miller Electric**</td>
+                        <td>**Magmaweld**, **Hypertherm** (Plasma), **Leister** (Soudage Plastique)</td>
+                    </tr>
+                    <tr>
+                        <td>Outillage à Main / Lourd</td>
+                        <td>**Snap-on**, **Hilti**, **Husqvarna**</td>
+                        <td>**Catu** (Sécurité Électrique), **DeWalt**, **Makita**</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="section-header">
              <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
              <h3>6. INSTRUMENTATION & MÉTROLOGIE</h3>
         </div>
         
-        <table class="w-full table-custom">
-            <thead>
-                <tr>
-                    <th class="w-1/4">Famille</th>
-                    <th class="w-1/4">Marque Principale (M)</th>
-                    <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Mesure Électrique & Diagnostic</td>
-                    <td>**Fluke**</td>
-                    <td>**Bruel & Kjaer** (Vibration), **Yokogawa**</td>
-                </tr>
-                <tr>
-                    <td>Métrologie & Contrôle</td>
-                    <td>**Mitutoyo**, **Starrett**</td>
-                    <td>**Renishaw** (Alignement Laser), **Heidenhain** (Codeurs)</td>
-                </tr>
-                <tr>
-                    <td>Équipement Laboratoire</td>
-                    <td>**Mettler Toledo** (Balances), **Retsch**</td>
-                    <td>**Gilson** (Tamisage), **Lhoist** (Réactifs), **Vaisala**</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="w-full table-custom">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Famille</th>
+                        <th class="w-1/4">Marque Principale (M)</th>
+                        <th class="w-1/2">Alternatives / Spécialisation (A/S)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mesure Électrique & Diagnostic</td>
+                        <td>**Fluke**</td>
+                        <td>**Bruel & Kjaer** (Vibration), **Yokogawa**</td>
+                    </tr>
+                    <tr>
+                        <td>Métrologie & Contrôle</td>
+                        <td>**Mitutoyo**, **Starrett**</td>
+                        <td>**Renishaw** (Alignement Laser), **Heidenhain** (Codeurs)</td>
+                    </tr>
+                    <tr>
+                        <td>Équipement Laboratoire</td>
+                        <td>**Mettler Toledo** (Balances), **Retsch**</td>
+                        <td>**Gilson** (Tamisage), **Lhoist** (Réactifs), **Vaisala**</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
         <div class="section-header">
              <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
@@ -413,8 +442,7 @@
         <footer class="mt-16 border-t pt-4 text-xs text-gray-600">
             <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
             
-            <div class="grid grid-cols-2 gap-4">
-                <div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div>
                     <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
                     <p>La société **MULTIPARTS** n'est ni un distributeur agréé ni un représentant officiel des marques mentionnées. Nous fournissons des services de **sourcing et de revente indépendants** de matériel neuf, reconditionné ou obsolète.</p>
                 </div>

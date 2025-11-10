@@ -72,6 +72,24 @@
                 height: auto;
                 page-break-inside: avoid;
             }
+            
+            /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
+            /* Force la rupture après un certain nombre de lignes (évite les titres seuls) */
+            .section-header h3 {
+                page-break-after: avoid;
+            }
+            /* Garantit que le titre reste solidaire avec le bloc suivant (tableau ou liste) */
+            .section-header {
+                page-break-inside: avoid;
+                page-break-after: avoid; /* Empêche un saut de page immédiatement après le titre */
+            }
+            /* Gère les orphelins et les veuves dans les blocs de contenu (par ex. le tableau ou la liste UL/OL) */
+            .table-container, ul, ol {
+                orphans: 3; /* Minimum de 3 lignes en bas de page */
+                widows: 3;  /* Minimum de 3 lignes en haut de page */
+                page-break-inside: auto;
+            }
+
 
             /* Force l'impression des fonds pour les images et headers */
             .header, .section-header, .table-custom th {
@@ -104,6 +122,17 @@
             }
             .text-xl, .text-2xl, .text-4xl {
                 color: #000000 !important;
+            }
+
+            /* 🌟 STYLE DE PAGINATION */
+            /* Place le compteur de page dans le coin inférieur droit de chaque page */
+            .page-number::after {
+                content: "Page " counter(page) " sur " counter(pages);
+                position: fixed;
+                bottom: 5mm;
+                right: 15mm;
+                font-size: 9pt;
+                color: #555;
             }
         }
 
@@ -142,7 +171,6 @@
         }
         /* Conteneur principal du bouton PDF pour gérer le défilement */
         .pdf-button-container {
-            /* Retrait de 'sticky top-0 z-10' des éléments internes */
             width: 100%;
             background-color: white;
             border-bottom: 4px solid #1e40af;
@@ -150,6 +178,22 @@
             position: sticky; /* Rendu 'sticky' sur le conteneur parent */
             top: 0;
             z-index: 10;
+        }
+        /* Style pour le bouton retour en haut (Fixe en bas à droite) */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 20;
+            background-color: #1e40af;
+            color: white;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s;
+        }
+        .back-to-top:hover {
+            background-color: #1e3a8a;
         }
     </style>
 </head>
@@ -168,8 +212,12 @@
         </div>
     </div>
 
+    <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
+    </a>
 
-    <div class="catalog-page">
+
+    <div class="catalog-page page-number" id="top"> 
         <header class="header">
             <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">CATALOGUE MARQUES POUR LES MINES</h1>
             <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
@@ -195,17 +243,16 @@
 
         <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES</h3>
         <ol class="list-decimal ml-6 space-y-1 text-gray-700">
-            <li>Équipements Lourds & Mobiles (Extraction, Forage et Transport)</li>
-            <li>Traitement des Minerais & Séparation (Concentrateur)</li>
-            <li>Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</li>
-            <li>Automatisation, Contrôle & Électronique</li>
-            <li>Instrumentation, Laboratoire & Consommables</li>
-            <li>Outillage Spécialisé, Soudage & Maintenance Critique</li>
-            <li>Services & Structure</li>
+            <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles (Extraction, Forage et Transport)</a></li>
+            <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation (Concentrateur)</a></li>
+            <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</a></li>
+            <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
+            <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
+            <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé, Soudage & Maintenance Critique</a></li>
+            <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services & Structure</a></li>
         </ol>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
+        <div class="section-header" id="section-1"> <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
              <h3>1. Équipements Lourds & Mobiles (Extraction, Forage et Transport)</h3>
         </div>
         
@@ -325,8 +372,7 @@
             </table>
         </div>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md" alt="Icône d'un broyeur de minerais">
+        <div class="section-header" id="section-2"> <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md" alt="Icône d'un broyeur de minerais">
              <h3>2. Traitement des Minerais & Séparation (Concentrateur)</h3>
         </div>
         
@@ -395,8 +441,7 @@
             </table>
         </div>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
+        <div class="section-header" id="section-3"> <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
              <h3>3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</h3>
         </div>
         
@@ -485,8 +530,7 @@
             </table>
         </div>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
+        <div class="section-header" id="section-4"> <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
              <h3>4. Automatisation, Contrôle & Électronique</h3>
         </div>
         <div class="table-container">
@@ -574,8 +618,7 @@
             </table>
         </div>
         
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
+        <div class="section-header" id="section-5"> <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
              <h3>5. Instrumentation, Laboratoire & Consommables</h3>
         </div>
         
@@ -624,8 +667,7 @@
             </table>
         </div>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
+        <div class="section-header" id="section-6"> <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
              <h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
         </div>
         
@@ -686,8 +728,7 @@
             </table>
         </div>
 
-        <div class="section-header">
-             <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
+        <div class="section-header" id="section-7"> <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
              <h3>7. Services & Structure</h3>
         </div>
         
@@ -791,6 +832,15 @@
             }
             
             // ... (votre code Firebase/Gemini existant si nécessaire) ...
+        });
+        
+        // 🌟 SCRIPT DE PAGINATION 🌟
+        // Démarre la numérotation des pages à 1 pour l'impression
+        document.addEventListener('DOMContentLoaded', () => {
+            const catalogPage = document.querySelector('.catalog-page');
+            if (catalogPage && window.matchMedia('print').matches) {
+                catalogPage.style.counterIncrement = 'page 0';
+            }
         });
     </script>
 </body>

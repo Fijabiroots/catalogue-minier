@@ -74,14 +74,13 @@
             }
 
             /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
-            /* Garantit que le titre ne soit pas séparé du contenu (améliore l'aspect professionnel) */
             .section-header {
                 page-break-inside: avoid;
                 page-break-after: avoid; 
             }
             .table-container, ul, ol {
-                orphans: 3; /* Minimum de 3 lignes en bas de page */
-                widows: 3;  /* Minimum de 3 lignes en haut de page */
+                orphans: 3; 
+                widows: 3;  
                 page-break-inside: auto;
             }
 
@@ -117,9 +116,7 @@
             .text-xl, .text-2xl, .text-4xl {
                 color: #000000 !important;
             }
-
              /* 🌟 STYLE DE PAGINATION (Ajouté) */
-            /* Place le compteur de page dans le coin inférieur droit de chaque page */
             .page-number::after {
                 content: "Page " counter(page) " sur " counter(pages);
                 position: fixed;
@@ -220,9 +217,25 @@
         </div>
     </div>
 
+    <div class="no-print bg-[#1e40af] text-white text-center py-1 font-semibold text-xs sticky top-[100px] z-10"
+         style="top: 80px;"> MULTIPARTS - 30 ans d'expérience à votre service.
+    </div>
+    
+
+
     <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
     </a>
+
+
+    <div id="iaModal" class="modal no-print">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#1e40af]">Configuration de l'Analyse</h3>
+            <div id="modalContent">
+                </div>
+        </div>
+    </div>
 
 
     <div class="catalog-page page-number" id="top"> 
@@ -267,7 +280,8 @@
         <div class="flex flex-wrap gap-2 mb-4 no-print">
             <button id="iaAnalysisButton1" 
                     class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150"
-                    data-section-id="section-1">
+                    data-section-id="section-1"
+                    data-function-type="marche">
                 ⚡ Analyse IA du Marché
             </button>
             <button id="csvButton-section-1" 
@@ -277,9 +291,6 @@
             </button>
         </div>
 
-        <div id="iaResult1" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
-            Chargement de l'analyse...
-        </div>
         <div class="expertise-box">
             <p class="text-gray-700 italic text-sm">
                 **Notre expertise :** Notre expertise couvre les trois piliers mondiaux (Caterpillar, Komatsu, Hitachi) pour assurer l'interchangeabilité des pièces et minimiser les temps d'arrêt. Nous maîtrisons également l'intégration des solutions de forage avancées d'Epiroc et Sandvik.
@@ -585,7 +596,8 @@
         <div class="flex flex-wrap gap-2 mb-4 no-print">
             <button id="iaRiskButton4" 
                     class="bg-red-600 hover:bg-red-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150"
-                    data-section-id="section-4">
+                    data-section-id="section-4"
+                    data-function-type="risque">
                 🛡️ Risque Fournisseur (IA)
             </button>
             <button id="csvButton-section-4" 
@@ -593,9 +605,6 @@
                     data-section-id="section-4">
                 📋 Extraire pour Commande (CSV)
             </button>
-        </div>
-        <div id="iaRiskResult4" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
-            Chargement de l'analyse...
         </div>
         <div class="expertise-box">
             <p class="text-gray-700 italic text-sm">
@@ -831,7 +840,8 @@
         <div class="flex flex-wrap gap-2 mb-4 no-print">
              <button id="iaTCOButton7" 
                     class="bg-orange-600 hover:bg-orange-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150"
-                    data-section-id="section-7">
+                    data-section-id="section-7"
+                    data-function-type="tco">
                 ⚖️ Analyse TCO (IA)
             </button>
             <button id="csvButton-section-7" 
@@ -839,9 +849,6 @@
                     data-section-id="section-7">
                 📋 Extraire pour Commande (CSV)
             </button>
-        </div>
-        <div id="iaTCOResult7" class="no-print p-3 mb-4 bg-gray-100 border border-gray-300 rounded-lg hidden text-sm">
-            Chargement de l'analyse...
         </div>
         <div class="expertise-box">
             <p class="text-gray-700 italic text-sm">
@@ -927,91 +934,204 @@
             return csv;
         }
 
+        // Fonction pour extraire toutes les marques d'une section donnée
+        function extractBrands(sectionId) {
+            const table = document.querySelector(`#${sectionId} + .table-container .table-custom`);
+            if (!table) return [];
+
+            return Array.from(table.querySelectorAll('tbody tr')).map(row => {
+                return row.querySelectorAll('td')[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+            }).filter(brand => brand !== '');
+        }
+
+        // Fonction pour afficher la modale avec les options de sélection
+        function showSelectionModal(sectionId, functionType) {
+            const modal = document.getElementById('iaModal');
+            const modalContentDiv = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            const brands = extractBrands(sectionId);
+            
+            modalTitle.textContent = "Sélectionnez les marques pour l'analyse";
+            modal.style.display = "block";
+
+            let brandOptions = '';
+            brands.forEach((brand, index) => {
+                // Utilise une checkbox pour la sélection multiple
+                brandOptions += `
+                    <div class="mb-2">
+                        <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2">
+                        <label for="brand-${sectionId}-${index}">${brand}</label>
+                    </div>
+                `;
+            });
+
+            modalContentDiv.innerHTML = `
+                <div class="max-h-64 overflow-y-auto border p-3 mb-4 rounded">
+                    ${brandOptions}
+                </div>
+                <button id="executeIaAnalysis" 
+                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-150"
+                        data-section-id="${sectionId}"
+                        data-function-type="${functionType}">
+                    Lancer l'Analyse
+                </button>
+                <div id="iaLoadingArea" class="mt-4"></div>
+            `;
+        }
+
+        // Fonction pour simuler la progression (pour l'effet visuel)
+        function simulateProgress(loadingArea) {
+            loadingArea.innerHTML = `
+                <p class="text-gray-700 mb-2">Analyse en cours... Veuillez patienter.</p>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar">0%</div>
+                </div>
+            `;
+            const progressBar = document.getElementById('progressBar');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                if (progress < 90) { // S'arrête à 90% en attendant la réponse du serveur
+                    progress += 5;
+                    progressBar.style.width = progress + '%';
+                    progressBar.textContent = progress + '%';
+                }
+            }, 500); // Mise à jour toutes les 0.5 secondes
+
+            return interval; // Retourne l'ID pour l'arrêter plus tard
+        }
+
+        // Fonction principale d'appel à Gemini (Modifiée pour prendre le tableau de marques)
+        async function callGeminiFunction(sectionId, selectedBrands, functionType) {
+            const modalContentDiv = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            const loadingArea = document.getElementById('iaLoadingArea');
+            
+            let endpoint = '';
+            let prompt = '';
+            const brandList = selectedBrands.join(', ');
+
+            // Détermine le prompt et l'endpoint en fonction du type de fonction
+            if (functionType === 'marche') {
+                endpoint = 'analyse-marche-equipements-lourds';
+                prompt = `Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds ${brandList} dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.`;
+            } else if (functionType === 'risque') {
+                endpoint = 'analyse-risque-fournisseur-plc';
+                prompt = `Analyse les marques ${brandList} dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?`;
+            } else if (functionType === 'tco') {
+                endpoint = 'analyse-tco-services';
+                prompt = `Rédigez une analyse TCO comparative sur 5 ans pour les marques premium ${brandList} versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.`;
+            } else {
+                return; // Aucune fonction valide
+            }
+
+            const progressInterval = simulateProgress(loadingArea);
+            modalTitle.textContent = `Analyse ${functionType.toUpperCase()} en cours...`;
+
+            try {
+                // 🛑 BASE URL RÉELLE DES SERVICES CLOUD RUN/FUNCTIONS 🛑
+                const BASE_GEMINI_FUNCTION_URL = 'https://analyse-marche-equipements-lourds-856176478969.europe-west1.run.app/'; 
+                const url = BASE_GEMINI_FUNCTION_URL + endpoint;
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                clearInterval(progressInterval); // Arrête l'intervalle de progression
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}. URL: ${url}`);
+                }
+
+                const data = await response.json();
+                
+                // Finalise la barre à 100%
+                const progressBar = document.getElementById('progressBar');
+                if(progressBar) {
+                    progressBar.style.width = '100%';
+                    progressBar.textContent = '100% - Analyse Complète';
+                }
+
+                // Affiche le résultat dans la modale
+                modalTitle.textContent = `Résultat de l'Analyse IA`;
+                modalContentDiv.innerHTML = `
+                    <h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport stratégique généré</h4>
+                    <p class="text-gray-600 mb-4 italic">Marques analysées: ${brandList}</p>
+                    <div class="border p-4 bg-gray-50 whitespace-pre-wrap max-h-96 overflow-y-auto">${data.result}</div>
+                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
+                `;
+
+            } catch (error) {
+                clearInterval(progressInterval);
+                loadingArea.innerHTML = '';
+                modalTitle.textContent = `❌ Erreur de Connexion IA`;
+                modalContentDiv.innerHTML = `
+                    <p>Le service Cloud n'est pas accessible ou l'analyse a échoué.</p>
+                    <p class="mt-2 text-xs text-red-600">Veuillez vérifier que les fonctions Cloud sont déployées et que la variable GEMINI_API_KEY est configurée.</p>
+                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
+                `;
+            }
+        }
+        
         document.addEventListener('DOMContentLoaded', () => {
             const buttonPdf = document.getElementById('generatePdfButton');
+            const iaModal = document.getElementById('iaModal');
+            const closeBtn = document.querySelector('.close-btn');
+
             if (buttonPdf) {
                 buttonPdf.addEventListener('click', () => {
                     window.print();
                 });
             }
             
-            // 🛑 BASE URL RÉELLE DES SERVICES CLOUD RUN/FUNCTIONS 🛑
-            // URL de base copiée de la première fonction, utilisée pour toutes les autres
-            const BASE_GEMINI_FUNCTION_URL = 'https://analyse-marche-equipements-lourds-856176478969.europe-west1.run.app/'; 
-            
-            // --- FONCTION D'APPEL GÉNÉRIQUE POUR L'IA ---
-            const callGeminiFunction = async (endpoint, prompt, resultDiv, buttonElement) => {
-                resultDiv.classList.remove('hidden');
-                resultDiv.innerHTML = 'Chargement de l\'analyse...';
-                buttonElement.disabled = true;
-
-                try {
-                    // L'endpoint est le nom de la fonction Python, qui se colle à la fin de l'URL de base
-                    const url = BASE_GEMINI_FUNCTION_URL + endpoint;
-
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ prompt: prompt })
-                    });
-
-                    if (!response.ok) {
-                        // En cas d'échec de la fonction Cloud
-                        throw new Error(`Erreur HTTP: ${response.status}. URL: ${url}`);
-                    }
-
-                    const data = await response.json();
-                    
-                    // Assurez-vous que la réponse est formatée correctement par votre fonction serveur
-                    resultDiv.innerHTML = `<strong>Analyse de l'IA :</strong><br>${data.result}`;
-
-                } catch (error) {
-                    resultDiv.innerHTML = `Erreur IA : Le service Cloud n'est pas accessible. (Erreur: ${error.message})`;
-                    console.error("Erreur d'appel API IA:", error);
-                } finally {
-                    buttonElement.disabled = false;
+            // Gestion de la fermeture de la modale
+            closeBtn.onclick = function() {
+                iaModal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == iaModal || event.target.classList.contains('close-btn-bottom')) {
+                    iaModal.style.display = "none";
                 }
-            };
+            }
             
-            // --- GESTIONNAIRE D'ÉVÉNEMENTS CSV (CORRIGÉ) ---
+            // --- GESTIONNAIRE D'ÉVÉNEMENTS CSV (Correction d'activation) ---
             document.querySelectorAll('[id^="csvButton-section-"]').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const sectionId = event.currentTarget.getAttribute('data-section-id');
-                    generateCSV(sectionId);
+                    generateCSV(sectionId); // Appel direct à la fonction
                 });
             });
 
+            // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale) ---
+            document.querySelectorAll('[data-function-type]').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const sectionId = event.currentTarget.getAttribute('data-section-id');
+                    const functionType = event.currentTarget.getAttribute('data-function-type');
+                    showSelectionModal(sectionId, functionType);
+                });
+            });
 
-            // --- 1. FONCTION ANALYSE MARCHE (SECTION 1) ---
-            const iaButton1 = document.getElementById('iaAnalysisButton1');
-            const iaResultDiv1 = document.getElementById('iaResult1');
-            if (iaButton1) {
-                iaButton1.addEventListener('click', () => {
-                    const prompt = "Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds Caterpillar, Komatsu, et Hitachi dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.";
-                    callGeminiFunction('analyse-marche-equipements-lourds', prompt, iaResultDiv1, iaButton1); 
-                });
-            }
+            // Gestion de l'exécution de l'analyse (à l'intérieur de la modale)
+            document.getElementById('iaModal').addEventListener('click', (e) => {
+                if (e.target && e.target.id === 'executeIaAnalysis') {
+                    const sectionId = e.target.getAttribute('data-section-id');
+                    const functionType = e.target.getAttribute('data-function-type');
+                    
+                    const selectedCheckboxes = document.querySelectorAll('#modalContent input[name="selectedBrands"]:checked');
+                    const selectedBrands = Array.from(selectedCheckboxes).map(cb => cb.value);
 
-            // --- 2. FONCTION RISQUE FOURNISSEUR (SECTION 4) ---
-            const iaRiskButton4 = document.getElementById('iaRiskButton4');
-            const iaRiskResult4 = document.getElementById('iaRiskResult4');
-            if (iaRiskButton4) {
-                iaRiskButton4.addEventListener('click', () => {
-                    const prompt = "Analyse les marques Siemens, Rockwell et Schneider Electric dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?";
-                    callGeminiFunction('analyse-risque-fournisseur-plc', prompt, iaRiskResult4, iaRiskButton4);
-                });
-            }
-            
-            // --- 3. FONCTION ANALYSE TCO (SECTION 7) ---
-            const iaTCOButton7 = document.getElementById('iaTCOButton7');
-            const iaTCOResult7 = document.getElementById('iaTCOResult7');
-            if (iaTCOButton7) {
-                iaTCOButton7.addEventListener('click', () => {
-                    const prompt = "Rédigez une analyse TCO comparative sur 5 ans pour les marques premium (Voith, Woodward) versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.";
-                    callGeminiFunction('analyse-tco-services', prompt, iaTCOResult7, iaTCOButton7);
-                });
-            }
-            
+                    if (selectedBrands.length === 0) {
+                        alert("Veuillez sélectionner au moins une marque pour lancer l'analyse.");
+                        return;
+                    }
+                    
+                    // Lance l'appel à l'API Gemini
+                    callGeminiFunction(sectionId, selectedBrands, functionType);
+                }
+            });
+
             // REND LA FONCTION CSV ACCESSIBLE GLOBALEMENT
             window.generateCSV = generateCSV;
         });

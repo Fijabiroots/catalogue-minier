@@ -74,13 +74,14 @@
             }
 
             /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
+            /* Garantit que le titre ne soit pas séparé du contenu (améliore l'aspect professionnel) */
             .section-header {
                 page-break-inside: avoid;
                 page-break-after: avoid; 
             }
             .table-container, ul, ol {
-                orphans: 3; 
-                widows: 3;  
+                orphans: 3; /* Minimum de 3 lignes en bas de page */
+                widows: 3;  /* Minimum de 3 lignes en haut de page */
                 page-break-inside: auto;
             }
 
@@ -168,14 +169,14 @@
             padding: 10px 0;
             position: sticky; /* Rendu 'sticky' sur le conteneur parent */
             top: 0;
-            z-index: 10;
+            z-index: 20; /* Z-index plus élevé pour rester au-dessus de la barre d'expertise */
         }
         /* Style pour le bouton retour en haut (Fixe en bas à droite) */
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 20;
+            z-index: 30; /* Plus élevé que tout */
             background-color: #1e40af;
             color: white;
             border-radius: 50%;
@@ -195,6 +196,72 @@
             padding: 10px;
             border-radius: 4px;
         }
+        /* Styles de la modale */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* Modifié pour être plus haut */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover, .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #22c55e;
+            width: 0%;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 4px;
+            transition: width 0.5s ease-in-out;
+        }
+        /* Style pour le bandeau d'expertise fixe */
+        .fixed-expertise-band {
+            width: 100%;
+            background-color: #166534; /* Vert foncé */
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.95rem;
+            position: sticky;
+            top: 80px; /* Position sous la barre d'outils */
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -202,23 +269,39 @@
     <div class="pdf-button-container no-print">
         <div class="w-full flex justify-center space-x-4">
             <button id="generatePdfButton" 
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 Générer PDF (Impression)
             </button>
              <a href="mailto:rafiou.oyeossi@multipartsci.com?subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
-               class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
+               class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 Contact Direct
             </a>
+            <div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
+            <button id="iaCentralButtonMarche" 
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    data-function-type="marche">
+                ⚡ Analyse Marché (IA)
+            </button>
+            <button id="iaCentralButtonRisque" 
+                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    data-function-type="risque">
+                🛡️ Risque Fournisseur (IA)
+            </button>
+            <button id="iaCentralButtonTCO" 
+                    class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    data-function-type="tco">
+                ⚖️ Analyse TCO (IA)
+            </button>
         </div>
         <div class="text-center text-sm text-gray-500 mt-2 mb-2">
             Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
         </div>
     </div>
 
-    <div class="no-print bg-[#1e40af] text-white text-center py-1 font-semibold text-xs sticky top-[100px] z-10"
-         style="top: 80px;"> MULTIPARTS - 30 ans d'expérience à votre service.
+    <div class="fixed-expertise-band no-print">
+        **MULTIPARTS :** Votre centrale d'achat pour un sourcing critique et stratégique en Afrique.
     </div>
     
 
@@ -278,12 +361,6 @@
         </div>
         
         <div class="flex flex-wrap gap-2 mb-4 no-print">
-            <button id="iaAnalysisButton1" 
-                    class="bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150"
-                    data-section-id="section-1"
-                    data-function-type="marche">
-                ⚡ Analyse IA du Marché
-            </button>
             <button id="csvButton-section-1" 
                     class="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition duration-150"
                     data-section-id="section-1">
@@ -945,21 +1022,52 @@
         }
 
         // Fonction pour afficher la modale avec les options de sélection
-        function showSelectionModal(sectionId, functionType) {
+        function showSelectionModal(functionType) {
             const modal = document.getElementById('iaModal');
+            const modalContentDiv = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalTitle.textContent = "Étape 1 : Choisir la section du catalogue";
+            modal.style.display = "block";
+            
+            const sectionTitles = [
+                "1. Équipements Lourds & Mobiles (Extraction, Forage et Transport)",
+                "2. Traitement des Minerais & Séparation (Concentrateur)",
+                "3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
+                "4. Automatisation, Contrôle & Électronique",
+                "5. Instrumentation, Laboratoire & Consommables",
+                "6. Outillage Spécialisé, Soudage & Maintenance Critique",
+                "7. Services & Structure"
+            ];
+            const sectionIds = ["section-1", "section-2", "section-3", "section-4", "section-5", "section-6", "section-7"];
+
+            let sectionOptions = '<p class="mb-3 text-sm font-semibold">Sur quelle famille souhaitez-vous lancer l\'analyse ?</p>';
+            sectionIds.forEach((id, index) => {
+                sectionOptions += `
+                    <button class="select-section-btn bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-3 rounded mb-2 w-full text-left transition duration-150"
+                            data-section-id="${id}"
+                            data-function-type="${functionType}">
+                        ${sectionTitles[index]}
+                    </button>
+                `;
+            });
+
+            modalContentDiv.innerHTML = sectionOptions;
+        }
+        
+        // Étape 2: Afficher les marques après sélection de la section
+        function showBrandSelection(sectionId, functionType) {
             const modalContentDiv = document.getElementById('modalContent');
             const modalTitle = document.getElementById('modalTitle');
             const brands = extractBrands(sectionId);
             
-            modalTitle.textContent = "Sélectionnez les marques pour l'analyse";
-            modal.style.display = "block";
+            modalTitle.textContent = `Étape 2 : Sélectionnez 2 ou 3 marques (${brands.length} disponibles)`;
 
-            let brandOptions = '';
+            let brandOptions = '<p class="mb-3 text-sm font-semibold text-red-600">Choisissez 2 ou 3 marques pour une analyse pertinente:</p>';
             brands.forEach((brand, index) => {
-                // Utilise une checkbox pour la sélection multiple
                 brandOptions += `
                     <div class="mb-2">
-                        <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2">
+                        <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2 brand-checkbox">
                         <label for="brand-${sectionId}-${index}">${brand}</label>
                     </div>
                 `;
@@ -977,12 +1085,24 @@
                 </button>
                 <div id="iaLoadingArea" class="mt-4"></div>
             `;
+            
+            // Logique de limitation de sélection à 3 marques
+            document.querySelectorAll('.brand-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const checked = document.querySelectorAll('.brand-checkbox:checked');
+                    if (checked.length > 3) {
+                        checkbox.checked = false;
+                        alert("Veuillez sélectionner 2 ou 3 marques maximum.");
+                    }
+                });
+            });
         }
+
 
         // Fonction pour simuler la progression (pour l'effet visuel)
         function simulateProgress(loadingArea) {
             loadingArea.innerHTML = `
-                <p class="text-gray-700 mb-2">Analyse en cours... Veuillez patienter.</p>
+                <p class="text-gray-700 mb-2">Analyse en cours... Patience, l'IA rassemble les données stratégiques.</p>
                 <div class="progress-bar-container">
                     <div id="progressBar" class="progress-bar">0%</div>
                 </div>
@@ -1002,7 +1122,7 @@
         }
 
         // Fonction principale d'appel à Gemini (Modifiée pour prendre le tableau de marques)
-        async function callGeminiFunction(sectionId, selectedBrands, functionType) {
+        async function callGeminiFunction(selectedBrands, functionType) {
             const modalContentDiv = document.getElementById('modalContent');
             const modalTitle = document.getElementById('modalTitle');
             const loadingArea = document.getElementById('iaLoadingArea');
@@ -1100,21 +1220,28 @@
             document.querySelectorAll('[id^="csvButton-section-"]').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const sectionId = event.currentTarget.getAttribute('data-section-id');
-                    generateCSV(sectionId); // Appel direct à la fonction
+                    generateCSV(sectionId); 
                 });
             });
 
-            // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale) ---
+            // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale initiale) ---
             document.querySelectorAll('[data-function-type]').forEach(button => {
                 button.addEventListener('click', (event) => {
-                    const sectionId = event.currentTarget.getAttribute('data-section-id');
                     const functionType = event.currentTarget.getAttribute('data-function-type');
-                    showSelectionModal(sectionId, functionType);
+                    showSelectionModal(functionType);
                 });
             });
-
-            // Gestion de l'exécution de l'analyse (à l'intérieur de la modale)
+            
+            // --- GESTION DE LA MODALE INTERNE (CHOIX SECTION & MARQUES) ---
             document.getElementById('iaModal').addEventListener('click', (e) => {
+                // 1. Choix de la section (Étape 1)
+                if (e.target && e.target.classList.contains('select-section-btn')) {
+                    const sectionId = e.target.getAttribute('data-section-id');
+                    const functionType = e.target.getAttribute('data-function-type');
+                    showBrandSelection(sectionId, functionType); // Passe à l'étape 2
+                }
+                
+                // 2. Lancement de l'analyse (Étape 2)
                 if (e.target && e.target.id === 'executeIaAnalysis') {
                     const sectionId = e.target.getAttribute('data-section-id');
                     const functionType = e.target.getAttribute('data-function-type');
@@ -1122,13 +1249,13 @@
                     const selectedCheckboxes = document.querySelectorAll('#modalContent input[name="selectedBrands"]:checked');
                     const selectedBrands = Array.from(selectedCheckboxes).map(cb => cb.value);
 
-                    if (selectedBrands.length === 0) {
-                        alert("Veuillez sélectionner au moins une marque pour lancer l'analyse.");
+                    if (selectedBrands.length < 2 || selectedBrands.length > 3) {
+                        alert("Veuillez sélectionner au minimum 2 marques et 3 marques maximum pour l'analyse.");
                         return;
                     }
                     
                     // Lance l'appel à l'API Gemini
-                    callGeminiFunction(sectionId, selectedBrands, functionType);
+                    callGeminiFunction(selectedBrands, functionType);
                 }
             });
 

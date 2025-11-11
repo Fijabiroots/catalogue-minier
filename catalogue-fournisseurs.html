@@ -73,18 +73,15 @@
                 page-break-inside: avoid;
             }
 
-            /* 🌟 CORRECTION CRUCIALE DE SAUT DE PAGE */
-            /* Force le groupe (Header + Expertise + Tableau) à rester ensemble */
-            .table-group {
+            /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
+            /* Garantit que le titre ne soit pas séparé du contenu (améliore l'aspect professionnel) */
+            .section-header {
                 page-break-inside: avoid;
-                /* Ajout d'une petite marge pour garantir que le moteur ait de l'espace pour bouger le bloc entier */
-                margin-top: 10mm; 
+                page-break-after: avoid; 
             }
-            
-            /* Gère les autres éléments */
             .table-container, ul, ol {
-                orphans: 3; 
-                widows: 3;  
+                orphans: 3; /* Minimum de 3 lignes en bas de page */
+                widows: 3;  /* Minimum de 3 lignes en haut de page */
                 page-break-inside: auto;
             }
 
@@ -283,17 +280,17 @@
             </a>
             <div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
             <button id="iaCentralButtonMarche" 
-                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    class="hidden sm:flex bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
                     data-function-type="marche">
                 ⚡ Analyse Marché (IA)
             </button>
             <button id="iaCentralButtonRisque" 
-                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    class="hidden sm:flex bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
                     data-function-type="risque">
                 🛡️ Risque Fournisseur (IA)
             </button>
             <button id="iaCentralButtonTCO" 
-                    class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out"
+                    class="hidden sm:flex bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
                     data-function-type="tco">
                 ⚖️ Analyse TCO (IA)
             </button>
@@ -326,7 +323,7 @@
 
     <div class="catalog-page page-number" id="top"> 
         <header class="header">
-            <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">CATALOGUE MARQUES POUR LES MINES</h1>
+            <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">NOS MARQUES PARTENAIRES</h1>
             <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
         </header>
 
@@ -348,7 +345,7 @@
             </div>
         </div>
 
-        <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES</h3>
+        <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
         <ol class="list-decimal ml-6 space-y-1 text-gray-700">
             <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles (Extraction, Forage et Transport)</a></li>
             <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation (Concentrateur)</a></li>
@@ -356,7 +353,7 @@
             <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
             <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
             <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé, Soudage & Maintenance Critique</a></li>
-            <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services & Structure</a></li>
+            <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services & Maintenance</a></li>
         </ol>
 
         <div class="table-group"> <div class="section-header" id="section-1"> <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
@@ -365,8 +362,8 @@
             
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Notre expertise couvre les trois piliers mondiaux (Caterpillar, Komatsu, Hitachi) pour assurer l'interchangeabilité des pièces et minimiser les temps d'arrêt. Nous maîtrisons également l'intégration des solutions de forage avancées d'Epiroc et Sandvik.
-                </p>
+                    **Notre expertise :** Nous couvrons l’ensemble des grands constructeurs du secteur minier pour garantir l’interchangeabilité des pièces, réduire les temps d’arrêt et optimiser la performance. Nos solutions incluent le forage, la manutention et le traitement de roche.
+                 </p>   
             </div>
 
             <div class="table-container"> <table class="w-full table-custom">
@@ -426,7 +423,15 @@
                             <td>Moteurs Diesel & Puissance</td>
                         </tr>
                         <tr>
-                            <td>Yaskawa, WEG Electric, Kubota</td>
+                            <td>Yaskawa</td>
+                            <td>Alternatives Électriques & Moteurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WEG Electric</strong></td>
+                            <td>Alternatives Électriques & Moteurs</td>
+                        </tr>
+                        <tr>
+                            <td>Kubota</td>
                             <td>Alternatives Électriques & Moteurs</td>
                         </tr>
                         <tr>
@@ -450,7 +455,11 @@
                             <td>Composants Châssis / Pièces dures</td>
                         </tr>
                         <tr>
-                            <td>Polydeck, Trelleborg</td>
+                            <td>Polydeck</td>
+                            <td>Composants Châssis / Pièces dures</td>
+                        </tr>
+                        <tr>
+                            <td>Trelleborg</td>
                             <td>Composants Châssis / Pièces dures</td>
                         </tr>
                         <tr>
@@ -473,6 +482,10 @@
                             <td>Wear-Tek, Vecor</td>
                             <td>Protection Anti-Usure</td>
                         </tr>
+                        <tr>
+                            <td>Vecor</td>
+                            <td>Protection Anti-Usure</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -484,7 +497,7 @@
             
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Le concentrateur est le cœur de l'opération. Nous fournissons des consommables Metso Outotec et FLSmidth ainsi que des solutions d'analyse laboratoire de pointe (Mettler, Retsch) pour garantir une récupération optimale et un contrôle qualité rigoureux.
+                    **Notre expertise :** Le concentrateur étant le cœur de l’opération, nous fournissons des consommables et équipements compatibles avec les principaux fabricants du marché, ainsi que des solutions d’analyse laboratoire de pointe pour assurer une récupération maximale et un contrôle qualité précis.
                 </p>
             </div>
 
@@ -510,6 +523,10 @@
                             <td>Concassage & Criblage</td>
                         </tr>
                         <tr>
+                            <td>Haver & Boecker</td>
+                            <td>Concassage & Criblage</td>
+                        </tr>
+                        <tr>
                             <td>Polydeck</td>
                             <td>Panneaux de criblage</td>
                         </tr>
@@ -530,7 +547,15 @@
                             <td>Instrumentation Process</td>
                         </tr>
                         <tr>
-                            <td>Krohne, Jumo, Yokogawa</td>
+                            <td>Krohne</td>
+                            <td>Instrumentation Process</td>
+                        </tr>
+                        <tr>
+                            <td>Jumo</td>
+                            <td>Instrumentation Process</td>
+                        </tr>
+                        <tr>
+                            <td>Yokogawa</td>
                             <td>Instrumentation Process</td>
                         </tr>
                         <tr>
@@ -549,6 +574,14 @@
                             <td>Vaisala, Lhoist</td>
                             <td>Réactifs Laboratoire</td>
                         </tr>
+                        <tr>
+                            <td>Lhoist</td>
+                            <td>Réactifs Laboratoire</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ELS</strong></td>
+                            <td>Réactifs Laboratoire</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -560,7 +593,7 @@
             
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La gestion des boues et fluides agressifs est critique. Nous nous spécialisons dans le sourcing de Warman (Weir) et ITT Goulds, leaders en abrasion, et des systèmes de dosage LEWA et ProMinent, garantissant l'intégrité de vos procédés chimiques.
+                    **Notre expertise :** La gestion des boues et fluides agressifs exige des solutions fiables. Nous sélectionnons les meilleures technologies de pompage et de dosage du marché pour garantir la résistance à l’abrasion et la fiabilité de vos procédés chimiques.
                 </p>
             </div>
 
@@ -582,7 +615,15 @@
                             <td>Pompes à Boues / Abrasives</td>
                         </tr>
                         <tr>
-                            <td>KSB Etabloc, EDDY Pump, Andritz</td>
+                            <td>KSB Etabloc</td>
+                            <td>Pompes à Boues / Abrasives</td>
+                        </tr>
+                        <tr>
+                            <td>EDDY Pump</td>
+                            <td>Pompes à Boues / Abrasives</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Andritz</strong></td>
                             <td>Pompes à Boues / Abrasives</td>
                         </tr>
                         <tr>
@@ -595,7 +636,11 @@
                         </tr>
                         <tr>
                             <td>NETZSCH, Debem</td>
-                            <td>Pompes Doseuses (Péristaltiques, Italie)</td>
+                            <td>Pompes Doseuses (Péristaltiques)</td>
+                        </tr>
+                        <tr>
+                            <td>Debem</td>
+                            <td>Pompes Doseuses (Péristaltiques)</td>
                         </tr>
                         <tr>
                             <td><strong>Orbinox</strong></td>
@@ -606,7 +651,15 @@
                             <td>Vannes Boues (Guillotine)</td>
                         </tr>
                         <tr>
-                            <td>KDV, Richter, Samson</td>
+                            <td>KDV</td>
+                            <td>Vannes (Corrosifs, Régulation)</td>
+                        </tr>
+                        <tr>
+                            <td>Richter</td>
+                            <td>Vannes (Corrosifs, Régulation)</td>
+                        </tr>
+                        <tr>
+                            <td>Samson</td>
                             <td>Vannes (Corrosifs, Régulation)</td>
                         </tr>
                         <tr>
@@ -618,7 +671,15 @@
                             <td>Pompes Eaux / Drainage</td>
                         </tr>
                         <tr>
-                            <td>Wilo, Lowara, Piusi</td>
+                            <td>Wilo</td>
+                            <td>Pompes Eaux / Drainage</td>
+                        </tr>
+                        <tr>
+                            <td>Lowara</td>
+                            <td>Pompes Eaux / Drainage</td>
+                        </tr>
+                        <tr>
+                            <td>Piusi</td>
                             <td>Pompes Eaux / Drainage</td>
                         </tr>
                         <tr>
@@ -634,6 +695,14 @@
                             <td>Étanchéité / Raccords</td>
                         </tr>
                         <tr>
+                            <td><strong>Dixon</strong></td>
+                            <td>Étanchéité / Raccords</td>
+                        </tr>
+                        <tr>
+                            <td>Swagelok</td>
+                            <td>Étanchéité / Raccords</td>
+                        </tr>
+                        <tr>
                             <td><strong>Rotork</strong></td>
                             <td>Actionneurs de Vannes</td>
                         </tr>
@@ -643,6 +712,10 @@
                         </tr>
                         <tr>
                             <td>A-T Controls, Emerson</td>
+                            <td>Actionneurs de Vannes</td>
+                        </tr>
+                        <tr>
+                            <td>Emerson</td>
                             <td>Actionneurs de Vannes</td>
                         </tr>
                     </tbody>
@@ -656,7 +729,7 @@
 
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La fiabilité électrique et le contrôle sont non négociables. Notre réseau garantit l'accès aux systèmes PLC/DCS Siemens, Schneider et Rockwell, ainsi qu'aux composants de sécurité (Pilz, Triconex), essentiels pour la continuité des opérations minières.
+                    **Notre expertise :** La fiabilité électrique et le contrôle sont essentiels. Nous fournissons des systèmes d’automatisation et de sécurité compatibles avec les principaux standards industriels afin d’assurer la continuité et la sûreté des opérations minières.
                 </p>
             </div>
             
@@ -682,8 +755,20 @@
                             <td>Automates (PLC/DCS)</td>
                         </tr>
                         <tr>
-                            <td>Yokogawa, Beckhoff, Vipa, Unitronics</td>
-                            <td>Alternatives Automates</td>
+                            <td><strong>Yokogawa</strong></td>
+                            <td>Automates</td>
+                        </tr>
+                        <tr>
+                            <td>Beckhoff</td>
+                            <td>Automates</td>
+                        </tr>
+                        <tr>
+                            <td>Vipa</td>
+                            <td>Automates</td>
+                        </tr>
+                        <tr>
+                            <td>Unitronics</td>
+                            <td>Automates</td>
                         </tr>
                         <tr>
                             <td><strong>ABB</strong></td>
@@ -698,7 +783,15 @@
                             <td>Variateurs & Moteurs</td>
                         </tr>
                         <tr>
-                            <td>Voith, WEG Electric, Lenze</td>
+                            <td>Voith</td>
+                            <td>Transmissions & Moteurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WEG Electric</strong></td>
+                            <td>Transmissions & Moteurs</td>
+                        </tr>
+                        <tr>
+                            <td>Lenze</td>
                             <td>Transmissions & Moteurs</td>
                         </tr>
                         <tr>
@@ -714,7 +807,15 @@
                             <td>Sécurité Critique</td>
                         </tr>
                         <tr>
-                            <td>Hima, Pepperl Fuchs, Eaton</td>
+                            <td><strong>Eaton</strong></td>
+                            <td>Sécurité & Protection Électrique</td>
+                        </tr>
+                        <tr>
+                            <td>Hima</td>
+                            <td>Sécurité & Protection Électrique</td>
+                        </tr>
+                        <tr>
+                            <td>Pepperl Fuchs</td>
                             <td>Sécurité & Protection Électrique</td>
                         </tr>
                         <tr>
@@ -730,7 +831,15 @@
                             <td>Connectivité & I/O</td>
                         </tr>
                         <tr>
-                            <td>Turck, Moxa, Wieland</td>
+                            <td>Turck</td>
+                            <td>Réseaux & Connecteurs</td>
+                        </tr>
+                        <tr>
+                            <td>Moxa</td>
+                            <td>Réseaux & Connecteurs</td>
+                        </tr>
+                        <tr>
+                            <td>Wieland</td>
                             <td>Réseaux & Connecteurs</td>
                         </tr>
                         <tr>
@@ -738,7 +847,11 @@
                             <td>Matériel de Calibration & Mesure</td>
                         </tr>
                         <tr>
-                            <td>Bruel & Kjaer, Yokogawa</td>
+                            <td>Bruel & Kjaer</td>
+                            <td>Vibration & Mesure</td>
+                        </tr>
+                        <tr>
+                            <td>Yokogawa</td>
                             <td>Vibration & Mesure</td>
                         </tr>
                     </tbody>
@@ -746,13 +859,13 @@
             </div>
         </div>
         
-        <div class="table-group"> <div class="section-header" id="section-5"> <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône de laboratoire et d'analyse">
+        <div class="table-group"> <div class="section-header" id="section-5"> <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône d'outils de maintenance">
                  <h3>5. Instrumentation, Laboratoire & Consommables</h3>
             </div>
 
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La précision de la métrologie (Mitutoyo, Starrett) et l'équipement de laboratoire sont fondamentaux pour le contrôle de la teneur. Nous assurons la fourniture de solutions qui soutiennent l'accréditation et la fiabilité des données de votre site.
+                    **Notre expertise :** La précision métrologique et le contrôle de la teneur sont essentiels. Nous fournissons des instruments et équipements de laboratoire garantissant la fiabilité des mesures et le maintien des standards d’accréditation de votre site.
                 </p>
             </div>
             
@@ -797,6 +910,10 @@
                             <td>Vaisala, Lhoist</td>
                             <td>Réactifs Laboratoire</td>
                         </tr>
+                        <tr>
+                            <td>Lhoist</td>
+                            <td>Réactifs Laboratoire</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -808,7 +925,7 @@
 
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** L'efficacité de la maintenance repose sur des outils de qualité industrielle. Nous fournissons les marques leaders (Enerpac, Norbar, Snap-on) ainsi que l'équipement de soudage critique (Lincoln, Miller) pour garantir des réparations rapides et durables.
+                    **Notre expertise :** La performance de la maintenance dépend d’outils fiables et précis. Nous proposons des équipements de serrage, de levage et de soudage issus des leaders mondiaux pour assurer des interventions rapides, sûres et durables.
                 </p>
             </div>
             
@@ -846,8 +963,16 @@
                             <td>Soudage & Coupage</td>
                         </tr>
                         <tr>
-                            <td>Magmaweld, Hypertherm, Leister</td>
-                            <td>Plasma, Soudage Plastique</td>
+                            <td>Magmaweld</td>
+                            <td>Plasma</td>
+                        </tr>
+                        <tr>
+                            <td>Hypertherm</td>
+                            <td>Plasma</td>
+                        </tr>
+                        <tr>
+                            <td>Leister</td>
+                            <td>Soudage Plastique</td>
                         </tr>
                         <tr>
                             <td><strong>Snap-on</strong></td>
@@ -862,7 +987,15 @@
                             <td>Outillage à Main / Lourd</td>
                         </tr>
                         <tr>
-                            <td>Catu, DeWalt, Makita</td>
+                            <td>Catu</td>
+                            <td>Sécurité Électrique, Outillage Standard</td>
+                        </tr>
+                        <tr>
+                            <td>DeWalt</td>
+                            <td>Sécurité Électrique, Outillage Standard</td>
+                        </tr>
+                        <tr>
+                            <td>Makita</td>
                             <td>Sécurité Électrique, Outillage Standard</td>
                         </tr>
                     </tbody>
@@ -871,12 +1004,12 @@
         </div>
 
         <div class="table-group"> <div class="section-header" id="section-7"> <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
-                 <h3>7. Services & Structure</h3>
+                 <h3>7. Services & Maintenance</h3>
             </div>
 
             <div class="expertise-box">
                 <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Notre rôle s'étend au-delà du matériel. Nous exploitons notre connaissance des standards des grands mineurs (Agnico Eagle) et des solutions logicielles spécialisées (Micromine) pour vous offrir une stratégie d'approvisionnement plus intelligente et sécurisée.
+                    **Notre expertise :** Avec un partenaire international reconnu, nous assurons la maintenance complète des équipements rotatifs et alternatifs, incluant la réparation certifiée sur site ou dans notre atelier en Europe, l’équilibrage de précision et la fabrication sur mesure pour une fiabilité optimale des installations.
                 </p>
             </div>
             
@@ -890,20 +1023,24 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Agnico Eagle</strong></td>
-                            <td>Influence des standards d'achat des grands mineurs</td>
+                            <td><strong>Lufkin Gears</strong></td>
+                            <td>Transmission</td>
                         </tr>
                         <tr>
-                            <td>Micromine</td>
-                            <td>Logiciels de modélisation et planification minière (Australie)</td>
+                            <td>Curflo</td>
+                            <td>Pompage</td>
                         </tr>
                         <tr>
-                            <td><strong>Voith</strong></td>
-                            <td>Systèmes d'entraînement et transmissions spécialisées</td>
+                            <td><strong>Peroni</strong></td>
+                            <td>Haute pression</td>
                         </tr>
                         <tr>
-                            <td>Woodward</td>
-                            <td>Systèmes de gestion de moteurs et de turbines</td>
+                            <td>Baker Hughes</td>
+                            <td>Forage</td>
+                        </tr>
+                        tr>
+                            <td>CST</td>
+                            <td>Compression</td>
                         </tr>
                     </tbody>
                 </table>
@@ -915,11 +1052,11 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div>
                     <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
-                    <p>La société **MULTIPARTS** n'est ni un distributeur agréé ni un représentant officiel des marques mentionnées. Nous fournissons des services de **sourcing et de revente indépendants** de matériel neuf, reconditionné ou obsolète.</p>
+                     <p>La société **MULTIPARTS** est un acteur indépendant spécialisé dans le sourcing technique et la fourniture multimarque de pièces et équipements industriels. Forte de son expertise dans l’identification, la qualification et la traçabilité des composants, elle propose des solutions fiables pour le matériel neuf, reconditionné ou obsolète, en assurant conformité, performance et continuité d’exploitation.</p>
                 </div>
                 <div>
                     <p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
-                    <p>Tous les produits fournis bénéficient d'une **garantie de 12 mois**.</p>
+                    <p>Tous les produits fournis bénéficient de la **garantie du fabricant**.</p>
                     <p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
                     <p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
                     <p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
@@ -934,7 +1071,7 @@
         
         // Fonction d'extraction CSV - COPIE LES DONNÉES DU TABLEAU DANS LE PRESSE-PAPIERS
         function generateCSV(sectionId) {
-            // Le sélecteur est ajusté pour le nouveau conteneur .table-group
+            // SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
             const table = document.querySelector(`#${sectionId}`).closest('.table-group').querySelector('.table-custom');
             
             if (!table) return "Erreur: Tableau non trouvé.";
@@ -1146,7 +1283,7 @@
                 // Affiche le résultat dans la modale
                 modalTitle.textContent = `Résultat de l'Analyse IA`;
                 modalContentDiv.innerHTML = `
-                    <h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport d'analyse généré par MULTIPARTS IA</h4>
+                    <h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport stratégique généré</h4>
                     <p class="text-gray-600 mb-4 italic">Marques analysées: ${brandList}</p>
                     <div class="border p-4 bg-gray-50 whitespace-pre-wrap max-h-96 overflow-y-auto">${data.result}</div>
                     <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
@@ -1185,15 +1322,6 @@
                 }
             }
             
-            // --- GESTIONNAIRE D'ÉVÉNEMENTS CSV (Correction d'activation) ---
-            document.querySelectorAll('[id^="csvButton-section-"]').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const sectionId = event.currentTarget.getAttribute('data-section-id');
-                    // Suppression de la fonction CSV, l'écouteur est maintenu mais la fonction n'existe plus
-                    // Pour le code final, nous n'avons pas besoin de ces écouteurs car les boutons sont retirés.
-                });
-            });
-
             // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale initiale) ---
             document.querySelectorAll('[data-function-type]').forEach(button => {
                 button.addEventListener('click', (event) => {

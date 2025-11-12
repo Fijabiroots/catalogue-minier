@@ -1,1370 +1,1426 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue MULTIPARTS - Marques du secteur Minier</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <style>
-        /* Configuration générale pour l'écran */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-            color: #1e293b;
-            line-height: 1.5;
-        }
-        .catalog-page {
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 10px auto; /* Marge réduite sur mobile */
-            max-width: 900px;
-            padding: 20px; /* Padding réduit sur mobile */
-            min-height: 1200px;
-            position: relative;
-        }
-        .header {
-            border-bottom: 4px solid #1e40af;
-            padding-bottom: 10px;
-            margin-bottom: 15px; /* Marge réduite sur mobile */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title>Catalogue MULTIPARTS - Marques du secteur Minier</title>
+  	<script src="https://cdn.tailwindcss.com"></script>
+  	
+  	<link rel="icon" type="image/x-icon" href="favicon.ico">
+  	
+      	<style>
+  		/* Configuration générale pour l'écran */
+  		body {
+  			font-family: 'Inter', sans-serif;
+  			background-color: #f0f4f8;
+  			color: #1e293b;
+  			line-height: 1.5;
+  		}
+  		.catalog-page {
+  			background-color: white;
+  			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  			margin: 10px auto;
+  			max-width: 900px;
+  			padding: 20px;
+  			min-height: 1200px;
+  			position: relative;
+  		}
+  		.header {
+  			border-bottom: 4px solid #1e40af;
+  			padding-bottom: 10px;
+  			margin-bottom: 15px;
+  		}
 
-        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
-        @media screen and (max-width: 639px) {
-            .table-custom {
-                display: block;
-                overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
-                white-space: nowrap; /* Empêche les cellules de revenir à la ligne */
-            }
-            .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
-                display: block;
-            }
-            .table-custom th, .table-custom td {
-                padding: 6px;
-            }
-            /* Rétablit l'affichage normal sur les tableaux pour une lecture plus fluide */
-            .table-custom tr {
-                border-bottom: 1px solid #e5e7eb;
-            }
-        }
-        
-        /* Styles spécifiques pour l'impression (Impression A4) */
-        @media print {
-            body {
-                background-color: white;
-                color: #000000 !important;
-            }
-            
-            /* Tente de supprimer les en-têtes/pieds de page automatiques (URL, date) en définissant les marges du navigateur à zéro */
-            @page {
-                margin: 0;
-            }
+  		/* 🛠️ MODIFIÉ: Barre de navigation (légère adaptation pour logo) */
+  		.main-nav {
+  			background-color: black;
+  			color: white;
+  			height: 60px; /* Légèrement augmenté pour le logo */
+  			display: flex;
+  			align-items: center;
+  			position: sticky;
+  			top: 0;
+  			z-index: 30;
+  		}
+  		.main-nav img {
+  			height: 40px; /* Ajustez la taille de votre logo */
+  			width: auto;
+  			margin-left: 20px; /* Ajout d'une marge pour le logo */
+  		}
 
-            .catalog-page {
-                box-shadow: none;
-                margin: 0;
-                /* Simule les marges de 10mm/15mm/10mm/15mm en utilisant un padding au lieu des marges du navigateur */
-                padding: 10mm 15mm 10mm 15mm; 
-                max-width: 100%;
-                min-height: auto;
-                height: auto;
-                page-break-inside: avoid;
-            }
+  		/* 🛠️ MODIFIÉ: Ajustement de la position (dû au nav plus grand) */
+  		.pdf-button-container {
+  			width: 100%;
+  			background-color: white;
+  			border-bottom: 4px solid #1e40af;
+  			padding: 10px 0;
+  			position: sticky; 
+  			top: 60px; /* Doit correspondre à la hauteur du main-nav */
+  			z-index: 20; 
+  		}
+  				
+  		/* 🛠️ MODIFIÉ: Ajustement de la position (dû au nav plus grand) */
+  		.fixed-expertise-band {
+  			width: 100%;
+  			background-color: #166534; /* Vert (Charte graphique) */
+  			color: white;
+  			text-align: center;
+  			padding: 8px 0;
+  			font-size: 0.95rem;
+  			position: sticky;
+  			top: 130px; /* (60px navbar + 70px bar d'outils estimé) */
+  			z-index: 10;
+  		}
+  		/* 🛠️ AJOUT: Style pour le menu déroulant du sommaire */
+  		#summaryDropdown {
+  			position: sticky;
+  			top: 130px; /* S'affiche sous la barre d'outils */
+  			z-index: 19; /* Juste en dessous de la barre d'outils, mais au-dessus du bandeau vert */
+  		}
+  		@media screen and (min-width: 640px) {
+  			#summaryDropdown ol {
+  				column-count: 2;
+  			}
+  		}
 
-            /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
-            /* Garantit que le titre ne soit pas séparé du contenu (améliore l'aspect professionnel) */
-            .section-header {
-                page-break-inside: avoid;
-                page-break-after: avoid; 
-            }
-            .table-container, ul, ol {
-                orphans: 3; /* Minimum de 3 lignes en bas de page */
-                widows: 3;  /* Minimum de 3 lignes en haut de page */
-                page-break-inside: auto;
-            }
+  		/* Optimisation mobile */
+  		@media screen and (max-width: 639px) {
+  			.btn-mobile-icon-only span {
+  				display: none !important;
+  			}
+  			.btn-mobile-icon-only {
+  				justify-content: center;
+  				padding: 10px !important;
+  				width: 45px !important;
+  				height: 45px !important;
+  			}
+  			.pdf-button-container {
+  				padding: 5px 0;
+  			}
+  			
+  			.table-custom {
+  				display: block;
+  				overflow-x: auto;
+  				white-space: nowrap;
+  			}
+  			.table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
+  				display: block;
+  			}
+  			.table-custom th, .table-custom td {
+  				padding: 6px;
+  			}
+  			.table-custom tr {
+  				border-bottom: 1px solid #e5e7eb;
+  			}
+  		}
+  		
+  		/* 🛠️ MODIFIÉ: Styles d'impression (Ajout de .print-only) */
+  		@media print {
+  			body {
+  				background-color: white;
+  				color: #000000 !important;
+  			}
+  			@page {
+  				margin: 0;
+  			}
+  			.catalog-page {
+  				box-shadow: none;
+  				margin: 0;
+  				padding: 10mm 15mm 10mm 15mm; 
+  				max-width: 100%;
+  				min-height: auto;
+  				height: auto;
+  				page-break-inside: avoid;
+  			}
+  			.section-header {
+  				page-break-inside: avoid;
+  				page-break-after: avoid; 
+  			}
+  			.table-container, ul, ol {
+  				orphans: 3; 
+  				widows: 3;  
+  				page-break-inside: auto;
+  			}
+  			.header, .section-header, .table-custom th {
+  				-webkit-print-color-adjust: exact !important;
+  				print-color-adjust: exact !important;
+  			}
+  			.no-print {
+  				display: none !important; 
+  				height: 0 !important;   
+  				overflow: hidden !important; 
+  			}
+  			/* 💡 AJOUT: Affiche le sommaire original uniquement à l'impression */
+  			.print-only {
+  				display: block !important;
+  			}
+  			
+  			.table-custom {
+  				border-collapse: collapse !important;
+  				width: 100% !important;
+  				table-layout: fixed;
+  			}
+  			.table-custom th {
+  				background-color: #f0f4f8 !important;
+  				color: #000000 !important;
+  				border: 1px solid #555 !important;
+  			}
+  			.table-custom td {
+  				color: #000000 !important;
+  				border: 1px solid #ddd !important;
+  				padding: 5px !important;
+  			}
+  			.text-xl, .text-2xl, .text-4xl {
+  				color: #000000 !important;
+  			}
+  			.page-number::after {
+  				content: "Page " counter(page) " sur " counter(pages);
+  				position: fixed;
+  				bottom: 5mm;
+  				right: 15mm;
+  				font-size: 9pt;
+  				color: #555;
+  			}
+  		}
 
-            /* Force l'impression des fonds pour les images et headers */
-            .header, .section-header, .table-custom th {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
+  		/* Styles pour les tableaux */
+  		.table-custom th {
+  			background-color: #e0e7ff; /* Bleu clair (Charte) */
+  			color: #1e40af; /* Bleu (Charte) */
+  			font-weight: 700;
+  			padding: 8px;
+  			text-align: left;
+  		}
+  		.table-custom td {
+  			padding: 8px;
+  			border-bottom: 1px solid #e5e7eb;
+  		}
+  		/* 🛠️ AJOUT: Survol des lignes du tableau en vert (Charte) */
+  		.table-custom tbody tr:hover {
+  			background-color: #f0fdf4; /* Vert très clair */
+  			color: #166534; /* Vert foncé */
+  			cursor: pointer;
+  		}
 
-            /* Masquer les éléments non-imprimables et supprimer leur espace */
-            .no-print {
-                display: none !important; 
-                height: 0 !important;     
-                overflow: hidden !important; 
-            }
-            
-            /* Styles des tableaux pour garantir la visibilité */
-            .table-custom {
-                border-collapse: collapse !important;
-                width: 100% !important;
-                table-layout: fixed;
-            }
-            .table-custom th {
-                background-color: #f0f4f8 !important;
-                color: #000000 !important;
-                border: 1px solid #555 !important;
-            }
-            .table-custom td {
-                color: #000000 !important;
-                border: 1px solid #ddd !important;
-                padding: 5px !important;
-            }
-            .text-xl, .text-2xl, .text-4xl {
-                color: #000000 !important;
-            }
-             /* 🌟 STYLE DE PAGINATION (Ajouté) */
-            .page-number::after {
-                content: "Page " counter(page) " sur " counter(pages);
-                position: fixed;
-                bottom: 5mm;
-                right: 15mm;
-                font-size: 9pt;
-                color: #555;
-            }
-        }
+  		/* 🛠️ MODIFIÉ: Style des en-têtes de section */
+  		.section-header {
+  			display: flex;
+  			align-items: center;
+  			margin-top: 30px;
+  			margin-bottom: 15px;
+  			border-left: 4px solid #1e40af; /* Bleu (Charte) */
+  			padding-left: 10px;
+  		}
+  		.section-header h3 {
+  			font-size: 1.5rem; /* Reste cohérent avec le design */
+  			font-weight: bold;
+  			color: #1e40af; /* Bleu (Charte) */
+  			margin: 0;
+  			padding-left: 10px;
+  		}
+  		
+  		/* Style pour le bouton retour en haut (Fixe en bas à droite) */
+  		.back-to-top {
+  			position: fixed;
+  			bottom: 20px;
+  			right: 20px;
+  			z-index: 30;
+  			background-color: #1e40af;
+  			color: white;
+  			border-radius: 50%;
+  			padding: 12px;
+  			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  			transition: background-color 0.3s;
+  		}
+  		.back-to-top:hover {
+  			background-color: #1e3a8a;
+  		}
+  		
+  		/* 🛠️ MODIFIÉ: Style de la boîte d'expertise (Style barre noire) */
+  		.expertise-box {
+  			background-color: black;
+  			color: white;
+  			padding: 12px 20px;
+  			margin-bottom: 15px;
+  			border-radius: 4px;
+  			display: flex;
+  			justify-content: space-between;
+  			align-items: center;
+  		}
+  		.expertise-box strong { /* Titre "Notre expertise" */
+  			font-size: 1.1rem;
+  			font-weight: 700;
+  			white-space: nowrap;
+  			color: white;
+  			flex-shrink: 0; /* Empêche le titre de se réduire */
+  		}
+  		.expertise-box p { /* Le texte d'expertise */
+  			font-size: 0.9rem;
+  			font-style: italic;
+  			margin: 0;
+  			padding-left: 25px;
+  			color: #ccc; /* Texte gris clair pour le contraste */
+  			line-height: 1.4;
+  		}
+  		/* Simule le lien "TOUS LES COMMUNIQUÉS" de votre image */
+  		.expertise-box::after {
+  			content: 'DÉTAILS \2192'; /* \2192 est le code pour '→' */
+  			font-size: 0.8rem;
+  			text-transform: uppercase;
+  			font-weight: 600;
+  			padding-left: 20px;
+  			white-space: nowrap;
+  			color: #f3f4f6;
+  		}
+  		/* Sur mobile, on cache le texte d'expertise pour garder la barre fine */
+  		@media screen and (max-width: 768px) {
+  			.expertise-box p {
+  				display: none; /* Cache le paragraphe sur mobile */
+  			}
+  			.expertise-box::after {
+  				display: none; /* Cache le lien "DÉTAILS" sur mobile */
+  			}
+  		}
 
-        /* Classe pour forcer le saut de page à des endroits précis (non utilisée dans le corps) */
-        .page-break-after-section {
-            page-break-after: always;
-        }
-
-        /* Styles pour les tableaux */
-        .table-custom th {
-            background-color: #e0e7ff;
-            color: #1e40af;
-            font-weight: 700;
-            padding: 8px;
-            text-align: left;
-        }
-        .table-custom td {
-            padding: 8px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        /* Style pour les en-têtes de section avec icônes */
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-left: 4px solid #1e40af;
-            padding-left: 10px;
-        }
-        .section-header h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1e40af;
-            margin: 0;
-            padding-left: 10px;
-        }
-        /* Conteneur principal du bouton PDF pour gérer le défilement */
-        .pdf-button-container {
-            width: 100%;
-            background-color: white;
-            border-bottom: 4px solid #1e40af;
-            padding: 10px 0;
-            position: sticky; /* Rendu 'sticky' sur le conteneur parent */
-            top: 0;
-            z-index: 20; /* Z-index plus élevé pour rester au-dessus de la barre d'expertise */
-        }
-        /* Style pour le bouton retour en haut (Fixe en bas à droite) */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 30; /* Plus élevé que tout */
-            background-color: #1e40af;
-            color: white;
-            border-radius: 50%;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            transition: background-color 0.3s;
-        }
-        .back-to-top:hover {
-            background-color: #1e3a8a;
-        }
-        /* Style pour le texte d'expertise */
-        .expertise-box {
-            border-left: 4px solid #22c55e;
-            padding-left: 10px;
-            margin-bottom: 15px;
-            background-color: #f0fdf4;
-            padding: 10px;
-            border-radius: 4px;
-        }
-        /* Styles de la modale */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; /* Modifié pour être plus haut */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: fadeIn 0.3s;
-        }
-        .close-btn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close-btn:hover, .close-btn:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-        .progress-bar {
-            height: 20px;
-            background-color: #22c55e;
-            width: 0%;
-            text-align: center;
-            line-height: 20px;
-            color: white;
-            border-radius: 4px;
-            transition: width 0.5s ease-in-out;
-        }
-        /* Style pour le bandeau d'expertise fixe */
-        .fixed-expertise-band {
-            width: 100%;
-            background-color: #166534; /* Vert foncé */
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 0.95rem;
-            position: sticky;
-            top: 80px; /* Position sous la barre d'outils */
-            z-index: 10;
-        }
-    </style>
-</head>
+  		/* Styles de la modale */
+  		.modal {
+  			display: none;
+  			position: fixed;
+  			z-index: 100;
+  			left: 0;
+  			top: 0;
+  			width: 100%;
+  			height: 100%;
+  			overflow: auto;
+  			background-color: rgba(0,0,0,0.4);
+  		}
+  		.modal-content {
+  			background-color: #fefefe;
+  			margin: 5% auto;
+  			padding: 20px;
+  			border: 1px solid #888;
+  			width: 90%;
+  			max-width: 700px;
+  			border-radius: 8px;
+  			box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  			animation: fadeIn 0.3s;
+  		}
+  		.close-btn {
+  			color: #aaa;
+  			float: right;
+  			font-size: 28px;
+  			font-weight: bold;
+  		}
+  		.close-btn:hover, .close-btn:focus {
+  			color: #000;
+  			text-decoration: none;
+  			cursor: pointer;
+  		}
+  		@keyframes fadeIn {
+  			from {opacity: 0;}
+  			to {opacity: 1;}
+  		}
+  		.progress-bar-container {
+  			width: 100%;
+  			background-color: #e0e0e0;
+  			border-radius: 4px;
+  			margin-top: 10px;
+  		}
+  		.progress-bar {
+  			height: 20px;
+  			background-color: #22c55e;
+  			width: 0%;
+  			text-align: center;
+  			line-height: 20px;
+  			color: white;
+  			border-radius: 4px;
+  			transition: width 0.5s ease-in-out;
+  		}
+  	</style>
+    </head>
 <body>
 
-    <div class="pdf-button-container no-print">
-        <div class="w-full flex justify-center space-x-4">
-            <button id="generatePdfButton" 
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                Générer PDF (Impression)
-            </button>
-             <a href="mailto:rafiou.oyeossi@multipartsci.com?subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
-               class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Contact Direct
-            </a>
-            <div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
-            <button id="iaCentralButtonMarche" 
-                    class="hidden sm:flex bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="marche">
-                ⚡ Analyse Marché (IA)
-            </button>
-            <button id="iaCentralButtonRisque" 
-                    class="hidden sm:flex bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="risque">
-                🛡️ Risque Fournisseur (IA)
-            </button>
-            <button id="iaCentralButtonTCO" 
-                    class="hidden sm:flex bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="tco">
-                ⚖️ Analyse TCO (IA)
-            </button>
-        </div>
-        <div class="text-center text-sm text-gray-500 mt-2 mb-2">
-            Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
-        </div>
-    </div>
+  	<nav id="main-nav" class="main-nav no-print">
+  		  		  		<img src="logo-multiparts.png" alt="MULTIPARTS Logo">
+  	</nav>
+  	
+  	<div class="pdf-button-container no-print border-b border-gray-200 shadow-sm">
+  		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  			<div class="w-full flex justify-center space-x-2 sm:space-x-4"> 
+  				
+  				  				<button id="toggleSummaryButton"
+  						class="btn-mobile-icon-only bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center transition duration-150 ease-in-out whitespace-nowrap">
+  					<svg class="w-5 h-5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+  					<span>Sommaire</span>
+  				</button>
+  				
+  				<button id="generatePdfButton" 
+  						class="btn-mobile-icon-only bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center transition duration-150 ease-in-out whitespace-nowrap">
+  					<svg class="w-5 h-5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+  					<span>Générer PDF</span>
+  				</button>
+  				
+  				<a href="mailto:rafiou.oyeossi@multipartsci.com?subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
+  				   class="btn-mobile-icon-only bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center transition duration-150 ease-in-out whitespace-nowrap">
+  					<svg class="w-5 h-5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+  					<span>Contact Direct</span>
+  				</a>
+  				
+  				<a href="http://googleusercontent.com/maps.google.com/8" 
+  				   id="gpsLocationButton" 
+  				   class="btn-mobile-icon-only bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+  				   target="_blank" rel="noopener noreferrer">
+  					<svg class="w-5 h-5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+  					<span>Notre Localisation</span>
+  				</a>
+  				
+  				<div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
+  				
+  				<button id="iaCentralButtonMarche" 
+  						class="hidden sm:flex bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-md items-center transition duration-150 ease-in-out whitespace-nowrap"
+  						data-function-type="marche">
+  					⚡ Analyse Marché (IA)
+  				</button>
+  				<button id="iaCentralButtonRisque" 
+  						class="hidden sm:flex bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-md items-center transition duration-150 ease-in-out whitespace-nowrap"
+  						data-function-type="risque">
+  					🛡️ Risque Fournisseur (IA)
+  				</button>
+  				<button id="iaCentralButtonTCO" 
+  						class="hidden sm:flex bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-md items-center transition duration-150 ease-in-out whitespace-nowrap"
+  						data-function-type="tco">
+  					⚖️ Analyse TCO (IA)
+  				</button>
+  			</div>
+  			
+  			<div class="text-center text-xs text-gray-500 mt-2 mb-2 hidden sm:block">
+  				Cliquez sur les boutons pour des actions rapides (PDF, Contact, Localisation, Analyses IA).
+  			</div>
+  		</div>
+  	</div>
+  	
+  	  	<div id="summaryDropdown" class="hidden no-print bg-white shadow-lg max-w-7xl mx-auto p-6 border-b-4 border-indigo-600">
+  		<h3 class="text-2xl font-bold mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
+  		<ol class="list-decimal ml-6 space-y-2 text-gray-700">
+  			<li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Équipements Lourds & Mobiles</a></li>
+  			<li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Traitement des Minerais & Séparation</a></li>
+  			<li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Pompes, Vannes & Composants de Fluides</a></li>
+  			<li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Automatisation, Contrôle & Électronique</a></li>
+  			<li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Instrumentation & Laboratoire</a></li>
+  			<li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Outillage Spécialisé & Maintenance</a></li>
+  			<li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 hover:underline transition duration-150">Services & Maintenance</a></li>
+  		</ol>
+  	</div>
 
-    <div class="fixed-expertise-band no-print">
-        **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service en Afrique.
-    </div>
-    
+  	<div class="fixed-expertise-band no-print">
+  		**MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service en Afrique.
+  	</div>
+  	
+  	<a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
+  		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
+  	</a>
 
+  	<div id="iaModal" class="modal no-print">
+  		<div class="modal-content">
+  			<span class="close-btn">×</span>
+  			<h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#1e40af]">Configuration de l'Analyse</h3>
+  			<div id="modalContent">
+  				  			</div>
+  		</div>
+  	</div>
 
-    <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
-    </a>
+  	<div class="catalog-page page-number" id="top"> 
+  		<header class="header">
+  			<h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">NOS MARQUES PARTENAIRES</h1>
+  			<h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
+  		</header>
 
+  		<img class="w-full h-auto rounded-lg mb-6" 
+  			 src="Gemini_Generated_Image_Mining.png"
+  			 alt="Image d'un tombereau rigide dans une mine à ciel ouvert.">
 
-    <div id="iaModal" class="modal no-print">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#1e40af]">Configuration de l'Analyse</h3>
-            <div id="modalContent">
-                </div>
-        </div>
-    </div>
+  		<div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
+  			<p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
+  			<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm"> <div>
+  					<p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, spécialisé dans l'approvisionnement en pièces de rechange, en composants mécaniques, électriques et en services logistiques pour les grands projets industriels.</p>
+  				</div>
+  				<div>
+  					<p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
+  					<p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
+  					<p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
+  					<p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
+  				</div>
+  			</div>
+  		</div>
 
+  		  		<div class="print-only">
+  			<h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
+  			<ol class="list-decimal ml-6 space-y-1 text-gray-700">
+  				<li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles (Extraction, Forage et Transport)</a></li>
+  				<li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation (Concentrateur)</a></li>
+  				<li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</a></li>
+  				<li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
+  				<li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
+  				<li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé, Soudage & Maintenance Critique</a></li>
+  				<li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services & Maintenance</a></li>
+  			</ol>
+  		</div>
 
-    <div class="catalog-page page-number" id="top"> 
-        <header class="header">
-            <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">NOS MARQUES PARTENAIRES</h1>
-            <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
-        </header>
+  		<div class="table-group"> 
+  			<div class="section-header" id="section-1"> 
+  				<img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
+  				<h3>1. Équipements Lourds & Mobiles (Extraction, Forage et Transport)</h3>
+  			</div>
+  			
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					Nous couvrons l’ensemble des grands constructeurs du secteur minier pour garantir l’interchangeabilité des pièces, réduire les temps d’arrêt et optimiser la performance. Nos solutions incluent le forage, la manutention et le traitement de roche.
+  				</p>  	
+  			</div>
 
-        <img class="w-full h-auto rounded-lg mb-6" 
-             src="Gemini_Generated_Image_Mining.png"
-             alt="Image d'un tombereau rigide dans une mine à ciel ouvert.">
+  			<div class="table-container"> 
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Caterpillar</strong></td>
+  							<td>Équipements (Pelles, Chargeuses, Camions)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Komatsu</strong></td>
+  							<td>Équipements (Pelles, Chargeuses, Camions)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Hitachi</strong></td>
+  							<td>Équipements (Pelles, Chargeuses, Camions)</td>
+  						</tr>
+  						<tr>
+  							<td>Bell Equipment</td>
+  							<td>Équipements (Afrique du Sud)</td>
+  						</tr>
+  						<tr>
+  							<td>Volvo</td>
+  							<td>Équipements (Europe)</td>
+  						</tr>
+  						<tr>
+  							<td>XCMG</td>
+  							<td>Équipements (Chine)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Epiroc</strong></td>
+  							<td>Forage & Excavation</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Sandvik</strong></td>
+  							<td>Forage & Excavation</td>
+  						</tr>
+  						<tr>
+  							<td>Atlas Copco</td>
+  							<td>Forage & Excavation</td>
+  						</tr>
+  						<tr>
+  							<td>Boart Longyear</td>
+  							<td>Forage de Sondage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Cummins</strong></td>
+  							<td>Moteurs Diesel & Puissance</td>
+  						</tr>
+  						<tr>
+  							<td><strong>MTU (Rolls-Royce)</strong></td>
+  							<td>Moteurs Diesel & Puissance</td>
+  						</tr>
+  						<tr>
+  							<td>Yaskawa</td>
+  							<td>Alternatives Électriques & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>WEG Electric</strong></td>
+  							<td>Alternatives Électriques & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td>Kubota</td>
+  							<td>Alternatives Électriques & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Manitou</strong></td>
+  							<td>Manutention Spécialisée</td>
+  						</tr>
+  						<tr>
+  							<td>Loaders Australia</td>
+  							<td>Manutention Spécialisée</td>
+  						</tr>
+  						<tr>
+  							<td>MacLean Engineering</td>
+  							<td>Manutention (Souterrain)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Metso Outotec</strong></td>
+  							<td>Composants Châssis / Pièces dures</td>
+  						</tr>
+  						<tr>
+  							<td><strong>FLSmidth</strong></td>
+  							<td>Composants Châssis / Pièces dures</td>
+  						</tr>
+  						<tr>
+  							<td>Polydeck</td>
+  							<td>Panneaux de criblage</td>
+  						</tr>
+  						<tr>
+  							<td>Trelleborg</td>
+  							<td>Composants Châssis / Pièces dures</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Rema Tip Top</strong></td>
+  							<td>Bandes Transporteuses</td>
+  						</tr>
+  						<tr>
+  							<td>Flexco</td>
+  							<td>Raccords pour Bandes Transporteuses</td>
+  						</tr>
+  						<tr>
+  							<td>Trelleborg</td>
+  							<td>Caoutchouc pour Bandes Transporteuses</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Trelleborg</strong></td>
+  							<td>Protection Anti-Usure</td>
+  						</tr>
+  						<tr>
+  							<td>Wear-Tek, Vecor</td>
+  							<td>Protection Anti-Usure</td>
+  						</tr>
+  						<tr>
+  							<td>Vecor</td>
+  							<td>Protection Anti-Usure</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
 
-        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
-            <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm"> <div>
-                    <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, spécialisé dans l'approvisionnement en pièces de rechange, en composants mécaniques, électriques et en services logistiques pour les grands projets industriels.</p>
-                </div>
-                <div>
-                    <p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
-                    <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
-                    <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
-                </div>
-            </div>
-        </div>
+          		<div class="table-group"> 
+  			<div class="section-header" id="section-3"> 
+  				<img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
+  				<h3>3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</h3>
+  			</div>
+  			
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					La gestion des boues et fluides agressifs exige des solutions fiables. Nous sélectionnons les meilleures technologies de pompage et de dosage du marché pour garantir la résistance à l’abrasion et la fiabilité de vos procédés chimiques.
+  				</p>
+  			</div>
 
-        <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
-        <ol class="list-decimal ml-6 space-y-1 text-gray-700">
-            <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles (Extraction, Forage et Transport)</a></li>
-            <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation (Concentrateur)</a></li>
-            <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</a></li>
-            <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
-            <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
-            <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé, Soudage & Maintenance Critique</a></li>
-            <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services & Maintenance</a></li>
-        </ol>
+  			<div class="table-container">
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Weir Minerals (Warman)</strong></td>
+  							<td>Pompes à Boues / Abrasives</td>
+  						</tr>
+  						<tr>
+  							<td><strong>ITT Goulds</strong></td>
+  							<td>Pompes à Boues / Abrasives</td>
+  						</tr>
+  						<tr>
+  							<td>KSB Etabloc</td>
+  							<td>Pompes à Boues / Abrasives</td>
+  						</tr>
+  						<tr>
+  							<td>EDDY Pump</td>
+  							<td>Pompes à Boues / Abrasives</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Andritz</strong></td>
+  							<td>Pompes à Boues / Abrasives</td>
+  						</tr>
+  						<tr>
+  							<td><strong>LEWA</strong></td>
+  							<td>Pompes Doseuses (Réactifs)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>ProMinent</strong></td>
+  							<td>Pompes Doseuses (Réactifs)</td>
+  						</tr>
+  						<tr>
+  							<td>NETZSCH, Debem</td>
+  							<td>Pompes Doseuses (Péristaltiques)</td>
+  						</tr>
+  						<tr>
+  							<td>Debem</td>
+  							<td>Pompes Doseuses (Péristaltiques)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Orbinox</strong></td>
+  							<td>Vannes Boues (Guillotine)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Weir Minerals (Isogate)</strong></td>
+  							<td>Vannes Boues (Guillotine)</td>
+  						</tr>
+  						<tr>
+  							<td>KDV</td>
+  							<td>Vannes (Corrosifs, Régulation)</td>
+  						</tr>
+  						<tr>
+  							<td>Richter</td>
+  							<td>Vannes (Corrosifs, Régulation)</td>
+  						</tr>
+  						<tr>
+  							<td>Samson</td>
+  							<td>Vannes (Corrosifs, Régulation)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Xylem (Flygt)</strong></td>
+  							<td>Pompes Eaux / Drainage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Grundfos</strong></td>
+  							<td>Pompes Eaux / Drainage</td>
+  						</tr>
+  						<tr>
+  							<td>Wilo</td>
+  							<td>Pompes Eaux / Drainage</td>
+  						</tr>
+  						<tr>
+  							<td>Lowara</td>
+  							<td>Pompes Eaux / Drainage</td>
+  						</tr>
+  						<tr>
+  							<td>Piusi</td>
+  							<td>Pompes Eaux / Drainage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Parker</strong></td>
+  							<td>Hydraulique / Raccords</td>
+C						</tr>
+  						<tr>
+  							<td><strong>Victaulic</strong></td>
+  							<td>Raccords pour Tuyauterie (Joints)</td>
+  						</tr>
+  						<tr>
+  							<td>Klinger, Dixon, Swagelok</td>
+  							<td>Étanchéité / Raccords</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Dixon</strong></td>
+  							<td>Étanchéité / Raccords</td>
+  						</tr>
+  						<tr>
+  							<td>Swagelok</td>
+  							<td>Étanchéité / Raccords</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Rotork</strong></td>
+  							<td>Actionneurs de Vannes</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Topworx</strong></td>
+  							<td>Actionneurs de Vannes</td>
+  						</tr>
+  						<tr>
+  							<td>A-T Controls, Emerson</td>
+  							<td>Actionneurs de Vannes</td>
+  						</tr>
+  						<tr>
+  							<td>Emerson</td>
+  							<td>Actionneurs de Vannes</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
 
-        <div class="table-group"> <div class="section-header" id="section-1"> <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md" alt="Icône d'engins de chantier">
-                 <h3>1. Équipements Lourds & Mobiles (Extraction, Forage et Transport)</h3>
-            </div>
-            
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Nous couvrons l’ensemble des grands constructeurs du secteur minier pour garantir l’interchangeabilité des pièces, réduire les temps d’arrêt et optimiser la performance. Nos solutions incluent le forage, la manutention et le traitement de roche.
-                 </p>   
-            </div>
+  		<div class="table-group"> 
+  			<div class="section-header" id="section-4"> 
+  				<img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
+  				<h3>4. Automatisation, Contrôle & Électronique</h3>
+  			</div>
 
-            <div class="table-container"> <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Caterpillar</strong></td>
-                            <td>Équipements (Pelles, Chargeuses, Camions)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Komatsu</strong></td>
-                            <td>Équipements (Pelles, Chargeuses, Camions)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Hitachi</strong></td>
-                            <td>Équipements (Pelles, Chargeuses, Camions)</td>
-                        </tr>
-                        <tr>
-                            <td>Bell Equipment</td>
-                            <td>Équipements (Afrique du Sud)</td>
-                        </tr>
-                        <tr>
-                            <td>Volvo</td>
-                            <td>Équipements (Europe)</td>
-                        </tr>
-                        <tr>
-                            <td>XCMG</td>
-                            <td>Équipements (Chine)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Epiroc</strong></td>
-                            <td>Forage & Excavation</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sandvik</strong></td>
-                            <td>Forage & Excavation</td>
-                        </tr>
-                        <tr>
-                            <td>Atlas Copco</td>
-                            <td>Forage & Excavation</td>
-                        </tr>
-                        <tr>
-                            <td>Boart Longyear</td>
-                            <td>Forage de Sondage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cummins</strong></td>
-                            <td>Moteurs Diesel & Puissance</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MTU (Rolls-Royce)</strong></td>
-                            <td>Moteurs Diesel & Puissance</td>
-                        </tr>
-                        <tr>
-                            <td>Yaskawa</td>
-                            <td>Alternatives Électriques & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>WEG Electric</strong></td>
-                            <td>Alternatives Électriques & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td>Kubota</td>
-                            <td>Alternatives Électriques & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Manitou</strong></td>
-                            <td>Manutention Spécialisée</td>
-                        </tr>
-                        <tr>
-                            <td>Loaders Australia</td>
-                            <td>Manutention Spécialisée</td>
-                        </tr>
-                        <tr>
-                            <td>MacLean Engineering</td>
-                            <td>Manutention (Souterrain)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Metso Outotec</strong></td>
-                            <td>Composants Châssis / Pièces dures</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FLSmidth</strong></td>
-                            <td>Composants Châssis / Pièces dures</td>
-                        </tr>
-                        <tr>
-                            <td>Polydeck</td>
-                            <td>Composants Châssis / Pièces dures</td>
-                        </tr>
-                        <tr>
-                            <td>Trelleborg</td>
-                            <td>Composants Châssis / Pièces dures</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rema Tip Top</strong></td>
-                            <td>Bandes Transporteuses</td>
-                        </tr>
-                        <tr>
-                            <td>Flexco</td>
-                            <td>Raccords pour Bandes Transporteuses</td>
-                        </tr>
-                        <tr>
-                            <td>Trelleborg</td>
-                            <td>Caoutchouc pour Bandes Transporteuses</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Trelleborg</strong></td>
-                            <td>Protection Anti-Usure</td>
-                        </tr>
-                        <tr>
-                            <td>Wear-Tek, Vecor</td>
-                            <td>Protection Anti-Usure</td>
-                        </tr>
-                        <tr>
-                            <td>Vecor</td>
-                            <td>Protection Anti-Usure</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					La fiabilité électrique et le contrôle sont essentiels. Nous fournissons des systèmes d’automatisation et de sécurité compatibles avec les principaux standards industriels afin d’assurer la continuité et la sûreté des opérations minières.
+  				</p>
+  			</div>
+  			
+  			<div class="table-container">
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Siemens</strong></td>
+  							<td>Automates (PLC/DCS)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Schneider Electric</strong></td>
+  							<td>Automates (PLC/DCS)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Rockwell (Allen-Bradley)</strong></td>
+  							<td>Automates (PLC/DCS)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Yokogawa</strong></td>
+  							<td>Automates</td>
+  						</tr>
+  						<tr>
+  							<td>Beckhoff</td>
+  							<td>Automates</td>
+  						</tr>
+  						<tr>
+  							<td>Vipa</td>
+  							<td>Automates</td>
+  						</tr>
+  						<tr>
+  							<td>Unitronics</td>
+  							<td>Automates</td>
+  						</tr>
+  						<tr>
+  							<td><strong>ABB</strong></td>
+  							<td>Variateurs & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>SEW Eurodrive</strong></td>
+  							<td>Variateurs & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Danfoss</strong></td>
+  							<td>Variateurs & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td>Voith</td>
+  							<td>Transmissions & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>WEG Electric</strong></td>
+  							<td>Transmissions & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td>Lenze</td>
+  							<td>Transmissions & Moteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Pilz</strong></td>
+  							<td>Sécurité Critique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Triconex</strong></td>
+  							<td>Sécurité Critique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Sick</strong></td>
+  							<td>Sécurité Critique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Eaton</strong></td>
+  							<td>Sécurité & Protection Électrique</td>
+  						</tr>
+  						<tr>
+  							<td>Hima</td>
+  							<td>Sécurité & Protection Électrique</td>
+  						</tr>
+  						<tr>
+  							<td>Pepperl Fuchs</td>
+  							<td>Sécurité & Protection Électrique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Wago</strong></td>
+  							<td>Connectivité & I/O</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Weidmuller</strong></td>
+  							<td>Connectivité & I/O</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Phoenix Contact</strong></td>
+  							<td>Connectivité & I/O</td>
+  						</tr>
+  						<tr>
+  							<td>Turck</td>
+  							<td>Réseaux & Connecteurs</td>
+  						</tr>
+  						<tr>
+  							<td>Moxa</td>
+  							<td>Réseaux & Connecteurs</td>
+  						</tr>
+  						<tr>
+  							<td>Wieland</td>
+  							<td>Réseaux & Connecteurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Fluke</strong></td>
+  							<td>Matériel de Calibration & Mesure</td>
+  						</tr>
+  						<tr>
+  							<td>Bruel & Kjaer</td>
+  							<td>Vibration & Mesure</td>
+  						</tr>
+  						<tr>
+  							<td>Yokogawa</td>
+  							<td>Vibration & Mesure</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
+  		
+  		<div class="table-group"> 
+  			<div class="section-header" id="section-5"> 
+  				<img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône d'outils de maintenance">
+  				<h3>5. Instrumentation, Laboratoire & Consommables</h3>
+  			</div>
 
-        <div class="table-group"> <div class="section-header" id="section-2"> <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md" alt="Icône d'un broyeur de minerais">
-                 <h3>2. Traitement des Minerais & Séparation (Concentrateur)</h3>
-            </div>
-            
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Le concentrateur étant le cœur de l’opération, nous fournissons des consommables et équipements compatibles avec les principaux fabricants du marché, ainsi que des solutions d’analyse laboratoire de pointe pour assurer une récupération maximale et un contrôle qualité précis.
-                </p>
-            </div>
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					La précision métrologique et le contrôle de la teneur sont essentiels. Nous fournissons des instruments et équipements de laboratoire garantissant la fiabilité des mesures et le maintien des standards d’accréditation de votre site.
+  				</p>
+  			</div>
+  			
+  			<div class="table-container">
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Mitutoyo</strong></td>
+  							<td>Métrologie & Contrôle</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Starrett</strong></td>
+  							<td>Métrologie & Contrôle</td>
+  						</tr>
+  						<tr>
+  							<td>Renishaw</td>
+  							<td>Alignement Laser</td>
+  						</tr>
+  						<tr>
+  							<td>Heidenhain</td>
+  							<td>Codeurs</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Mettler Toledo</strong></td>
+  							<td>Équipement Laboratoire (Balances)</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Retsch</strong></td>
+  							<td>Équipement Laboratoire</td>
+  						</tr>
+  						<tr>
+  							<td>Gilson</td>
+  							<td>Tamisage Laboratoire</td>
+  						</tr>
+  						<tr>
+  							<td>Vaisala, Lhoist</td>
+  							<td>Réactifs Laboratoire</td>
+  						</tr>
+  						<tr>
+  							<td>Lhoist</td>
+  							<td>Réactifs Laboratoire</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
 
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Metso Outotec</strong></td>
-                            <td>Concassage & Criblage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FLSmidth</strong></td>
-                            <td>Concassage & Criblage</td>
-                        </tr>
-                        <tr>
-                            <td>Terex / Finlay, Haver & Boecker</td>
-                            <td>Concassage & Criblage</td>
-                        </tr>
-                        <tr>
-                            <td>Haver & Boecker</td>
-                            <td>Concassage & Criblage</td>
-                        </tr>
-                        <tr>
-                            <td>Polydeck</td>
-                            <td>Panneaux de criblage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FLSmidth</strong></td>
-                            <td>Extraction Gravimétrique</td>
-                        </tr>
-                        <tr>
-                            <td>Gekko Systems</td>
-                            <td>Extraction Gravimétrique (Australie)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Endress + Hauser</strong></td>
-                            <td>Instrumentation Process</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Wika</strong></td>
-                            <td>Instrumentation Process</td>
-                        </tr>
-                        <tr>
-                            <td>Krohne</td>
-                            <td>Instrumentation Process</td>
-                        </tr>
-                        <tr>
-                            <td>Jumo</td>
-                            <td>Instrumentation Process</td>
-                        </tr>
-                        <tr>
-                            <td>Yokogawa</td>
-                            <td>Instrumentation Process</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Mettler Toledo</strong></td>
-                            <td>Équipement Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Retsch</strong></td>
-                            <td>Équipement Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Gilson</td>
-                            <td>Tamisage Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Vaisala, Lhoist</td>
-                            <td>Réactifs Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Lhoist</td>
-                            <td>Réactifs Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ELS</strong></td>
-                            <td>Réactifs Laboratoire</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  		<div class="table-group"> 
+  			<div class="section-header" id="section-6"> 
+  				<img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
+  				<h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
+  			</div>
 
-        <div class="table-group"> <div class="section-header" id="section-3"> <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md" alt="Icône d'une pompe industrielle">
-                 <h3>3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</h3>
-            </div>
-            
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La gestion des boues et fluides agressifs exige des solutions fiables. Nous sélectionnons les meilleures technologies de pompage et de dosage du marché pour garantir la résistance à l’abrasion et la fiabilité de vos procédés chimiques.
-                </p>
-            </div>
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					La performance de la maintenance dépend d’outils fiables et précis. Nous proposons des équipements de serrage, de levage et de soudage issus des leaders mondiaux pour assurer des interventions rapides, sûres et durables.
+  				</p>
+  			</div>
+  			
+  			<div class="table-container">
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+L						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Enerpac</strong></td>
+  							<td>Hydraulique & Serrage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Norbar</strong></td>
+  							<td>Hydraulique & Serrage</td>
+  						</tr>
+  						<tr>
+  							<td>SKF</td>
+  							<td>Alignement/Extraction</td>
+  						</tr>
+  						<tr>
+  							<td>Parker</td>
+  							<td>Hydraulique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Lincoln Electric</strong></td>
+  							<td>Soudage & Coupage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Miller Electric</strong></td>
+  							<td>Soudage & Coupage</td>
+  						</tr>
+  						<tr>
+  							<td>Magmaweld</td>
+  							<td>Plasma</td>
+  						</tr>
+  						<tr>
+  							<td>Hypertherm</td>
+  							<td>Plasma</td>
+  						</tr>
+  						<tr>
+  							<td>Leister</td>
+  							<td>Soudage Plastique</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Snap-on</strong></td>
+  							<td>Outillage à Main / Lourd</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Hilti</strong></td>
+  							<td>Outillage à Main / Lourd</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Husqvarna</strong></td>
+  							<td>Outillage à Main / Lourd</td>
+C						</tr>
+  						<tr>
+  							<td>Catu</td>
+  							<td>Sécurité Électrique, Outillage Standard</td>
+  						</tr>
+  						<tr>
+  							<td>DeWalt</td>
+  							<td>Sécurité Électrique, Outillage Standard</td>
+  						</tr>
+  						<tr>
+  							<td>Makita</td>
+  							<td>Sécurité Électrique, Outillage Standard</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
 
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Weir Minerals (Warman)</strong></td>
-                            <td>Pompes à Boues / Abrasives</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ITT Goulds</strong></td>
-                            <td>Pompes à Boues / Abrasives</td>
-                        </tr>
-                        <tr>
-                            <td>KSB Etabloc</td>
-                            <td>Pompes à Boues / Abrasives</td>
-                        </tr>
-                        <tr>
-                            <td>EDDY Pump</td>
-                            <td>Pompes à Boues / Abrasives</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Andritz</strong></td>
-                            <td>Pompes à Boues / Abrasives</td>
-                        </tr>
-                        <tr>
-                            <td><strong>LEWA</strong></td>
-                            <td>Pompes Doseuses (Réactifs)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ProMinent</strong></td>
-                            <td>Pompes Doseuses (Réactifs)</td>
-                        </tr>
-                        <tr>
-                            <td>NETZSCH, Debem</td>
-                            <td>Pompes Doseuses (Péristaltiques)</td>
-                        </tr>
-                        <tr>
-                            <td>Debem</td>
-                            <td>Pompes Doseuses (Péristaltiques)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Orbinox</strong></td>
-                            <td>Vannes Boues (Guillotine)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Weir Minerals (Isogate)</strong></td>
-                            <td>Vannes Boues (Guillotine)</td>
-                        </tr>
-                        <tr>
-                            <td>KDV</td>
-                            <td>Vannes (Corrosifs, Régulation)</td>
-                        </tr>
-                        <tr>
-                            <td>Richter</td>
-                            <td>Vannes (Corrosifs, Régulation)</td>
-                        </tr>
-                        <tr>
-                            <td>Samson</td>
-                            <td>Vannes (Corrosifs, Régulation)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Xylem (Flygt)</strong></td>
-                            <td>Pompes Eaux / Drainage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Grundfos</strong></td>
-                            <td>Pompes Eaux / Drainage</td>
-                        </tr>
-                        <tr>
-                            <td>Wilo</td>
-                            <td>Pompes Eaux / Drainage</td>
-                        </tr>
-                        <tr>
-                            <td>Lowara</td>
-                            <td>Pompes Eaux / Drainage</td>
-                        </tr>
-                        <tr>
-                            <td>Piusi</td>
-                            <td>Pompes Eaux / Drainage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Parker</strong></td>
-                            <td>Hydraulique / Raccords</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Victaulic</strong></td>
-                            <td>Raccords pour Tuyauterie (Joints)</td>
-                        </tr>
-                        <tr>
-                            <td>Klinger, Dixon, Swagelok</td>
-                            <td>Étanchéité / Raccords</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dixon</strong></td>
-                            <td>Étanchéité / Raccords</td>
-                        </tr>
-                        <tr>
-                            <td>Swagelok</td>
-                            <td>Étanchéité / Raccords</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rotork</strong></td>
-                            <td>Actionneurs de Vannes</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Topworx</strong></td>
-                            <td>Actionneurs de Vannes</td>
-                        </tr>
-                        <tr>
-                            <td>A-T Controls, Emerson</td>
-                            <td>Actionneurs de Vannes</td>
-                        </tr>
-                        <tr>
-                            <td>Emerson</td>
-                            <td>Actionneurs de Vannes</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  		<div class="table-group"> 
+  			<div class="section-header" id="section-7"> 
+  				<img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
+  				<h3>7. Services & Maintenance</h3>
+  			</div>
 
-        <div class="table-group"> <div class="section-header" id="section-4"> <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md" alt="Icône d'un automate programmable">
-                 <h3>4. Automatisation, Contrôle & Électronique</h3>
-            </div>
+  			  			<div class="expertise-box">
+  				<strong>Notre expertise</strong>
+  				<p>
+  					Avec un partenaire international reconnu, nous assurons la maintenance complète des équipements rotatifs et alternatifs, incluant la réparation certifiée sur site ou dans notre atelier en Europe, l’équilibrage de précision et la fabrication sur mesure pour une fiabilité optimale des installations.
+  				</p>
+  			</div>
+  			
+  			<div class="table-container">
+  				<table class="w-full table-custom">
+  					<thead>
+  						<tr>
+  							<th class="w-1/2">Marque</th>
+  							<th class="w-1/2">Spécialisation dans le secteur</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td><strong>Lufkin Gears</strong></td>
+  							<td>Transmission</td>
+  						</tr>
+  						<tr>
+  							<td>Curflo</td>
+  							<td>Pompage</td>
+  						</tr>
+  						<tr>
+  							<td><strong>Peroni</strong></td>
+  							<td>Haute pression</td>
+  						</tr>
+  						<tr>
+  							<td>Baker Hughes</td>
+  							<td>Forage</td>
+  						</tr>
+  						<tr>
+  							<td>CST</td>
+  							<td>Compression</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+  		</div>
+  		
+  		<footer class="mt-16 border-t pt-4 text-xs text-gray-600">
+  			<p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
+  			
+  			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div>
+  					<p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
+  					 <p>La société **MULTIPARTS** est un acteur indépendant spécialisé dans le sourcing technique et la fourniture multimarque de pièces et équipements industriels. Forte de son expertise dans l’identification, la qualification et la traçabilité des composants, elle propose des solutions fiables pour le matériel neuf, reconditionné ou obsolète, en assurant conformité, performance et continuité d’exploitation.</p>
+  				</div>
+  				<div>
+  					<p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
+  					<p>Tous les produits fournis bénéficient de la **garantie du fabricant**.</p>
+  					<p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
+  					<p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
+  					<p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
+  				</div>
+  			</div>
+  			
+  			<p class="mt-4 text-center">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</p>
+  		</footer>
+  	</div>
 
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La fiabilité électrique et le contrôle sont essentiels. Nous fournissons des systèmes d’automatisation et de sécurité compatibles avec les principaux standards industriels afin d’assurer la continuité et la sûreté des opérations minières.
-                </p>
-            </div>
-            
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Siemens</strong></td>
-                            <td>Automates (PLC/DCS)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Schneider Electric</strong></td>
-                            <td>Automates (PLC/DCS)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rockwell (Allen-Bradley)</strong></td>
-                            <td>Automates (PLC/DCS)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Yokogawa</strong></td>
-                            <td>Automates</td>
-                        </tr>
-                        <tr>
-                            <td>Beckhoff</td>
-                            <td>Automates</td>
-                        </tr>
-                        <tr>
-                            <td>Vipa</td>
-                            <td>Automates</td>
-                        </tr>
-                        <tr>
-                            <td>Unitronics</td>
-                            <td>Automates</td>
-                        </tr>
-                        <tr>
-                            <td><strong>ABB</strong></td>
-                            <td>Variateurs & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>SEW Eurodrive</strong></td>
-                            <td>Variateurs & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Danfoss</strong></td>
-                            <td>Variateurs & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td>Voith</td>
-                            <td>Transmissions & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>WEG Electric</strong></td>
-                            <td>Transmissions & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td>Lenze</td>
-                            <td>Transmissions & Moteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pilz</strong></td>
-                            <td>Sécurité Critique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Triconex</strong></td>
-                            <td>Sécurité Critique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sick</strong></td>
-                            <td>Sécurité Critique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Eaton</strong></td>
-                            <td>Sécurité & Protection Électrique</td>
-                        </tr>
-                        <tr>
-                            <td>Hima</td>
-                            <td>Sécurité & Protection Électrique</td>
-                        </tr>
-                        <tr>
-                            <td>Pepperl Fuchs</td>
-                            <td>Sécurité & Protection Électrique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Wago</strong></td>
-                            <td>Connectivité & I/O</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Weidmuller</strong></td>
-                            <td>Connectivité & I/O</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Phoenix Contact</strong></td>
-                            <td>Connectivité & I/O</td>
-                        </tr>
-                        <tr>
-                            <td>Turck</td>
-                            <td>Réseaux & Connecteurs</td>
-                        </tr>
-                        <tr>
-                            <td>Moxa</td>
-                            <td>Réseaux & Connecteurs</td>
-                        </tr>
-                        <tr>
-                            <td>Wieland</td>
-                            <td>Réseaux & Connecteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fluke</strong></td>
-                            <td>Matériel de Calibration & Mesure</td>
-                        </tr>
-                        <tr>
-                            <td>Bruel & Kjaer</td>
-                            <td>Vibration & Mesure</td>
-                        </tr>
-                        <tr>
-                            <td>Yokogawa</td>
-                            <td>Vibration & Mesure</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="table-group"> <div class="section-header" id="section-5"> <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md" alt="Icône d'outils de maintenance">
-                 <h3>5. Instrumentation, Laboratoire & Consommables</h3>
-            </div>
+  	<script type="module">
+  		
+  		// ==========================================================
+  		// Fonctions d'analyse IA et d'extraction (Inchangées)
+  		// ==========================================================
 
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La précision métrologique et le contrôle de la teneur sont essentiels. Nous fournissons des instruments et équipements de laboratoire garantissant la fiabilité des mesures et le maintien des standards d’accréditation de votre site.
-                </p>
-            </div>
-            
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Mitutoyo</strong></td>
-                            <td>Métrologie & Contrôle</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Starrett</strong></td>
-                            <td>Métrologie & Contrôle</td>
-                        </tr>
-                        <tr>
-                            <td>Renishaw</td>
-                            <td>Alignement Laser</td>
-                        </tr>
-                        <tr>
-                            <td>Heidenhain</td>
-                            <td>Codeurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Mettler Toledo</strong></td>
-                            <td>Équipement Laboratoire (Balances)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Retsch</strong></td>
-                            <td>Équipement Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Gilson</td>
-                            <td>Tamisage Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Vaisala, Lhoist</td>
-                            <td>Réactifs Laboratoire</td>
-                        </tr>
-                        <tr>
-                            <td>Lhoist</td>
-                            <td>Réactifs Laboratoire</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  		// Fonction d'extraction CSV - COPIE LES DONNÉES DU TABLEAU DANS LE PRESSE-PAPIERS
+  		function generateCSV(sectionId) {
+  			// SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
+  			const table = document.querySelector(`#${sectionId}`).closest('.table-group').querySelector('.table-custom');
+  			
+  			if (!table) return "Erreur: Tableau non trouvé.";
 
-        <div class="table-group"> <div class="section-header" id="section-6"> <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md" alt="Icône d'outils de maintenance">
-                 <h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
-            </div>
+  			// Crée l'en-tête CSV avec une colonne vide pour la quantité
+  			let csv = "Marque;Spécialisation;Quantité Souhaitée\n";
 
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** La performance de la maintenance dépend d’outils fiables et précis. Nous proposons des équipements de serrage, de levage et de soudage issus des leaders mondiaux pour assurer des interventions rapides, sûres et durables.
-                </p>
-            </div>
-            
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Enerpac</strong></td>
-                            <td>Hydraulique & Serrage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Norbar</strong></td>
-                            <td>Hydraulique & Serrage</td>
-                        </tr>
-                        <tr>
-                            <td>SKF</td>
-                            <td>Alignement/Extraction</td>
-                        </tr>
-                        <tr>
-                            <td>Parker</td>
-                            <td>Hydraulique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Lincoln Electric</strong></td>
-                            <td>Soudage & Coupage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Miller Electric</strong></td>
-                            <td>Soudage & Coupage</td>
-                        </tr>
-                        <tr>
-                            <td>Magmaweld</td>
-                            <td>Plasma</td>
-                        </tr>
-                        <tr>
-                            <td>Hypertherm</td>
-                            <td>Plasma</td>
-                        </tr>
-                        <tr>
-                            <td>Leister</td>
-                            <td>Soudage Plastique</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Snap-on</strong></td>
-                            <td>Outillage à Main / Lourd</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Hilti</strong></td>
-                            <td>Outillage à Main / Lourd</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Husqvarna</strong></td>
-                            <td>Outillage à Main / Lourd</td>
-                        </tr>
-                        <tr>
-                            <td>Catu</td>
-                            <td>Sécurité Électrique, Outillage Standard</td>
-                        </tr>
-                        <tr>
-                            <td>DeWalt</td>
-                            <td>Sécurité Électrique, Outillage Standard</td>
-                        </tr>
-                        <tr>
-                            <td>Makita</td>
-                            <td>Sécurité Électrique, Outillage Standard</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  			// Ajoute les données des lignes du corps du tableau
+  			table.querySelectorAll('tbody tr').forEach(row => {
+  				const cells = row.querySelectorAll('td');
+  				const marque = cells[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+  				const specialisation = cells[1].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+  				csv += `"${marque}";"${specialisation}"; \n`;
+  			});
 
-        <div class="table-group"> <div class="section-header" id="section-7"> <img src="https://placehold.co/100x50/334155/f0f4f8?text=Logiciels" class="rounded-md" alt="Icône de logiciels miniers">
-                 <h3>7. Services & Maintenance</h3>
-            </div>
+  			// Tente de copier le CSV dans le presse-papiers
+  			navigator.clipboard.writeText(csv).then(() => {
+  				alert(`Les données du tableau ont été copiées dans votre presse-papiers au format CSV.\nVous pouvez maintenant les coller dans Excel ou votre système d'achat.`);
+  			}).catch(err => {
+  				console.error('Erreur de copie:', err);
+  				alert('Erreur: Impossible de copier dans le presse-papiers. Voir console.');
+  			});
 
-            <div class="expertise-box">
-                <p class="text-gray-700 italic text-sm">
-                    **Notre expertise :** Avec un partenaire international reconnu, nous assurons la maintenance complète des équipements rotatifs et alternatifs, incluant la réparation certifiée sur site ou dans notre atelier en Europe, l’équilibrage de précision et la fabrication sur mesure pour une fiabilité optimale des installations.
-                </p>
-            </div>
-            
-            <div class="table-container">
-                <table class="w-full table-custom">
-                    <thead>
-                        <tr>
-                            <th class="w-1/2">Marque</th>
-                            <th class="w-1/2">Spécialisation dans le secteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Lufkin Gears</strong></td>
-                            <td>Transmission</td>
-                        </tr>
-                        <tr>
-                            <td>Curflo</td>
-                            <td>Pompage</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Peroni</strong></td>
-                            <td>Haute pression</td>
-                        </tr>
-                        <tr>
-                            <td>Baker Hughes</td>
-                            <td>Forage</td>
-                        </tr>
-                        tr>
-                            <td>CST</td>
-                            <td>Compression</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <footer class="mt-16 border-t pt-4 text-xs text-gray-600">
-            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div>
-                    <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
-                     <p>La société **MULTIPARTS** est un acteur indépendant spécialisé dans le sourcing technique et la fourniture multimarque de pièces et équipements industriels. Forte de son expertise dans l’identification, la qualification et la traçabilité des composants, elle propose des solutions fiables pour le matériel neuf, reconditionné ou obsolète, en assurant conformité, performance et continuité d’exploitation.</p>
-                </div>
-                <div>
-                    <p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
-                    <p>Tous les produits fournis bénéficient de la **garantie du fabricant**.</p>
-                    <p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
-                    <p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
-                    <p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
-                </div>
-            </div>
-            
-            <p class="mt-4 text-center">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</p>
-        </footer>
-    </div>
+  			return csv;
+  		}
 
-    <script type="module">
-        
-        // Fonction d'extraction CSV - COPIE LES DONNÉES DU TABLEAU DANS LE PRESSE-PAPIERS
-        function generateCSV(sectionId) {
-            // SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
-            const table = document.querySelector(`#${sectionId}`).closest('.table-group').querySelector('.table-custom');
-            
-            if (!table) return "Erreur: Tableau non trouvé.";
+  		// Fonction pour extraire toutes les marques d'une section donnée
+  		function extractBrands(sectionId) {
+  			const sectionGroup = document.getElementById(sectionId).closest('.table-group');
+  			if (!sectionGroup) return [];
+  			
+  			const tableContainer = sectionGroup.querySelector('.table-container');
 
-            // Crée l'en-tête CSV avec une colonne vide pour la quantité
-            let csv = "Marque;Spécialisation;Quantité Souhaitée\n";
+  			if (!tableContainer) return [];
 
-            // Ajoute les données des lignes du corps du tableau
-            table.querySelectorAll('tbody tr').forEach(row => {
-                const cells = row.querySelectorAll('td');
-                const marque = cells[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                const specialisation = cells[1].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                csv += `"${marque}";"${specialisation}"; \n`;
-            });
+  			// Extraire les marques du tableau trouvé
+  			return Array.from(tableContainer.querySelectorAll('tbody tr')).map(row => {
+  				const brand = row.querySelectorAll('td')[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+  				// N'inclut pas les lignes d'alternative combinées non principales dans le choix
+  				if (brand.toLowerCase().includes('alternatives électriques') || brand.toLowerCase().includes('vannes') || brand.toLowerCase().includes('outillage standard')) {
+  					return ''; 
+  				}
+  				return brand;
+  			}).filter(brand => brand !== ''); // Filtre les marques vides
+  		}
 
-            // Tente de copier le CSV dans le presse-papiers
-            navigator.clipboard.writeText(csv).then(() => {
-                alert(`Les données du tableau ont été copiées dans votre presse-papiers au format CSV.\nVous pouvez maintenant les coller dans Excel ou votre système d'achat.`);
-            }).catch(err => {
-                console.error('Erreur de copie:', err);
-                alert('Erreur: Impossible de copier dans le presse-papiers. Voir console.');
-            });
+  		// Fonction pour afficher la modale avec les options de sélection
+  		function showSelectionModal(functionType) {
+  			const modal = document.getElementById('iaModal');
+  			const modalContentDiv = document.getElementById('modalContent');
+  			const modalTitle = document.getElementById('modalTitle');
+  			
+  			modalTitle.textContent = "Étape 1 : Choisir la section du catalogue";
+  			modal.style.display = "block";
+  			
+  			const sectionTitles = [
+  				"1. Équipements Lourds & Mobiles",
+  				"2. Traitement des Minerais & Séparation",
+  				"3. Pompes, Vannes & Fluides Spécialisés",
+  				"4. Automatisation, Contrôle & Électronique",
+  				"5. Instrumentation, Laboratoire & Consommables",
+  				"6. Outillage Spécialisé, Soudage & Maintenance Critique",
+  				"7. Services & Structure"
+  			];
+  			const sectionIds = ["section-1", "section-2", "section-3", "section-4", "section-5", "section-6", "section-7"];
 
-            return csv;
-        }
+  			let sectionOptions = '<p class="mb-3 text-sm font-semibold">Sur quelle famille souhaitez-vous lancer l\'analyse ?</p>';
+  			sectionIds.forEach((id, index) => {
+  				sectionOptions += `
+  					<button class="select-section-btn bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-3 rounded mb-2 w-full text-left transition duration-150"
+  							data-section-id="${id}"
+  							data-function-type="${functionType}">
+  						${sectionTitles[index]}
+  					</button>
+  				`;
+  			});
 
-        // Fonction pour extraire toutes les marques d'une section donnée
-        function extractBrands(sectionId) {
-            // SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
-            const sectionGroup = document.getElementById(sectionId).closest('.table-group');
-            if (!sectionGroup) return [];
-            
-            const tableContainer = sectionGroup.querySelector('.table-container');
+  			modalContentDiv.innerHTML = sectionOptions;
+  		}
+  		
+  		// Étape 2: Afficher les marques après sélection de la section
+  		function showBrandSelection(sectionId, functionType) {
+  			const modalContentDiv = document.getElementById('modalContent');
+  			const modalTitle = document.getElementById('modalTitle');
+  			const brands = extractBrands(sectionId);
+  			
+  			modalTitle.textContent = `Étape 2 : Sélectionnez 2 ou 3 marques (${brands.length} disponibles)`;
 
-            if (!tableContainer) return [];
+  			let brandOptions = '';
+  			
+  			if (brands.length === 0) {
+  				 brandOptions = '<p class="text-red-600 font-semibold">Aucune marque disponible pour cette section.</p>';
+  			} else {
+  				 brandOptions = `<p class="mb-3 text-sm font-semibold text-red-600">Choisissez 2 ou 3 marques pour une analyse pertinente:</p>`;
+  				 brands.forEach((brand, index) => {
+  					 brandOptions += `
+  						 <div class="mb-2">
+  							 <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2 brand-checkbox">
+  							 <label for="brand-${sectionId}-${index}">${brand}</label>
+  						 </div>
+  					 `;
+  				 });
+  			}
 
-            // Extraire les marques du tableau trouvé
-            return Array.from(tableContainer.querySelectorAll('tbody tr')).map(row => {
-                const brand = row.querySelectorAll('td')[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                // N'inclut pas les lignes d'alternative combinées non principales dans le choix
-                if (brand.toLowerCase().includes('alternatives électriques') || brand.toLowerCase().includes('vannes') || brand.toLowerCase().includes('outillage standard')) {
-                    return ''; 
-                }
-                return brand;
-            }).filter(brand => brand !== ''); // Filtre les marques vides
-        }
+  			modalContentDiv.innerHTML = `
+  				<div class="max-h-64 overflow-y-auto border p-3 mb-4 rounded">
+  					${brandOptions}
+  				</div>
+  				${brands.length > 0 ? `
+  				<button id="executeIaAnalysis" 
+  						class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-150"
+  						data-section-id="${sectionId}"
+  						data-function-type="${functionType}">
+  					Lancer l'Analyse
+  				</button>` : ''}
+  				<div id="iaLoadingArea" class="mt-4"></div>
+  			`;
+  			
+  			// Logique de limitation de sélection à 3 marques
+  			document.querySelectorAll('.brand-checkbox').forEach(checkbox => {
+  				checkbox.addEventListener('change', () => {
+  					const checked = document.querySelectorAll('.brand-checkbox:checked');
+  					if (checked.length > 3) {
+  						checkbox.checked = false;
+  						alert("Vous ne pouvez sélectionner que 3 marques maximum pour l'analyse.");
+  					}
+  				});
+  			});
+  		}
 
-        // Fonction pour afficher la modale avec les options de sélection
-        function showSelectionModal(functionType) {
-            const modal = document.getElementById('iaModal');
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            
-            modalTitle.textContent = "Étape 1 : Choisir la section du catalogue";
-            modal.style.display = "block";
-            
-            const sectionTitles = [
-                "1. Équipements Lourds & Mobiles",
-                "2. Traitement des Minerais & Séparation",
-                "3. Pompes, Vannes & Fluides Spécialisés",
-                "4. Automatisation, Contrôle & Électronique",
-                "5. Instrumentation, Laboratoire & Consommables",
-                "6. Outillage Spécialisé, Soudage & Maintenance Critique",
-                "7. Services & Structure"
-            ];
-            const sectionIds = ["section-1", "section-2", "section-3", "section-4", "section-5", "section-6", "section-7"];
+  		// Fonction pour simuler la progression (pour l'effet visuel)
+  		function simulateProgress(loadingArea) {
+  			loadingArea.innerHTML = `
+  				<p class="text-gray-700 mb-2">Analyse en cours... Patience, l'IA rassemble les données stratégiques.</p>
+  				<div class="progress-bar-container">
+  					<div id="progressBar" class="progress-bar">0%</div>
+  				</div>
+  			`;
+  			const progressBar = document.getElementById('progressBar');
+  			let progress = 0;
+  			
+  			const interval = setInterval(() => {
+  				if (progress < 90) { // S'arrête à 90%
+  					progress += 5;
+  					progressBar.style.width = progress + '%';
+  					progressBar.textContent = progress + '%';
+  				}
+  			}, 500); // Mise à jour toutes les 0.5 secondes
 
-            let sectionOptions = '<p class="mb-3 text-sm font-semibold">Sur quelle famille souhaitez-vous lancer l\'analyse ?</p>';
-            sectionIds.forEach((id, index) => {
-                sectionOptions += `
-                    <button class="select-section-btn bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-3 rounded mb-2 w-full text-left transition duration-150"
-                            data-section-id="${id}"
-                            data-function-type="${functionType}">
-                        ${sectionTitles[index]}
-                    </button>
-                `;
-            });
+  			return interval; // Retourne l'ID pour l'arrêter plus tard
+  		}
 
-            modalContentDiv.innerHTML = sectionOptions;
-        }
-        
-        // Étape 2: Afficher les marques après sélection de la section
-        function showBrandSelection(sectionId, functionType) {
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            const brands = extractBrands(sectionId);
-            
-            modalTitle.textContent = `Étape 2 : Sélectionnez 2 ou 3 marques (${brands.length} disponibles)`;
+  		// Fonction principale d'appel à Gemini (Modifiée pour prendre le tableau de marques)
+  		async function callGeminiFunction(selectedBrands, functionType) {
+  			const modalContentDiv = document.getElementById('modalContent');
+  			const modalTitle = document.getElementById('modalTitle');
+  			const loadingArea = document.getElementById('iaLoadingArea');
+  			
+  			let endpoint = '';
+  			let prompt = '';
+  			const brandList = selectedBrands.join(', ');
 
-            let brandOptions = '';
-            
-            if (brands.length === 0) {
-                 brandOptions = '<p class="text-red-600 font-semibold">Aucune marque disponible pour cette section.</p>';
-            } else {
-                brandOptions = `<p class="mb-3 text-sm font-semibold text-red-600">Choisissez 2 ou 3 marques pour une analyse pertinente:</p>`;
-                brands.forEach((brand, index) => {
-                    brandOptions += `
-                        <div class="mb-2">
-                            <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2 brand-checkbox">
-                            <label for="brand-${sectionId}-${index}">${brand}</label>
-                        </div>
-                    `;
-                });
-            }
+  			if (functionType === 'marche') {
+  				endpoint = 'analyse-marche-equipements-lourds';
+  				prompt = `Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds ${brandList} dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.`;
+  			} else if (functionType === 'risque') {
+  				endpoint = 'analyse-risque-fournisseur-plc';
+  				prompt = `Analyse les marques ${brandList} dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?`;
+  			} else if (functionType === 'tco') {
+  				endpoint = 'analyse-tco-services';
+  				prompt = `Rédigez une analyse TCO comparative sur 5 ans pour les marques premium ${brandList} versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.`;
+  			} else {
+  				return; // Aucune fonction valide
+  			}
 
+  			const progressInterval = simulateProgress(loadingArea);
+  			modalTitle.textContent = `Analyse ${functionType.toUpperCase()} en cours...`;
 
-            modalContentDiv.innerHTML = `
-                <div class="max-h-64 overflow-y-auto border p-3 mb-4 rounded">
-                    ${brandOptions}
-                </div>
-                ${brands.length > 0 ? `
-                <button id="executeIaAnalysis" 
-                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-150"
-                        data-section-id="${sectionId}"
-                        data-function-type="${functionType}">
-                    Lancer l'Analyse
-                </button>` : ''}
-                <div id="iaLoadingArea" class="mt-4"></div>
-            `;
-            
-            // Logique de limitation de sélection à 3 marques
-            document.querySelectorAll('.brand-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const checked = document.querySelectorAll('.brand-checkbox:checked');
-                    if (checked.length > 3) {
-                        checkbox.checked = false;
-                        alert("Vous ne pouvez sélectionner que 3 marques maximum pour l'analyse.");
-                    }
-                });
-            });
-        }
+  			try {
+  				// 🛑 BASE URL RÉELLE DES SERVICES CLOUD RUN/FUNCTIONS 🛑
+  				const BASE_GEMINI_FUNCTION_URL = 'https://analyse-marche-equipements-lourds-856176478969.europe-west1.run.app/'; 
+  				const url = BASE_GEMINI_FUNCTION_URL + endpoint;
 
+  				const response = await fetch(url, {
+  					method: 'POST',
+  					headers: { 'Content-Type': 'application/json' },
+  					body: JSON.stringify({ prompt: prompt })
+  				});
 
-        // Fonction pour simuler la progression (pour l'effet visuel)
-        function simulateProgress(loadingArea) {
-            loadingArea.innerHTML = `
-                <p class="text-gray-700 mb-2">Analyse en cours... Patience, l'IA rassemble les données stratégiques.</p>
-                <div class="progress-bar-container">
-                    <div id="progressBar" class="progress-bar">0%</div>
-                </div>
-            `;
-            const progressBar = document.getElementById('progressBar');
-            let progress = 0;
-            
-            const interval = setInterval(() => {
-                if (progress < 90) { // S'arrête à 90% en attendant la réponse du serveur
-                    progress += 5;
-                    progressBar.style.width = progress + '%';
-                    progressBar.textContent = progress + '%';
-                }
-            }, 500); // Mise à jour toutes les 0.5 secondes
+  				clearInterval(progressInterval); // Arrête l'intervalle de progression
+  				
+  				if (!response.ok) {
+  					throw new Error(`Erreur HTTP: ${response.status}. URL: ${url}`);
+  				}
 
-            return interval; // Retourne l'ID pour l'arrêter plus tard
-        }
+  				const data = await response.json();
+  				
+  				// Finalise la barre à 100%
+  				const progressBar = document.getElementById('progressBar');
+  				if(progressBar) {
+  					progressBar.style.width = '100%';
+  					progressBar.textContent = '100% - Analyse Complète';
+  				}
 
-        // Fonction principale d'appel à Gemini (Modifiée pour prendre le tableau de marques)
-        async function callGeminiFunction(selectedBrands, functionType) {
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            const loadingArea = document.getElementById('iaLoadingArea');
-            
-            let endpoint = '';
-            let prompt = '';
-            const brandList = selectedBrands.join(', ');
+  				// Affiche le résultat dans la modale
+  				modalTitle.textContent = `Résultat de l'Analyse IA`;
+  				modalContentDiv.innerHTML = `
+  					<h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport stratégique généré</h4>
+  					<p class="text-gray-600 mb-4 italic">Marques analysées: ${brandList}</p>
+  					<div class="border p-4 bg-gray-50 whitespace-pre-wrap max-h-96 overflow-y-auto">${data.result}</div>
+  					<button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
+  				`;
 
-            // Détermine le prompt et l'endpoint en fonction du type de fonction
-            if (functionType === 'marche') {
-                endpoint = 'analyse-marche-equipements-lourds';
-                prompt = `Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds ${brandList} dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.`;
-            } else if (functionType === 'risque') {
-                endpoint = 'analyse-risque-fournisseur-plc';
-                prompt = `Analyse les marques ${brandList} dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?`;
-            } else if (functionType === 'tco') {
-                endpoint = 'analyse-tco-services';
-                prompt = `Rédigez une analyse TCO comparative sur 5 ans pour les marques premium ${brandList} versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.`;
-            } else {
-                return; // Aucune fonction valide
-            }
+  			} catch (error) {
+  				clearInterval(progressInterval);
+  				loadingArea.innerHTML = '';
+  				modalTitle.textContent = `❌ Erreur de Connexion IA`;
+C  				modalContentDiv.innerHTML = `
+  					<p>Le service Cloud n'est pas accessible ou l'analyse a échoué. Cause: ${error.message}</p>
+  					<p class="mt-2 text-xs text-red-600">Veuillez vérifier que les fonctions Cloud sont déployées et que la variable GEMINI_API_KEY est configurée.</p>
+  					<button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
+  				`;
+  			}
+  		}
+  		
+  		// ==========================================================
+  		// GESTIONNAIRES D'ÉVÉNEMENTS
+  		// ==========================================================
 
-            const progressInterval = simulateProgress(loadingArea);
-            modalTitle.textContent = `Analyse ${functionType.toUpperCase()} en cours...`;
+  		document.addEventListener('DOMContentLoaded', () => {
+  			const buttonPdf = document.getElementById('generatePdfButton');
+  			const iaModal = document.getElementById('iaModal');
+  			const closeBtn = document.querySelector('.close-btn');
 
-            try {
-                // 🛑 BASE URL RÉELLE DES SERVICES CLOUD RUN/FUNCTIONS 🛑
-                const BASE_GEMINI_FUNCTION_URL = 'https://analyse-marche-equipements-lourds-856176478969.europe-west1.run.app/'; 
-                const url = BASE_GEMINI_FUNCTION_URL + endpoint;
+  			// --- 💡 NOUVEAU: Gestion du menu Sommaire ---
+  			const summaryButton = document.getElementById('toggleSummaryButton');
+  			const summaryDropdown = document.getElementById('summaryDropdown');
+  			
+  			if (summaryButton && summaryDropdown) {
+  				summaryButton.addEventListener('click', () => {
+  					summaryDropdown.classList.toggle('hidden');
+  				});
+  				
+  				// Ferme le menu si on clique sur un lien
+  				summaryDropdown.querySelectorAll('a').forEach(link => {
+  					link.addEventListener('click', () => {
+  						summaryDropdown.classList.add('hidden');
+  					});
+  				});
+  			}
+  			// --- FIN NOUVEAU ---
 
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: prompt })
-                });
+  			// Gestion du bouton PDF
+  			if (buttonPdf) {
+  				buttonPdf.addEventListener('click', () => {
+  					window.print();
+  				});
+  			}
+  			
+  			// Gestion de la fermeture de la modale IA
+  			closeBtn.onclick = function() {
+  				iaModal.style.display = "none";
+  			}
+  			window.onclick = function(event) {
+  				if (event.target == iaModal || event.target.classList.contains('close-btn-bottom')) {
+  					iaModal.style.display = "none";
+  				}
+  			}
+  			
+  			// --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale initiale) ---
+  			document.querySelectorAll('[data-function-type]').forEach(button => {
+  				button.addEventListener('click', (event) => {
+  					const functionType = event.currentTarget.getAttribute('data-function-type');
+  					showSelectionModal(functionType);
+  				});
+  			});
+  			
+  			// --- GESTION DE LA MODALE INTERNE (CHOIX SECTION & MARQUES) ---
+  			document.getElementById('iaModal').addEventListener('click', (e) => {
+  				// 1. Choix de la section (Étape 1)
+  				if (e.target && e.target.classList.contains('select-section-btn')) {
+  					const sectionId = e.target.getAttribute('data-section-id');
+  					const functionType = e.target.getAttribute('data-function-type');
+  					showBrandSelection(sectionId, functionType); // Passe à l'étape 2
+  				}
+  				
+  				// 2. Lancement de l'analyse (Étape 2)
+  				if (e.target && e.target.id === 'executeIaAnalysis') {
+  					const sectionId = e.target.getAttribute('data-section-id');
+  					const functionType = e.target.getAttribute('data-function-type');
+  					
+  					const selectedCheckboxes = document.querySelectorAll('#modalContent input[name="selectedBrands"]:checked');
+  					const selectedBrands = Array.from(selectedCheckboxes).map(cb => cb.value);
 
-                clearInterval(progressInterval); // Arrête l'intervalle de progression
-                
-                if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}. URL: ${url}`);
-                }
-
-                const data = await response.json();
-                
-                // Finalise la barre à 100%
-                const progressBar = document.getElementById('progressBar');
-                if(progressBar) {
-                    progressBar.style.width = '100%';
-                    progressBar.textContent = '100% - Analyse Complète';
-                }
-
-                // Affiche le résultat dans la modale
-                modalTitle.textContent = `Résultat de l'Analyse IA`;
-                modalContentDiv.innerHTML = `
-                    <h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport stratégique généré</h4>
-                    <p class="text-gray-600 mb-4 italic">Marques analysées: ${brandList}</p>
-                    <div class="border p-4 bg-gray-50 whitespace-pre-wrap max-h-96 overflow-y-auto">${data.result}</div>
-                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
-                `;
-
-            } catch (error) {
-                clearInterval(progressInterval);
-                loadingArea.innerHTML = '';
-                modalTitle.textContent = `❌ Erreur de Connexion IA`;
-                modalContentDiv.innerHTML = `
-                    <p>Le service Cloud n'est pas accessible ou l'analyse a échoué. Cause: ${error.message}</p>
-                    <p class="mt-2 text-xs text-red-600">Veuillez vérifier que les fonctions Cloud sont déployées et que la variable GEMINI_API_KEY est configurée.</p>
-                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
-                `;
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttonPdf = document.getElementById('generatePdfButton');
-            const iaModal = document.getElementById('iaModal');
-            const closeBtn = document.querySelector('.close-btn');
-
-            if (buttonPdf) {
-                buttonPdf.addEventListener('click', () => {
-                    window.print();
-                });
-            }
-            
-            // Gestion de la fermeture de la modale
-            closeBtn.onclick = function() {
-                iaModal.style.display = "none";
-            }
-            window.onclick = function(event) {
-                if (event.target == iaModal || event.target.classList.contains('close-btn-bottom')) {
-                    iaModal.style.display = "none";
-                }
-            }
-            
-            // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale initiale) ---
-            document.querySelectorAll('[data-function-type]').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const functionType = event.currentTarget.getAttribute('data-function-type');
-                    showSelectionModal(functionType);
-                });
-            });
-            
-            // --- GESTION DE LA MODALE INTERNE (CHOIX SECTION & MARQUES) ---
-            document.getElementById('iaModal').addEventListener('click', (e) => {
-                // 1. Choix de la section (Étape 1)
-                if (e.target && e.target.classList.contains('select-section-btn')) {
-                    const sectionId = e.target.getAttribute('data-section-id');
-                    const functionType = e.target.getAttribute('data-function-type');
-                    showBrandSelection(sectionId, functionType); // Passe à l'étape 2
-                }
-                
-                // 2. Lancement de l'analyse (Étape 2)
-                if (e.target && e.target.id === 'executeIaAnalysis') {
-                    const sectionId = e.target.getAttribute('data-section-id');
-                    const functionType = e.target.getAttribute('data-function-type');
-                    
-                    const selectedCheckboxes = document.querySelectorAll('#modalContent input[name="selectedBrands"]:checked');
-                    const selectedBrands = Array.from(selectedCheckboxes).map(cb => cb.value);
-
-                    if (selectedBrands.length < 2 || selectedBrands.length > 3) {
-                        alert("Veuillez sélectionner au minimum 2 marques et 3 marques maximum pour l'analyse.");
-                        return;
-                    }
-                    
-                    // Lance l'appel à l'API Gemini
-                    callGeminiFunction(selectedBrands, functionType);
-                }
-            });
-        });
-        
-        // 🌟 SCRIPT DE PAGINATION 🌟
-        document.addEventListener('DOMContentLoaded', () => {
-            const catalogPage = document.querySelector('.catalog-page');
-            if (catalogPage && window.matchMedia('print').matches) {
-                catalogPage.style.counterIncrement = 'page 0';
-            }
-        });
-    </script>
+  					if (selectedBrands.length < 2 || selectedBrands.length > 3) {
+  						alert("Veuillez sélectionner au minimum 2 marques et 3 marques maximum pour l'analyse.");
+  						return;
+  					}
+  					
+  					// Lance l'appel à l'API Gemini
+  					callGeminiFunction(selectedBrands, functionType);
+  				}
+  			});
+  		});
+  		
+  		// 🌟 SCRIPT DE PAGINATION 🌟
+  		document.addEventListener('DOMContentLoaded', () => {
+  			const catalogPage = document.querySelector('.catalog-page');
+  			if (catalogPage && window.matchMedia('print').matches) {
+  				catalogPage.style.counterIncrement = 'page 0';
+  			}
+  		});
+  	</script>
 </body>
 </html>

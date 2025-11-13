@@ -29,6 +29,32 @@
             border-bottom: 4px solid #1e40af;
             padding-bottom: 10px;
             margin-bottom: 15px; /* Marge réduite sur mobile */
+            position: relative;
+        }
+        
+        /* Logo MULTIPARTS en coin haut-gauche */
+        .header-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: auto;
+            z-index: 5;
+        }
+        
+        /* Ajuster le padding du header pour faire place au logo */
+        .header h1 {
+            padding-left: 140px; /* Espace pour le logo */
+        }
+        
+        /* Responsive : masquer ou réduire le logo sur très petits écrans */
+        @media screen and (max-width: 639px) {
+            .header-logo {
+                width: 80px;
+            }
+            .header h1 {
+                padding-left: 90px;
+            }
         }
 
         /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
@@ -323,6 +349,7 @@
 
     <div class="catalog-page page-number" id="top"> 
         <header class="header">
+            <img src="logo-multiparts.png" alt="Logo MULTIPARTS" class="header-logo no-print">
             <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">NOS MARQUES PARTENAIRES</h1>
             <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier - Projets de Construction</h2>
         </header>

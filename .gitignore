@@ -1,0 +1,28 @@
+# Fichiers temporaires
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Répertoires temporaires
+/tmp/
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+# Node modules (au cas où quelqu'un les installerait par erreur)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts (ne devrait pas exister dans ce projet)
+dist/
+build/

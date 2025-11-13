@@ -262,9 +262,43 @@
             top: 80px; /* Position sous la barre d'outils */
             z-index: 10;
         }
+        /* coin logo MULTIPARTS - top left */
+        .corner-logo {
+            position: fixed;
+            left: 12px;
+            top: 12px;
+            z-index: 9999;
+            width: 56px;
+            height: 56px;
+            display: inline-block;
+            border-radius: 50%;
+            padding: 6px;
+            background: #ffffff; /* fond blanc pour lisibilité */
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+            -webkit-tap-highlight-color: transparent;
+            backdrop-filter: blur(4px);
+        }
+        .corner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 50%;
+        }
+        .corner-logo:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 10px 24px rgba(0,0,0,0.16); }
+        @media (min-width: 640px) { .corner-logo { left: 20px; top: 20px; width: 64px; height: 64px; padding: 8px; } }
+        @media (max-width: 420px) { .corner-logo { left: 8px; top: 8px; width: 48px; height: 48px; padding: 6px; } }
+        @media (prefers-reduced-motion: reduce) { .corner-logo { transition: none; } }
+        @media print { .corner-logo { display: none !important; } }
     </style>
 </head>
 <body>
+
+    <a href="#top" class="corner-logo no-print" title="MULTIPARTS - Retour en haut">
+        <img src="./logo-multiparts.png" alt="Logo MULTIPARTS">
+    </a>
 
     <div class="pdf-button-container no-print">
         <div class="w-full flex justify-center space-x-4">

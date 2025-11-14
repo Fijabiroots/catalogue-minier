@@ -262,10 +262,56 @@
             top: 80px; /* Position sous la barre d'outils */
             z-index: 10;
         }
+        /* Style pour le menu principal*/
+        .menu-link {
+          transition: background 0.18s, color 0.18s;
+        }
+            .menu-link:hover,
+            .menu-link:focus,
+            .menu-link:active {
+              background: #119248; /* Vert charte MULTI-PARTS */
+              color: #fff !important;
+            }
     </style>
 </head>
 <body>
-
+        <!-- Nouveau menu MULTIPARTS -->
+<header class="flex items-center px-6 py-3 bg-white shadow-md sticky top-0 z-50">
+  <a href="#top" aria-label="Retour haut de page">
+    <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
+      class="h-10 w-auto mr-6" style="max-width:110px;" loading="lazy">
+  </a>
+  <nav class="flex-1">
+    <ul class="flex space-x-8 justify-start">
+      <li>
+        <a href="#sommaire"
+           class="menu-link font-semibold text-black px-3 py-1 rounded"
+        >Sommaire</a>
+      </li>
+      <li>
+        <a href="#localisation"
+           class="menu-link font-semibold text-black px-3 py-1 rounded"
+        >Localisation</a>
+      </li>
+      <li>
+        <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
+           class="menu-link font-semibold text-black px-3 py-1 rounded"
+        >Contact</a>
+      </li>
+      <li>
+        <a href="#secteurs"
+           class="menu-link font-semibold text-black px-3 py-1 rounded"
+        >Secteurs</a>
+      </li>
+      <li>
+        <a href="#" onclick="window.print(); return false;"
+           class="menu-link font-semibold text-black px-3 py-1 rounded"
+        >Générer PDF</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    <!--
     <div class="pdf-button-container no-print">
         <div class="w-full flex justify-center space-x-4">
             <button id="generatePdfButton" 
@@ -279,7 +325,7 @@
                 Contact Direct
             </a>
             <div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
-            <!--
+            
             <button id="iaCentralButtonMarche" 
                     class="hidden sm:flex bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
                     data-function-type="marche">
@@ -295,13 +341,13 @@
                     data-function-type="tco">
                 ⚖️ Analyse TCO (IA)
             </button>
-            -->
+           
         </div>
         <div class="text-center text-sm text-gray-500 mt-2 mb-2">
             Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
         </div>
     </div>
-
+     -->
     <div class="fixed-expertise-band no-print">
         **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service en Afrique.
     </div>
@@ -1369,4 +1415,5 @@
     </script>
 </body>
 </html>
+
 

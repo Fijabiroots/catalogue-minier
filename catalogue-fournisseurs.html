@@ -1485,58 +1485,78 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' || e.key === 'Esc') allRows.forEach(h => hideRow(h));
   });
 })();
-    // ---------- Gestion du sous-menu "Sommaire" ----------
-// Ouvre/ferme le menu et gère les clics sur les items pour afficher la bonne section
+    // ---------- Gestion robuste du sous-menu "Sommaire" ----------
 (function() {
   const sommaireToggle = document.getElementById('sommaireToggle');
   const sommaireMenu = document.getElementById('sommaireMenu');
 
   if (!sommaireToggle || !sommaireMenu) return;
 
-  // Toggle affichage menu
+  let menuOpen = false;
+
+  // Ouvre le menu de façon sûre
+  function openMenu() {
+    sommaireMenu.classList.remove('hidden');
+    sommaireToggle.setAttribute('aria-expanded', 'true');
+    menuOpen = true;
+  }
+
+  // Ferme le menu
+  function closeMenu() {
+    sommaireMenu.classList.add('hidden');
+    sommaireToggle.setAttribute('aria-expanded', 'false');
+    menuOpen = false;
+  }
+
+  // Toggle (bouton Sommaire)
   sommaireToggle.addEventListener('click', (e) => {
+    // Empêche le clic d'atteindre le document et de fermer le menu immédiatement
     e.stopPropagation();
-    const hidden = sommaireMenu.classList.contains('hidden');
-    if (hidden) {
-      sommaireMenu.classList.remove('hidden');
-      sommaireToggle.setAttribute('aria-expanded', 'true');
+
+    if (menuOpen) {
+      closeMenu();
     } else {
-      sommaireMenu.classList.add('hidden');
-      sommaireToggle.setAttribute('aria-expanded', 'false');
+      openMenu();
+      // Mettre le focus sur le premier item pour accessibilité (si présent)
+      const first = sommaireMenu.querySelector('a[role="menuitem"]');
+      if (first) first.focus();
     }
   });
 
-  // Fermer si clic en dehors
+  // Empêcher la fermeture si on clique DANS le menu
+  sommaireMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // si on clique sur un lien, la logique plus bas le gérera (on veut juste empêcher la fermeture globale)
+  });
+
+  // Clic global : ne fermer que si le menu est ouvert et le clic est en dehors
   document.addEventListener('click', (ev) => {
+    if (!menuOpen) return;
     if (!sommaireMenu.contains(ev.target) && !sommaireToggle.contains(ev.target)) {
-      sommaireMenu.classList.add('hidden');
-      sommaireToggle.setAttribute('aria-expanded', 'false');
+      closeMenu();
     }
   });
 
-  // Fermer avec Échap
+  // Échap : fermer menu si ouvert
   document.addEventListener('keydown', (ev) => {
-    if (ev.key === 'Escape') {
-      if (!sommaireMenu.classList.contains('hidden')) {
-        sommaireMenu.classList.add('hidden');
-        sommaireToggle.setAttribute('aria-expanded', 'false');
-      }
+    if (ev.key === 'Escape' && menuOpen) {
+      closeMenu();
+      sommaireToggle.focus();
     }
   });
 
-  // Clic sur item du sommaire : activer visuel, fermer menu, ouvrir section, scroller
+  // Clic sur un item du menu : comportement (visuel + ouverture section + scroll)
   sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(link => {
     link.addEventListener('click', function(ev) {
       ev.preventDefault();
-      ev.stopPropagation();
+      ev.stopPropagation(); // empêcher la fermeture par le handler global
 
       // Visuel : retirer active sur tous puis ajouter à celui-ci
       sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
       this.classList.add('active');
 
-      // Fermer le menu
-      sommaireMenu.classList.add('hidden');
-      sommaireToggle.setAttribute('aria-expanded', 'false');
+      // Fermer le menu (après action)
+      closeMenu();
 
       // Récupérer l'id de la section
       const href = this.getAttribute('href') || '';
@@ -1549,8 +1569,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Ouvrir la section correspondante (ajouter .open sur .section-content)
       const tableGroup = sectionHeader.closest('.table-group');
       if (tableGroup) {
-        // Option : fermer les autres sections si souhaité
-        document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
+        // Optionnel : fermer les autres sections si souhaité
+        // document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
 
         const content = tableGroup.querySelector('.section-content');
         if (content) {
@@ -1567,7 +1587,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Scroller vers l'en-tête (compensation sticky header)
-      const offset = 90; // ajustez si besoin
+      const offset = 90; // ajustez si nécessaire
       const rect = sectionHeader.getBoundingClientRect();
       const absoluteY = window.scrollY + rect.top - offset;
       window.scrollTo({ top: absoluteY, behavior: 'smooth' });
@@ -1583,3 +1603,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+

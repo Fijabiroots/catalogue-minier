@@ -1,0 +1,724 @@
+[
+  {
+    "sectionId": "section-1",
+    "title": "Équipements Lourds & Mobiles (Extraction, Concassage et Transport)",
+    "items": [
+      {
+        "brand": "Caterpillar",
+        "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+        "consumables": [
+          "Filtres (air, huile, carburant, hydraulique, cabine)",
+          "Kits d’entretien périodique",
+          "Courroies",
+          "Flexibles hydrauliques",
+          "Garnitures de freins",
+          "Graisses & lubrifiants",
+          "Éléments de trains de roulement",
+          "Pièces d’usure (dents, lames, segments)"
+        ]
+      },
+      {
+        "brand": "Komatsu",
+        "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+        "consumables": [
+          "Filtres complets",
+          "Kits maintenance programmée",
+          "Courroies & flexibles",
+          "Garnitures de freins",
+          "Lubrifiants moteurs & hydrauliques",
+          "Pièces d’usure GET",
+          "Éléments de trains de roulement"
+        ]
+      },
+      {
+        "brand": "Hitachi",
+        "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+        "consumables": [
+          "Filtres complets",
+          "Flexibles hydrauliques",
+          "Courroies",
+          "Joints & kits de joints",
+          "Lubrifiants",
+          "Pièces d’usure (GET)"
+        ]
+      },
+      {
+        "brand": "Bell Equipment",
+        "specialization": "Équipements (Afrique du Sud)",
+        "consumables": [
+          "Kits filtres",
+          "Courroies",
+          "Flexibles HP",
+          "Joints hydrauliques",
+          "Graisses & huiles",
+          "Pièces d’usure"
+        ]
+      },
+      {
+        "brand": "Volvo",
+        "specialization": "Équipements (Europe)",
+        "consumables": [
+          "Filtres OEM",
+          "Courroies moteur",
+          "Flexibles HP & LP",
+          "Lubrifiants Volvo",
+          "Silentblocs",
+          "Pièces d’usure"
+        ]
+      },
+      {
+        "brand": "XCMG",
+        "specialization": "Équipements (Chine)",
+        "consumables": [
+          "Filtres OEM",
+          "Kits maintenance",
+          "Flexibles hydrauliques",
+          "Courroies",
+          "Freins & garnitures",
+          "Pièces d’usure"
+        ]
+      },
+      {
+        "brand": "Epiroc",
+        "specialization": "Forage & Excavation",
+        "consumables": [
+          "Bits DTH & Top Hammer",
+          "Tiges de forage",
+          "Adaptateurs & shanks",
+          "Lubrifiants HP",
+          "Kits marteaux",
+          "Raccords & coupleurs"
+        ]
+      },
+      {
+        "brand": "Sandvik",
+        "specialization": "Forage & Excavation",
+        "consumables": [
+          "Buttons bits",
+          "Tiges de forage",
+          "Shanks et adaptateurs",
+          "Lubrifiants marteaux",
+          "Flexibles HP",
+          "Outils DTH"
+        ]
+      },
+      {
+        "brand": "Atlas Copco",
+        "specialization": "Forage & Excavation",
+        "consumables": [
+          "Couronnes diamant",
+          "Tiges et tubes",
+          "Outils DTH",
+          "Lubrifiants de forage",
+          "Kits d’entretien marteaux"
+        ]
+      },
+      {
+        "brand": "Boart Longyear",
+        "specialization": "Forage de Sondage",
+        "consumables": [
+          "Couronnes diamant HQ/NQ/BQ",
+          "Tiges de carottage",
+          "Additifs de forage",
+          "Lubrifiant tiges",
+          "Carottiers & tubes échantillons"
+        ]
+      },
+      {
+        "brand": "Cummins",
+        "specialization": "Moteurs Diesel & Puissance",
+        "consumables": [
+          "Filtres complets",
+          "Kits 250h / 500h / 1000h",
+          "Courroies",
+          "Joints & kits",
+          "Lubrifiants",
+          "Pompes à eau",
+          "Injecteurs"
+        ]
+      },
+      {
+        "brand": "MTU",
+        "specialization": "Moteurs Diesel & Puissance",
+        "consumables": [
+          "Filtres OEM",
+          "Lubrifiants MTU",
+          "Kits maintenance",
+          "Kits joints",
+          "Courroies & tendeurs"
+        ]
+      },
+      {
+        "brand": "Yaskawa",
+        "specialization": "Alternatives Électriques & Moteurs",
+        "consumables": [
+          "Charbons",
+          "Roulements",
+          "Condensateurs",
+          "Kits isolation",
+          "Ventilateurs",
+          "Fusibles & protections"
+        ]
+      },
+      {
+        "brand": "WEG Electric",
+        "specialization": "Alternatives Électriques & Moteurs",
+        "consumables": [
+          "Roulements",
+          "Condensateurs",
+          "Kits de ventilation",
+          "Joints électriques",
+          "Protections moteur"
+        ]
+      },
+      {
+        "brand": "Kubota",
+        "specialization": "Alternatives Électriques & Moteurs",
+        "consumables": [
+          "Filtres OEM",
+          "Bougies préchauffage",
+          "Kits d’entretien",
+          "Courroies",
+          "Lubrifiants"
+        ]
+      },
+      {
+        "brand": "Manitou",
+        "specialization": "Manutention Spécialisée",
+        "consumables": [
+          "Filtres",
+          "Flexibles hydrauliques",
+          "Freins",
+          "Fourches & patins",
+          "Lubrifiants hydrauliques"
+        ]
+      },
+      {
+        "brand": "Loaders Australia",
+        "specialization": "Manutention Spécialisée",
+        "consumables": [
+          "Filtres OEM",
+          "Courroies",
+          "Flexibles HP",
+          "Freins & garnitures",
+          "Lubrifiants"
+        ]
+      },
+      {
+        "brand": "MacLean Engineering",
+        "specialization": "Manutention (Souterrain)",
+        "consumables": [
+          "Filtres",
+          "Flexibles HP",
+          "Pièces d’usure",
+          "Lubrifiants",
+          "Éclairages et capteurs"
+        ]
+      },
+      {
+        "brand": "Metso Outotec",
+        "specialization": "Composants Châssis / Pièces dures",
+        "consumables": [
+          "Liners broyeurs",
+          "Manganèse (bowl liner, mantle)",
+          "Grilles & cribles",
+          "Segments & bagues",
+          "Roulements haute résistance",
+          "Lubrifiants broyeurs"
+        ]
+      },
+      {
+        "brand": "FLSmidth",
+        "specialization": "Composants Châssis / Pièces dures",
+        "consumables": [
+          "Liners & pièces d’usure",
+          "Pièces de criblage",
+          "Segments",
+          "Roulements",
+          "Lubrifiants spécifiques",
+          "Barres de grille"
+        ]
+      },
+      {
+        "brand": "Polydeck",
+        "specialization": "Composants Châssis / Pièces dures",
+        "consumables": [
+          "Tamis polyuréthane",
+          "Tôles anti-abrasion",
+          "Barres de maintien",
+          "Segments",
+          "Plaques de remplacement"
+        ]
+      },
+      {
+        "brand": "Trelleborg",
+        "specialization": "Caoutchouc & Protection",
+        "consumables": [
+          "Tôles anti-usure",
+          "Revêtements caoutchouc",
+          "Protections anti-impact",
+          "Bandes transporteuses",
+          "Plaques polyuréthane",
+          "Manchons anti-abrasion"
+        ]
+      },
+      {
+        "brand": "Rema Tip Top",
+        "specialization": "Bandes Transporteuses",
+        "consumables": [
+          "Bandes transporteuses",
+          "Kits réparation bande",
+          "Racleurs",
+          "Rouleaux & stations",
+          "Adhésifs & solvants",
+          "Revêtements tambour"
+        ]
+      },
+      {
+        "brand": "Flexco",
+        "specialization": "Raccords pour Bandes Transporteuses",
+        "consumables": [
+          "Agrafes & jonctions",
+          "Racleurs primaires/secondaires",
+          "Outils d’assemblage",
+          "Tendeurs",
+          "Kit réparation bande"
+        ]
+      },
+      {
+        "brand": "Wear-Tek",
+        "specialization": "Protection Anti-Usure",
+        "consumables": [
+          "Plaques anti-abrasion",
+          "Tôles céramique",
+          "Protections de chutes",
+          "Manchons anti-usure",
+          "Segments de remplacement"
+        ]
+      },
+      {
+        "brand": "Vecor",
+        "specialization": "Protection Anti-Usure",
+        "consumables": [
+          "Revêtements céramique",
+          "Plaques anti-usure",
+          "Tôles polyuréthane",
+          "Manchons anti-abrasion",
+          "Tapis anti-impact"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-2",
+    "title": "Traitement des Minerais & Séparation (Concentrateur)",
+    "items": [
+      {
+        "brand": "Metso Outotec",
+        "specialization": "Concassage & Criblage",
+        "consumables": [
+          "Liners de concasseurs",
+          "Manganèse (bowl liner, mantle)",
+          "Pièces de criblage",
+          "Tôles anti-usure",
+          "Segments & bagues",
+          "Roulements lourds"
+        ]
+      },
+      {
+        "brand": "FLSmidth",
+        "specialization": "Concassage & Criblage",
+        "consumables": [
+          "Liners & pièces d’usure",
+          "Pièces de criblage",
+          "Segments",
+          "Roulements",
+          "Barres de grille",
+          "Lubrifiants broyeurs"
+        ]
+      },
+      {
+        "brand": "Terex / Finlay",
+        "specialization": "Concassage & Criblage",
+        "consumables": [
+          "Pièces d’usure concasseurs",
+          "Tôles anti-abrasion",
+          "Écrans & panneaux",
+          "Segments rotors",
+          "Courroies",
+          "Roulements"
+        ]
+      },
+      {
+        "brand": "Haver & Boecker",
+        "specialization": "Concassage & Criblage",
+        "consumables": [
+          "Panneaux de criblage",
+          "Tamis haute résistance",
+          "Fixations & modules",
+          "Segments de remplacement",
+          "Tôles perforées"
+        ]
+      },
+      {
+        "brand": "Polydeck",
+        "specialization": "Panneaux de criblage",
+        "consumables": [
+          "Panneaux polyuréthane",
+          "Fixations & cadres",
+          "Plaques anti-usure",
+          "Modules interchangeables",
+          "Segments"
+        ]
+      },
+      {
+        "brand": "FLSmidth",
+        "specialization": "Extraction Gravimétrique",
+        "consumables": [
+          "Tapis gravimétriques",
+          "Pièces de jig",
+          "Segments de spirales",
+          "Revêtements anti-abrasion",
+          "Joints & kits"
+        ]
+      },
+      {
+        "brand": "Gekko Systems",
+        "specialization": "Extraction Gravimétrique (Australie)",
+        "consumables": [
+          "Spirales concentratrices",
+          "Pièces ILR",
+          "Pompes & garnitures",
+          "Revêtements anti-abrasion",
+          "Kits de maintenance"
+        ]
+      },
+      {
+        "brand": "Endress + Hauser",
+        "specialization": "Instrumentation Process",
+        "consumables": [
+          "Sondes & capteurs",
+          "Membranes de mesure",
+          "Solutions tampon",
+          "Kits d’étalonnage",
+          "Électrodes & joints"
+        ]
+      },
+      {
+        "brand": "Wika",
+        "specialization": "Instrumentation Process",
+        "consumables": [
+          "Capteurs pression",
+          "Thermoplongeurs",
+          "Joints & adaptateurs",
+          "Liquides de remplissage",
+          "Accessoires d’étalonnage"
+        ]
+      },
+      {
+        "brand": "Krohne",
+        "specialization": "Instrumentation Process",
+        "consumables": [
+          "Électrodes débitmètre",
+          "Joints process",
+          "Solutions d’étalonnage",
+          "Sondes remplaçables"
+        ]
+      },
+      {
+        "brand": "Jumo",
+        "specialization": "Instrumentation Process",
+        "consumables": [
+          "Sondes température",
+          "Capteurs chimiques",
+          "Cellules de mesure",
+          "Kits d’étalonnage"
+        ]
+      },
+      {
+        "brand": "Yokogawa",
+        "specialization": "Instrumentation Process",
+        "consumables": [
+          "Électrodes pH",
+          "Membranes DO",
+          "Solutions tampons",
+          "Joints & adaptateurs"
+        ]
+      },
+      {
+        "brand": "Mettler Toledo",
+        "specialization": "Équipement Laboratoire",
+        "consumables": [
+          "Cellules de pesée",
+          "Kits d’étalonnage",
+          "Papier filtre",
+          "Électrodes pH",
+          "Solutions tampons"
+        ]
+      },
+      {
+        "brand": "Retsch",
+        "specialization": "Équipement Laboratoire",
+        "consumables": [
+          "Tamis analytiques",
+          "Joints & bagues",
+          "Bols & billes broyage",
+          "Kits d’entretien",
+          "Lubrifiants broyeurs"
+        ]
+      },
+      {
+        "brand": "Gilson",
+        "specialization": "Tamisage Laboratoire",
+        "consumables": [
+          "Tamis de laboratoire",
+          "Cadres & anneaux",
+          "Brosses de nettoyage",
+          "Récipients tamisage"
+        ]
+      },
+      {
+        "brand": "Vaisala",
+        "specialization": "Réactifs Laboratoire",
+        "consumables": [
+          "Solutions d’étalonnage",
+          "Solutions tampons",
+          "Liquides de maintenance"
+        ]
+      },
+      {
+        "brand": "Lhoist",
+        "specialization": "Réactifs Laboratoire",
+        "consumables": [
+          "Chaux réactive",
+          "Agents chimiques",
+          "Consommables minéraux"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-3",
+    "title": "Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
+    "items": [
+      {
+        "brand": "Weir Minerals (Warman)",
+        "specialization": "Pompes à Boues / Abrasives",
+        "consumables": [
+          "Épaississeurs & liners",
+          "Turbines & volutes",
+          "Bagues d’usure",
+          "Roulements",
+          "Garnitures mécaniques",
+          "Revêtements anti-abrasion"
+        ]
+      },
+      {
+        "brand": "ITT Goulds",
+        "specialization": "Pompes à Boues / Abrasives",
+        "consumables": [
+          "Impellers",
+          "Liners",
+          "Garnitures mécaniques",
+          "Roulements",
+          "Joints & kits",
+          "Revêtements anti-usure"
+        ]
+      },
+      {
+        "brand": "KSB Etabloc",
+        "specialization": "Pompes à Boues / Abrasives",
+        "consumables": [
+          "Roue & volute",
+          "Garnitures mécaniques",
+          "Joints toriques",
+          "Roulements",
+          "Kits hydrauliques",
+          "Revêtements anti-abrasion"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-4",
+    "title": "Automatisation, Contrôle & Électronique",
+    "items": [
+      {
+        "brand": "Siemens",
+        "specialization": "Automates (PLC/DCS)",
+        "consumables": [
+          "Modules I/O",
+          "Alimentations",
+          "Cartes CPU",
+          "Relais",
+          "Connecteurs",
+          "Câbles industriels"
+        ]
+      },
+      {
+        "brand": "Schneider Electric",
+        "specialization": "Automates (PLC/DCS)",
+        "consumables": [
+          "Modules I/O Modicon",
+          "Cartes CPU",
+          "Alimentations",
+          "Contacteurs",
+          "Relais de sécurité"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-5",
+    "title": "Instrumentation, Laboratoire & Consommables",
+    "items": [
+      {
+        "brand": "Mitutoyo",
+        "specialization": "Métrologie & Contrôle",
+        "consumables": [
+          "Calibres étalon",
+          "Embouts de palpeurs",
+          "Pointes comparateurs",
+          "Kits de calibration",
+          "Câbles de mesure",
+          "Batteries instruments"
+        ]
+      },
+      {
+        "brand": "Starrett",
+        "specialization": "Métrologie & Contrôle",
+        "consumables": [
+          "Lames",
+          "Pointes",
+          "Huiles métrologie",
+          "Étuis & coffrets",
+          "Accessoires micromètres"
+        ]
+      },
+      {
+        "brand": "Renishaw",
+        "specialization": "Alignement Laser",
+        "consumables": [
+          "Stylus / pointes de palpage",
+          "Sphères étalons",
+          "Modules de palpeur",
+          "Kits nettoyage optique",
+          "Câbles Renishaw"
+        ]
+      },
+      {
+        "brand": "Heidenhain",
+        "specialization": "Codeurs",
+        "consumables": [
+          "Bandes codeurs",
+          "Rubans magnétiques",
+          "Connecteurs TTL/HTL",
+          "Capots & joints",
+          "Kits réparation codeurs"
+        ]
+      },
+      {
+        "brand": "Mettler Toledo",
+        "specialization": "Équipement Laboratoire (Balances)",
+        "consumables": [
+          "Pesettes",
+          "Papier filtre",
+          "Électrodes pH",
+          "Solutions tampon",
+          "Poids étalonnage"
+        ]
+      },
+      {
+        "brand": "Retsch",
+        "specialization": "Équipement Laboratoire",
+        "consumables": [
+          "Tamis analytiques",
+          "Joints",
+          "Bols & billes",
+          "Kits entretien",
+          "Lubrifiants broyeurs"
+        ]
+      },
+      {
+        "brand": "Gilson",
+        "specialization": "Tamisage Laboratoire",
+        "consumables": [
+          "Tamis ASTM/ISO",
+          "Cadres & anneaux",
+          "Brosses nettoyage",
+          "Plateaux tamisage"
+        ]
+      },
+      {
+        "brand": "Vaisala",
+        "specialization": "Réactifs Laboratoire",
+        "consumables": [
+          "Capteurs HR",
+          "Solutions étalon",
+          "Solutions tampons",
+          "Filtres capteurs",
+          "Liquides maintenance"
+        ]
+      },
+      {
+        "brand": "Lhoist",
+        "specialization": "Réactifs Laboratoire",
+        "consumables": [
+          "Chaux vive",
+          "Chaux hydratée",
+          "Correcteurs pH",
+          "Réactifs minéraux",
+          "Poudres granulées"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-6",
+    "title": "Outillage Spécialisé, Soudage & Maintenance Critique",
+    "items": [
+      {
+        "brand": "Enerpac",
+        "specialization": "Hydraulique & Serrage",
+        "consumables": [
+          "Flexibles HP",
+          "Joints & kits",
+          "Huile hydraulique",
+          "Coupleurs rapides",
+          "Têtes & embouts",
+          "Kits maintenance vérins"
+        ]
+      },
+      {
+        "brand": "Norbar",
+        "specialization": "Hydraulique & Serrage",
+        "consumables": [
+          "Embouts dynamométriques",
+          "Adaptateurs hexagonaux",
+          "Douilles lourdes",
+          "Kits calibration",
+          "Lubrifiants couple",
+          "Cartouches maintenance"
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId": "section-7",
+    "title": "Services",
+    "items": [
+      {
+        "service": "Support Technique",
+        "description": "Assistance à la maintenance, dépannage, diagnostic et résolution des pannes sur site ou à distance."
+      },
+      {
+        "service": "Logistique & Sourcing",
+        "description": "Approvisionnement, gestion des pièces critiques, optimisation des délais et coordination transport."
+      },
+      {
+        "service": "Formation",
+        "description": "Formation opérateurs, techniciens et équipes maintenance sur l’utilisation, la sécurité et la maintenance des équipements."
+      }
+    ]
+  }
+]

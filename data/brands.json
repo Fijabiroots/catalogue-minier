@@ -8,13 +8,13 @@
         "specialization": "Équipements (Pelles, Chargeuses, Camions)",
         "consumables": [
           "Filtres (air, huile, carburant, hydraulique, cabine)",
-          "Kits d’entretien périodique",
+          "Kits d'entretien périodique",
           "Courroies",
           "Flexibles hydrauliques",
           "Garnitures de freins",
           "Graisses & lubrifiants",
           "Éléments de trains de roulement",
-          "Pièces d’usure (dents, lames, segments)"
+          "Pièces d'usure (dents, lames, segments)"
         ]
       },
       {
@@ -26,7 +26,7 @@
           "Courroies & flexibles",
           "Garnitures de freins",
           "Lubrifiants moteurs & hydrauliques",
-          "Pièces d’usure GET",
+          "Pièces d'usure GET",
           "Éléments de trains de roulement"
         ]
       },
@@ -39,7 +39,7 @@
           "Courroies",
           "Joints & kits de joints",
           "Lubrifiants",
-          "Pièces d’usure (GET)"
+          "Pièces d'usure (GET)"
         ]
       },
       {
@@ -51,7 +51,7 @@
           "Flexibles HP",
           "Joints hydrauliques",
           "Graisses & huiles",
-          "Pièces d’usure"
+          "Pièces d'usure"
         ]
       },
       {
@@ -63,7 +63,7 @@
           "Flexibles HP & LP",
           "Lubrifiants Volvo",
           "Silentblocs",
-          "Pièces d’usure"
+          "Pièces d'usure"
         ]
       },
       {
@@ -75,7 +75,7 @@
           "Flexibles hydrauliques",
           "Courroies",
           "Freins & garnitures",
-          "Pièces d’usure"
+          "Pièces d'usure"
         ]
       },
       {
@@ -110,7 +110,7 @@
           "Tiges et tubes",
           "Outils DTH",
           "Lubrifiants de forage",
-          "Kits d’entretien marteaux"
+          "Kits d'entretien marteaux"
         ]
       },
       {
@@ -177,7 +177,7 @@
         "consumables": [
           "Filtres OEM",
           "Bougies préchauffage",
-          "Kits d’entretien",
+          "Kits d'entretien",
           "Courroies",
           "Lubrifiants"
         ]
@@ -210,7 +210,7 @@
         "consumables": [
           "Filtres",
           "Flexibles HP",
-          "Pièces d’usure",
+          "Pièces d'usure",
           "Lubrifiants",
           "Éclairages et capteurs"
         ]
@@ -231,7 +231,7 @@
         "brand": "FLSmidth",
         "specialization": "Composants Châssis / Pièces dures",
         "consumables": [
-          "Liners & pièces d’usure",
+          "Liners & pièces d'usure",
           "Pièces de criblage",
           "Segments",
           "Roulements",
@@ -280,7 +280,7 @@
         "consumables": [
           "Agrafes & jonctions",
           "Racleurs primaires/secondaires",
-          "Outils d’assemblage",
+          "Outils d'assemblage",
           "Tendeurs",
           "Kit réparation bande"
         ]
@@ -329,7 +329,7 @@
         "brand": "FLSmidth",
         "specialization": "Concassage & Criblage",
         "consumables": [
-          "Liners & pièces d’usure",
+          "Liners & pièces d'usure",
           "Pièces de criblage",
           "Segments",
           "Roulements",
@@ -341,7 +341,7 @@
         "brand": "Terex / Finlay",
         "specialization": "Concassage & Criblage",
         "consumables": [
-          "Pièces d’usure concasseurs",
+          "Pièces d'usure concasseurs",
           "Tôles anti-abrasion",
           "Écrans & panneaux",
           "Segments rotors",
@@ -400,7 +400,7 @@
           "Sondes & capteurs",
           "Membranes de mesure",
           "Solutions tampon",
-          "Kits d’étalonnage",
+          "Kits d'étalonnage",
           "Électrodes & joints"
         ]
       },
@@ -412,7 +412,7 @@
           "Thermoplongeurs",
           "Joints & adaptateurs",
           "Liquides de remplissage",
-          "Accessoires d’étalonnage"
+          "Accessoires d'étalonnage"
         ]
       },
       {
@@ -421,7 +421,7 @@
         "consumables": [
           "Électrodes débitmètre",
           "Joints process",
-          "Solutions d’étalonnage",
+          "Solutions d'étalonnage",
           "Sondes remplaçables"
         ]
       },
@@ -432,7 +432,7 @@
           "Sondes température",
           "Capteurs chimiques",
           "Cellules de mesure",
-          "Kits d’étalonnage"
+          "Kits d'étalonnage"
         ]
       },
       {
@@ -450,7 +450,7 @@
         "specialization": "Équipement Laboratoire",
         "consumables": [
           "Cellules de pesée",
-          "Kits d’étalonnage",
+          "Kits d'étalonnage",
           "Papier filtre",
           "Électrodes pH",
           "Solutions tampons"
@@ -463,7 +463,7 @@
           "Tamis analytiques",
           "Joints & bagues",
           "Bols & billes broyage",
-          "Kits d’entretien",
+          "Kits d'entretien",
           "Lubrifiants broyeurs"
         ]
       },
@@ -481,9 +481,9 @@
         "brand": "Vaisala",
         "specialization": "Réactifs Laboratoire",
         "consumables": [
-          "Solutions d’étalonnage",
+          "Solutions d'étalonnage",
           "Solutions tampons",
-          "Liquides de maintenance"
+          "Liquides maintenance"
         ]
       },
       {
@@ -507,7 +507,7 @@
         "consumables": [
           "Épaississeurs & liners",
           "Turbines & volutes",
-          "Bagues d’usure",
+          "Bagues d'usure",
           "Roulements",
           "Garnitures mécaniques",
           "Revêtements anti-abrasion"
@@ -858,40 +858,41 @@
     ]
   },
   {
-  "sectionId": "section-7",
-  "title": "Services",
-  "items": [
-    {
-      "brand": "Support Technique",
-      "specialization": "Assistance à la maintenance, diagnostic et dépannage",
-      "consumables": [
-        "Assistance à distance",
-        "Interventions sur site",
-        "Diagnostics techniques",
-        "Rapports d’intervention",
-        "Support maintenance préventive"
-      ]
-    },
-    {
-      "brand": "Logistique & Sourcing",
-      "specialization": "Approvisionnement, gestion des pièces critiques et optimisation logistique",
-      "consumables": [
-        "Recherche et sourcing fournisseurs",
-        "Gestion des pièces critiques",
-        "Suivi des expéditions",
-        "Consolidation logistique",
-        "Optimisation des délais"
-      ]
-    },
-    {
-      "brand": "Formation",
-      "specialization": "Formation opérateurs et équipes maintenance",
-      "consumables": [
-        "Modules opérateur",
-        "Modules maintenance",
-        "Formation sécurité",
-        "Supports pédagogiques",
-        "Sessions pratiques sur site"
+    "sectionId": "section-7",
+    "title": "Services",
+    "items": [
+      {
+        "service": "Support Technique",
+        "description": "Assistance à la maintenance, diagnostic et dépannage",
+        "deliverables": [
+          "Assistance à distance",
+          "Interventions sur site",
+          "Diagnostics techniques",
+          "Rapports d'intervention",
+          "Support maintenance préventive"
+        ]
+      },
+      {
+        "service": "Logistique & Sourcing",
+        "description": "Approvisionnement, gestion des pièces critiques et optimisation logistique",
+        "deliverables": [
+          "Recherche et sourcing fournisseurs",
+          "Gestion des pièces critiques",
+          "Suivi des expéditions",
+          "Consolidation logistique",
+          "Optimisation des délais"
+        ]
+      },
+      {
+        "service": "Formation",
+        "description": "Formation opérateurs et équipes maintenance",
+        "deliverables": [
+          "Modules opérateur",
+          "Modules maintenance",
+          "Formation sécurité",
+          "Supports pédagogiques",
+          "Sessions pratiques sur site"
+        ]
       }
     ]
   }

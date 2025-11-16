@@ -152,7 +152,7 @@
             transition: background 0.13s, color 0.13s;
          }
                /* INSÉRER après la ligne 153 */
-.brand-row { position: relative; } /* ancre le popup par rapport à la ligne */
+.brand-row td:first-child { position: relative; } /* ancre le popup par rapport à la cellule contenant la popup */
 
 .consumables-inline {
   white-space: nowrap;
@@ -198,9 +198,10 @@
 }
 
 /* Afficher popup au hover / focus / classe .show (utilisée par le JS) */
-.brand-row:hover .consumables-popup,
-.brand-row:focus-within .consumables-popup,
-.brand-row.show .consumables-popup {
+/* Remplacer les lignes 201-205 (sélecteurs d'affichage) par : */
+.brand-row:hover td:first-child .consumables-popup,
+.brand-row:focus-within td:first-child .consumables-popup,
+.brand-row.show td:first-child .consumables-popup {
   display: block;
 }
 
@@ -221,7 +222,7 @@
 }
 
 /* veiller à ne pas imprimer les popups */
-.no-print { display: inline-block; }
+.no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
 @media print { .no-print { display: none !important; } 
     }
         
@@ -1639,62 +1640,80 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     
-    <!-- INSÉRER ce script juste avant la fermeture </body> (après la ligne 999) -->
-<!-- INSÉRER ce script juste avant </body> -->
 <script>
+/* Gestion des popups de consommables — show/hide au hover, focus, click (tactile) */
 (function () {
-  const rows = Array.from(document.querySelectorAll('.brand-row'));
+  // Lignes ayant une popup (filtre pour éviter lignes sans popup)
+  const rows = Array.from(document.querySelectorAll('.brand-row')).filter(r => r.querySelector('.consumables-popup'));
 
-  function show(row) {
+  // Etat initial propre
+  rows.forEach(r => {
+    r.classList.remove('show');
+    r.setAttribute('aria-expanded', 'false');
+  });
+
+  function showRow(row) {
     // masquer les autres popups
-    rows.forEach(r => r !== row && r.classList.remove('show'));
+    rows.forEach(r => {
+      if (r !== row) {
+        r.classList.remove('show');
+        r.setAttribute('aria-expanded', 'false');
+      }
+    });
     row.classList.add('show');
-    row.setAttribute('aria-expanded','true');
+    row.setAttribute('aria-expanded', 'true');
   }
-  function hide(row) {
+
+  function hideRow(row) {
     row.classList.remove('show');
-    row.setAttribute('aria-expanded','false');
-  }
-  function toggle(row) {
-    if (row.classList.contains('show')) hide(row);
-    else show(row);
+    row.setAttribute('aria-expanded', 'false');
   }
 
-  // hover / focus / click handlers
+  function toggleRow(row) {
+    if (row.classList.contains('show')) hideRow(row);
+    else showRow(row);
+  }
+
+  // Handlers pour chaque ligne
   rows.forEach(row => {
-    row.addEventListener('mouseenter', () => show(row));
-    row.addEventListener('mouseleave', () => hide(row));
-    row.addEventListener('focusin', () => show(row));
-    row.addEventListener('focusout', () => hide(row));
+    // Desktop : pointer (mouseenter / mouseleave) pour fiabilité
+    row.addEventListener('mouseenter', () => showRow(row));
+    row.addEventListener('mouseleave', () => {
+      // Si le focus est à l'intérieur, on ne ferme pas
+      if (document.activeElement && row.contains(document.activeElement)) return;
+      hideRow(row);
+    });
 
+    // Clavier / accessibilité : focusin / focusout
+    row.addEventListener('focusin', () => showRow(row));
+    row.addEventListener('focusout', (e) => {
+      // Si le focus va vers un élément encore dans la ligne (ex: popup), ne pas fermer
+      const related = e.relatedTarget;
+      if (related && row.contains(related)) return;
+      hideRow(row);
+    });
+
+    // Click / tap : toggle (utile sur écrans tactiles)
     row.addEventListener('click', (e) => {
-      // si clic sur lien réel, ne pas interférer
+      // si on clique sur un lien réel, laisser le comportement normal
       if (e.target.closest('a')) return;
-      // toggle pour tactile
-      toggle(row);
+      toggleRow(row);
     });
   });
 
-  // cliquez en dehors : fermer tout
+  // Clic en dehors : fermer toutes les popups (capture pour attraper tôt)
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.brand-row')) rows.forEach(hide);
+    if (!e.target.closest('.brand-row')) {
+      rows.forEach(hideRow);
+    }
   }, true);
 
-  // Echap : fermer tout
+  // Escape : fermer toutes les popups
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') rows.forEach(hide);
+    if (e.key === 'Escape' || e.key === 'Esc') rows.forEach(hideRow);
   });
 })();
 </script>
+    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

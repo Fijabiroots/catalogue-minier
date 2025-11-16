@@ -1301,61 +1301,81 @@
         });
     </script>
     <!-- Insert before </body> -->
+<!-- Remplacer le script actuel par celui-ci (insérer juste avant </body>) -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const groups = Array.from(document.querySelectorAll('.table-group'));
-  if(groups.length === 0) return;
+  if (groups.length === 0) return;
 
+  const headerEl = document.querySelector('header'); // le menu sticky
+  const headerHeight = () => (headerEl ? headerEl.offsetHeight : 0);
+
+  // helper : scroll to start of section, en compensant la hauteur du header sticky
+  function scrollToSectionStart(group) {
+    const header = group.querySelector('.section-header');
+    if (!header) return;
+    const rect = header.getBoundingClientRect();
+    const targetY = window.pageYOffset + rect.top - headerHeight() - 8; // 8px de marge
+    window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+  }
+
+  // Initialize state : première section ouverte, les autres fermées
   groups.forEach((group, index) => {
     const btn = group.querySelector('.toggle-details-btn');
     const content = group.querySelector('.section-content');
     const sign = group.querySelector('.toggle-sign');
-    if(!btn || !content) return;
-    if(index === 0) {
+    if (!btn || !content) return;
+    if (index === 0) {
       content.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      if(sign) sign.textContent = '−';
+      if (sign) sign.textContent = '−';
     } else {
       content.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
-      if(sign) sign.textContent = '+';
+      if (sign) sign.textContent = '+';
     }
 
+    // click handler : ouvre la section cliquée, ferme les autres,
+    // et si la section vient d'être ouverte, on scroll vers son début
     btn.addEventListener('click', function() {
       groups.forEach((g) => {
         const c = g.querySelector('.section-content');
         const b = g.querySelector('.toggle-details-btn');
         const s = g.querySelector('.toggle-sign');
-        if(!c || !b) return;
-        if(g === group) {
+        if (!c || !b) return;
+        if (g === group) {
           const isOpen = c.classList.contains('open');
-          if(isOpen) {
+          if (isOpen) {
             c.classList.remove('open');
-            b.setAttribute('aria-expanded','false');
-            if(s) s.textContent = '+';
+            b.setAttribute('aria-expanded', 'false');
+            if (s) s.textContent = '+';
           } else {
             c.classList.add('open');
-            b.setAttribute('aria-expanded','true');
-            if(s) s.textContent = '−';
+            b.setAttribute('aria-expanded', 'true');
+            if (s) s.textContent = '−';
+            // Scroll to the start of the section after a tiny timeout so layout is updated
+            // (ensures the expanded content doesn't push the header out of the calculated position)
+            setTimeout(() => scrollToSectionStart(g), 70);
           }
         } else {
           c.classList.remove('open');
-          b.setAttribute('aria-expanded','false');
+          b.setAttribute('aria-expanded', 'false');
           const otherSign = g.querySelector('.toggle-sign');
-          if(otherSign) otherSign.textContent = '+';
+          if (otherSign) otherSign.textContent = '+';
         }
       });
     });
   });
 
+  // Print handlers : ouvrir toutes les sections avant impression et restaurer après
   function openAll() {
     groups.forEach((g) => {
       const c = g.querySelector('.section-content');
       const b = g.querySelector('.toggle-details-btn');
       const s = g.querySelector('.toggle-sign');
-      if(c) c.classList.add('open');
-      if(b) b.setAttribute('aria-expanded','true');
-      if(s) s.textContent = '−';
+      if (c) c.classList.add('open');
+      if (b) b.setAttribute('aria-expanded', 'true');
+      if (s) s.textContent = '−';
     });
   }
   function restoreInitial() {
@@ -1363,17 +1383,20 @@ document.addEventListener('DOMContentLoaded', function() {
       const c = g.querySelector('.section-content');
       const b = g.querySelector('.toggle-details-btn');
       const s = g.querySelector('.toggle-sign');
-      if(!c || !b) return;
-      if(idx === 0) {
+      if (!c || !b) return;
+      if (idx === 0) {
         c.classList.add('open');
-        b.setAttribute('aria-expanded','true');
-        if(s) s.textContent = '−';
+        b.setAttribute('aria-expanded', 'true');
+        if (s) s.textContent = '−';
       } else {
         c.classList.remove('open');
-        b.setAttribute('aria-expanded','false');
-        if(s) s.textContent = '+';
+        b.setAttribute('aria-expanded', 'false');
+        if (s) s.textContent = '+';
       }
     });
+    // scroll to first section start after restoring (optional)
+    const first = groups[0];
+    if (first) setTimeout(() => scrollToSectionStart(first), 70);
   }
 
   window.addEventListener('beforeprint', openAll);
@@ -1382,6 +1405,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
 
 
 

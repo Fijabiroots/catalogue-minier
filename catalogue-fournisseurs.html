@@ -1259,14 +1259,13 @@ document.addEventListener('DOMContentLoaded', function() {
    Génère les <tr class="brand-row"> et attache les interactions */
 (async function () {
   const dataUrl = '/data/brands.json';
-  let data;
   try {
     const res = await fetch(dataUrl, { cache: 'no-cache' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    data = await res.json();
+    const data = await res.json();
+    // ... génération DOM (tbody placeholders, popups) ...
   } catch (err) {
     console.error('Impossible de charger', dataUrl, err);
-    return;
   }
 
   // map sectionId -> tbody id
@@ -1384,4 +1383,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
 </body>
 </html>
+
 

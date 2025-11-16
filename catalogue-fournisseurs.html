@@ -410,9 +410,111 @@
                   color: #ffffff;
                   font-weight: 600;
                 }
+                    /* ---------- PRINT: header/footer fixes, padding et règles anti-tronquage ---------- */
+            @media print {
+              /* Masquer la counter affichée ailleurs pour éviter duplication */
+              .page-number::after { display: none !important; }
+            
+              /* Afficher header & footer fixes sur chaque page */
+              .print-header,
+              .print-footer {
+                display: block !important;
+                position: fixed !important;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                z-index: 9999;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+              }
+            
+              /* Header (logo) en haut de chaque page */
+              .print-header {
+                top: 0;
+                height: 56px; /* ajuster si nécessaire */
+                padding: 6px 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+              }
+              .print-header img {
+                height: 44px;
+                width: auto;
+                object-fit: contain;
+              }
+            
+              /* Footer fixe en bas de chaque page : copyright + page counter */
+              .print-footer {
+                bottom: 0;
+                height: 48px; /* ajuster si nécessaire */
+                padding: 6px 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                color: #333;
+                border-top: 1px solid rgba(0,0,0,0.06);
+              }
+              .print-footer .copyright { margin-right: 8px; }
+              .print-footer .page-counter::after {
+                content: "Page " counter(page) " / " counter(pages);
+                margin-left: 10px;
+              }
+            
+              /* Réserver l'espace pour header/footer : évite chevauchement et troncature */
+              .catalog-page {
+                /* override du padding précédemment déclaré */
+                padding-top: calc(56px + 10mm) !important;   /* header height + marge imprimée */
+                padding-bottom: calc(48px + 10mm) !important;/* footer height + marge imprimée */
+                box-shadow: none !important;
+                margin: 0 !important;
+              }
+            
+              /* Cacher éléments interactifs qui ne doivent pas s'imprimer */
+              .toggle-details-btn,
+              .no-print {
+                display: none !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                visibility: hidden !important;
+              }
+            
+              /* Empêcher la coupure interne (page-break) sur blocs critiques pour éviter la troncature */
+              .table-container,
+              .expertise-box,
+              .section-header,
+              .section-content,
+              .table-custom,
+              .table-custom tbody,
+              .table-custom tr {
+                page-break-inside: avoid !important;
+                -webkit-page-break-inside: avoid !important;
+                break-inside: avoid !important;
+              }
+            
+              /* Forcer impression des couleurs (si le navigateur le permet) */
+              header, .section-header, .table-custom th, .fixed-expertise-band {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+              }
+            
+              /* Optionnel : afficher le sommaire de la page (si vous utilisez la classe .no-screen) */
+              .no-screen { display: block !important; }
+            }
             </style>
         </head>
         <body>
+                    <!-- PRINT: Header & Footer fixes (affichés uniquement à l'impression via @media print) -->
+            <div class="print-header no-print" aria-hidden="true">
+              <img src="logo-multiparts.png" alt="Logo MULTIPARTS" />
+            </div>
+            
+            <div class="print-footer no-print" aria-hidden="true">
+              <span class="copyright">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</span>
+              <span class="page-counter" aria-hidden="true"></span>
+            </div>
+            <!-- /PRINT -->
                 <!-- Nouveau menu MULTIPARTS -->
         <header class="flex items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
           <a href="#top" aria-label="Retour haut de page">
@@ -1625,5 +1727,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 

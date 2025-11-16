@@ -1485,7 +1485,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' || e.key === 'Esc') allRows.forEach(h => hideRow(h));
   });
 })();
-    // ---------- Gestion robuste du sous-menu "Sommaire" ----------
+    // ---------- Gestion robuste et exclusive du sous-menu "Sommaire" ----------
 (function() {
   const sommaireToggle = document.getElementById('sommaireToggle');
   const sommaireMenu = document.getElementById('sommaireMenu');
@@ -1494,42 +1494,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let menuOpen = false;
 
-  // Ouvre le menu de façon sûre
   function openMenu() {
     sommaireMenu.classList.remove('hidden');
     sommaireToggle.setAttribute('aria-expanded', 'true');
     menuOpen = true;
   }
-
-  // Ferme le menu
   function closeMenu() {
     sommaireMenu.classList.add('hidden');
     sommaireToggle.setAttribute('aria-expanded', 'false');
     menuOpen = false;
   }
 
-  // Toggle (bouton Sommaire)
+  // Toggle bouton : stopper propagation pour éviter que document.click ne ferme tout de suite
   sommaireToggle.addEventListener('click', (e) => {
-    // Empêche le clic d'atteindre le document et de fermer le menu immédiatement
     e.stopPropagation();
-
-    if (menuOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-      // Mettre le focus sur le premier item pour accessibilité (si présent)
-      const first = sommaireMenu.querySelector('a[role="menuitem"]');
-      if (first) first.focus();
-    }
+    if (menuOpen) closeMenu();
+    else openMenu();
   });
 
   // Empêcher la fermeture si on clique DANS le menu
   sommaireMenu.addEventListener('click', (e) => {
     e.stopPropagation();
-    // si on clique sur un lien, la logique plus bas le gérera (on veut juste empêcher la fermeture globale)
   });
 
-  // Clic global : ne fermer que si le menu est ouvert et le clic est en dehors
+  // Clic global : ne fermer que si le menu est ouvert et le clic est hors menu/toggle
   document.addEventListener('click', (ev) => {
     if (!menuOpen) return;
     if (!sommaireMenu.contains(ev.target) && !sommaireToggle.contains(ev.target)) {
@@ -1545,55 +1533,89 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Clic sur un item du menu : comportement (visuel + ouverture section + scroll)
+  // Helper : ferme toutes les sections et remet les toggles à l'état fermé
+  function closeAllSections() {
+    document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
+    document.querySelectorAll('.section-header').forEach(header => {
+      const btn = header.querySelector('.toggle-details-btn');
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        const sign = btn.querySelector('.toggle-sign');
+        if (sign) sign.textContent = '+';
+      }
+    });
+  }
+
+  // Clic sur un élément du sommaire : ouvrir EXCLUSIVEMENT la section ciblée
   sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(link => {
     link.addEventListener('click', function(ev) {
       ev.preventDefault();
-      ev.stopPropagation(); // empêcher la fermeture par le handler global
+      ev.stopPropagation();
 
-      // Visuel : retirer active sur tous puis ajouter à celui-ci
+      // Marquage visuel dans le sommaire
       sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
       this.classList.add('active');
 
-      // Fermer le menu (après action)
-      closeMenu();
-
-      // Récupérer l'id de la section
+      // Récupérer l'id de la section ciblée
       const href = this.getAttribute('href') || '';
       const targetId = href.replace(/^#/, '');
-      if (!targetId) return;
+      if (!targetId) {
+        closeMenu();
+        return;
+      }
 
       const sectionHeader = document.getElementById(targetId);
-      if (!sectionHeader) return;
+      if (!sectionHeader) {
+        closeMenu();
+        return;
+      }
 
-      // Ouvrir la section correspondante (ajouter .open sur .section-content)
+      // Fermer toutes les sections, puis ouvrir seulement la section ciblée
+      closeAllSections();
       const tableGroup = sectionHeader.closest('.table-group');
       if (tableGroup) {
-        // Optionnel : fermer les autres sections si souhaité
-        // document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
-
         const content = tableGroup.querySelector('.section-content');
         if (content) {
           content.classList.add('open');
-
-          // Mettre à jour le bouton toggle (aria-expanded et signe)
-          const toggleBtn = sectionHeader.querySelector('.toggle-details-btn');
-          if (toggleBtn) {
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            const sign = toggleBtn.querySelector('.toggle-sign');
-            if (sign) sign.textContent = '−';
-          }
+        }
+        // Mettre à jour le toggle correspondant (accessible depuis sectionHeader)
+        const toggleBtn = sectionHeader.querySelector('.toggle-details-btn');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          const sign = toggleBtn.querySelector('.toggle-sign');
+          if (sign) sign.textContent = '−';
         }
       }
 
-      // Scroller vers l'en-tête (compensation sticky header)
-      const offset = 90; // ajustez si nécessaire
+      // Fermer le menu sommaire
+      closeMenu();
+
+      // Calculer offset dynamique pour que le titre de la section soit bien visible
+      const mainHeader = document.querySelector('header'); // sticky header
+      const extraFixed = document.querySelector('.fixed-expertise-band'); // si visible
+      let offset = 90; // fallback
+      if (mainHeader) offset = mainHeader.offsetHeight + 8;
+      if (extraFixed && getComputedStyle(extraFixed).position === 'sticky') offset += extraFixed.offsetHeight;
+
+      // Scroller vers l'en-tête de section : on vise sectionHeader (titre)
       const rect = sectionHeader.getBoundingClientRect();
       const absoluteY = window.scrollY + rect.top - offset;
-      window.scrollTo({ top: absoluteY, behavior: 'smooth' });
+
+      // Scroll smooth et s'assurer que le titre soit visible (arrondir)
+      window.scrollTo({ top: Math.max(0, Math.round(absoluteY)), behavior: 'smooth' });
+
+      // Mettre le focus sur le titre pour accessibilité après scroll
+      setTimeout(() => {
+        // essayer de focus le H3 si possible
+        const h3 = sectionHeader.querySelector('h3') || sectionHeader;
+        if (h3 && typeof h3.focus === 'function') {
+          h3.setAttribute('tabindex', '-1');
+          h3.focus({ preventScroll: true });
+        }
+      }, 300);
     });
 
-    // Accessibilité : focus ajoute effet visuel
+    // Focus keyboard : visuel actif
     link.addEventListener('focus', function() {
       sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
       this.classList.add('active');
@@ -1603,4 +1625,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 

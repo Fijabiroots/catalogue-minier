@@ -392,6 +392,24 @@
                       background: #119248; /* Vert charte MULTI-PARTS */
                       color: #fff !important;
                     }
+                        /* Styles pour le sous-menu Sommaire : hover et sélection active */
+                .sommaire-menu a {
+                  display: block;
+                  padding: 8px 12px;
+                  color: #1f2937;
+                  text-decoration: none;
+                  transition: background-color 0.12s, color 0.12s;
+                }
+                .sommaire-menu a:hover,
+                .sommaire-menu a:focus {
+                  background-color: #119248; /* couleur hover */
+                  color: #ffffff;
+                }
+                .sommaire-menu a.active {
+                  background-color: #0f6b34; /* couleur sélection persistante */
+                  color: #ffffff;
+                  font-weight: 600;
+                }
             </style>
         </head>
         <body>
@@ -415,10 +433,10 @@
                   </button>
                 
                   <!-- Sous-menu : apparaît via JS (hidden par défaut) -->
-                  <ul id="sommaireMenu"
-                      class="hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
-                      role="menu"
-                      aria-labelledby="sommaireToggle">
+                    <ul id="sommaireMenu"
+                    class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
+                    role="menu"
+                    aria-labelledby="sommaireToggle">         
                     <li role="none">
                       <a role="menuitem" href="#section-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">1. Équipements Lourds & Mobiles</a>
                     </li>
@@ -1467,10 +1485,101 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' || e.key === 'Esc') allRows.forEach(h => hideRow(h));
   });
 })();
-</script>
-    
+    // ---------- Gestion du sous-menu "Sommaire" ----------
+// Ouvre/ferme le menu et gère les clics sur les items pour afficher la bonne section
+(function() {
+  const sommaireToggle = document.getElementById('sommaireToggle');
+  const sommaireMenu = document.getElementById('sommaireMenu');
+
+  if (!sommaireToggle || !sommaireMenu) return;
+
+  // Toggle affichage menu
+  sommaireToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const hidden = sommaireMenu.classList.contains('hidden');
+    if (hidden) {
+      sommaireMenu.classList.remove('hidden');
+      sommaireToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      sommaireMenu.classList.add('hidden');
+      sommaireToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fermer si clic en dehors
+  document.addEventListener('click', (ev) => {
+    if (!sommaireMenu.contains(ev.target) && !sommaireToggle.contains(ev.target)) {
+      sommaireMenu.classList.add('hidden');
+      sommaireToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Fermer avec Échap
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') {
+      if (!sommaireMenu.classList.contains('hidden')) {
+        sommaireMenu.classList.add('hidden');
+        sommaireToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+
+  // Clic sur item du sommaire : activer visuel, fermer menu, ouvrir section, scroller
+  sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(link => {
+    link.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      // Visuel : retirer active sur tous puis ajouter à celui-ci
+      sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+
+      // Fermer le menu
+      sommaireMenu.classList.add('hidden');
+      sommaireToggle.setAttribute('aria-expanded', 'false');
+
+      // Récupérer l'id de la section
+      const href = this.getAttribute('href') || '';
+      const targetId = href.replace(/^#/, '');
+      if (!targetId) return;
+
+      const sectionHeader = document.getElementById(targetId);
+      if (!sectionHeader) return;
+
+      // Ouvrir la section correspondante (ajouter .open sur .section-content)
+      const tableGroup = sectionHeader.closest('.table-group');
+      if (tableGroup) {
+        // Option : fermer les autres sections si souhaité
+        document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
+
+        const content = tableGroup.querySelector('.section-content');
+        if (content) {
+          content.classList.add('open');
+
+          // Mettre à jour le bouton toggle (aria-expanded et signe)
+          const toggleBtn = sectionHeader.querySelector('.toggle-details-btn');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            const sign = toggleBtn.querySelector('.toggle-sign');
+            if (sign) sign.textContent = '−';
+          }
+        }
+      }
+
+      // Scroller vers l'en-tête (compensation sticky header)
+      const offset = 90; // ajustez si besoin
+      const rect = sectionHeader.getBoundingClientRect();
+      const absoluteY = window.scrollY + rect.top - offset;
+      window.scrollTo({ top: absoluteY, behavior: 'smooth' });
+    });
+
+    // Accessibilité : focus ajoute effet visuel
+    link.addEventListener('focus', function() {
+      sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+})();
+</script>    
 </body>
 </html>
-
-
-

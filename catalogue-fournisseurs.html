@@ -151,6 +151,58 @@
             color: #fff !important;
             transition: background 0.13s, color 0.13s;
          }
+                /* INSÉRER après la ligne 153 dans la balise <style> */
+        .brand-row { position: relative; }
+        .consumables-popup {
+          display: none;
+          position: absolute;
+          left: 100%;
+          top: 0;
+          min-width: 220px;
+          max-width: 340px;
+          background: #fff;
+          border: 1px solid rgba(0,0,0,0.12);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          padding: 0.5rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          z-index: 40;
+        }
+        /* petite flèche */
+        .consumables-popup::before{
+          content: "";
+          position: absolute;
+          left: -7px;
+          top: 12px;
+          width: 0; height: 0;
+          border-top: 7px solid transparent;
+          border-bottom: 7px solid transparent;
+          border-right: 7px solid #fff;
+          filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.04));
+        }
+        /* Affichage au hover / focus / classe .show */
+        .brand-row:hover .consumables-popup,
+        .brand-row:focus-within .consumables-popup,
+        .brand-row.show .consumables-popup {
+          display: block;
+        }
+        /* Mobile : popup en dessous et pleine largeur */
+        @media screen and (max-width: 639px) {
+          .consumables-popup {
+            position: static;
+            left: auto;
+            top: auto;
+            width: 100%;
+            margin-top: 0.4rem;
+            box-shadow: none;
+          }
+          .consumables-popup::before{ display:none; }
+        }
+        /* Transition légère */
+        .consumables-popup { transition: opacity 120ms ease-in-out; }
+        /* Optionnel : ne pas afficher ces popups à l'impression */
+        .no-print { display: inline-block; }
+        @media print { .no-print { display: none !important; } }
         /* Style pour les en-têtes de section avec icônes */
         .section-header {
             display: flex;
@@ -875,7 +927,155 @@
         </thead>
 
         <tbody>
-          <tr><td><strong>Mitutoyo</strong></td><td>Métrologie & Contrôle</td></tr>
+         <!-- REMPLACER les lignes 878-888 par ce bloc : -->
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Mitutoyo</strong>
+    <div class="text-sm text-gray-600">Métrologie & Contrôle</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Mitutoyo">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Mitutoyo</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Plaques de calibration</li>
+        <li>Stylos / pointes de rechange</li>
+        <li>Accessoires de montage</li>
+      </ul>
+    </div>
+  </td>
+  <td>Métrologie & Contrôle</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Starrett</strong>
+    <div class="text-sm text-gray-600">Métrologie & Contrôle</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Starrett">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Starrett</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Réchauds de mesure</li>
+        <li>Lames & pointes</li>
+        <li>Accessoires et étuis</li>
+      </ul>
+    </div>
+  </td>
+  <td>Métrologie & Contrôle</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Renishaw</strong>
+    <div class="text-sm text-gray-600">Alignement Laser</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Renishaw">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Renishaw</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Sondes de rechange</li>
+        <li>Calibres & adaptateurs</li>
+      </ul>
+    </div>
+  </td>
+  <td>Alignement Laser</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Heidenhain</strong>
+    <div class="text-sm text-gray-600">Codeurs</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Heidenhain">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Heidenhain</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Bandes & connecteurs</li>
+        <li>Supports de montage</li>
+      </ul>
+    </div>
+  </td>
+  <td>Codeurs</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Mettler Toledo</strong>
+    <div class="text-sm text-gray-600">Équipement Laboratoire (Balances)</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Mettler Toledo">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Mettler Toledo</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Pesettes & plateaux</li>
+        <li>Filtres & accessoires de pesage</li>
+      </ul>
+    </div>
+  </td>
+  <td>Équipement Laboratoire (Balances)</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Retsch</strong>
+    <div class="text-sm text-gray-600">Équipement Laboratoire</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Retsch">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Retsch</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Broyages & tamis de rechange</li>
+        <li>Couvertures & joints</li>
+      </ul>
+    </div>
+  </td>
+  <td>Équipement Laboratoire</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Gilson</strong>
+    <div class="text-sm text-gray-600">Tamisage Laboratoire</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Gilson">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Gilson</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Tamis & grilles de rechange</li>
+        <li>Accessoires de tamisage</li>
+      </ul>
+    </div>
+  </td>
+  <td>Tamisage Laboratoire</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Vaisala</strong>
+    <div class="text-sm text-gray-600">Réactifs Laboratoire</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Vaisala">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Vaisala</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Cartouches & réactifs</li>
+        <li>Capteurs de rechange</li>
+      </ul>
+    </div>
+  </td>
+  <td>Réactifs Laboratoire</td>
+</tr>
+
+<tr class="brand-row" tabindex="0" aria-expanded="false">
+  <td>
+    <strong>Lhoist</strong>
+    <div class="text-sm text-gray-600">Réactifs Laboratoire</div>
+
+    <div class="consumables-popup no-print" role="region" aria-label="Consommables Lhoist">
+      <h4 style="margin:0 0 6px 0;font-weight:600;">Consommables — Lhoist</h4>
+      <ul style="margin:0;padding-left:18px;">
+        <li>Produits chimiques & additifs</li>
+        <li>Kits d'analyse</li>
+      </ul>
+    </div>
+  </td>
+  <td>Réactifs Laboratoire</td>
+</tr>
+<!-- fin du remplacement -->            
+          <!--     
+        <tr><td><strong>Mitutoyo</strong></td><td>Métrologie & Contrôle</td></tr>
           <tr><td><strong>Starrett</strong></td><td>Métrologie & Contrôle</td></tr>
           <tr><td>Renishaw</td><td>Alignement Laser</td></tr>
           <tr><td>Heidenhain</td><td>Codeurs</td></tr>
@@ -885,7 +1085,7 @@
           <tr><td>Gilson</td><td>Tamisage Laboratoire</td></tr>
 
           <tr><td>Vaisala</td><td>Réactifs Laboratoire</td></tr>
-          <tr><td>Lhoist</td><td>Réactifs Laboratoire</td></tr>
+          <tr><td>Lhoist</td><td>Réactifs Laboratoire</td></tr>-->
         </tbody>
       </table>
     </div>
@@ -1403,8 +1603,53 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('afterprint', restoreInitial);
 });
 </script>
+    
+    <!-- INSÉRER ce script juste avant la fermeture </body> (après la ligne 999) -->
+<script>
+(function () {
+  const rows = Array.from(document.querySelectorAll('.brand-row'));
+
+  function show(row) {
+    row.classList.add('show');
+    row.setAttribute('aria-expanded','true');
+  }
+  function hide(row) {
+    row.classList.remove('show');
+    row.setAttribute('aria-expanded','false');
+  }
+  function toggle(row) {
+    if (row.classList.contains('show')) hide(row);
+    else {
+      rows.forEach(r => r !== row && hide(r));
+      show(row);
+    }
+  }
+
+  rows.forEach(row => {
+    row.addEventListener('mouseenter', () => show(row));
+    row.addEventListener('mouseleave', () => hide(row));
+    row.addEventListener('focusin', () => show(row));
+    row.addEventListener('focusout', () => hide(row));
+
+    row.addEventListener('click', (e) => {
+      // ne pas interférer si l'utilisateur clique sur un lien réel
+      if (e.target.closest('a')) return;
+      toggle(row);
+    });
+  });
+
+  // fermer si clic en dehors
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.brand-row')) rows.forEach(hide);
+  }, true);
+
+  // Echap ferme tout
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') rows.forEach(hide); });
+})();
+</script>
 </body>
 </html>
+
 
 
 

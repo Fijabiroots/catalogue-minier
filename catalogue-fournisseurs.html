@@ -225,6 +225,19 @@
         .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
         @media print { .no-print { display: none !important; } 
             }
+        /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
+           But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
+        .no-screen {
+          display: none !important; /* Masqué par défaut à l'écran */
+        }
+        /* Lors de l'impression, afficher le sommaire du corps */
+        @media print {
+          .no-screen {
+            display: block !important;
+          }
+          /* Optionnel : s'assurer que le menu header ne s'imprime pas (si souhaité) */
+          header { display: none !important; }
+        }
                 
                 /* Style pour les en-têtes de section avec icônes */
                 .section-header {
@@ -390,11 +403,42 @@
           </a>
           <nav class="flex-1">
             <ul class="flex space-x-10 justify-start">
-              <li>
-                <a href="#sommaire"
-                   class="menu-link font-semibold text-black px-3 py-2 rounded"
-                >Sommaire</a>
-              </li>
+              <!-- Remplacer le <li> contenant <a href="#sommaire">Sommaire</a> par ce bloc -->
+                <li class="relative">
+                  <button id="sommaireToggle"
+                          aria-haspopup="true"
+                          aria-controls="sommaireMenu"
+                          aria-expanded="false"
+                          class="menu-link font-semibold text-black px-3 py-2 rounded inline-flex items-center gap-2 focus:outline-none">
+                    Sommaire
+                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
+                  </button>
+                
+                  <!-- Sous-menu : apparaît via JS (hidden par défaut) -->
+                  <ul id="sommaireMenu"
+                      class="hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
+                      role="menu"
+                      aria-labelledby="sommaireToggle">
+                    <li role="none">
+                      <a role="menuitem" href="#section-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">1. Équipements Lourds & Mobiles</a>
+                    </li>
+                    <li role="none">
+                      <a role="menuitem" href="#section-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">2. Traitement des Minerais & Séparation</a>
+                    </li>
+                    <li role="none">
+                      <a role="menuitem" href="#section-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">3. Pompes, Vannes & Fluides Spécialisés</a>
+                    </li>
+                    <li role="none">
+                      <a role="menuitem" href="#section-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">4. Automatisation, Contrôle & Électronique</a>
+                    </li>
+                    <li role="none">
+                      <a role="menuitem" href="#section-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">5. Instrumentation, Laboratoire & Consommables</a>
+                    </li>
+                    <li role="none">
+                      <a role="menuitem" href="#section-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">6. Outillage Spécialisé & Maintenance Critique</a>
+                    </li>
+                  </ul>
+                </li>
               <li>
                 <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire"
                    class="menu-link font-semibold text-black px-3 py-2 rounded"
@@ -501,15 +545,15 @@
             </div>
         </div>
 
-        <h3 class="text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
-        <ol class="list-decimal ml-6 space-y-1 text-gray-700">
-            <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles</a></li>
-            <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation</a></li>
-            <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants</a></li>
-            <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
-            <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
-            <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
-            <!-- <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services</a></li>-->
+        <h3 id="sommaire" class="no-screen text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
+        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700">
+          <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles</a></li>
+          <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation</a></li>
+          <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants</a></li>
+          <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
+          <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
+          <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
+        <!-- <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services</a></li>-->
         </ol>
 
         <div class="table-group" data-section="section-1">
@@ -1251,6 +1295,50 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('beforeprint', openAll);
   window.addEventListener('afterprint', restoreInitial);
 });
+    // ---------- Début : gestion du menu Sommaire dans le header ----------
+(function() {
+  const toggle = document.getElementById('sommaireToggle');
+  const menu = document.getElementById('sommaireMenu');
+  if (!toggle || !menu) return;
+
+  // Open / close on click (works for mobile and desktop)
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close menu when clicking a menu anchor (after navigation)
+  menu.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && e.target !== toggle) {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Optional: close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      menu.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+// ---------- Fin : gestion du menu Sommaire dans le header ----------
 </script>
     
 <script>
@@ -1383,5 +1471,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 </body>
 </html>
+
 
 

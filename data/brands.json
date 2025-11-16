@@ -700,6 +700,160 @@
           "Lubrifiants couple",
           "Cartouches maintenance"
         ]
+      },
+      {
+        "brand": "SKF",
+        "specialization": "Alignement / Extraction",
+        "consumables": [
+          "Graisses LGHP/LGLE",
+          "Extracteurs",
+          "Joints & bagues",
+          "Cales & shims",
+          "Cibles laser",
+          "Kits calibration laser"
+        ]
+      },
+      {
+        "brand": "Parker",
+        "specialization": "Hydraulique",
+        "consumables": [
+          "Flexibles",
+          "Embouts",
+          "Filtres hydrauliques",
+          "Joints toriques",
+          "Huile hydraulique",
+          "Adaptateurs"
+        ]
+      },
+      {
+        "brand": "Lincoln Electric",
+        "specialization": "Soudage & Coupage",
+        "consumables": [
+          "Fils MIG/MAG",
+          "Électrodes enrobées",
+          "Buses",
+          "Diffuseurs",
+          "Pointes contact",
+          "Gaz soudage"
+        ]
+      },
+      {
+        "brand": "Miller Electric",
+        "specialization": "Soudage & Coupage",
+        "consumables": [
+          "Fils MIG/MAG",
+          "Tungstène TIG",
+          "Buses & gorges",
+          "Baguettes brasage",
+          "Protections soudage"
+        ]
+      },
+      {
+        "brand": "Magmaweld",
+        "specialization": "Plasma / Soudage Plastique",
+        "consumables": [
+          "Électrodes plasma",
+          "Buses plasma",
+          "Fils plastique PE/PP/PVC",
+          "Électrodes enrobées",
+          "Bobines soudage",
+          "Embouts chauffants"
+        ]
+      },
+      {
+        "brand": "Hypertherm",
+        "specialization": "Plasma",
+        "consumables": [
+          "Électrodes plasma",
+          "Buses coupe",
+          "Boucliers",
+          "Retaining caps",
+          "Anneaux tourbillons",
+          "Filtres air"
+        ]
+      },
+      {
+        "brand": "Leister",
+        "specialization": "Soudage Plastique",
+        "consumables": [
+          "Buses soudage",
+          "Fils plastique",
+          "Pannes chauffantes",
+          "Résistances chauffantes",
+          "Filtres air",
+          "Embouts interchangeables"
+        ]
+      },
+      {
+        "brand": "Snap-on",
+        "specialization": "Outillage à Main / Lourd",
+        "consumables": [
+          "Douilles HD",
+          "Embouts vissage",
+          "Jeux de clés",
+          "Graisses mécanisme",
+          "Brosses atelier"
+        ]
+      },
+      {
+        "brand": "Hilti",
+        "specialization": "Outillage à Main / Lourd",
+        "consumables": [
+          "Forets béton/acier",
+          "Disques diamant",
+          "Batteries",
+          "Burins",
+          "Clous",
+          "Lames sabre"
+        ]
+      },
+      {
+        "brand": "Husqvarna",
+        "specialization": "Outillage à Main / Lourd",
+        "consumables": [
+          "Disques diamant",
+          "Chaînes tronçonneuse",
+          "Filtres air",
+          "Bougies",
+          "Huile chaîne",
+          "Lames coupe"
+        ]
+      },
+      {
+        "brand": "Catu",
+        "specialization": "Sécurité Électrique",
+        "consumables": [
+          "Gants isolants",
+          "Tapis isolants",
+          "Casques arc flash",
+          "Perches isolées",
+          "Détecteurs tension",
+          "Kits EPI HT"
+        ]
+      },
+      {
+        "brand": "DeWalt",
+        "specialization": "Outillage Standard",
+        "consumables": [
+          "Batteries",
+          "Disques coupe",
+          "Forets",
+          "Lames scie",
+          "Embouts vissage",
+          "Filtres aspirateurs"
+        ]
+      },
+      {
+        "brand": "Makita",
+        "specialization": "Outillage Standard",
+        "consumables": [
+          "Batteries LXT",
+          "Disques abrasifs",
+          "Forets",
+          "Lames scies",
+          "Brosses carbone",
+          "Filtres"
+        ]
       }
     ]
   },

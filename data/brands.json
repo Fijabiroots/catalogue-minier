@@ -858,20 +858,40 @@
     ]
   },
   {
-    "sectionId": "section-7",
-    "title": "Services",
-    "items": [
-      {
-        "service": "Support Technique",
-        "description": "Assistance à la maintenance, dépannage, diagnostic et résolution des pannes sur site ou à distance."
-      },
-      {
-        "service": "Logistique & Sourcing",
-        "description": "Approvisionnement, gestion des pièces critiques, optimisation des délais et coordination transport."
-      },
-      {
-        "service": "Formation",
-        "description": "Formation opérateurs, techniciens et équipes maintenance sur l’utilisation, la sécurité et la maintenance des équipements."
+  "sectionId": "section-7",
+  "title": "Services",
+  "items": [
+    {
+      "brand": "Support Technique",
+      "specialization": "Assistance à la maintenance, diagnostic et dépannage",
+      "consumables": [
+        "Assistance à distance",
+        "Interventions sur site",
+        "Diagnostics techniques",
+        "Rapports d’intervention",
+        "Support maintenance préventive"
+      ]
+    },
+    {
+      "brand": "Logistique & Sourcing",
+      "specialization": "Approvisionnement, gestion des pièces critiques et optimisation logistique",
+      "consumables": [
+        "Recherche et sourcing fournisseurs",
+        "Gestion des pièces critiques",
+        "Suivi des expéditions",
+        "Consolidation logistique",
+        "Optimisation des délais"
+      ]
+    },
+    {
+      "brand": "Formation",
+      "specialization": "Formation opérateurs et équipes maintenance",
+      "consumables": [
+        "Modules opérateur",
+        "Modules maintenance",
+        "Formation sécurité",
+        "Supports pédagogiques",
+        "Sessions pratiques sur site"
       }
     ]
   }

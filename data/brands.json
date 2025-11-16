@@ -540,34 +540,320 @@
     ]
   },
   {
-    "sectionId": "section-4",
-    "title": "Automatisation, Contrôle & Électronique",
-    "items": [
-      {
-        "brand": "Siemens",
-        "specialization": "Automates (PLC/DCS)",
-        "consumables": [
-          "Modules I/O",
-          "Alimentations",
-          "Cartes CPU",
-          "Relais",
-          "Connecteurs",
-          "Câbles industriels"
-        ]
-      },
-      {
-        "brand": "Schneider Electric",
-        "specialization": "Automates (PLC/DCS)",
-        "consumables": [
-          "Modules I/O Modicon",
-          "Cartes CPU",
-          "Alimentations",
-          "Contacteurs",
-          "Relais de sécurité"
-        ]
-      }
-    ]
-  },
+  "sectionId": "section-4",
+  "title": "Automatisation, Contrôle & Électronique",
+  "items": [
+    {
+      "brand": "Siemens",
+      "specialization": "Automates (PLC/DCS)",
+      "consumables": [
+        "Modules I/O",
+        "Alimentations",
+        "Cartes CPU",
+        "Relais",
+        "Connecteurs",
+        "Câbles industriels"
+      ]
+    },
+    {
+      "brand": "Schneider Electric",
+      "specialization": "Automates (PLC/DCS)",
+      "consumables": [
+        "Modules I/O Modicon",
+        "Cartes CPU",
+        "Alimentations",
+        "Contacteurs",
+        "Relais de sécurité"
+      ]
+    },
+    {
+      "brand": "Rockwell (Allen-Bradley)",
+      "specialization": "Automates (PLC/DCS)",
+      "consumables": [
+        "Modules I/O ControlLogix",
+        "Modules CompactLogix",
+        "Alimentations",
+        "Relais",
+        "Câbles industriels"
+      ]
+    },
+    {
+      "brand": "Yokogawa",
+      "specialization": "Alternatives Automates",
+      "consumables": [
+        "Modules I/O",
+        "CPU",
+        "Écrans opérateur",
+        "Câbles",
+        "Kits communication"
+      ]
+    },
+    {
+      "brand": "Beckhoff",
+      "specialization": "Alternatives Automates",
+      "consumables": [
+        "Modules EtherCAT",
+        "Cartes CPU",
+        "Alimentations",
+        "Écrans HMI",
+        "Connecteurs"
+      ]
+    },
+    {
+      "brand": "Vipa",
+      "specialization": "Alternatives Automates",
+      "consumables": [
+        "Modules Speed7",
+        "Extensions I/O",
+        "CPU S7",
+        "Connecteurs",
+        "Câbles"
+      ]
+    },
+    {
+      "brand": "Unitronics",
+      "specialization": "Alternatives Automates",
+      "consumables": [
+        "Écrans HMI",
+        "Modules I/O",
+        "CPU Vision/Samba",
+        "Câbles",
+        "Cartes mémoire"
+      ]
+    },
+    {
+      "brand": "ABB",
+      "specialization": "Variateurs & Moteurs",
+      "consumables": [
+        "Cartes électroniques",
+        "Ventilateurs variateur",
+        "Kits de puissance",
+        "Fusibles",
+        "Filtres CEM"
+      ]
+    },
+    {
+      "brand": "SEW Eurodrive",
+      "specialization": "Variateurs & Moteurs",
+      "consumables": [
+        "Ventilateurs moteurs",
+        "Capteurs",
+        "Kits joints",
+        "Modules de puissance",
+        "Câbles"
+      ]
+    },
+    {
+      "brand": "Danfoss",
+      "specialization": "Variateurs & Moteurs",
+      "consumables": [
+        "Ventilateurs",
+        "Cartes électroniques",
+        "Filtres CEM",
+        "Fusibles",
+        "Connecteurs"
+      ]
+    },
+    {
+      "brand": "Voith",
+      "specialization": "Transmissions & Moteurs",
+      "consumables": [
+        "Accouplements",
+        "Fluides spéciaux",
+        "Kits d’étanchéité",
+        "Roulements",
+        "Segments"
+      ]
+    },
+    {
+      "brand": "WEG Electric",
+      "specialization": "Transmissions & Moteurs",
+      "consumables": [
+        "Roulements",
+        "Ventilateurs",
+        "Kits de réparation",
+        "Condensateurs",
+        "Joints"
+      ]
+    },
+    {
+      "brand": "Lenze",
+      "specialization": "Transmissions & Moteurs",
+      "consumables": [
+        "Ventilateurs",
+        "Cartes variateur",
+        "Kits de réparation",
+        "Fusibles",
+        "Connecteurs"
+      ]
+    },
+    {
+      "brand": "Pilz",
+      "specialization": "Sécurité Critique",
+      "consumables": [
+        "Relais de sécurité",
+        "Modules arrêt d’urgence",
+        "Capteurs",
+        "Kits de communication",
+        "Connecteurs"
+      ]
+    },
+    {
+      "brand": "Triconex",
+      "specialization": "Sécurité Critique",
+      "consumables": [
+        "Cartes processeur",
+        "Modules I/O",
+        "Câbles",
+        "Connecteurs",
+        "Modules communication"
+      ]
+    },
+    {
+      "brand": "Sick",
+      "specialization": "Sécurité Critique",
+      "consumables": [
+        "Capteurs industriels",
+        "Barrières immatérielles",
+        "Câbles",
+        "Relais sécurité",
+        "Modules d’E/S"
+      ]
+    },
+    {
+      "brand": "Hima",
+      "specialization": "Sécurité & Protection Électrique",
+      "consumables": [
+        "Cartes modules",
+        "Câbles",
+        "Connecteurs",
+        "Relais",
+        "Kits extension"
+      ]
+    },
+    {
+      "brand": "Pepperl Fuchs",
+      "specialization": "Sécurité & Protection Électrique",
+      "consumables": [
+        "Barrières Zener",
+        "Convertisseurs",
+        "Connecteurs",
+        "Câbles",
+        "Modules de puissance"
+      ]
+    },
+    {
+      "brand": "Eaton",
+      "specialization": "Sécurité & Protection Électrique",
+      "consumables": [
+        "Disjoncteurs",
+        "Fusibles",
+        "Relais",
+        "Modules I/O",
+        "Contacteurs"
+      ]
+    },
+    {
+      "brand": "Wago",
+      "specialization": "Connectivité & I/O",
+      "consumables": [
+        "Bornes Wago",
+        "Connecteurs",
+        "Modules I/O",
+        "Câbles",
+        "Accessoires montage"
+      ]
+    },
+    {
+      "brand": "Weidmuller",
+      "specialization": "Connectivité & I/O",
+      "consumables": [
+        "Bornes",
+        "Connecteurs",
+        "Blocs jonction",
+        "Câbles",
+        "Kits accessoires"
+      ]
+    },
+    {
+      "brand": "Phoenix Contact",
+      "specialization": "Connectivité & I/O",
+      "consumables": [
+        "Bornes",
+        "Fusibles",
+        "Connecteurs",
+        "Modules relais",
+        "Câbles"
+      ]
+    },
+    {
+      "brand": "Turck",
+      "specialization": "Réseaux & Connecteurs",
+      "consumables": [
+        "Capteurs",
+        "Câbles M12",
+        "Connecteurs industriels",
+        "Modules réseau",
+        "Kits accessoires"
+      ]
+    },
+    {
+      "brand": "Moxa",
+      "specialization": "Réseaux & Connecteurs",
+      "consumables": [
+        "Switches industriels",
+        "Convertisseurs",
+        "Alimentations",
+        "Câbles réseau",
+        "Modules fibre optique"
+      ]
+    },
+    {
+      "brand": "Wieland",
+      "specialization": "Réseaux & Connecteurs",
+      "consumables": [
+        "Bornes",
+        "Connecteurs",
+        "Câbles",
+        "Modules communication",
+        "Accessoires électriques"
+      ]
+    },
+    {
+      "brand": "Fluke",
+      "specialization": "Calibration & Mesure",
+      "consumables": [
+        "Cordons de test",
+        "Sondes",
+        "Embouts de mesure",
+        "Fusibles multimètre",
+        "Accessoires calibration"
+      ]
+    },
+    {
+      "brand": "Bruel & Kjaer",
+      "specialization": "Vibration & Mesure",
+      "consumables": [
+        "Accéléromètres",
+        "Câbles vibration",
+        "Adaptateurs",
+        "Capteurs",
+        "Kits d’analyse"
+      ]
+    },
+    {
+      "brand": "Yokogawa",
+      "specialization": "Vibration & Mesure",
+      "consumables": [
+        "Capteurs vibration",
+        "Câbles",
+        "Adaptateurs",
+        "Accessoires de mesure",
+        "Modules d’analyse"
+      ]
+    }
+  ]
+},
   {
     "sectionId": "section-5",
     "title": "Instrumentation, Laboratoire & Consommables",

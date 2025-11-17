@@ -437,14 +437,21 @@
             
               /* Header (logo) en haut de chaque page */
               .print-header {
-                top: 0;
-                height: 56px; /* ajuster si nécessaire */
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-              }
+                top: 0;
+                height: 56px; /* ajuster si nécessaire */
+                padding: 6px 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                /* AJOUT DU TITRE ET ALIGNEMENT POUR LE PDF */
+                justify-content: space-between; 
+              }
+              .print-header::after {
+                content: "Catalogue pour le secteur Minier - MULTIPARTS"; /* AJOUT DU TITRE ICI */
+                font-size: 10px;
+                color: #333;
+              }
               .print-header img {
                 height: 44px;
                 width: auto;
@@ -462,11 +469,19 @@
                 font-size: 11px;
                 color: #333;
                 border-top: 1px solid rgba(0,0,0,0.06);
+                justify-content: space-between; /* Pour séparer copyright et numéro de page */
+                padding: 6px 12px !important; /* Force le padding */
               }
-              .print-footer .copyright { margin-right: 8px; }
+             .print-footer .copyright { margin-right: 0px !important; }
+              .print-footer .page-counter::after {
+                content: "Page " counter(page) " / " counter(pages); /* Pagination */
+                margin-left: 0px !important;
+                display: block;
+              }
               .print-footer .page-counter::after {
                 content: "Page " counter(page) " / " counter(pages);
                 margin-left: 10px;
+                
               }
             
               /* Réserver l'espace pour header/footer : évite chevauchement et troncature */
@@ -513,14 +528,14 @@
         </head>
         <body>
                     <!-- PRINT: Header & Footer fixes (affichés uniquement à l'impression via @media print) -->
-            <div class="print-header no-screen" aria-hidden="true">
-              <img src="logo-multiparts.png" alt="Logo MULTIPARTS" />
-            </div>
-            
-            <div class="print-footer no-screen" aria-hidden="true">
-              <span class="copyright">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</span>
-              <span class="page-counter" aria-hidden="true"></span>
-            </div>
+                <div class="print-header no-screen" aria-hidden="true">
+                  <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
+                  </div>
+                
+                <div class="print-footer no-screen" aria-hidden="true">
+                  <span class="copyright">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</span>
+                  <span class="page-counter" aria-hidden="true"></span>
+                </div>
             <!-- /PRINT -->
                 <!-- Nouveau menu MULTIPARTS -->
                     <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50">
@@ -1801,6 +1816,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

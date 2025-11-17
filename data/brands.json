@@ -310,193 +310,180 @@
     ]
   },
   {
-    "sectionId": "section-2",
-    "title": "Traitement des Minerais & Séparation (Concentrateur)",
-    "items": [
-      {
-        "brand": "Metso Outotec",
-        "specialization": "Concassage & Criblage",
-        "consumables": [
-          "Liners de concasseurs",
-          "Manganèse (bowl liner, mantle)",
-          "Pièces de criblage",
-          "Tôles anti-usure",
-          "Segments & bagues",
-          "Roulements lourds"
-        ]
-      },
-      {
-        "brand": "FLSmidth",
-        "specialization": "Concassage & Criblage",
-        "consumables": [
-          "Liners & pièces d'usure",
-          "Pièces de criblage",
-          "Segments",
-          "Roulements",
-          "Barres de grille",
-          "Lubrifiants broyeurs"
-        ]
-      },
-      {
-        "brand": "Terex / Finlay",
-        "specialization": "Concassage & Criblage",
-        "consumables": [
-          "Pièces d'usure concasseurs",
-          "Tôles anti-abrasion",
-          "Écrans & panneaux",
-          "Segments rotors",
-          "Courroies",
-          "Roulements"
-        ]
-      },
-      {
-        "brand": "Haver & Boecker",
-        "specialization": "Concassage & Criblage",
-        "consumables": [
-          "Panneaux de criblage",
-          "Tamis haute résistance",
-          "Fixations & modules",
-          "Segments de remplacement",
-          "Tôles perforées"
-        ]
-      },
-      {
-        "brand": "Polydeck",
-        "specialization": "Panneaux de criblage",
-        "consumables": [
-          "Panneaux polyuréthane",
-          "Fixations & cadres",
-          "Plaques anti-usure",
-          "Modules interchangeables",
-          "Segments"
-        ]
-      },
-      {
-        "brand": "FLSmidth",
-        "specialization": "Extraction Gravimétrique",
-        "consumables": [
-          "Tapis gravimétriques",
-          "Pièces de jig",
-          "Segments de spirales",
-          "Revêtements anti-abrasion",
-          "Joints & kits"
-        ]
-      },
-      {
-        "brand": "Gekko Systems",
-        "specialization": "Extraction Gravimétrique (Australie)",
-        "consumables": [
-          "Spirales concentratrices",
-          "Pièces ILR",
-          "Pompes & garnitures",
-          "Revêtements anti-abrasion",
-          "Kits de maintenance"
-        ]
-      },
-      {
-        "brand": "Endress + Hauser",
-        "specialization": "Instrumentation Process",
-        "consumables": [
-          "Sondes & capteurs",
-          "Membranes de mesure",
-          "Solutions tampon",
-          "Kits d'étalonnage",
-          "Électrodes & joints"
-        ]
-      },
-      {
-        "brand": "Wika",
-        "specialization": "Instrumentation Process",
-        "consumables": [
-          "Capteurs pression",
-          "Thermoplongeurs",
-          "Joints & adaptateurs",
-          "Liquides de remplissage",
-          "Accessoires d'étalonnage"
-        ]
-      },
-      {
-        "brand": "Krohne",
-        "specialization": "Instrumentation Process",
-        "consumables": [
-          "Électrodes débitmètre",
-          "Joints process",
-          "Solutions d'étalonnage",
-          "Sondes remplaçables"
-        ]
-      },
-      {
-        "brand": "Jumo",
-        "specialization": "Instrumentation Process",
-        "consumables": [
-          "Sondes température",
-          "Capteurs chimiques",
-          "Cellules de mesure",
-          "Kits d'étalonnage"
-        ]
-      },
-      {
-        "brand": "Yokogawa",
-        "specialization": "Instrumentation Process",
-        "consumables": [
-          "Électrodes pH",
-          "Membranes DO",
-          "Solutions tampons",
-          "Joints & adaptateurs"
-        ]
-      },
-      {
-        "brand": "Mettler Toledo",
-        "specialization": "Équipement Laboratoire",
-        "consumables": [
-          "Cellules de pesée",
-          "Kits d'étalonnage",
-          "Papier filtre",
-          "Électrodes pH",
-          "Solutions tampons"
-        ]
-      },
-      {
-        "brand": "Retsch",
-        "specialization": "Équipement Laboratoire",
-        "consumables": [
-          "Tamis analytiques",
-          "Joints & bagues",
-          "Bols & billes broyage",
-          "Kits d'entretien",
-          "Lubrifiants broyeurs"
-        ]
-      },
-      {
-        "brand": "Gilson",
-        "specialization": "Tamisage Laboratoire",
-        "consumables": [
-          "Tamis de laboratoire",
-          "Cadres & anneaux",
-          "Brosses de nettoyage",
-          "Récipients tamisage"
-        ]
-      },
-      {
-        "brand": "Vaisala",
-        "specialization": "Réactifs Laboratoire",
-        "consumables": [
-          "Solutions d'étalonnage",
-          "Solutions tampons",
-          "Liquides maintenance"
-        ]
-      },
-      {
-        "brand": "Lhoist",
-        "specialization": "Réactifs Laboratoire",
-        "consumables": [
-          "Chaux réactive",
-          "Agents chimiques",
-          "Consommables minéraux"
-        ]
-      }
-    ]
-  },
+  "sectionId": "section-2",
+  "title": "Traitement des Minerais & Séparation (Concentrateur)",
+  "items": [
+    {
+      "brand": "Metso",
+      "specialization": "Concassage",
+      "consumables": [
+        "Bowl liners",
+        "Mantles",
+        "Jaw plates",
+        "Concasseur wear plates",
+        "Barres grizzly"
+      ]
+    },
+    {
+      "brand": "Sandvik",
+      "specialization": "Concassage",
+      "consumables": [
+        "Jaw plates",
+        "Cones manganese",
+        "Tôles anti-usure",
+        "Segments & bagues"
+      ]
+    },
+    {
+      "brand": "Metso Outotec",
+      "specialization": "Broyage (SAG & Ball Mills)",
+      "consumables": [
+        "Liners SAG",
+        "Liners ball mill",
+        "Barres de levage",
+        "Grilles de décharge",
+        "Billes de broyage"
+      ]
+    },
+    {
+      "brand": "Magotteaux",
+      "specialization": "Broyage – Médias & Liners",
+      "consumables": [
+        "Billes acier & alliage",
+        "Segment liners",
+        "Classificateurs",
+        "Chemises anti-usure"
+      ]
+    },
+    {
+      "brand": "Weir Minerals (Vulco)",
+      "specialization": "Classification – Hydrocyclones",
+      "consumables": [
+        "Liners hydrocyclone",
+        "Vortex finders",
+        "Apex cones",
+        "Coiffes & joints",
+        "Segments PU"
+      ]
+    },
+    {
+      "brand": "Multotec",
+      "specialization": "Classification – Criblage & Cyclones",
+      "consumables": [
+        "Panneaux polyuréthane",
+        "Segments & modules",
+        "Buses cyclones",
+        "Joints & bagues"
+      ]
+    },
+    {
+      "brand": "Gekko Systems",
+      "specialization": "Séparation Gravimétrique",
+      "consumables": [
+        "Spirales gravimétriques",
+        "ILR parts (Intensive Leach Reactor)",
+        "Pompes ILR",
+        "Revêtements anti-abrasion",
+        "Kits de maintenance"
+      ]
+    },
+    {
+      "brand": "Metso Outotec",
+      "specialization": "Flottation",
+      "consumables": [
+        "Cellules de flottation parts",
+        "Rotor/stator",
+        "Air diffusers",
+        "Joints flottation",
+        "Pales & revêtements"
+      ]
+    },
+    {
+      "brand": "Eriez",
+      "specialization": "Séparation Magnétique / Flottation Avancée",
+      "consumables": [
+        "Plaques magnétiques",
+        "Matrices",
+        "Électroaimants",
+        "Pièces de maintenance"
+      ]
+    },
+    {
+      "brand": "FLSmidth",
+      "specialization": "Épaississement & Déshydratation",
+      "consumables": [
+        "Floculants",
+        "Racleurs",
+        "Patins thickener",
+        "Drive units parts",
+        "Capteurs densité & niveau"
+      ]
+    },
+    {
+      "brand": "Endress+Hauser",
+      "specialization": "Instrumentation Process",
+      "consumables": [
+        "Sondes pH/ORP",
+        "Capteurs débit/densité",
+        "Solutions tampons",
+        "Membranes",
+        "Kits étalonnage"
+      ]
+    },
+    {
+      "brand": "VEGA",
+      "specialization": "Mesure Niveau & Densité",
+      "consumables": [
+        "Cellules radar",
+        "Capteurs densité",
+        "Joints process",
+        "Supports & adaptateurs"
+      ]
+    },
+    {
+      "brand": "Mettler Toledo",
+      "specialization": "Laboratoire & Mesures",
+      "consumables": [
+        "Cellules de pesée",
+        "Electrodes pH",
+        "Solutions étalon",
+        "Papier filtre",
+        "Poids d’étalonnage"
+      ]
+    },
+    {
+      "brand": "Retsch",
+      "specialization": "Broyage & Tamisage Laboratoire",
+      "consumables": [
+        "Tamis analytiques",
+        "Joints",
+        "Bols de broyage",
+        "Billes de broyage",
+        "Lubrifiants broyeurs"
+      ]
+    },
+    {
+      "brand": "SNF Floerger",
+      "specialization": "Réactifs – Floculants",
+      "consumables": [
+        "Floculants anioniques",
+        "Floculants cationiques",
+        "Agents polymères",
+        "Activateurs chimiques"
+      ]
+    },
+    {
+      "brand": "Solvay",
+      "specialization": "Réactifs de Flottation",
+      "consumables": [
+        "Collecteurs",
+        "Moussiants",
+        "Déprimants",
+        "Agents modificateurs"
+      ]
+    }
+  ]
+},
   {
   "sectionId": "section-3",
   "title": "Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",

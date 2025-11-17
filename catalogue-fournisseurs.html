@@ -322,125 +322,188 @@
         /* ================================================================== */
         /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
         /* ================================================================== */
-        @media print {
-            /* 1. Configuration de la page et suppression des artefacts (URL, date...) */
-            @page {
-                margin: 3cm 1.5cm 2.5cm 1.5cm;
-                @top-left { content: none; }
-                @top-right { content: none; }
-                @bottom-left { content: none; }
-                @bottom-right { content: none; }
-            }
+@media print {
+    /* 1. Configuration de la Page et Marges */
+    @page {
+        /* Marges ajustées pour un meilleur équilibre et un espace pour les en-têtes/pieds de page */
+        margin: 2.5cm 1.5cm 2cm 1.5cm; 
+        @top-left { content: none; }
+        @top-right { content: none; }
+        @bottom-left { content: none; }
+        @bottom-right { content: none; }
+    }
 
-            body {
-                background-color: white;
-                color: #000000 !important;
-            }
+    body {
+        background-color: white;
+        color: #000000 !important;
+        /* Ajout d'une marge pour compenser l'en-tête fixe */
+        padding-top: 60px; 
+    }
 
-            /* 2. Style de l'en-tête fixe */
-            .print-header {
-                display: flex !important; 
-                position: fixed;
-                top: 0; left: 0; right: 0;
-                height: 50px; 
-                padding: 6px 15mm;
-                background: #ffffff;
-                border-bottom: 2px solid #1e40af; 
-                align-items: center;
-                justify-content: space-between;
-                z-index: 9999;
-            }
-            .print-header img { height: 38px; width: auto; }
-            .print-header::after {
-                content: "Catalogue - MULTIPARTS - Secteur Mines";
-                font-size: 10pt; color: #333; font-weight: bold;
-            }
+    /* 2. Style de l'en-tête fixe (Utilisation de la charte graphique : Bleu foncé #1e40af) */
+    .print-header {
+        display: flex !important; 
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 50px; 
+        padding: 6px 1.5cm; /* Utilisation de cm pour correspondre aux marges @page */
+        background: #ffffff;
+        border-bottom: 2px solid #1e40af; 
+        align-items: center;
+        justify-content: space-between;
+        z-index: 9999;
+        /* Forcer l'impression des couleurs pour l'en-tête */
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important;
+    }
+    .print-header img { height: 38px; width: auto; }
+    .print-header::after {
+        content: "Catalogue - MULTIPARTS - Secteur Mines";
+        font-size: 10pt; 
+        color: #1e40af; /* Titre en bleu foncé */
+        font-weight: bold;
+    }
 
-            /* 3. Style du pied de page fixe */
-            .print-footer {
-                display: flex !important;
-                position: fixed;
-                bottom: 0; left: 0; right: 0;
-                height: 30px; 
-                padding: 6px 15mm;
-                background: #ffffff;
-                border-top: 1px solid rgba(0,0,0,0.1);
-                align-items: center;
-                justify-content: space-between; 
-                font-size: 10pt; color: #333;
-            }
-            .print-footer .copyright::before {
-                content: "Catalogue - MULTIPARTS - Secteur Mines";
-                font-weight: bold;
-            }
-            .print-footer .page-counter::after {
-                content: "Page " counter(page);
-                font-weight: normal;
-            }
+    /* 3. Style du pied de page fixe */
+    .print-footer {
+        display: flex !important;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 30px; 
+        padding: 6px 1.5cm;
+        background: #ffffff;
+        border-top: 1px solid #cccccc; /* Bordure plus neutre */
+        align-items: center;
+        justify-content: space-between; 
+        font-size: 9pt; /* Légèrement plus petit */
+        color: #555;
+        /* Forcer l'impression des couleurs */
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important;
+    }
+    .print-footer .copyright::before {
+        content: "Catalogue - MULTIPARTS - Secteur Mines";
+        font-weight: normal;
+    }
+    .print-footer .page-counter::after {
+        /* Ajout du compteur total de pages pour professionnalisme */
+        content: "Page " counter(page) " sur " counter(pages); 
+        font-weight: bold;
+        color: #000000;
+    }
 
-            /* 4. Ajustement du corps du document et des éléments visibles/cachés */
-            .catalog-page {
-                box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
-            }
-            .page-number::after, header, .no-print, .toggle-details-btn {
-                display: none !important;
-            }
-            .no-screen, .section-content {
-                display: block !important;
-            }
+    /* 4. Ajustement du corps du document et des éléments visibles/cachés */
+    .catalog-page {
+        box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
+    }
+    /* Masquer tous les éléments d'affichage écran/interactifs */
+    .page-number::after, header, .no-print, .toggle-details-btn, .consumables-inline {
+        display: none !important;
+    }
+    .no-screen, .section-content {
+        display: block !important;
+    }
 
-            /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES POUR L'IMPRESSION */
-            .consumables-inline {
-                display: none !important; /* Cache le texte tronqué */
-            }
-            .consumables-popup {
-                display: block !important;
-                position: static !important;
-                width: 100% !important;
-                max-height: none !important;
-                overflow-y: visible !important;
-                background: none !important;
-                border: none !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                color: #000000 !important;
-                font-size: 0.9rem !important;
-                line-height: 1.4 !important;
-                white-space: normal !important; /* Permet le retour à la ligne */
-            }
-            .consumables-popup::before {
-                display: none !important; /* Cache la flèche */
-            }
+    /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES (Structure Fusionnée Virtuelle) */
+    
+    /* Le 'popup' est désormais le bloc de contenu formaté */
+    .consumables-popup {
+        display: block !important;
+        position: static !important;
+        
+        /* Simulation de fusion de cellules : le bloc de consommables déborde 
+           vers la gauche pour couvrir la première colonne. */
+        margin: 0 0 0 -100% !important; 
+        width: 200% !important; 
 
-            /* 6. Règles anti-troncature pour un rendu propre */
-            .section-header {
-                page-break-inside: avoid; page-break-after: avoid; 
-            }
-            .table-container, ul, ol, .expertise-box, .table-custom, .table-custom tbody, .table-custom tr {
-                page-break-inside: avoid !important;
-            }
-            ul, ol {
-                orphans: 3; widows: 3;
-            }
+        /* Styles de la ligne fusionnée (fond gris, bordures) */
+        background-color: #f0f4f8 !important; /* Fond gris clair pour démarquer */
+        border: 1px solid #cccccc !important;
+        
+        /* Padding ajusté pour un rendu propre à l'impression */
+        padding: 10px 1.5cm 10px 1.5cm !important; 
+        
+        box-shadow: none !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        
+        /* Force la couleur de fond à être imprimée */
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important;
+    }
+    
+    /* Style du texte à l'intérieur du bloc de consommables */
+    .consumables-popup * {
+        font-style: italic !important;
+        font-size: 0.95rem !important;
+        color: #333333 !important; 
+        line-height: 1.5;
+        white-space: normal !important;
+    }
+    
+    .consumables-popup::before {
+        display: none !important; 
+    }
 
-            /* 7. Styles pour les tableaux et forcer les couleurs */
-            .table-custom {
-                border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
-            }
-            .table-custom th, .header, .section-header, .print-header, .print-footer {
-                -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
-            }
-            .table-custom th {
-                background-color: #f0f4f8 !important; color: #000000 !important; border: 1px solid #555 !important;
-            }
-            .table-custom td {
-                color: #000000 !important; border: 1px solid #ddd !important; padding: 5px !important;
-            }
-            .text-xl, .text-2xl, .text-4xl {
-                color: #000000 !important;
-            }
-        }
+    /* 6. Règles anti-troncature pour un rendu propre */
+    .section-header {
+        page-break-inside: avoid; page-break-after: avoid; 
+        margin-top: 10px; /* Espace après l'en-tête de section */
+    }
+    .table-container, ul, ol, .expertise-box, .table-custom, .table-custom tbody, .table-custom tr {
+        page-break-inside: avoid !important;
+    }
+    ul, ol {
+        orphans: 3; widows: 3;
+        margin-bottom: 10px;
+    }
+
+    /* 7. Styles pour les tableaux et forcer les couleurs */
+    .table-custom {
+        border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
+        margin-top: 15px;
+    }
+    .table-custom th, .header, .section-header, .print-header, .print-footer {
+        -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+    }
+    .table-custom th {
+        /* En-têtes de tableau en bleu foncé */
+        background-color: #1e40af !important; 
+        color: #ffffff !important; 
+        border: 1px solid #1e40af !important;
+        padding: 8px 5px !important;
+        text-align: left;
+    }
+    .table-custom td {
+        color: #000000 !important; 
+        border: 1px solid #ddd !important; 
+        padding: 8px 5px !important;
+    }
+    
+    /* Style spécifique pour la Marque */
+    .table-custom tr td:first-child {
+        font-weight: bold;
+        color: #1e40af !important; /* Marque en bleu */
+        /* border-bottom: 1px solid #cccccc !important; /* Assure une séparation visuelle */
+        /* MODIFICATION : Suppression de la bordure entre la marque et le bloc de consommables */
+        border-bottom: none !important;
+    }
+    
+    /* Masquer la cellule de droite de la ligne Marque/Spécialisation pour éviter les chevauchements visuels */
+    .table-custom tr td:nth-child(2) {
+        display: block !important;
+        /* Le bloc des consommables débordant prend la place de cette cellule et la précédente */
+    }
+    /* Correction : si la structure est bien Brand|Specialisation|Consumables, il faut afficher les deux */
+    /* On masque seulement le conteneur des consommables dans cette cellule */
+    .table-custom tr td:nth-child(2) .consumables-popup {
+        /* Le bloc est affiché comme un élément "hors-flux" (avec le décalage négatif), on assure qu'il est visible. */
+    }
+
+    .text-xl, .text-2xl, .text-4xl {
+        color: #000000 !important;
+    }
+}
             
             </style>
         </head>
@@ -1733,4 +1796,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 

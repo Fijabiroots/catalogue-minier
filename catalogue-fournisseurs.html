@@ -323,7 +323,7 @@
 /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
 /* ================================================================== */
 @media print {
-    /* 1. Configuration de la Page et Marges (INCHANGÉ) */
+    /* 1. Configuration de la Page et Marges */
     @page {
         margin: 2.5cm 1.5cm 2cm 1.5cm; 
         @top-left { content: none; }
@@ -338,7 +338,7 @@
         padding-top: 60px; 
     }
 
-    /* 2. Style de l'en-tête fixe (INCHANGÉ) */
+    /* 2. Style de l'en-tête fixe (Charte graphique : Bleu foncé #1e40af) */
     .print-header {
         display: flex !important; 
         position: fixed;
@@ -361,7 +361,7 @@
         font-weight: bold;
     }
 
-    /* 3. Style du pied de page fixe (INCHANGÉ) */
+    /* 3. Style du pied de page fixe */
     .print-footer {
         display: flex !important;
         position: fixed;
@@ -369,10 +369,10 @@
         height: 30px; 
         padding: 6px 1.5cm;
         background: #ffffff;
-        border-top: 1px solid #cccccc; 
+        border-top: 1px solid #cccccc;
         align-items: center;
         justify-content: space-between; 
-        font-size: 9pt; 
+        font-size: 9pt;
         color: #555;
         -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
@@ -387,7 +387,7 @@
         color: #000000;
     }
 
-    /* 4. Ajustement du corps du document et des éléments visibles/cachés (INCHANGÉ) */
+    /* 4. Ajustement du corps du document et des éléments visibles/cachés */
     .catalog-page {
         box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
     }
@@ -398,68 +398,63 @@
         display: block !important;
     }
 
-    /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES (Structure Fusionnée Virtuelle) */
+    /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES (Ligne Fusionnée Virtuelle) */
     
-    /* Le 'popup' est désormais le bloc de contenu formaté */
     .consumables-popup {
-        display: block !important; /* Affiche le contenu masqué à l'écran */
+        display: block !important; 
         position: static !important;
         
-        /* CORRECTION CRITIQUE : Débordement vers la droite car le popup est dans le premier TD */
+        /* CORRECTION : Débordement vers la droite pour simuler la fusion */
         margin: 0 !important; 
-        margin-right: -100% !important; /* Déborde vers la droite, couvrant TD2 */
-        width: 200% !important; /* Le fait s'étendre sur les deux colonnes (TD1 + TD2) */
+        margin-right: -100% !important; 
+        width: 200% !important; 
         
         /* Styles de la ligne fusionnée (fond gris, bordures) */
         background-color: #f0f4f8 !important; 
         border: 1px solid #cccccc !important;
         
-        /* Padding ajusté pour un rendu propre à l'impression */
         padding: 10px 1.5cm 10px 1.5cm !important; 
         
         box-shadow: none !important;
         max-height: none !important;
         overflow-y: visible !important;
         
-        /* Force la couleur de fond à être imprimée */
         -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
     }
     
-    /* Style du texte à l'intérieur du bloc de consommables (INCHANGÉ) */
-    .consumables-popup * {
+    /* Style du texte à l'intérieur du bloc de consommables */
+    .consumables-popup *, .consumables-popup li {
         font-style: italic !important;
         font-size: 0.95rem !important;
         color: #333333 !important; 
         line-height: 1.5;
         white-space: normal !important;
     }
+    .consumables-popup::before { display: none !important; }
+
+    /* Règle d'isolation visuelle : Supprime la bordure entre la ligne Marque et le bloc Consommables */
+    .brand-row td:first-child, 
+    .brand-row td:nth-child(2) {
+        border-bottom: none !important;
+    }
     
-    .consumables-popup::before {
-        display: none !important; 
+    /* S'assurer que le contenu condensé (s'il existe) est masqué */
+    .table-custom tr td:nth-child(2) .consumables-inline {
+        display: none !important;
     }
 
-    /* 6. Règles anti-troncature (INCHANGÉ) */
-   * 6. Règles anti-troncature pour un rendu propre */
-    .section-header, 
-    .section-header h3, 
-    .expertise-box {
-        /* Empêche l'élément lui-même d'être coupé */
+    /* 6. Règles anti-troncature (Solidarité des blocs) */
+    .section-header, .section-header h3, .expertise-box {
         page-break-inside: avoid; 
-        /* Empêche la rupture de page juste après l'élément */
         page-break-after: avoid; 
         margin-top: 10px; 
     }
     .table-container, ul, ol, .table-custom, .table-custom tbody, .table-custom tr {
         page-break-inside: avoid !important;
     }
-    }
-    ul, ol {
-        orphans: 3; widows: 3;
-        margin-bottom: 10px;
-    }
 
-    /* 7. Styles pour les tableaux (MODIFICATION MINEURE ET NETTOYAGE) */
+    /* 7. Styles pour les tableaux */
     .table-custom {
         border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
         margin-top: 15px;
@@ -484,25 +479,18 @@
     .table-custom tr td:first-child {
         font-weight: bold;
         color: #1e40af !important; 
-        border-bottom: none !important; /* Suppression de la bordure pour la fusion */
     }
     
-    /* Nettoyage de la cellule de droite pour éviter les conflits et assurer la fusion */
+    /* Nettoyage : retirer la règle display: block du TD2 */
     .table-custom tr td:nth-child(2) {
-        /* RETRAIT de 'display: block !important;' qui causait des problèmes de mise en page */
-        border-bottom: none !important; /* Assure la continuité visuelle avec le bloc fusionné */
-    }
-    /* S'assurer que le contenu condensé (s'il existe) est masqué */
-    .table-custom tr td:nth-child(2) .consumables-inline {
-        display: none !important;
+        /* On retire la règle qui forçait 'display: block' pour corriger la mise en page */
     }
 
     .text-xl, .text-2xl, .text-4xl {
         color: #000000 !important;
     }
-}
-            
-            </style>
+}            
+    </style>
         </head>
         <body>
                     <!-- PRINT: Header & Footer fixes (affichés uniquement à l'impression via @media print) -->
@@ -1793,6 +1781,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

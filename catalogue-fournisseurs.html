@@ -49,89 +49,6 @@
                 border-bottom: 1px solid #e5e7eb;
             }
         }
-        
-        /* Styles spécifiques pour l'impression (Impression A4) */
-        @media print {
-            body {
-                background-color: white;
-                color: #000000 !important;
-            }
-            
-            /* Tente de supprimer les en-têtes/pieds de page automatiques (URL, date) en définissant les marges du navigateur à zéro */
-            @page {
-                margin: 0;
-            }
-
-            .catalog-page {
-                box-shadow: none;
-                margin: 0;
-                /* Simule les marges de 10mm/15mm/10mm/15mm en utilisant un padding au lieu des marges du navigateur */
-                padding: 10mm 15mm 10mm 15mm; 
-                max-width: 100%;
-                min-height: auto;
-                height: auto;
-                page-break-inside: avoid;
-            }
-
-            /* 🌟 GESTION DES SAUTS DE PAGE POUR LES TITRES DE SECTION */
-            /* Garantit que le titre ne soit pas séparé du contenu (améliore l'aspect professionnel) */
-            .section-header {
-                page-break-inside: avoid;
-                page-break-after: avoid; 
-            }
-            .table-container, ul, ol {
-                orphans: 3; /* Minimum de 3 lignes en bas de page */
-                widows: 3;  /* Minimum de 3 lignes en haut de page */
-                page-break-inside: auto;
-            }
-
-            /* Force l'impression des fonds pour les images et headers */
-            .header, .section-header, .table-custom th {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            /* Masquer les éléments non-imprimables et supprimer leur espace */
-            .no-print {
-                display: none !important; 
-                height: 0 !important;     
-                overflow: hidden !important; 
-            }
-            
-            /* Styles des tableaux pour garantir la visibilité */
-            .table-custom {
-                border-collapse: collapse !important;
-                width: 100% !important;
-                table-layout: fixed;
-            }
-            .table-custom th {
-                background-color: #f0f4f8 !important;
-                color: #000000 !important;
-                border: 1px solid #555 !important;
-            }
-            .table-custom td {
-                color: #000000 !important;
-                border: 1px solid #ddd !important;
-                padding: 5px !important;
-            }
-            .text-xl, .text-2xl, .text-4xl {
-                color: #000000 !important;
-            }
-             /* 🌟 STYLE DE PAGINATION (Ajouté) */
-            .page-number::after {
-                content: "Page " counter(page) " sur " counter(pages);
-                position: fixed;
-                bottom: 5mm;
-                right: 15mm;
-                font-size: 9pt;
-                color: #555;
-            }
-        }
-
-        /* Classe pour forcer le saut de page à des endroits précis (non utilisée dans le corps) */
-        .page-break-after-section {
-            page-break-after: always;
-        }
 
         /* Styles pour les tableaux */
         .table-custom th {
@@ -223,22 +140,11 @@
 
         /* veiller à ne pas imprimer les popups */
         .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
-        @media print { .no-print { display: none !important; } 
-            }
         /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
            But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
         .no-screen {
           display: none !important; /* Masqué par défaut à l'écran */
-        }
-        /* Lors de l'impression, afficher le sommaire du corps */
-        @media print {
-          .no-screen {
-            display: block !important;
-          }
-          /* Optionnel : s'assurer que le menu header ne s'imprime pas (si souhaité) */
-          header { display: none !important; }
-        }
-                
+        }       
                 /* Style pour les en-têtes de section avec icônes */
                 .section-header {
                     display: flex;
@@ -284,10 +190,6 @@
                  .section-content { display: none; } /* par défaut : replié */
                  /* affichage pour la première section (sera activé par JS au chargement) */
                  .section-content.open { display: block; }
-                 /* Lors de l'impression, forcer l'ouverture de toutes les sections */
-                 @media print {
-                     .section-content { display: block !important; }
-                 }
                 /* Conteneur principal du bouton PDF pour gérer le défilement */
                 .pdf-button-container {
                     width: 100%;
@@ -417,142 +319,129 @@
                   color: #ffffff;
                   font-weight: 600;
                 }
-        
-                    /* ---------- PRINT: header/footer fixes, padding et règles anti-tronquage ---------- */
-                /* LIGNES À REMPLACER (Ancienne implémentation @media print) */
-                /* Ciblez tout le bloc @media print existant et remplacez-le par ce qui suit */
+        /* ================================================================== */
+        /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
+        /* ================================================================== */
+        @media print {
+            /* 1. Configuration de la page et suppression des artefacts (URL, date...) */
+            @page {
+                margin: 3cm 1.5cm 2.5cm 1.5cm;
+                @top-left { content: none; }
+                @top-right { content: none; }
+                @bottom-left { content: none; }
+                @bottom-right { content: none; }
+            }
 
-                @media print {
-                    /* 1. Définition des marges d'impression standards et des zones de pagination (@page) */
-                    /* 6. Supprime le titre du document, l'URL, et la date/heure de la zone d'impression par défaut */
-                    /* Cette propriété est essentielle pour la plupart des navigateurs modernes afin d'éliminer les informations par défaut */
-                    @page {
-                        margin: 3cm 1.5cm 2.5cm 1.5cm;
-                        @top-left { content: none; }
-                        @top-right { content: none; }
-                        @bottom-left { content: none; }
-                        @bottom-right { content: none; }
-                    }
-                    /* Cache l'URL d'origine qui s'affiche comme un lien dans le corps de la page (si le navigateur l'ajoute) */
-                    a[href]:after {
-                        content: none !important;
-                    }
-                
-                    /* Supprime le texte du copyright de la zone interactive du pied de page, laissant le ::before CSS afficher le titre du catalogue. */
-                    .print-footer .copyright {
-                        /* Masque le contenu HTML original du span.copyright */
-                        visibility: hidden; 
-                        position: relative;
-                    }
-                    /* Rétablit le ::before (qui contient le titre du catalogue) */
-                    .print-footer .copyright::before {
-                        visibility: visible;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        display: flex;
-                        align-items: center;
-                        content: "Catalogue - MULTIPARTS - Secteur Mines"; /* Répète le contenu pour la clarté */
-                        font-weight: bold;
-                    }
-                    
-                    /* 2. Style du LOGO dans le header fixe */
-                    .print-header {
-                        display: flex !important; 
-                        position: fixed !important;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        padding: 6px 15mm; 
-                        background: #ffffff;
-                        border-bottom: 2px solid #1e40af; 
-                        height: 50px; 
-                        align-items: center;
-                        justify-content: space-between;
-                        z-index: 9999;
-                        -webkit-print-color-adjust: exact !important;
-                        print-color-adjust: exact !important;
-                    }
-                    .print-header img {
-                        height: 38px; 
-                        width: auto;
-                    }
-                    .print-header::after {
-                        /* AJOUT DU TITRE À CÔTÉ DU LOGO */
-                        content: "Catalogue - MULTIPARTS - Secteur Mines";
-                        font-size: 10pt;
-                        color: #333;
-                        font-weight: bold;
-                    }
-                
-                    /* 3. Style du FOOTER fixe (Catalogue + Page Counter) */
-                    .print-footer {
-                        display: flex !important;
-                        position: fixed !important;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        padding: 6px 15mm; 
-                        background: #ffffff;
-                        border-top: 1px solid rgba(0,0,0,0.1);
-                        height: 30px; 
-                        align-items: center;
-                        justify-content: space-between; 
-                        font-size: 10pt;
-                        color: #333;
-                        -webkit-print-color-adjust: exact !important;
-                        print-color-adjust: exact !important;
-                    }
-                    /* Règle spécifique pour le texte du copyright/titre du catalogue */
-                    .print-footer .copyright::before { 
-                        content: "Catalogue - MULTIPARTS - Secteur Mines";
-                        font-weight: bold; 
-                    }
-                    /* Supprime le texte original du copyright pour ne garder que le titre du catalogue */
-                    .print-footer .copyright {
-                        font-weight: normal;
-                        margin-right: 0 !important;
-                        color: #333;
-                    }
-                    .print-footer .page-counter::after {
-                        /* Numéro de page à droite */
-                        content: "Page " counter(page);
-                        margin-left: 0 !important;
-                        font-weight: normal;
-                        display: block;
-                    }
-                    /* Masquer la counter affichée ailleurs pour éviter duplication */
-                    .page-number::after { display: none !important; }
-                    
-                    /* 4. Réservation d'espace pour le corps de la page */
-                    .catalog-page {
-                        /* Calcule le padding à partir de la hauteur des éléments fixes + la marge du @page */
-                        /* Header (50px) + Marge supérieure (30mm/3cm) = ~113px */
-                        padding-top: calc(50px + 30mm) !important; 
-                        /* Footer (30px) + Marge inférieure (25mm/2.5cm) = ~60px */
-                        padding-bottom: calc(30px + 25mm) !important;
-                        box-shadow: none !important;
-                        margin: 0 !important;
-                        min-height: auto !important; /* Important pour laisser le navigateur déterminer la hauteur */
-                    }
-                
-                    /* 5. Règles anti-troncature (à conserver) */
-                    .table-container,
-                    .expertise-box,
-                    .section-header,
-                    .section-content,
-                    .table-custom,
-                    .table-custom tbody,
-                    .table-custom tr {
-                        page-break-inside: avoid !important;
-                        -webkit-page-break-inside: avoid !important;
-                        break-inside: avoid !important;
-                    }
-                    .no-screen, .section-content { display: block !important; }
-                    .no-print, .toggle-details-btn { display: none !important; }
-                }
+            body {
+                background-color: white;
+                color: #000000 !important;
+            }
+
+            /* 2. Style de l'en-tête fixe */
+            .print-header {
+                display: flex !important; 
+                position: fixed;
+                top: 0; left: 0; right: 0;
+                height: 50px; 
+                padding: 6px 15mm;
+                background: #ffffff;
+                border-bottom: 2px solid #1e40af; 
+                align-items: center;
+                justify-content: space-between;
+                z-index: 9999;
+            }
+            .print-header img { height: 38px; width: auto; }
+            .print-header::after {
+                content: "Catalogue - MULTIPARTS - Secteur Mines";
+                font-size: 10pt; color: #333; font-weight: bold;
+            }
+
+            /* 3. Style du pied de page fixe */
+            .print-footer {
+                display: flex !important;
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                height: 30px; 
+                padding: 6px 15mm;
+                background: #ffffff;
+                border-top: 1px solid rgba(0,0,0,0.1);
+                align-items: center;
+                justify-content: space-between; 
+                font-size: 10pt; color: #333;
+            }
+            .print-footer .copyright::before {
+                content: "Catalogue - MULTIPARTS - Secteur Mines";
+                font-weight: bold;
+            }
+            .print-footer .page-counter::after {
+                content: "Page " counter(page);
+                font-weight: normal;
+            }
+
+            /* 4. Ajustement du corps du document et des éléments visibles/cachés */
+            .catalog-page {
+                box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
+            }
+            .page-number::after, header, .no-print, .toggle-details-btn {
+                display: none !important;
+            }
+            .no-screen, .section-content {
+                display: block !important;
+            }
+
+            /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES POUR L'IMPRESSION */
+            .consumables-inline {
+                display: none !important; /* Cache le texte tronqué */
+            }
+            .consumables-popup {
+                display: block !important;
+                position: static !important;
+                width: 100% !important;
+                max-height: none !important;
+                overflow-y: visible !important;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                color: #000000 !important;
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+                white-space: normal !important; /* Permet le retour à la ligne */
+            }
+            .consumables-popup::before {
+                display: none !important; /* Cache la flèche */
+            }
+
+            /* 6. Règles anti-troncature pour un rendu propre */
+            .section-header {
+                page-break-inside: avoid; page-break-after: avoid; 
+            }
+            .table-container, ul, ol, .expertise-box, .table-custom, .table-custom tbody, .table-custom tr {
+                page-break-inside: avoid !important;
+            }
+            ul, ol {
+                orphans: 3; widows: 3;
+            }
+
+            /* 7. Styles pour les tableaux et forcer les couleurs */
+            .table-custom {
+                border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
+            }
+            .table-custom th, .header, .section-header, .print-header, .print-footer {
+                -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+            }
+            .table-custom th {
+                background-color: #f0f4f8 !important; color: #000000 !important; border: 1px solid #555 !important;
+            }
+            .table-custom td {
+                color: #000000 !important; border: 1px solid #ddd !important; padding: 5px !important;
+            }
+            .text-xl, .text-2xl, .text-4xl {
+                color: #000000 !important;
+            }
+        }
+            
             </style>
         </head>
         <body>
@@ -1844,3 +1733,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+

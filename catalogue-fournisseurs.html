@@ -249,11 +249,18 @@
                     padding-left: 10px;
                 }
                 .section-header h3 {
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    color: #1e40af;
-                    margin: 0;
-                    padding-left: 10px;
+                font-size: 1.15rem; /* Taille mobile de base, environ 18px */
+                font-weight: bold;
+                color: #1e40af;
+                margin: 0;
+                padding-left: 10px;
+                line-height: 1.25; /* Améliore la coupure */
+                }
+                /* Taille supérieure pour les écrans plus grands que mobile */
+                @media screen and (min-width: 640px) {
+                    .section-header h3 {
+                        font-size: 1.5rem; /* 24px pour le bureau */
+                    }
                 }
              /* Styles pour l'accordéon des sections */
                  .section-header { justify-content: space-between; }
@@ -516,14 +523,80 @@
             </div>
             <!-- /PRINT -->
                 <!-- Nouveau menu MULTIPARTS -->
-        <header class="flex items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
+                    <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50">
+            <a href="#top" aria-label="Retour haut de page" class="shrink-0">
+                <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
+                  class="h-10 sm:h-20 w-auto" style="max-width:160px;" loading="lazy">
+            </a>
+            <nav class="flex-1 min-w-0">
+                <ul class="flex space-x-2 sm:space-x-10 justify-end sm:justify-start">
+                    <li class="relative">
+                        <button id="sommaireToggle"
+                            aria-haspopup="true"
+                            aria-controls="sommaireMenu"
+                            aria-expanded="false"
+                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 focus:outline-none group">
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                            <span class="hidden sm:inline">Sommaire</span>
+                            <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
+                        </button>
+                        <ul id="sommaireMenu"
+                        class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
+                        role="menu"
+                        aria-labelledby="sommaireToggle">
+                        <li role="none"><a role="menuitem" href="#section-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">1. Équipements Lourds & Mobiles</a></li>
+                        <li role="none"><a role="menuitem" href="#section-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">2. Traitement des Minerais & Séparation</a></li>
+                        <li role="none"><a role="menuitem" href="#section-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">3. Pompes, Vannes & Fluides Spécialisés</a></li>
+                        <li role="none"><a role="menuitem" href="#section-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">4. Automatisation, Contrôle & Électronique</a></li>
+                        <li role="none"><a role="menuitem" href="#section-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">5. Instrumentation, Laboratoire & Consommables</a></li>
+                        <li role="none"><a role="menuitem" href="#section-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">6. Outillage Spécialisé & Maintenance Critique</a></li>
+                        </ul>
+                    </li>
+        
+                    <li>
+                        <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire"
+                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group"
+                            target="_blank" rel="noopener">
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="hidden sm:inline ml-1">Localisation</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
+                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
+                            <span class="hidden sm:inline ml-1">Contact</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#secteurs"
+                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                            <span class="hidden sm:inline ml-1">Secteurs</span>
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="#" onclick="window.print(); return false;"
+                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <span class="hidden sm:inline ml-1">Générer PDF</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+            <!-- /ANCIEN MENU   
+            <header class="flex items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
           <a href="#top" aria-label="Retour haut de page">
             <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
               class="h-20 w-auto mr-44" style="max-width:210px;" loading="lazy">
           </a>
           <nav class="flex-1">
             <ul class="flex space-x-10 justify-start">
-              <!-- Remplacer le <li> contenant <a href="#sommaire">Sommaire</a> par ce bloc -->
+              <!-- Remplacer le <li> contenant <a href="#sommaire">Sommaire</a> par ce bloc
                 <li class="relative">
                   <button id="sommaireToggle"
                           aria-haspopup="true"
@@ -535,7 +608,7 @@
                   </button>
                 
                   <!-- Sous-menu : apparaît via JS (hidden par défaut) -->
-                    <ul id="sommaireMenu"
+                     <!--<ul id="sommaireMenu"
                     class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
                     role="menu"
                     aria-labelledby="sommaireToggle">         
@@ -583,6 +656,7 @@
             </ul>
           </nav>
         </header>
+            -->
     <!--
     <div class="pdf-button-container no-print">
         <div class="w-full flex justify-center space-x-4">
@@ -643,8 +717,8 @@
 
     <div class="catalog-page page-number" id="top"> 
         <header class="header">
-            <h1 class="text-4xl sm:text-3xl font-extrabold text-[#1e40af]">MARQUES PARTENAIRES</h1>
-            <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-1">Équipement Industriel & Minier</h2>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-[#1e40af]">MARQUES PARTENAIRES</h1>
+            <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier</h2>
         </header>
 
         <img class="w-full h-auto rounded-lg mb-6" 
@@ -1727,6 +1801,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

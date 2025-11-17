@@ -440,12 +440,19 @@
     }
 
     /* 6. Règles anti-troncature (INCHANGÉ) */
-    .section-header {
-        page-break-inside: avoid; page-break-after: avoid; 
+   * 6. Règles anti-troncature pour un rendu propre */
+    .section-header, 
+    .section-header h3, 
+    .expertise-box {
+        /* Empêche l'élément lui-même d'être coupé */
+        page-break-inside: avoid; 
+        /* Empêche la rupture de page juste après l'élément */
+        page-break-after: avoid; 
         margin-top: 10px; 
     }
-    .table-container, ul, ol, .expertise-box, .table-custom, .table-custom tbody, .table-custom tr {
+    .table-container, ul, ol, .table-custom, .table-custom tbody, .table-custom tr {
         page-break-inside: avoid !important;
+    }
     }
     ul, ol {
         orphans: 3; widows: 3;
@@ -1786,6 +1793,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

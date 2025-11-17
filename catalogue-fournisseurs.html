@@ -419,18 +419,43 @@
                 }
         
                     /* ---------- PRINT: header/footer fixes, padding et règles anti-tronquage ---------- */
-        /* LIGNES À REMPLACER (Ancienne implémentation @media print) */
-/* Ciblez tout le bloc @media print existant et remplacez-le par ce qui suit */
+                /* LIGNES À REMPLACER (Ancienne implémentation @media print) */
+                /* Ciblez tout le bloc @media print existant et remplacez-le par ce qui suit */
 
                 @media print {
                     /* 1. Définition des marges d'impression standards et des zones de pagination (@page) */
+                    /* 6. Supprime le titre du document, l'URL, et la date/heure de la zone d'impression par défaut */
+                    /* Cette propriété est essentielle pour la plupart des navigateurs modernes afin d'éliminer les informations par défaut */
                     @page {
-                        /* Marges pour PDF: Haut/Droite/Bas/Gauche (3cm en haut et en bas pour l'espace des headers/footers fixes) */
                         margin: 3cm 1.5cm 2.5cm 1.5cm;
+                        @top-left { content: none; }
+                        @top-right { content: none; }
+                        @bottom-left { content: none; }
+                        @bottom-right { content: none; }
+                    }
+                    /* Cache l'URL d'origine qui s'affiche comme un lien dans le corps de la page (si le navigateur l'ajoute) */
+                    a[href]:after {
+                        content: none !important;
+                    }
                 
-                        /* Supprime l'entête et le pied de page par défaut du navigateur */
-                        @top-center { content: none; }
-                        @bottom-center { content: none; }
+                    /* Supprime le texte du copyright de la zone interactive du pied de page, laissant le ::before CSS afficher le titre du catalogue. */
+                    .print-footer .copyright {
+                        /* Masque le contenu HTML original du span.copyright */
+                        visibility: hidden; 
+                        position: relative;
+                    }
+                    /* Rétablit le ::before (qui contient le titre du catalogue) */
+                    .print-footer .copyright::before {
+                        visibility: visible;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        display: flex;
+                        align-items: center;
+                        content: "Catalogue - MULTIPARTS - Secteur Mines"; /* Répète le contenu pour la clarté */
+                        font-weight: bold;
                     }
                     
                     /* 2. Style du LOGO dans le header fixe */
@@ -537,8 +562,7 @@
                   </div>
                 
                 <div class="print-footer no-screen" aria-hidden="true">
-                  <span class="copyright">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</span>
-                  <span class="page-counter" aria-hidden="true"></span>
+                <span class="copyright"></span>     <span class="page-counter" aria-hidden="true"></span>
                 </div>
             <!-- /PRINT -->
                 <!-- Nouveau menu MULTIPARTS -->
@@ -1820,13 +1844,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

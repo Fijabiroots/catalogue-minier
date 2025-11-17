@@ -498,47 +498,327 @@
     ]
   },
   {
-    "sectionId": "section-3",
-    "title": "Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
-    "items": [
-      {
-        "brand": "Weir Minerals (Warman)",
-        "specialization": "Pompes à Boues / Abrasives",
-        "consumables": [
-          "Épaississeurs & liners",
-          "Turbines & volutes",
-          "Bagues d'usure",
-          "Roulements",
-          "Garnitures mécaniques",
-          "Revêtements anti-abrasion"
-        ]
-      },
-      {
-        "brand": "ITT Goulds",
-        "specialization": "Pompes à Boues / Abrasives",
-        "consumables": [
-          "Impellers",
-          "Liners",
-          "Garnitures mécaniques",
-          "Roulements",
-          "Joints & kits",
-          "Revêtements anti-usure"
-        ]
-      },
-      {
-        "brand": "KSB Etabloc",
-        "specialization": "Pompes à Boues / Abrasives",
-        "consumables": [
-          "Roue & volute",
-          "Garnitures mécaniques",
-          "Joints toriques",
-          "Roulements",
-          "Kits hydrauliques",
-          "Revêtements anti-abrasion"
-        ]
-      }
-    ]
-  },
+  "sectionId": "section-3",
+  "title": "Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
+  "items": [
+    {
+      "brand": "Weir Minerals (Warman)",
+      "specialization": "Pompes à Boues / Abrasives",
+      "consumables": [
+        "Épaississeurs & liners",
+        "Turbines & volutes",
+        "Bagues d’usure",
+        "Roulements",
+        "Garnitures mécaniques",
+        "Revêtements anti-abrasion"
+      ]
+    },
+    {
+      "brand": "ITT Goulds",
+      "specialization": "Pompes à Boues / Abrasives",
+      "consumables": [
+        "Impellers",
+        "Liners",
+        "Garnitures mécaniques",
+        "Roulements",
+        "Joints & kits",
+        "Revêtements anti-usure"
+      ]
+    },
+    {
+      "brand": "KSB Etabloc",
+      "specialization": "Pompes à Boues / Abrasives",
+      "consumables": [
+        "Roue & volute",
+        "Garnitures mécaniques",
+        "Joints toriques",
+        "Roulements",
+        "Kits hydrauliques",
+        "Revêtements anti-abrasion"
+      ]
+    },
+    {
+      "brand": "EDDY Pump",
+      "specialization": "Pompes à Boues / Abrasives",
+      "consumables": [
+        "Têtes vortex",
+        "Revêtements anti-usure",
+        "Joints haute résistance",
+        "Kits de maintenance",
+        "Roulements",
+        "Flexibles boue"
+      ]
+    },
+    {
+      "brand": "Andritz",
+      "specialization": "Pompes à Boues / Abrasives",
+      "consumables": [
+        "Rotors & stators",
+        "Joints hydrauliques",
+        "Roulements",
+        "Garnitures mécaniques",
+        "Revêtements anti-usure"
+      ]
+    },
+    {
+      "brand": "LEWA",
+      "specialization": "Pompes Doseuses (Réactifs)",
+      "consumables": [
+        "Membranes doseuses",
+        "Soupapes & clapets",
+        "Kits tête de dosage",
+        "Joints PTFE",
+        "Huile hydraulique spéciale",
+        "Kits maintenance"
+      ]
+    },
+    {
+      "brand": "ProMinent",
+      "specialization": "Pompes Doseuses (Réactifs)",
+      "consumables": [
+        "Membranes",
+        "Têtes doseuses",
+        "Clapets & billes",
+        "Joints PTFE",
+        "Flexibles PVC",
+        "Kits maintenance"
+      ]
+    },
+    {
+      "brand": "NETZSCH",
+      "specialization": "Pompes Doseuses (Péristaltiques)",
+      "consumables": [
+        "Tubes péristaltiques",
+        "Lubrifiant rotor",
+        "Billes & clapets",
+        "Joints haute résistance",
+        "Kits tête de pompe"
+      ]
+    },
+    {
+      "brand": "Debem",
+      "specialization": "Pompes Doseuses (Péristaltiques)",
+      "consumables": [
+        "Tubes de rechange",
+        "Lubrifiants",
+        "Joints & membranes",
+        "Filtres aspiration",
+        "Kits de maintenance"
+      ]
+    },
+    {
+      "brand": "Orbinox",
+      "specialization": "Vannes Boues (Guillotine)",
+      "consumables": [
+        "Lames guillotine",
+        "Joints EPDM/NBR",
+        "Kits d’étanchéité",
+        "Boulonnerie inox",
+        "Servomoteurs"
+      ]
+    },
+    {
+      "brand": "Weir Minerals (Isogate)",
+      "specialization": "Vannes Boues (Guillotine)",
+      "consumables": [
+        "Liners compacts",
+        "Joints de siège",
+        "Lames guillotine",
+        "Kits de tiges",
+        "Revêtements anti-abrasion"
+      ]
+    },
+    {
+      "brand": "KDV",
+      "specialization": "Vannes Corrosifs / Régulation",
+      "consumables": [
+        "Sièges PTFE",
+        "Joints & garnitures",
+        "Membranes",
+        "Kits d’actionneurs",
+        "Revêtements spéciaux"
+      ]
+    },
+    {
+      "brand": "Richter",
+      "specialization": "Vannes Corrosifs / Régulation",
+      "consumables": [
+        "Revêtements PFA",
+        "Sièges PTFE",
+        "Joints élastomères",
+        "Garnitures de tiges",
+        "Kits réparation"
+      ]
+    },
+    {
+      "brand": "Samson",
+      "specialization": "Vannes Corrosifs / Régulation",
+      "consumables": [
+        "Sièges & clapets",
+        "Membranes régulation",
+        "Joints & kits",
+        "Kits actionneurs",
+        "Servomoteurs"
+      ]
+    },
+    {
+      "brand": "Xylem (Flygt)",
+      "specialization": "Pompes Eaux / Drainage",
+      "consumables": [
+        "Impellers Flygt",
+        "Garnitures mécaniques",
+        "Câbles étanches",
+        "Roulements",
+        "Joints d’arbre",
+        "Kits 500h / 1000h"
+      ]
+    },
+    {
+      "brand": "Grundfos",
+      "specialization": "Pompes Eaux / Drainage",
+      "consumables": [
+        "Roues & volutes",
+        "Cartouches mécaniques",
+        "Kits hydrauliques",
+        "Joints",
+        "Capteurs niveau"
+      ]
+    },
+    {
+      "brand": "Wilo",
+      "specialization": "Pompes Eaux / Drainage",
+      "consumables": [
+        "Impellers",
+        "Roulements",
+        "Garnitures mécaniques",
+        "Joints",
+        "Kits d’entretien"
+      ]
+    },
+    {
+      "brand": "Lowara",
+      "specialization": "Pompes Eaux / Drainage",
+      "consumables": [
+        "Joints mécaniques",
+        "Roue hydraulique",
+        "Kits de réparation",
+        "Roulements",
+        "Boulonnerie inox"
+      ]
+    },
+    {
+      "brand": "Piusi",
+      "specialization": "Pompes GO / Fluides",
+      "consumables": [
+        "Filtres GO",
+        "Tuyaux GO",
+        "Joints",
+        "Kits de réparation",
+        "Accessoires d’aspiration"
+      ]
+    },
+    {
+      "brand": "Parker",
+      "specialization": "Hydraulique / Raccords",
+      "consumables": [
+        "Flexibles hydrauliques",
+        "Embouts & raccords",
+        "Adaptateurs",
+        "Joints",
+        "Filtres hydrauliques"
+      ]
+    },
+    {
+      "brand": "Victaulic",
+      "specialization": "Raccords pour Tuyauterie (Joints)",
+      "consumables": [
+        "Joints Victaulic",
+        "Colliers & brides",
+        "Segments",
+        "Lubrifiants",
+        "Kits de montage"
+      ]
+    },
+    {
+      "brand": "Klinger",
+      "specialization": "Étanchéité / Raccords",
+      "consumables": [
+        "Feuilles joint KLINGER",
+        "Joints spiralés",
+        "Joints fibre",
+        "Garnitures tresses",
+        "Produits d’étanchéité"
+      ]
+    },
+    {
+      "brand": "Dixon",
+      "specialization": "Étanchéité / Raccords",
+      "consumables": [
+        "Raccords camlock",
+        "Flexibles",
+        "Joints",
+        "Colliers",
+        "Kits de réparation"
+      ]
+    },
+    {
+      "brand": "Swagelok",
+      "specialization": "Étanchéité / Raccords",
+      "consumables": [
+        "Embouts & fittings",
+        "Bagues ferrule",
+        "Soupapes & clapets",
+        "Joints PTFE",
+        "Kits de réparation"
+      ]
+    },
+    {
+      "brand": "Rotork",
+      "specialization": "Actionneurs de Vannes",
+      "consumables": [
+        "Joints kits",
+        "Graisses",
+        "Servomoteurs",
+        "Kits tiges",
+        "Capteurs fin de course"
+      ]
+    },
+    {
+      "brand": "Topworx",
+      "specialization": "Actionneurs de Vannes",
+      "consumables": [
+        "Kits contacts",
+        "Capteurs fin de course",
+        "Joints & couvercles",
+        "Modules communication",
+        "Accessoires montage"
+      ]
+    },
+    {
+      "brand": "A-T Controls",
+      "specialization": "Actionneurs de Vannes",
+      "consumables": [
+        "Joints",
+        "Kits connexion",
+        "Capteurs",
+        "Mécanismes internes",
+        "Servomoteurs"
+      ]
+    },
+    {
+      "brand": "Emerson",
+      "specialization": "Actionneurs de Vannes",
+      "consumables": [
+        "Cartouches & joints",
+        "Servomoteurs",
+        "Capteurs de position",
+        "Kits de réparation",
+        "Modules Fieldbus",
+        "Accessoires pneumatiques"
+      ]
+    }
+  ]
+},
   {
   "sectionId": "section-4",
   "title": "Automatisation, Contrôle & Électronique",

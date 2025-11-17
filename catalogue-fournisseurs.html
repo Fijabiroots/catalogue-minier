@@ -417,113 +417,117 @@
                   color: #ffffff;
                   font-weight: 600;
                 }
+        
                     /* ---------- PRINT: header/footer fixes, padding et règles anti-tronquage ---------- */
-            @media print {
-              /* Masquer la counter affichée ailleurs pour éviter duplication */
-              .page-number::after { display: none !important; }
-            
-              /* Afficher header & footer fixes sur chaque page */
-              .print-header,
-              .print-footer {
-                display: block !important;
-                position: fixed !important;
-                left: 0;
-                right: 0;
-                background: #ffffff;
-                z-index: 9999;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-              }
-            
-              /* Header (logo) en haut de chaque page */
-              .print-header {
-                top: 0;
-                height: 56px; /* ajuster si nécessaire */
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                /* AJOUT DU TITRE ET ALIGNEMENT POUR LE PDF */
-                justify-content: space-between; 
-              }
-              .print-header::after {
-                content: "Catalogue pour le secteur Minier - MULTIPARTS"; /* AJOUT DU TITRE ICI */
-                font-size: 10px;
-                color: #333;
-              }
-              .print-header img {
-                height: 44px;
-                width: auto;
-                object-fit: contain;
-              }
-            
-              /* Footer fixe en bas de chaque page : copyright + page counter */
-              .print-footer {
-                bottom: 0;
-                height: 48px; /* ajuster si nécessaire */
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 11px;
-                color: #333;
-                border-top: 1px solid rgba(0,0,0,0.06);
-                justify-content: space-between; /* Pour séparer copyright et numéro de page */
-                padding: 6px 12px !important; /* Force le padding */
-              }
-             .print-footer .copyright { margin-right: 0px !important; }
-              .print-footer .page-counter::after {
-                content: "Page " counter(page) " / " counter(pages); /* Pagination */
-                margin-left: 0px !important;
-                display: block;
-              }
-              .print-footer .page-counter::after {
-                content: "Page " counter(page) " / " counter(pages);
-                margin-left: 10px;
+        /* LIGNES À REMPLACER (Ancienne implémentation @media print) */
+/* Ciblez tout le bloc @media print existant et remplacez-le par ce qui suit */
+
+                @media print {
+                    /* 1. Définition des marges d'impression standards et des zones de pagination (@page) */
+                    @page {
+                        /* Marges pour PDF: Haut/Droite/Bas/Gauche (3cm en haut et en bas pour l'espace des headers/footers fixes) */
+                        margin: 3cm 1.5cm 2.5cm 1.5cm;
                 
-              }
-            
-              /* Réserver l'espace pour header/footer : évite chevauchement et troncature */
-              .catalog-page {
-                /* override du padding précédemment déclaré */
-                padding-top: calc(56px + 10mm) !important;   /* header height + marge imprimée */
-                padding-bottom: calc(48px + 10mm) !important;/* footer height + marge imprimée */
-                box-shadow: none !important;
-                margin: 0 !important;
-              }
-            
-              /* Cacher éléments interactifs qui ne doivent pas s'imprimer */
-              .toggle-details-btn,
-              .no-print {
-                display: none !important;
-                height: 0 !important;
-                overflow: hidden !important;
-                visibility: hidden !important;
-              }
-            
-              /* Empêcher la coupure interne (page-break) sur blocs critiques pour éviter la troncature */
-              .table-container,
-              .expertise-box,
-              .section-header,
-              .section-content,
-              .table-custom,
-              .table-custom tbody,
-              .table-custom tr {
-                page-break-inside: avoid !important;
-                -webkit-page-break-inside: avoid !important;
-                break-inside: avoid !important;
-              }
-            
-              /* Forcer impression des couleurs (si le navigateur le permet) */
-              header, .section-header, .table-custom th, .fixed-expertise-band {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-              }
-            
-              /* Optionnel : afficher le sommaire de la page (si vous utilisez la classe .no-screen) */
-              .no-screen { display: block !important; }
-            }
+                        /* Supprime l'entête et le pied de page par défaut du navigateur */
+                        @top-center { content: none; }
+                        @bottom-center { content: none; }
+                    }
+                    
+                    /* 2. Style du LOGO dans le header fixe */
+                    .print-header {
+                        display: flex !important; 
+                        position: fixed !important;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        padding: 6px 15mm; 
+                        background: #ffffff;
+                        border-bottom: 2px solid #1e40af; 
+                        height: 50px; 
+                        align-items: center;
+                        justify-content: space-between;
+                        z-index: 9999;
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                    }
+                    .print-header img {
+                        height: 38px; 
+                        width: auto;
+                    }
+                    .print-header::after {
+                        /* AJOUT DU TITRE À CÔTÉ DU LOGO */
+                        content: "Catalogue - MULTIPARTS - Secteur Mines";
+                        font-size: 10pt;
+                        color: #333;
+                        font-weight: bold;
+                    }
+                
+                    /* 3. Style du FOOTER fixe (Catalogue + Page Counter) */
+                    .print-footer {
+                        display: flex !important;
+                        position: fixed !important;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        padding: 6px 15mm; 
+                        background: #ffffff;
+                        border-top: 1px solid rgba(0,0,0,0.1);
+                        height: 30px; 
+                        align-items: center;
+                        justify-content: space-between; 
+                        font-size: 10pt;
+                        color: #333;
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                    }
+                    /* Règle spécifique pour le texte du copyright/titre du catalogue */
+                    .print-footer .copyright::before { 
+                        content: "Catalogue - MULTIPARTS - Secteur Mines";
+                        font-weight: bold; 
+                    }
+                    /* Supprime le texte original du copyright pour ne garder que le titre du catalogue */
+                    .print-footer .copyright {
+                        font-weight: normal;
+                        margin-right: 0 !important;
+                        color: #333;
+                    }
+                    .print-footer .page-counter::after {
+                        /* Numéro de page à droite */
+                        content: "Page " counter(page);
+                        margin-left: 0 !important;
+                        font-weight: normal;
+                        display: block;
+                    }
+                    /* Masquer la counter affichée ailleurs pour éviter duplication */
+                    .page-number::after { display: none !important; }
+                    
+                    /* 4. Réservation d'espace pour le corps de la page */
+                    .catalog-page {
+                        /* Calcule le padding à partir de la hauteur des éléments fixes + la marge du @page */
+                        /* Header (50px) + Marge supérieure (30mm/3cm) = ~113px */
+                        padding-top: calc(50px + 30mm) !important; 
+                        /* Footer (30px) + Marge inférieure (25mm/2.5cm) = ~60px */
+                        padding-bottom: calc(30px + 25mm) !important;
+                        box-shadow: none !important;
+                        margin: 0 !important;
+                        min-height: auto !important; /* Important pour laisser le navigateur déterminer la hauteur */
+                    }
+                
+                    /* 5. Règles anti-troncature (à conserver) */
+                    .table-container,
+                    .expertise-box,
+                    .section-header,
+                    .section-content,
+                    .table-custom,
+                    .table-custom tbody,
+                    .table-custom tr {
+                        page-break-inside: avoid !important;
+                        -webkit-page-break-inside: avoid !important;
+                        break-inside: avoid !important;
+                    }
+                    .no-screen, .section-content { display: block !important; }
+                    .no-print, .toggle-details-btn { display: none !important; }
+                }
             </style>
         </head>
         <body>
@@ -1816,6 +1820,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

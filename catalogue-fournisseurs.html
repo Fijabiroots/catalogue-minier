@@ -328,23 +328,23 @@
         /* Marges par défaut (Pages 2+) */
         margin: 2.5cm 1.5cm 2cm 1.5cm; 
         
-        /* Suppression de l'URL, du titre de l'imprimante, etc. (souvent ignoré par les navigateurs) */
-        @top-left { content: none !important; }
-        @top-right { content: none !important; }
-        @bottom-left { content: none !important; }
-        @bottom-right { content: none !important; }
+        /* Suppression de l'URL, du titre de l'imprimante, etc. */
+        @top-left { content: none; }
+        @top-right { content: none; }
+        @bottom-left { content: none; }
+        @bottom-right { content: none; }
     }
     
     /* 1.1 Correction Spécifique pour la Première Page */
     @page:first {
-        /* Augmente fortement la marge supérieure et inférieure pour tenter de cacher les artefacts du navigateur */
-        margin-top: 5.5cm !important; 
-        margin-bottom: 2.5cm !important; /* Augmentation légère pour cacher l'URL du bas */
+        /* Augmente fortement la marge supérieure pour éviter la superposition sur la grande image */
+        margin-top: 5cm !important; 
     }
 
     body {
         background-color: white;
         color: #000000 !important;
+        /* Padding par défaut (pour compenser l'en-tête fixe sur Page 2+) */
         padding-top: 60px; 
     }
     
@@ -358,6 +358,7 @@
         display: flex !important; 
         position: fixed;
         top: 0; left: 0; right: 0;
+        /* Taille augmentée pour le logo */
         height: 60px; 
         padding: 6px 1.5cm;
         background: #ffffff;
@@ -369,6 +370,7 @@
         print-color-adjust: exact !important;
     }
     .print-header img { 
+        /* Taille du logo augmentée */
         height: 45px; 
         width: auto; 
     }
@@ -518,7 +520,7 @@
     .text-xl, .text-2xl, .text-4xl {
         color: #000000 !important;
     }
-}
+}      
     </style>
         </head>
         <body>
@@ -1810,7 +1812,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
-
 
 
 

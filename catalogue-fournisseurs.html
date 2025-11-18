@@ -9,317 +9,323 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Configuration générale pour l'écran */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-            color: #1e293b;
-            line-height: 1.5;
-        }
-        .catalog-page {
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 10px auto; /* Marge réduite sur mobile */
-            max-width: 900px;
-            padding: 20px; /* Padding réduit sur mobile */
-            min-height: 1200px;
-            position: relative;
-        }
-        .header {
-            border-bottom: 4px solid #1e40af;
-            padding-bottom: 10px;
-            margin-bottom: 15px; /* Marge réduite sur mobile */
-        }
+/* *** AVERTISSEMENT : LE CODE CI-DESSOUS REMPLACE L'INTÉGRALITÉ DE VOTRE BALISE <style> ***
+    
+    Il inclut toutes les règles d'affichage écran existantes (non modifiées) 
+    et le bloc @media print entièrement révisé.
+*/
 
-        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
-        @media screen and (max-width: 639px) {
-            .table-custom {
-                display: block;
-                overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
-                white-space: nowrap; /* Empêche les cellules de revenir à la ligne */
-            }
-            .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
-                display: block;
-            }
-            .table-custom th, .table-custom td {
-                padding: 6px;
-            }
-            /* Rétablit l'affichage normal sur les tableaux pour une lecture plus fluide */
-            .table-custom tr {
-                border-bottom: 1px solid #e5e7eb;
-            }
-        }
+        /* Configuration générale pour l'écran */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        .catalog-page {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 10px auto; /* Marge réduite sur mobile */
+            max-width: 900px;
+            padding: 20px; /* Padding réduit sur mobile */
+            min-height: 1200px;
+            position: relative;
+        }
+        .header {
+            border-bottom: 4px solid #1e40af;
+            padding-bottom: 10px;
+            margin-bottom: 15px; /* Marge réduite sur mobile */
+        }
 
-        /* Styles pour les tableaux */
-        .table-custom th {
-            background-color: #e0e7ff;
-            color: #1e40af;
-            font-weight: 700;
-            padding: 8px;
-            text-align: left;
-        }
-        .table-custom td {
-            padding: 8px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        /* Survol dynamique des lignes de tableaux .table-custom */
-         .table-custom tr:hover {
-            background-color: #119248 !important; /* Vert MULTI-PARTS */
-            color: #fff !important;
-            transition: background 0.13s, color 0.13s;
-         }
-               /* INSÉRER après la ligne 153 */
-        .brand-row td:first-child { position: relative; } /* ancre le popup par rapport à la cellule contenant la popup */
-        
-        .consumables-inline {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          max-width: 100%;
-          color: #0f172a; /* texte lisible même si la ligne a hover color */
-          font-size: 0.95rem;
-        }
-        
-        /* Popup latéral (caché par défaut) */
-        .consumables-popup {
-          display: none;
-          position: absolute;
-          left: 100%;                /* s'affiche à droite de la ligne */
-          top: 0;
-          margin-left: 12px;         /* espace entre la ligne et le popup */
-          width: 360px;              /* largeur fixe pour ne pas changer le layout */
-          max-width: calc(100vw - 40px);
-          max-height: 320px;         /* si la liste est longue : scroll à l'intérieur */
-          overflow-y: auto;
-          background: #ffffff;
-          border: 1px solid rgba(0,0,0,0.12);
-          box-shadow: 0 10px 30px rgba(2,6,23,0.12);
-          padding: 0.6rem;
-          border-radius: 8px;
-          z-index: 60;
-          color: #0b1220;
-          font-size: 0.95rem;
-          line-height: 1.4;
-        }
-        
-        /* Petite flèche visuelle */
-        .consumables-popup::before {
-          content: "";
-          position: absolute;
-          left: -8px;
-          top: 12px;
-          border-top: 8px solid transparent;
-          border-bottom: 8px solid transparent;
-          border-right: 8px solid #fff;
-          filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03));
-        }
-        
-        /* Afficher popup au hover / focus / classe .show (utilisée par le JS) */
-        /* Remplacer les lignes 201-205 (sélecteurs d'affichage) par : */
-        .brand-row:hover td:first-child .consumables-popup,
-        .brand-row:focus-within td:first-child .consumables-popup,
-        .brand-row.show td:first-child .consumables-popup {
-          display: block;
-        }
-        
-        /* Sur très petits écrans : popup devient bloc sous la ligne (responsive) */
-        @media screen and (max-width: 639px) {
-          .consumables-popup {
-            position: static;
-            left: auto;
-            top: auto;
-            margin-left: 0;
-            width: 100%;
-            max-height: none;
-            box-shadow: none;
-            border-radius: 6px;
-            margin-top: 6px;
-          }
-          .consumables-popup::before { display: none; }
-        }
+        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
+        @media screen and (max-width: 639px) {
+            .table-custom {
+                display: block;
+                overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
+                white-space: nowrap; /* Empêche les cellules de revenir à la ligne */
+            }
+            .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
+                display: block;
+            }
+            .table-custom th, .table-custom td {
+                padding: 6px;
+            }
+            /* Rétablit l'affichage normal sur les tableaux pour une lecture plus fluide */
+            .table-custom tr {
+                border-bottom: 1px solid #e5e7eb;
+            }
+        }
 
-        /* veiller à ne pas imprimer les popups */
-        .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
-        /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
-           But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
-        .no-screen {
-          display: none !important; /* Masqué par défaut à l'écran */
-        }       
-                /* Style pour les en-têtes de section avec icônes */
-                .section-header {
-                    display: flex;
-                    align-items: center;
-                    margin-top: 30px;
-                    margin-bottom: 15px;
-                    border-left: 4px solid #1e40af;
-                    padding-left: 10px;
-                }
-                .section-header h3 {
-                font-size: 1.15rem; /* Taille mobile de base, environ 18px */
-                font-weight: bold;
-                color: #1e40af;
-                margin: 0;
-                padding-left: 10px;
-                line-height: 1.25; /* Améliore la coupure */
-                }
-                /* Taille supérieure pour les écrans plus grands que mobile */
-                @media screen and (min-width: 640px) {
-                    .section-header h3 {
-                        font-size: 1.5rem; /* 24px pour le bureau */
-                    }
-                }
-             /* Styles pour l'accordéon des sections */
-                 .section-header { justify-content: space-between; }
-                 .toggle-details-btn {
-                    margin-left: 1rem;
-                    font-size: 0.95rem;
-                    background: transparent;
-                    color: #119248; /* vert charte */
-                    border: 1px solid transparent;
-                    cursor: pointer;
-                    padding: 6px 10px;
-                    border-radius: 6px;
-                    transition: background 0.16s, color 0.16s, border-color 0.16s;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                 }
-                 .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
-                 .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
-                 .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
-                 .section-content { display: none; } /* par défaut : replié */
-                 /* affichage pour la première section (sera activé par JS au chargement) */
-                 .section-content.open { display: block; }
-                /* Conteneur principal du bouton PDF pour gérer le défilement */
-                .pdf-button-container {
-                    width: 100%;
-                    background-color: white;
-                    border-bottom: 4px solid #1e40af;
-                    padding: 10px 0;
-                    position: sticky; /* Rendu 'sticky' sur le conteneur parent */
-                    top: 0;
-                    z-index: 20; /* Z-index plus élevé pour rester au-dessus de la barre d'expertise */
-                }
-                /* Style pour le bouton retour en haut (Fixe en bas à droite) */
-                .back-to-top {
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    z-index: 30; /* Plus élevé que tout */
-                    background-color: #1e40af;
-                    color: white;
-                    border-radius: 50%;
-                    padding: 12px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-                    transition: background-color 0.3s;
-                }
-                .back-to-top:hover {
-                    background-color: #1e3a8a;
-                }
-                /* Style pour le texte d'expertise */
-                .expertise-box {
-                    border-left: 4px solid #22c55e;
-                    padding-left: 10px;
-                    margin-bottom: 15px;
-                    background-color: #f0fdf4;
-                    padding: 10px;
-                    border-radius: 4px;
-                }
-                /* Styles de la modale */
-                .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 100;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    background-color: rgba(0,0,0,0.4);
-                }
-                .modal-content {
-                    background-color: #fefefe;
-                    margin: 5% auto; /* Modifié pour être plus haut */
-                    padding: 20px;
-                    border: 1px solid #888;
-                    width: 90%;
-                    max-width: 700px;
-                    border-radius: 8px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                    animation: fadeIn 0.3s;
-                }
-                .close-btn {
-                    color: #aaa;
-                    float: right;
-                    font-size: 28px;
-                    font-weight: bold;
-                }
-                .close-btn:hover, .close-btn:focus {
-                    color: #000;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-                @keyframes fadeIn {
-                    from {opacity: 0;}
-                    to {opacity: 1;}
-                }
-                .progress-bar-container {
-                    width: 100%;
-                    background-color: #e0e0e0;
-                    border-radius: 4px;
-                    margin-top: 10px;
-                }
-                .progress-bar {
-                    height: 20px;
-                    background-color: #22c55e;
-                    width: 0%;
-                    text-align: center;
-                    line-height: 20px;
-                    color: white;
-                    border-radius: 4px;
-                    transition: width 0.5s ease-in-out;
-                }
-                /* Style pour le bandeau d'expertise fixe */
-                .fixed-expertise-band {
-                    width: 100%;
-                    background-color: #166534; /* Vert foncé */
-                    color: white;
-                    text-align: center;
-                    padding: 8px 0;
-                    font-size: 0.95rem;
-                    position: sticky;
-                    top: 80px; /* Position sous la barre d'outils */
-                    z-index: 10;
-                }
-                /* Style pour le menu principal*/
-                .menu-link {
-                  transition: background 0.18s, color 0.18s;
-                }
-                    .menu-link:hover,
-                    .menu-link:focus,
-                    .menu-link:active {
-                      background: #119248; /* Vert charte MULTI-PARTS */
-                      color: #fff !important;
-                    }
-                        /* Styles pour le sous-menu Sommaire : hover et sélection active */
-                .sommaire-menu a {
-                  display: block;
-                  padding: 8px 12px;
-                  color: #1f2937;
-                  text-decoration: none;
-                  transition: background-color 0.12s, color 0.12s;
-                }
-                .sommaire-menu a:hover,
-                .sommaire-menu a:focus {
-                  background-color: #119248; /* couleur hover */
-                  color: #ffffff;
-                }
-                .sommaire-menu a.active {
-                  background-color: #0f6b34; /* couleur sélection persistante */
-                  color: #ffffff;
-                  font-weight: 600;
-                }
-        /* ================================================================== */
+        /* Styles pour les tableaux */
+        .table-custom th {
+            background-color: #e0e7ff;
+            color: #1e40af;
+            font-weight: 700;
+            padding: 8px;
+            text-align: left;
+        }
+        .table-custom td {
+            padding: 8px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        /* Survol dynamique des lignes de tableaux .table-custom */
+         .table-custom tr:hover {
+            background-color: #119248 !important; /* Vert MULTI-PARTS */
+            color: #fff !important;
+            transition: background 0.13s, color 0.13s;
+         }
+               /* INSÉRER après la ligne 153 */
+        .brand-row td:first-child { position: relative; } /* ancre le popup par rapport à la cellule contenant la popup */
+        
+        .consumables-inline {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+          color: #0f172a; /* texte lisible même si la ligne a hover color */
+          font-size: 0.95rem;
+        }
+        
+        /* Popup latéral (caché par défaut) */
+        .consumables-popup {
+          display: none;
+          position: absolute;
+          left: 100%;                /* s'affiche à droite de la ligne */
+          top: 0;
+          margin-left: 12px;         /* espace entre la ligne et le popup */
+          width: 360px;              /* largeur fixe pour ne pas changer le layout */
+          max-width: calc(100vw - 40px);
+          max-height: 320px;         /* si la liste est longue : scroll à l'intérieur */
+          overflow-y: auto;
+          background: #ffffff;
+          border: 1px solid rgba(0,0,0,0.12);
+          box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+          padding: 0.6rem;
+          border-radius: 8px;
+          z-index: 60;
+          color: #0b1220;
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+        
+        /* Petite flèche visuelle */
+        .consumables-popup::before {
+          content: "";
+          position: absolute;
+          left: -8px;
+          top: 12px;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 8px solid #fff;
+          filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03));
+        }
+        
+        /* Afficher popup au hover / focus / classe .show (utilisée par le JS) */
+        /* Remplacer les lignes 201-205 (sélecteurs d'affichage) par : */
+        .brand-row:hover td:first-child .consumables-popup,
+        .brand-row:focus-within td:first-child .consumables-popup,
+        .brand-row.show td:first-child .consumables-popup {
+          display: block;
+        }
+        
+        /* Sur très petits écrans : popup devient bloc sous la ligne (responsive) */
+        @media screen and (max-width: 639px) {
+          .consumables-popup {
+            position: static;
+            left: auto;
+            top: auto;
+            margin-left: 0;
+            width: 100%;
+            max-height: none;
+            box-shadow: none;
+            border-radius: 6px;
+            margin-top: 6px;
+          }
+          .consumables-popup::before { display: none; }
+        }
+
+        /* veiller à ne pas imprimer les popups */
+        .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
+        /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
+           But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
+        .no-screen {
+          display: none !important; /* Masqué par défaut à l'écran */
+        }       
+                /* Style pour les en-têtes de section avec icônes */
+                .section-header {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 30px;
+                    margin-bottom: 15px;
+                    border-left: 4px solid #1e40af;
+                    padding-left: 10px;
+                }
+                .section-header h3 {
+                font-size: 1.15rem; /* Taille mobile de base, environ 18px */
+                font-weight: bold;
+                color: #1e40af;
+                margin: 0;
+                padding-left: 10px;
+                line-height: 1.25; /* Améliore la coupure */
+                }
+                /* Taille supérieure pour les écrans plus grands que mobile */
+                @media screen and (min-width: 640px) {
+                    .section-header h3 {
+                        font-size: 1.5rem; /* 24px pour le bureau */
+                    }
+                }
+             /* Styles pour l'accordéon des sections */
+                 .section-header { justify-content: space-between; }
+                 .toggle-details-btn {
+                    margin-left: 1rem;
+                    font-size: 0.95rem;
+                    background: transparent;
+                    color: #119248; /* vert charte */
+                    border: 1px solid transparent;
+                    cursor: pointer;
+                    padding: 6px 10px;
+                    border-radius: 6px;
+                    transition: background 0.16s, color 0.16s, border-color 0.16s;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                 }
+                 .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
+                 .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
+                 .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
+                 .section-content { display: none; } /* par défaut : replié */
+                 /* affichage pour la première section (sera activé par JS au chargement) */
+                 .section-content.open { display: block; }
+                /* Conteneur principal du bouton PDF pour gérer le défilement */
+                .pdf-button-container {
+                    width: 100%;
+                    background-color: white;
+                    border-bottom: 4px solid #1e40af;
+                    padding: 10px 0;
+                    position: sticky; /* Rendu 'sticky' sur le conteneur parent */
+                    top: 0;
+                    z-index: 20; /* Z-index plus élevé pour rester au-dessus de la barre d'expertise */
+                }
+                /* Style pour le bouton retour en haut (Fixe en bas à droite) */
+                .back-to-top {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 30; /* Plus élevé que tout */
+                    background-color: #1e40af;
+                    color: white;
+                    border-radius: 50%;
+                    padding: 12px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+                    transition: background-color 0.3s;
+                }
+                .back-to-top:hover {
+                    background-color: #1e3a8a;
+                }
+                /* Style pour le texte d'expertise */
+                .expertise-box {
+                    border-left: 4px solid #22c55e;
+                    padding-left: 10px;
+                    margin-bottom: 15px;
+                    background-color: #f0fdf4;
+                    padding: 10px;
+                    border-radius: 4px;
+                }
+                /* Styles de la modale */
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 100;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0,0,0,0.4);
+                }
+                .modal-content {
+                    background-color: #fefefe;
+                    margin: 5% auto; /* Modifié pour être plus haut */
+                    padding: 20px;
+                    border: 1px solid #888;
+                    width: 90%;
+                    max-width: 700px;
+                    border-radius: 8px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    animation: fadeIn 0.3s;
+                }
+                .close-btn {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+                .close-btn:hover, .close-btn:focus {
+                    color: #000;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+                @keyframes fadeIn {
+                    from {opacity: 0;}
+                    to {opacity: 1;}
+                }
+                .progress-bar-container {
+                    width: 100%;
+                    background-color: #e0e0e0;
+                    border-radius: 4px;
+                    margin-top: 10px;
+                }
+                .progress-bar {
+                    height: 20px;
+                    background-color: #22c55e;
+                    width: 0%;
+                    text-align: center;
+                    line-height: 20px;
+                    color: white;
+                    border-radius: 4px;
+                    transition: width 0.5s ease-in-out;
+                }
+                /* Style pour le bandeau d'expertise fixe */
+                .fixed-expertise-band {
+                    width: 100%;
+                    background-color: #166534; /* Vert foncé */
+                    color: white;
+                    text-align: center;
+                    padding: 8px 0;
+                    font-size: 0.95rem;
+                    position: sticky;
+                    top: 80px; /* Position sous la barre d'outils */
+                    z-index: 10;
+                }
+                /* Style pour le menu principal*/
+                .menu-link {
+                  transition: background 0.18s, color 0.18s;
+                }
+                    .menu-link:hover,
+                    .menu-link:focus,
+                    .menu-link:active {
+                      background: #119248; /* Vert charte MULTI-PARTS */
+                      color: #fff !important;
+                    }
+                        /* Styles pour le sous-menu Sommaire : hover et sélection active */
+                .sommaire-menu a {
+                  display: block;
+                  padding: 8px 12px;
+                  color: #1f2937;
+                  text-decoration: none;
+                  transition: background-color 0.12s, color 0.12s;
+                }
+                .sommaire-menu a:hover,
+                .sommaire-menu a:focus {
+                  background-color: #119248; /* couleur hover */
+                  color: #ffffff;
+                }
+                .sommaire-menu a.active {
+                  background-color: #0f6b34; /* couleur sélection persistante */
+                  color: #ffffff;
+                  font-weight: 600;
+                }
+        /* ================================================================== */
 /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
 /* ================================================================== */
 @media print {
@@ -335,7 +341,7 @@
         @bottom-right { content: none; }
     }
     
-    /* 1.1 Correction Spécifique pour la Première Page */
+    /* 1.1 Correction Spécifique pour la Première Page (Suppression de l'URL et ajustement de la marge) */
     @page:first {
         /* Augmente fortement la marge supérieure pour éviter la superposition sur la grande image */
         margin-top: 5cm !important; 
@@ -426,6 +432,7 @@
     
     /* CORRECTION CRITIQUE : NUMÉROTATION DES PAGES DU SOMMAIRE */
     .catalog-page ol.no-screen li a::after {
+        /* target-counter extrait le numéro de page lié à l'ancre href */
         content: target-counter(attr(href), page) !important;
         float: right;
         color: #555;
@@ -520,8 +527,8 @@
     .text-xl, .text-2xl, .text-4xl {
         color: #000000 !important;
     }
-}  
-    </style>
+}
+</style>
         </head>
         <body>
                     <!-- PRINT: Header & Footer fixes (affichés uniquement à l'impression via @media print) -->
@@ -1812,6 +1819,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

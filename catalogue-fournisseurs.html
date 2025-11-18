@@ -323,27 +323,43 @@
 /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
 /* ================================================================== */
 @media print {
-    /* 1. Configuration de la Page et Marges */
+    /* 1. Configuration de la Page et Suppression des Artefacts */
     @page {
+        /* Marges par défaut (Pages 2+) */
         margin: 2.5cm 1.5cm 2cm 1.5cm; 
+        
+        /* Suppression de l'URL, du titre de l'imprimante, etc. */
         @top-left { content: none; }
         @top-right { content: none; }
         @bottom-left { content: none; }
         @bottom-right { content: none; }
     }
+    
+    /* 1.1 Correction Spécifique pour la Première Page */
+    @page:first {
+        /* Augmente fortement la marge supérieure pour éviter la superposition sur la grande image */
+        margin-top: 5cm !important; 
+    }
 
     body {
         background-color: white;
         color: #000000 !important;
+        /* Padding par défaut (pour compenser l'en-tête fixe sur Page 2+) */
         padding-top: 60px; 
     }
+    
+    /* Supprime le padding du corps sur la première page */
+    body:first-of-type {
+        padding-top: 0px !important;
+    }
 
-    /* 2. Style de l'en-tête fixe (Charte graphique : Bleu foncé #1e40af) */
+    /* 2. Style de l'en-tête fixe (Visible Page 2 et suivantes) */
     .print-header {
         display: flex !important; 
         position: fixed;
         top: 0; left: 0; right: 0;
-        height: 50px; 
+        /* Taille augmentée pour le logo */
+        height: 60px; 
         padding: 6px 1.5cm;
         background: #ffffff;
         border-bottom: 2px solid #1e40af; 
@@ -353,15 +369,25 @@
         -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
     }
-    .print-header img { height: 38px; width: auto; }
+    .print-header img { 
+        /* Taille du logo augmentée */
+        height: 45px; 
+        width: auto; 
+    }
     .print-header::after {
         content: "Catalogue - MULTIPARTS - Secteur Mines";
         font-size: 10pt; 
         color: #1e40af; 
         font-weight: bold;
     }
+    
+    /* 2.1 Masquer l'en-tête et le pied de page sur la première page */
+    .print-header:first-of-type, 
+    .print-footer:first-of-type {
+        display: none !important;
+    }
 
-    /* 3. Style du pied de page fixe */
+    /* 3. Style du pied de page fixe (Visible Page 2 et suivantes) */
     .print-footer {
         display: flex !important;
         position: fixed;
@@ -397,14 +423,27 @@
     .no-screen, .section-content {
         display: block !important;
     }
+    
+    /* CORRECTION CRITIQUE : NUMÉROTATION DES PAGES DU SOMMAIRE */
+    .catalog-page ol.no-screen li a::after {
+        content: target-counter(attr(href), page) !important;
+        float: right;
+        color: #555;
+        font-style: normal;
+        margin-left: 10px;
+        text-decoration: none;
+    }
+    .catalog-page ol.no-screen li a {
+        display: block;
+    }
+
 
     /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES (Ligne Fusionnée Virtuelle) */
-    
     .consumables-popup {
         display: block !important; 
         position: static !important;
         
-        /* CORRECTION : Débordement vers la droite pour simuler la fusion */
+        /* Débordement vers la droite pour simuler la fusion (car ancré dans le premier TD) */
         margin: 0 !important; 
         margin-right: -100% !important; 
         width: 200% !important; 
@@ -423,7 +462,6 @@
         print-color-adjust: exact !important;
     }
     
-    /* Style du texte à l'intérieur du bloc de consommables */
     .consumables-popup *, .consumables-popup li {
         font-style: italic !important;
         font-size: 0.95rem !important;
@@ -439,7 +477,6 @@
         border-bottom: none !important;
     }
     
-    /* S'assurer que le contenu condensé (s'il existe) est masqué */
     .table-custom tr td:nth-child(2) .consumables-inline {
         display: none !important;
     }
@@ -475,21 +512,15 @@
         padding: 8px 5px !important;
     }
     
-    /* Style spécifique pour la Marque */
     .table-custom tr td:first-child {
         font-weight: bold;
         color: #1e40af !important; 
-    }
-    
-    /* Nettoyage : retirer la règle display: block du TD2 */
-    .table-custom tr td:nth-child(2) {
-        /* On retire la règle qui forçait 'display: block' pour corriger la mise en page */
     }
 
     .text-xl, .text-2xl, .text-4xl {
         color: #000000 !important;
     }
-}            
+}      
     </style>
         </head>
         <body>
@@ -1781,6 +1812,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+
 
 
 

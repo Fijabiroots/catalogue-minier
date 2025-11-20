@@ -9,8 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Configuration générale */
-        /* Version_07_Finale_Data_Integree_Arrow_Fix */
+        /* Version_08_Finale_Restoration_Layout */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -302,7 +301,13 @@
                         <li><a href="#section-6">6. Outillage</a></li>
                     </ul>
                 </li>
-                <li><a href="mailto:contact@multiparts.com" class="menu-link font-semibold text-black px-2 py-2 rounded group">Contact</a></li>
+                <li>
+                    <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 group">
+                       <span class="hidden sm:inline">Localisation</span>
+                    </a>
+                </li>
+                <li><a href="mailto:rafiou.oyeossi@multipartsci.com" class="menu-link font-semibold text-black px-2 py-2 rounded group">Contact</a></li>
+                <li><a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded group">Secteurs</a></li>
                 <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded group">Partager</button></li>
             </ul>
         </nav>
@@ -320,9 +325,35 @@
 
         <img class="w-full h-auto rounded-lg mb-6" src="Gemini_Generated_Image_Mining.png" alt="Cover">
 
+        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
+            <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm">
+                <div>
+                    <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
+                </div>
+                <div>
+                    <p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
+                    <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
+                    <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="sommaire" class="no-screen text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
+        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700" id="secteurs">
+          <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles</a></li>
+          <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation</a></li>
+          <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants</a></li>
+          <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
+          <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
+          <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
+        </ol>
+
         <div class="table-group" data-section="section-1">
             <div class="section-header" id="section-1">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md mr-3" alt="Icône">
                     <h3>1. Équipements Lourds & Mobiles</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -352,6 +383,7 @@
         <div class="table-group" data-section="section-2">
             <div class="section-header" id="section-2">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md mr-3" alt="Icône">
                     <h3>2. Traitement des Minerais (Concentrateur)</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -381,6 +413,7 @@
         <div class="table-group" data-section="section-3">
             <div class="section-header" id="section-3">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md mr-3" alt="Icône">
                     <h3>3. Pompes, Vannes & Fluides</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -410,6 +443,7 @@
         <div class="table-group" data-section="section-4">
             <div class="section-header" id="section-4">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md mr-3" alt="Icône">
                     <h3>4. Automatisation & Électronique</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -439,6 +473,7 @@
         <div class="table-group" data-section="section-5">
             <div class="section-header" id="section-5">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md mr-3" alt="Icône">
                     <h3>5. Instrumentation & Laboratoire</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -468,6 +503,7 @@
         <div class="table-group" data-section="section-6">
             <div class="section-header" id="section-6">
                 <div class="flex items-center">
+                    <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône">
                     <h3>6. Outillage & Maintenance</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">

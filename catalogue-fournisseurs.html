@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_14_Finale_Inline_SVG_Instant_Load */
+        /* Version_15_Finale_Preloader */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -17,6 +17,46 @@
             line-height: 1.5;
             scroll-behavior: smooth;
         }
+        
+        /* --- PRELOADER CSS --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
+        .loader-content { text-align: center; width: 80%; max-width: 300px; }
+        .loader-bar-bg {
+            width: 100%;
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .loader-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #1e40af; /* Bleu charte */
+            transition: width 0.2s ease;
+        }
+        .loader-text {
+            margin-top: 10px;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        /* Bloquer le scroll pendant le chargement */
+        body.loading { overflow: hidden; }
+
         .catalog-page {
             background-color: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -32,39 +72,22 @@
             margin-bottom: 15px; 
         }
 
-        /* Conteneur d'image standardisé pour harmoniser les tailles */
-        .svg-container {
-            height: 200px; /* Hauteur fixe pour toutes les images */
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1rem;
-            background-color: #f8fafc; /* Fond très léger */
-            border-radius: 0.5rem;
-        }
-        .svg-content {
-            max-height: 100%;
-            max-width: 80%; /* Limite la largeur pour ne pas toucher les bords */
-            width: auto;
-            height: auto;
-        }
-
-        /* Responsive Tables */
+        /* Styles Tableaux */
+        .table-custom { border-collapse: collapse; width: 100%; }
+        .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
+        .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
+        .table-custom tr:hover { background-color: #119248 !important; color: #fff !important; transition: background 0.13s, color 0.13s; }
+        
         @media screen and (max-width: 639px) {
             .table-custom { display: block; overflow-x: auto; white-space: nowrap; }
             .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr { display: block; }
             .table-custom th, .table-custom td { padding: 6px; }
-            .table-custom tr { border-bottom: 1px solid #e5e7eb; }
         }
 
-        .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
-        .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
-        .table-custom tr:hover { background-color: #119248 !important; color: #fff !important; transition: background 0.13s, color 0.13s; }
         .brand-row td:first-child { position: relative; } 
         .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #0f172a; font-size: 0.95rem; }
         
-        /* Popups */
+        /* Popup Consommables */
         .consumables-popup {
           display: none; position: absolute; left: 100%; top: 0; margin-left: 12px; width: 360px; max-width: calc(100vw - 40px);
           max-height: 320px; overflow-y: auto; background: #ffffff; border: 1px solid rgba(0,0,0,0.12);
@@ -121,7 +144,7 @@
             .print-footer { bottom: 0; height: 30px; border-top: 1px solid #ccc; font-size: 9pt; color: #555; }
             .print-header img { height: 38px; width: auto; }
             .catalog-page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
-            header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline, .whatsapp-float, .back-to-top { display: none !important; }
+            header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline, .whatsapp-float, .back-to-top, #preloader { display: none !important; }
             .no-screen, .section-content, .consumables-popup { display: block !important; position: static !important; width: 100% !important; box-shadow: none !important; margin: 0 !important; }
             .consumables-popup { background: #f9fafb !important; border: 1px solid #eee !important; padding: 10px !important; page-break-inside: avoid; }
             .table-custom { width: 100% !important; border-collapse: collapse !important; }
@@ -130,7 +153,17 @@
         }
     </style>
 </head>
-<body>
+<body class="loading">
+
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="logo-multiparts.png" alt="Chargement..." style="height: 50px; margin: 0 auto;">
+            <div class="loader-bar-bg">
+                <div class="loader-bar-fill" id="loaderBar"></div>
+            </div>
+            <div class="loader-text" id="loaderText">Chargement des ressources... 0%</div>
+        </div>
+    </div>
 
     <div class="print-header no-screen">
         <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
@@ -230,13 +263,14 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Expertise en pièces neuves et première monte pour engins d'extraction.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M200 300 L250 250 L550 250 L600 300 Z" fill="#1e40af" opacity="0.1"/><path d="M100 280 H200 V220 H300 L350 180 H550 V280 H650 V240 H700 V320 H100 Z" fill="#1e40af"/><circle cx="200" cy="320" r="40" fill="#119248"/><circle cx="550" cy="320" r="40" fill="#119248"/><rect x="400" y="200" width="100" height="60" fill="#e2e8f0"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Extraction & Transport</text></svg>
-                </div>
+                
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.jpg" alt="Équipements Lourds">
+                
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </div>
+
                 <div class="table-container">
                     <table class="w-full table-custom">
                         <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
@@ -260,9 +294,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Solutions pour concassage, broyage et séparation.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M100 300 L700 300" stroke="#334155" stroke-width="10"/><circle cx="150" cy="300" r="20" fill="#1e40af"/><circle cx="650" cy="300" r="20" fill="#1e40af"/><path d="M250 150 L350 150 L400 250 L200 250 Z" fill="#119248"/><path d="M450 200 L550 200 L600 280 L400 280 Z" fill="#119248" opacity="0.8"/><rect x="380" y="100" width="40" height="100" fill="#94a3b8"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Concentration & Séparation</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.jpg" alt="Traitement Minerais">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -290,9 +322,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Gestion des boues et fluides agressifs.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><circle cx="400" cy="200" r="100" fill="#1e40af"/><circle cx="400" cy="200" r="70" fill="#f8fafc"/><path d="M400 130 L400 270 M330 200 L470 200" stroke="#119248" stroke-width="20"/><rect x="200" y="180" width="130" height="40" fill="#334155"/><rect x="470" y="180" width="130" height="40" fill="#334155"/><path d="M380 100 L420 100 L400 60 Z" fill="#ef4444"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Gestion des Fluides</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.jpg" alt="Pompes et Vannes">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -320,9 +350,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Fiabilité électrique et systèmes de contrôle.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><rect x="200" y="100" width="400" height="200" rx="20" fill="#1e40af"/><rect x="220" y="120" width="360" height="160" fill="#0f172a"/><circle cx="250" cy="200" r="10" fill="#22c55e"/><circle cx="280" cy="200" r="10" fill="#ef4444"/><path d="M350 200 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 220 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 180 H450" stroke="#22c55e" stroke-width="4"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Contrôle & Électronique</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.jpg" alt="Automatisation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -350,9 +378,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Précision métrologique et équipements d'analyse.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M350 300 L450 300 L420 100 L380 100 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/><path d="M385 280 L415 280 L415 200 L385 200 Z" fill="#119248" opacity="0.6"/><rect x="500" y="200" width="20" height="100" fill="#cbd5e1"/><circle cx="510" cy="180" r="40" stroke="#1e40af" stroke-width="4" fill="white"/><path d="M510 180 L530 160" stroke="#ef4444" stroke-width="2"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Analyse & Mesure</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.jpg" alt="Instrumentation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -380,9 +406,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Outils spécialisés, soudage et maintenance critique.</p>
                 </div>
-                <div class="svg-container">
-                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><g transform="rotate(45, 350, 200)"><rect x="330" y="100" width="40" height="200" rx="5" fill="#64748b"/><circle cx="350" cy="120" r="30" fill="#1e40af"/><circle cx="350" cy="120" r="15" fill="#f1f5f9"/></g><g transform="rotate(-45, 450, 200)"><rect x="430" y="100" width="40" height="200" rx="5" fill="#64748b"/><path d="M430 100 L470 100 L480 80 L420 80 Z" fill="#119248"/></g><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Maintenance & Soudage</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.jpg" alt="Outillage">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -420,7 +444,6 @@ async function loadCatalogData() {
         populateTables(data, sectionsToFill);
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
-        // Fallback au cas où le fetch échoue
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
     }
@@ -453,8 +476,66 @@ function populateTables(catalogData, sectionsToFill) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// === PRELOADER LOGIC ===
+document.addEventListener("DOMContentLoaded", () => {
+    // Charger les données du tableau immédiatement
     loadCatalogData();
+
+    const preloader = document.getElementById('preloader');
+    const bar = document.getElementById('loaderBar');
+    const text = document.getElementById('loaderText');
+    
+    // Sélection de toutes les images (logo + cover + sections)
+    // Utilisation de Array.from pour inclure aussi les images ajoutées dynamiquement si besoin (ici statiques)
+    const images = Array.from(document.images);
+    let imagesLoaded = 0;
+    const totalImages = images.length;
+
+    function imageLoaded() {
+        imagesLoaded++;
+        const percent = Math.round((imagesLoaded / totalImages) * 100);
+        if(bar) bar.style.width = percent + '%';
+        if(text) text.textContent = `Chargement des ressources... ${percent}%`;
+
+        if (imagesLoaded === totalImages) {
+            // Tout est chargé
+            setTimeout(() => {
+                if(preloader) {
+                    preloader.style.opacity = '0';
+                    document.body.classList.remove('loading');
+                    setTimeout(() => preloader.remove(), 500); // Supprimer du DOM après transition
+                }
+            }, 300); // Petit délai pour l'esthétique
+        }
+    }
+
+    // Cas où il n'y a pas d'images (rare)
+    if (totalImages === 0) {
+        if(preloader) preloader.style.display = 'none';
+        document.body.classList.remove('loading');
+    } else {
+        images.forEach(img => {
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
+                img.addEventListener('error', imageLoaded); // Compter aussi les erreurs pour ne pas bloquer
+            }
+        });
+    }
+    
+    // Sécurité : Force la fermeture après 6 secondes max si une image bloque
+    setTimeout(() => {
+        if(preloader && preloader.style.opacity !== '0') {
+            preloader.style.opacity = '0';
+            document.body.classList.remove('loading');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    }, 6000);
+});
+
+// === LOGIQUE INTERFACE ===
+document.addEventListener('DOMContentLoaded', function() {
     const groups = Array.from(document.querySelectorAll('.table-group'));
     const headerEl = document.querySelector('header');
     const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 10 : 80);

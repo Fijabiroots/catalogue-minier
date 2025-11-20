@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_12_Finale_Fetch_JSON_External */
+        /* Version_14_Finale_Inline_SVG_Instant_Load */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -30,6 +30,24 @@
             border-bottom: 4px solid #1e40af;
             padding-bottom: 10px;
             margin-bottom: 15px; 
+        }
+
+        /* Conteneur d'image standardisé pour harmoniser les tailles */
+        .svg-container {
+            height: 200px; /* Hauteur fixe pour toutes les images */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            background-color: #f8fafc; /* Fond très léger */
+            border-radius: 0.5rem;
+        }
+        .svg-content {
+            max-height: 100%;
+            max-width: 80%; /* Limite la largeur pour ne pas toucher les bords */
+            width: auto;
+            height: auto;
         }
 
         /* Responsive Tables */
@@ -149,7 +167,7 @@
                         <li><a href="#section-6">6. Outillage</a></li>
                     </ul>
                 </li>
-                <li><a href="http://googleusercontent.com/maps.google.com/dir/?api=1&destination=Immeuble+Ganamet+Abidjan" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="hidden sm:inline">Localisation</span></a></li>
+                <li><a href="http://googleusercontent.com/maps.google.com/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="hidden sm:inline">Localisation</span></a></li>
                 <li><a href="mailto:rafiou.oyeossi@multipartsci.com" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg><span class="hidden sm:inline">Contact</span></a></li>
                 <li><a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg><span class="hidden sm:inline">Secteurs</span></a></li>
                 <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg><span class="hidden sm:inline">Partager</span></button></li>
@@ -160,6 +178,10 @@
     <div class="fixed-expertise-band no-print">
         <strong>MULTIPARTS :</strong> 30 ans d'expertise en sourcing critique international à votre service.
     </div>
+
+    <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
+    </a>
 
     <div class="catalog-page page-number" id="top">
         <header class="header">
@@ -176,7 +198,7 @@
                     <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
                 </div>
                 <div>
-                    <p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
+                    <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
                     <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
                     <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
                     <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
@@ -208,7 +230,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Expertise en pièces neuves et première monte pour engins d'extraction.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.svg" loading="lazy" alt="Img Section 1">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M200 300 L250 250 L550 250 L600 300 Z" fill="#1e40af" opacity="0.1"/><path d="M100 280 H200 V220 H300 L350 180 H550 V280 H650 V240 H700 V320 H100 Z" fill="#1e40af"/><circle cx="200" cy="320" r="40" fill="#119248"/><circle cx="550" cy="320" r="40" fill="#119248"/><rect x="400" y="200" width="100" height="60" fill="#e2e8f0"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Extraction & Transport</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -221,11 +245,12 @@
                 </div>
             </div>
         </div>
+
         <div class="table-group" data-section="section-2">
             <div class="section-header" id="section-2">
                 <div class="flex items-center">
                     <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md mr-3" alt="Icône">
-                    <h3>2. Traitement des Minerais (Concentrateur)</h3>
+                    <h3>2. Traitement des Minerais</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
                     <span class="toggle-sign">+</span> Plus de détails
@@ -235,7 +260,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Solutions pour concassage, broyage et séparation.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.svg" loading="lazy" alt="Img Section 2">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M100 300 L700 300" stroke="#334155" stroke-width="10"/><circle cx="150" cy="300" r="20" fill="#1e40af"/><circle cx="650" cy="300" r="20" fill="#1e40af"/><path d="M250 150 L350 150 L400 250 L200 250 Z" fill="#119248"/><path d="M450 200 L550 200 L600 280 L400 280 Z" fill="#119248" opacity="0.8"/><rect x="380" y="100" width="40" height="100" fill="#94a3b8"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Concentration & Séparation</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -248,6 +275,7 @@
                 </div>
             </div>
         </div>
+
         <div class="table-group" data-section="section-3">
             <div class="section-header" id="section-3">
                 <div class="flex items-center">
@@ -262,7 +290,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Gestion des boues et fluides agressifs.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.svg" loading="lazy" alt="Img Section 3">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><circle cx="400" cy="200" r="100" fill="#1e40af"/><circle cx="400" cy="200" r="70" fill="#f8fafc"/><path d="M400 130 L400 270 M330 200 L470 200" stroke="#119248" stroke-width="20"/><rect x="200" y="180" width="130" height="40" fill="#334155"/><rect x="470" y="180" width="130" height="40" fill="#334155"/><path d="M380 100 L420 100 L400 60 Z" fill="#ef4444"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Gestion des Fluides</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -275,6 +305,7 @@
                 </div>
             </div>
         </div>
+
         <div class="table-group" data-section="section-4">
             <div class="section-header" id="section-4">
                 <div class="flex items-center">
@@ -289,7 +320,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Fiabilité électrique et systèmes de contrôle.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.svg" loading="lazy" alt="Img Section 4">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><rect x="200" y="100" width="400" height="200" rx="20" fill="#1e40af"/><rect x="220" y="120" width="360" height="160" fill="#0f172a"/><circle cx="250" cy="200" r="10" fill="#22c55e"/><circle cx="280" cy="200" r="10" fill="#ef4444"/><path d="M350 200 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 220 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 180 H450" stroke="#22c55e" stroke-width="4"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Contrôle & Électronique</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -302,6 +335,7 @@
                 </div>
             </div>
         </div>
+
         <div class="table-group" data-section="section-5">
             <div class="section-header" id="section-5">
                 <div class="flex items-center">
@@ -316,7 +350,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Précision métrologique et équipements d'analyse.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.svg" loading="lazy" alt="Img Section 5">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M350 300 L450 300 L420 100 L380 100 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/><path d="M385 280 L415 280 L415 200 L385 200 Z" fill="#119248" opacity="0.6"/><rect x="500" y="200" width="20" height="100" fill="#cbd5e1"/><circle cx="510" cy="180" r="40" stroke="#1e40af" stroke-width="4" fill="white"/><path d="M510 180 L530 160" stroke="#ef4444" stroke-width="2"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Analyse & Mesure</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -329,6 +365,7 @@
                 </div>
             </div>
         </div>
+
         <div class="table-group" data-section="section-6">
             <div class="section-header" id="section-6">
                 <div class="flex items-center">
@@ -343,7 +380,9 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm">Outils spécialisés, soudage et maintenance critique.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.svg" loading="lazy" alt="Img Section 6">
+                <div class="svg-container">
+                    <svg class="svg-content" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><g transform="rotate(45, 350, 200)"><rect x="330" y="100" width="40" height="200" rx="5" fill="#64748b"/><circle cx="350" cy="120" r="30" fill="#1e40af"/><circle cx="350" cy="120" r="15" fill="#f1f5f9"/></g><g transform="rotate(-45, 450, 200)"><rect x="430" y="100" width="40" height="200" rx="5" fill="#64748b"/><path d="M430 100 L470 100 L480 80 L420 80 Z" fill="#119248"/></g><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Maintenance & Soudage</text></svg>
+                </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -364,7 +403,7 @@
     </div>
 
 <script>
-// Fonction asynchrone pour charger le JSON externe
+// Chargement dynamique
 async function loadCatalogData() {
     const sectionsToFill = {
         'section-1': 'dyn-section-1-body',
@@ -374,61 +413,39 @@ async function loadCatalogData() {
         'section-5': 'dyn-section-5-body',
         'section-6': 'dyn-section-6-body'
     };
-
     try {
-        // Appel fetch vers le fichier JSON externe
         const response = await fetch('data/brands.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP Error: ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
-        
-        // Appeler la fonction de remplissage avec les données récupérées
         populateTables(data, sectionsToFill);
-
     } catch (error) {
-        console.error("Erreur lors du chargement du catalogue :", error);
-        // Optionnel : Afficher un message d'erreur dans les tableaux si le chargement échoue
-        Object.values(sectionsToFill).forEach(id => {
-            const el = document.getElementById(id);
-            if(el) el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Erreur de chargement des données.</td></tr>`;
-        });
+        console.error("Erreur chargement catalogue:", error);
+        // Fallback au cas où le fetch échoue
+        const fallback = document.querySelectorAll('.table-custom tbody');
+        fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
     }
 }
 
 function populateTables(catalogData, sectionsToFill) {
     const esc = s => (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : '');
-
     catalogData.forEach(section => {
         const tbodyId = sectionsToFill[section.sectionId];
-        if (!tbodyId) return;
         const tbody = document.getElementById(tbodyId);
         if (!tbody) return;
-
-        tbody.innerHTML = ''; // Nettoyer
-
+        tbody.innerHTML = '';
         section.items.forEach(item => {
             const tr = document.createElement('tr');
             tr.className = 'brand-row';
             tr.setAttribute('tabindex', '0');
-            
-            // Colonne Marque + Popup
             const tdBrand = document.createElement('td');
             tdBrand.innerHTML = `<strong>${esc(item.brand)}</strong><div class="text-sm text-gray-600">${esc(item.specialization)}</div>`;
-            
-            // Création Popup
             const popup = document.createElement('div');
             popup.className = 'consumables-popup no-print';
             popup.innerHTML = `<strong>Consommables — ${esc(item.brand)}</strong><ul style="margin:0;padding-left:18px;">${item.consumables.map(c => `<li>${esc(c)}</li>`).join('')}</ul>`;
             tdBrand.appendChild(popup);
-
-            // Colonne Aperçu
             const tdConsum = document.createElement('td');
             const preview = item.consumables.slice(0, 3).join(', ');
             tdConsum.innerHTML = `<div class="consumables-inline">${esc(preview)}${item.consumables.length > 3 ? '…' : ''}</div>`;
-
             tr.appendChild(tdBrand);
             tr.appendChild(tdConsum);
             tbody.appendChild(tr);
@@ -437,14 +454,10 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Charger les données
     loadCatalogData();
-
-    // 2. Gestion Accordéon & Flèche
     const groups = Array.from(document.querySelectorAll('.table-group'));
     const headerEl = document.querySelector('header');
     const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 10 : 80);
-
     function smoothScrollTo(element) {
         if (!element) return;
         const offset = getHeaderOffset();
@@ -460,7 +473,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const arrowContainer = group.querySelector('.scroll-arrow-container');
         const tableContainer = group.querySelector('.table-container');
 
-        // Initial state
         if (index === 0) {
             content.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
@@ -471,11 +483,8 @@ document.addEventListener('DOMContentLoaded', function() {
             sign.textContent = '+';
         }
 
-        // Clic Accordéon
         btn.addEventListener('click', () => {
             const isOpen = content.classList.contains('open');
-            
-            // Fermer les autres
             groups.forEach(g => {
                 if(g !== group) {
                     g.querySelector('.section-content').classList.remove('open');
@@ -483,7 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     g.querySelector('.toggle-sign').textContent = '+';
                 }
             });
-
             if (isOpen) {
                 content.classList.remove('open');
                 btn.setAttribute('aria-expanded', 'false');
@@ -492,46 +500,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.classList.add('open');
                 btn.setAttribute('aria-expanded', 'true');
                 sign.textContent = '−';
-                // Scroll au titre
                 setTimeout(() => smoothScrollTo(group.querySelector('.section-header')), 50);
             }
         });
 
-        // LOGIQUE FLECHE ANIMEE
         if (arrowContainer && tableContainer) {
-            // Clic Flèche -> Scroll vers le tableau
             arrowContainer.addEventListener('click', (e) => {
                 e.stopPropagation();
                 smoothScrollTo(tableContainer);
             });
-
-            // Observer pour masquer la flèche quand le tableau est visible
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Le tableau est visible, on cache la flèche doucement
                         arrowContainer.classList.add('hidden-arrow');
                     } else {
-                        // On remonte, on réaffiche la flèche si on est au dessus
                         if (entry.boundingClientRect.top > 0) {
                              arrowContainer.classList.remove('hidden-arrow');
                         }
                     }
                 });
-            }, { threshold: 0.2 }); // Déclenche quand 20% du tableau est visible
-
+            }, { threshold: 0.2 });
             observer.observe(tableContainer);
         }
     });
 
-    // 3. Gestion Menu Sommaire (Classique)
     const toggle = document.getElementById('sommaireToggle');
     const menu = document.getElementById('sommaireMenu');
     if (toggle && menu) {
-        toggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menu.classList.toggle('hidden');
-        });
+        toggle.addEventListener('click', (e) => { e.stopPropagation(); menu.classList.toggle('hidden'); });
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -541,28 +537,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (target) {
                     const group = target.closest('.table-group');
                     const btn = group.querySelector('.toggle-details-btn');
-                    if(!group.querySelector('.section-content').classList.contains('open')) {
-                        btn.click();
-                    } else {
-                        smoothScrollTo(group.querySelector('.section-header'));
-                    }
+                    if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
+                    else smoothScrollTo(group.querySelector('.section-header'));
                 }
             });
         });
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && e.target !== toggle) menu.classList.add('hidden');
-        });
+        document.addEventListener('click', (e) => { if (!menu.contains(e.target) && e.target !== toggle) menu.classList.add('hidden'); });
     }
     
-    // 4. Partage
     const shareBtn = document.getElementById('shareButton');
     if(shareBtn) {
         shareBtn.addEventListener('click', async () => {
-            if (navigator.share) {
-                try { await navigator.share({ title: document.title, url: window.location.href }); } catch(e) {}
-            } else {
-                try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {}
-            }
+            if (navigator.share) { try { await navigator.share({ title: document.title, url: window.location.href }); } catch(e) {} }
+            else { try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {} }
         });
     }
 });

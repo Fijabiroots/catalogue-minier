@@ -1260,180 +1260,176 @@
             }
         });
     </script>
-    <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 1. GESTION ACCORDÉON & AUTO-SCROLL
   const groups = Array.from(document.querySelectorAll('.table-group'));
-  if (groups.length === 0) return;
+  if (groups.length > 0) {
+      
+      const headerEl = document.querySelector('header');
+      // Calcul dynamique de la hauteur du header + marge de sécurité
+      const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 20 : 80);
 
-  const headerEl = document.querySelector('header'); // le menu sticky
-  const headerHeight = () => (headerEl ? headerEl.offsetHeight : 0);
+      // Fonction de scroll manuel robuste
+      function smoothScrollTo(element, offset = 0) {
+          if (!element) return;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+          });
+      }
 
-  // helper : scroll to start of section, en compensant la hauteur du header sticky
-  function scrollToSectionStart(group) {
-    const header = group.querySelector('.section-header');
-    if (!header) return;
-    const rect = header.getBoundingClientRect();
-    const targetY = window.pageYOffset + rect.top - headerHeight() - 8; // 8px de marge
-    window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      // Initialisation : ouvrir la 1ère section, fermer les autres
+      groups.forEach((group, index) => {
+        const btn = group.querySelector('.toggle-details-btn');
+        const content = group.querySelector('.section-content');
+        const sign = group.querySelector('.toggle-sign');
+        
+        if (!btn || !content) return;
+
+        if (index === 0) {
+          content.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          if (sign) sign.textContent = '−';
+        } else {
+          content.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          if (sign) sign.textContent = '+';
+        }
+
+        // --- GESTION DU CLIC ---
+        btn.addEventListener('click', function() {
+          // On vérifie si on est déjà ouvert pour savoir si on doit scroller ou pas après
+          const wasClosed = !content.classList.contains('open');
+
+          // 1. Fermer tous les autres groupes
+          groups.forEach((g) => {
+            if (g !== group) {
+              g.querySelector('.section-content').classList.remove('open');
+              g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'false');
+              const s = g.querySelector('.toggle-sign');
+              if (s) s.textContent = '+';
+            }
+          });
+
+          // 2. Basculer l'état du groupe actuel
+          if (wasClosed) {
+            // OUVERTURE
+            content.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            if (sign) sign.textContent = '−';
+
+            // A. Scroll immédiat vers le titre de la section
+            setTimeout(() => {
+                smoothScrollTo(group.querySelector('.section-header'), getHeaderOffset());
+            }, 50);
+
+            // B. Scroll différé vers le tableau (AUTO-SCROLL)
+            const tableContainer = group.querySelector('.table-container');
+            if (tableContainer) {
+                let userInteracted = false;
+                
+                // Fonction pour annuler le scroll si l'utilisateur touche à quelque chose
+                const detectInteraction = () => { userInteracted = true; };
+                
+                window.addEventListener('wheel', detectInteraction, { once: true });
+                window.addEventListener('touchmove', detectInteraction, { once: true });
+                window.addEventListener('keydown', detectInteraction, { once: true });
+
+                setTimeout(() => {
+                    // On ne scroll que si l'utilisateur n'a pas bougé
+                    if (!userInteracted) {
+                        smoothScrollTo(tableContainer, getHeaderOffset());
+                    }
+                    // Nettoyage des écouteurs
+                    window.removeEventListener('wheel', detectInteraction);
+                    window.removeEventListener('touchmove', detectInteraction);
+                    window.removeEventListener('keydown', detectInteraction);
+                }, 1500); // Délai de 1.5 secondes
+            }
+
+          } else {
+            // FERMETURE
+            content.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            if (sign) sign.textContent = '+';
+          }
+        });
+      });
   }
 
-  // Initialize state : première section ouverte, les autres fermées
-  groups.forEach((group, index) => {
-    const btn = group.querySelector('.toggle-details-btn');
-    const content = group.querySelector('.section-content');
-    const sign = group.querySelector('.toggle-sign');
-    if (!btn || !content) return;
-    if (index === 0) {
-      content.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      if (sign) sign.textContent = '−';
-    } else {
-      content.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      if (sign) sign.textContent = '+';
-    }
-
-    // click handler : ouvre la section cliquée, ferme les autres,
-    // et si la section vient d'être ouverte, on scroll vers son début
-    btn.addEventListener('click', function() {
-      groups.forEach((g) => {
-        const c = g.querySelector('.section-content');
-        const b = g.querySelector('.toggle-details-btn');
-        const s = g.querySelector('.toggle-sign');
-        if (!c || !b) return;
-        if (g === group) {
-          const isOpen = c.classList.contains('open');
-          if (isOpen) {
-            c.classList.remove('open');
-            b.setAttribute('aria-expanded', 'false');
-            if (s) s.textContent = '+';
-          } else {
-            c.classList.add('open');
-            b.setAttribute('aria-expanded', 'true');
-            if (s) s.textContent = '−';
-            
-            // 1. Scroll immédiat au début de la section (titre)
-            setTimeout(() => scrollToSectionStart(g), 70);
-
-            // 2. Scroll différé vers le tableau après 1.5s d'inactivité
-            const table = g.querySelector('.table-container');
-            if (table) {
-                // On stocke le timer dans une variable pour pouvoir l'annuler
-                let scrollTimer = setTimeout(() => {
-                    // Recalcul des offsets (Header + Bandeau expertise)
-                    const stickyHeader = document.querySelector('header');
-                    const stickyBand = document.querySelector('.fixed-expertise-band');
-                    let totalOffset = 0;
-                    if (stickyHeader) totalOffset += stickyHeader.offsetHeight;
-                    if (stickyBand) totalOffset += stickyBand.offsetHeight;
-                    totalOffset += 10; // petite marge
-
-                    const tableRect = table.getBoundingClientRect();
-                    const tableY = window.pageYOffset + tableRect.top - totalOffset;
-                    
-                    window.scrollTo({ top: tableY, behavior: 'smooth' });
-                }, 1500); // 1.5 secondes
-
-                // Si l'utilisateur scrolle manuellement pendant ce délai, on annule l'auto-scroll
-                const stopAutoScroll = () => {
-                    clearTimeout(scrollTimer);
-                    window.removeEventListener('scroll', stopAutoScroll);
-                    window.removeEventListener('touchmove', stopAutoScroll);
-                };
-                // On écoute un scroll ou un touch
-                window.addEventListener('scroll', stopAutoScroll, { passive: true });
-                window.addEventListener('touchmove', stopAutoScroll, { passive: true });
-            }
-          }
-        } else {
-          c.classList.remove('open');
-          b.setAttribute('aria-expanded', 'false');
-          const otherSign = g.querySelector('.toggle-sign');
-          if (otherSign) otherSign.textContent = '+';
-        }
-      });
-    });
-  });
-
-  // Print handlers : ouvrir toutes les sections avant impression et restaurer après
+  // --- GESTION IMPRESSION ---
   function openAll() {
-    groups.forEach((g) => {
-      const c = g.querySelector('.section-content');
-      const b = g.querySelector('.toggle-details-btn');
-      const s = g.querySelector('.toggle-sign');
-      if (c) c.classList.add('open');
-      if (b) b.setAttribute('aria-expanded', 'true');
-      if (s) s.textContent = '−';
+    if(groups) groups.forEach((g) => {
+      g.querySelector('.section-content').classList.add('open');
+      g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'true');
+      const s = g.querySelector('.toggle-sign'); if (s) s.textContent = '−';
     });
   }
   function restoreInitial() {
-    groups.forEach((g, idx) => {
+    if(groups) groups.forEach((g, idx) => {
       const c = g.querySelector('.section-content');
       const b = g.querySelector('.toggle-details-btn');
       const s = g.querySelector('.toggle-sign');
-      if (!c || !b) return;
       if (idx === 0) {
-        c.classList.add('open');
-        b.setAttribute('aria-expanded', 'true');
-        if (s) s.textContent = '−';
+        c.classList.add('open'); b.setAttribute('aria-expanded', 'true'); if (s) s.textContent = '−';
       } else {
-        c.classList.remove('open');
-        b.setAttribute('aria-expanded', 'false');
-        if (s) s.textContent = '+';
+        c.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); if (s) s.textContent = '+';
       }
     });
-    // scroll to first section start after restoring (optional)
-    const first = groups[0];
-    if (first) setTimeout(() => scrollToSectionStart(first), 70);
   }
-
   window.addEventListener('beforeprint', openAll);
   window.addEventListener('afterprint', restoreInitial);
-});
-    // ---------- Début : gestion du menu Sommaire dans le header ----------
-(function() {
+
+  // 2. GESTION MENU SOMMAIRE
   const toggle = document.getElementById('sommaireToggle');
   const menu = document.getElementById('sommaireMenu');
-  if (!toggle || !menu) return;
+  if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
+      });
 
-  // Open / close on click (works for mobile and desktop)
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isHidden = menu.classList.contains('hidden');
-    if (isHidden) {
-      menu.classList.remove('hidden');
-      toggle.setAttribute('aria-expanded', 'true');
-    } else {
-      menu.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
+      // Fermeture au clic sur lien avec scroll manuel
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            menu.classList.add('hidden');
+            toggle.setAttribute('aria-expanded', 'false');
 
-  // Close menu when clicking a menu anchor (after navigation)
-  menu.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if(targetSection) {
+                // Ouvrir la section correspondante via simulation de clic
+                const group = targetSection.closest('.table-group');
+                const btn = group.querySelector('.toggle-details-btn');
+                
+                if (!group.querySelector('.section-content').classList.contains('open')) {
+                    btn.click(); 
+                } else {
+                    // Juste scroller si déjà ouvert
+                    const headerEl = document.querySelector('header');
+                    const offset = headerEl ? headerEl.offsetHeight + 20 : 80;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            }
+        });
+      });
 
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && e.target !== toggle) {
-      menu.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Optional: close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      menu.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-})();
-// ---------- Fin : gestion du menu Sommaire dans le header ----------
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && e.target !== toggle) {
+          menu.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+  }
+});
 </script>
     
 <script>
@@ -1702,3 +1698,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>    
 </body>
 </html>
+

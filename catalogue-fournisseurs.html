@@ -10,6 +10,7 @@
     
     <style>
         /* Configuration générale pour l'écran */
+         /* Version_02_Finale_Avec le bouton Partager */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -68,7 +69,7 @@
             color: #fff !important;
             transition: background 0.13s, color 0.13s;
          }
-               /* INSÉRER après la ligne 153 */
+                /* INSÉRER après la ligne 153 */
         .brand-row td:first-child { position: relative; } /* ancre le popup par rapport à la cellule contenant la popup */
         
         .consumables-inline {
@@ -84,12 +85,12 @@
         .consumables-popup {
           display: none;
           position: absolute;
-          left: 100%;                /* s'affiche à droite de la ligne */
+          left: 100%;                 /* s'affiche à droite de la ligne */
           top: 0;
-          margin-left: 12px;         /* espace entre la ligne et le popup */
-          width: 360px;              /* largeur fixe pour ne pas changer le layout */
+          margin-left: 12px;          /* espace entre la ligne et le popup */
+          width: 360px;               /* largeur fixe pour ne pas changer le layout */
           max-width: calc(100vw - 40px);
-          max-height: 320px;         /* si la liste est longue : scroll à l'intérieur */
+          max-height: 320px;          /* si la liste est longue : scroll à l'intérieur */
           overflow-y: auto;
           background: #ffffff;
           border: 1px solid rgba(0,0,0,0.12);
@@ -141,10 +142,10 @@
         /* veiller à ne pas imprimer les popups */
         .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
         /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
-           But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
+            But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
         .no-screen {
           display: none !important; /* Masqué par défaut à l'écran */
-        }       
+        }        
                 /* Style pour les en-têtes de section avec icônes */
                 .section-header {
                     display: flex;
@@ -183,13 +184,13 @@
                     display: inline-flex;
                     align-items: center;
                     gap: 8px;
-                 }
-                 .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
-                 .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
-                 .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
-                 .section-content { display: none; } /* par défaut : replié */
-                 /* affichage pour la première section (sera activé par JS au chargement) */
-                 .section-content.open { display: block; }
+                  }
+                  .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
+                  .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
+                  .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
+                  .section-content { display: none; } /* par défaut : replié */
+                  /* affichage pour la première section (sera activé par JS au chargement) */
+                  .section-content.open { display: block; }
                 /* Conteneur principal du bouton PDF pour gérer le défilement */
                 .pdf-button-container {
                     width: 100%;
@@ -340,13 +341,13 @@
 
     /* 2. Style de l'en-tête fixe (Charte graphique : Bleu foncé #1e40af) */
     .print-header {
-        display: flex !important; 
+        display: flex !important; 
         position: fixed;
         top: 0; left: 0; right: 0;
-        height: 50px; 
+        height: 50px; 
         padding: 6px 1.5cm;
         background: #ffffff;
-        border-bottom: 2px solid #1e40af; 
+        border-bottom: 2px solid #1e40af; 
         align-items: center;
         justify-content: space-between;
         z-index: 9999;
@@ -356,7 +357,7 @@
     .print-header img { height: 38px; width: auto; }
     .print-header::after {
         content: "Catalogue - MULTIPARTS - Secteur Mines";
-        font-size: 10pt; 
+        font-size: 10pt; 
         color: #1e40af; 
         font-weight: bold;
     }
@@ -366,15 +367,15 @@
         display: flex !important;
         position: fixed;
         bottom: 0; left: 0; right: 0;
-        height: 30px; 
+        height: 30px; 
         padding: 6px 1.5cm;
         background: #ffffff;
         border-top: 1px solid #cccccc;
         align-items: center;
-        justify-content: space-between; 
+        justify-content: space-between; 
         font-size: 9pt;
         color: #555;
-        -webkit-print-color-adjust: exact !important; 
+        -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
     }
     .print-footer .copyright::before {
@@ -382,7 +383,7 @@
         font-weight: normal;
     }
     .print-footer .page-counter::after {
-        content: "Page " counter(page) " sur " counter(pages); 
+        content: "Page " counter(page) " sur " counter(pages); 
         font-weight: bold;
         color: #000000;
     }
@@ -413,13 +414,13 @@
         background-color: #f0f4f8 !important; 
         border: 1px solid #cccccc !important;
         
-        padding: 10px 1.5cm 10px 1.5cm !important; 
+        padding: 10px 1.5cm 10px 1.5cm !important; 
         
         box-shadow: none !important;
         max-height: none !important;
         overflow-y: visible !important;
         
-        -webkit-print-color-adjust: exact !important; 
+        -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
     }
     
@@ -427,7 +428,7 @@
     .consumables-popup *, .consumables-popup li {
         font-style: italic !important;
         font-size: 0.95rem !important;
-        color: #333333 !important; 
+        color: #333333 !important; 
         line-height: 1.5;
         white-space: normal !important;
     }
@@ -447,7 +448,7 @@
     /* 6. Règles anti-troncature (Solidarité des blocs) */
     .section-header, .section-header h3, .expertise-box {
         page-break-inside: avoid; 
-        page-break-after: avoid; 
+        page-break-after: avoid; 
         margin-top: 10px; 
     }
     .table-container, ul, ol, .table-custom, .table-custom tbody, .table-custom tr {
@@ -463,15 +464,15 @@
         -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
     }
     .table-custom th {
-        background-color: #1e40af !important; 
-        color: #ffffff !important; 
+        background-color: #1e40af !important; 
+        color: #ffffff !important; 
         border: 1px solid #1e40af !important;
         padding: 8px 5px !important;
         text-align: left;
     }
     .table-custom td {
-        color: #000000 !important; 
-        border: 1px solid #ddd !important; 
+        color: #000000 !important; 
+        border: 1px solid #ddd !important; 
         padding: 8px 5px !important;
     }
     
@@ -493,20 +494,17 @@
     </style>
         </head>
         <body>
-                    <!-- PRINT: Header & Footer fixes (affichés uniquement à l'impression via @media print) -->
-                <div class="print-header no-screen" aria-hidden="true">
+                    <div class="print-header no-screen" aria-hidden="true">
                   <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
                   </div>
                 
                 <div class="print-footer no-screen" aria-hidden="true">
-                <span class="copyright"></span>     <span class="page-counter" aria-hidden="true"></span>
+                <span class="copyright"></span>     <span class="page-counter" aria-hidden="true"></span>
                 </div>
-            <!-- /PRINT -->
-                <!-- Nouveau menu MULTIPARTS -->
-                    <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50">
+            <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50">
             <a href="#top" aria-label="Retour haut de page" class="shrink-0 sm:mr-44">
                 <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
-                  class="h-10 sm:h-24 w-auto" loading="lazy">
+                  class="h-10 sm:h-24 w-auto" loading="lazy">
             </a>
             <nav class="flex-1 min-w-0">
                 <ul class="flex space-x-2 sm:space-x-10 justify-end sm:justify-start">
@@ -559,135 +557,27 @@
                     </li>
         
                     <li>
-                        <a href="#" onclick="window.print(); return false;"
+                        <button id="shareButton"
                             class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            <span class="hidden sm:inline ml-1">Générer PDF</span>
-                        </a>
+                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                            <span class="hidden sm:inline ml-1">Partager</span>
+                        </button>
                     </li>
                 </ul>
             </nav>
         </header>
-            <!-- /ANCIEN MENU   
-            <header class="flex items-center px-6 py-4 bg-white shadow-md sticky top-0 z-50">
-          <a href="#top" aria-label="Retour haut de page">
-            <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
-              class="h-20 w-auto mr-44" style="max-width:210px;" loading="lazy">
-          </a>
-          <nav class="flex-1">
-            <ul class="flex space-x-10 justify-start">
-              <!-- Remplacer le <li> contenant <a href="#sommaire">Sommaire</a> par ce bloc
-                <li class="relative">
-                  <button id="sommaireToggle"
-                          aria-haspopup="true"
-                          aria-controls="sommaireMenu"
-                          aria-expanded="false"
-                          class="menu-link font-semibold text-black px-3 py-2 rounded inline-flex items-center gap-2 focus:outline-none">
-                    Sommaire
-                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
-                  </button>
-                
-                  <!-- Sous-menu : apparaît via JS (hidden par défaut) -->
-                     <!--<ul id="sommaireMenu"
-                    class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
-                    role="menu"
-                    aria-labelledby="sommaireToggle">         
-                    <li role="none">
-                      <a role="menuitem" href="#section-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">1. Équipements Lourds & Mobiles</a>
-                    </li>
-                    <li role="none">
-                      <a role="menuitem" href="#section-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">2. Traitement des Minerais & Séparation</a>
-                    </li>
-                    <li role="none">
-                      <a role="menuitem" href="#section-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">3. Pompes, Vannes & Fluides Spécialisés</a>
-                    </li>
-                    <li role="none">
-                      <a role="menuitem" href="#section-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">4. Automatisation, Contrôle & Électronique</a>
-                    </li>
-                    <li role="none">
-                      <a role="menuitem" href="#section-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">5. Instrumentation, Laboratoire & Consommables</a>
-                    </li>
-                    <li role="none">
-                      <a role="menuitem" href="#section-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">6. Outillage Spécialisé & Maintenance Critique</a>
-                    </li>
-                  </ul>
-                </li>
-              <li>
-                <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire"
-                   class="menu-link font-semibold text-black px-3 py-2 rounded"
-                   target="_blank" rel="noopener"
-                >Localisation</a>
-              </li>
-              <li>
-                <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
-                   class="menu-link font-semibold text-black px-3 py-2 rounded"
-                >Contact</a>
-              </li>
-              <li>
-                <a href="#secteurs"
-                   class="menu-link font-semibold text-black px-3 py-2 rounded"
-                >Secteurs</a>
-              </li>
-              <li>
-                <a href="#" onclick="window.print(); return false;"
-                   class="menu-link font-semibold text-black px-3 py-2 rounded"
-                >Générer PDF</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-            -->
-    <!--
-    <div class="pdf-button-container no-print">
-        <div class="w-full flex justify-center space-x-4">
-            <button id="generatePdfButton" 
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                Générer PDF (Impression)
-            </button>
-             <a href="mailto:rafiou.oyeossi@multipartsci.com?subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
-               class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg flex items-center transition duration-150 ease-in-out">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Contact Direct
-            </a>
-            <div class="h-full w-px bg-gray-300 mx-2 hidden sm:block"></div>
-            
-            <button id="iaCentralButtonMarche" 
-                    class="hidden sm:flex bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="marche">
-                ⚡ Analyse Marché (IA)
-            </button>
-            <button id="iaCentralButtonRisque" 
-                    class="hidden sm:flex bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="risque">
-                🛡️ Risque Fournisseur (IA)
-            </button>
-            <button id="iaCentralButtonTCO" 
-                    class="hidden sm:flex bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg items-center transition duration-150 ease-in-out"
-                    data-function-type="tco">
-                ⚖️ Analyse TCO (IA)
-            </button>
-           
-        </div>
-        <div class="text-center text-sm text-gray-500 mt-2 mb-2">
-            Cliquez pour ouvrir la boîte de dialogue d'impression / exportation PDF.
-        </div>
-    </div>
-     -->
+
     <div class="fixed-expertise-band no-print">
         **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service en Afrique.
     </div>
     
-
-
     <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
     </a>
 
-
     <div id="iaModal" class="modal no-print">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn">×</span>
             <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#1e40af]">Configuration de l'Analyse</h3>
             <div id="modalContent">
                 </div>
@@ -727,7 +617,6 @@
           <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
           <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
           <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
-        <!-- <li><a href="#section-7" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Services</a></li>-->
         </ol>
 
         <div class="table-group" data-section="section-1">
@@ -771,8 +660,7 @@
                 </thead>
         
                 <tbody id="dyn-section-1-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-1 -->
-                </tbody>
+  </tbody>
               </table>
             </div>
           </div>
@@ -819,8 +707,7 @@
         </thead>
 
         <tbody id="dyn-section-2-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-2 -->
-        </tbody>
+  </tbody>
       </table>
     </div>
   </div>
@@ -869,8 +756,7 @@
         </thead>
 
         <tbody id="dyn-section-3-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-3 -->
-        </tbody>
+  </tbody>
       </table>
     </div>
   </div>
@@ -919,8 +805,7 @@
         </thead>
 
         <tbody id="dyn-section-4-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-4 -->
-        </tbody>
+  </tbody>
       </table>
     </div>
   </div>
@@ -969,15 +854,13 @@
         </thead>
 
         <tbody id="dyn-section-5-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-5 -->
-        </tbody>
+  </tbody>
       </table>
     </div>
   </div>
 </div>
 
-        <!-- Remplace le bloc existant de la section 6 (commence ~à la ligne 973 dans la version actuelle) par ce snippet -->
-<div class="table-group" data-section="section-6">
+        <div class="table-group" data-section="section-6">
   <div class="section-header" id="section-6">
     <div class="flex items-center">
       <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône d'outils maintenance" />
@@ -1004,43 +887,12 @@
           </tr>
         </thead>
         <tbody id="dyn-section-6-body">
-  <!-- JS remplira dynamiquement les lignes pour la section-6 -->
-        </tbody>
+  </tbody>
       </table>
     </div>
   </div>
 </div>
 
-        <!-- Remplace le bloc existant de la section 7 (commence ~à la ligne 1000+ dans la version actuelle) par ce snippet -->
- <!--<div class="table-group" data-section="section-7">
-  <div class="section-header" id="section-7">
-    <div class="flex items-center">
-      <img src="https://placehold.co/100x50/6b7280/1f2937?text=Services" class="rounded-md mr-3" alt="Icône services" />
-      <h3>7. Services</h3>
-    </div>
-    <button type="button" class="toggle-details-btn" aria-expanded="false" aria-controls="content-section-7">
-      <span class="toggle-sign">+</span><span class="sr-only">Réduire / Développer</span> Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-7" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        **Services :** Support après-vente, logistique, gestion de pièces de rechange, audits techniques et assistance technique sur site.
-      </p>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Service</th>
-            <th class="w-1/2">Description</th>
-          </tr>
-        </thead>
-        <tbody id="dyn-section-7-body">
-        </tbody>
-        -->
       </table>
     </div>
   </div>
@@ -1300,16 +1152,38 @@
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            const buttonPdf = document.getElementById('generatePdfButton');
-            const iaModal = document.getElementById('iaModal');
-            const closeBtn = document.querySelector('.close-btn');
+            // Gestion du bouton Partager (remplace l'ancien bouton PDF)
+            const shareBtn = document.getElementById('shareButton');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const shareData = {
+                        title: 'Catalogue MULTIPARTS - Marques pour le secteur Minier',
+                        text: 'Découvrez notre catalogue de marques partenaires pour le secteur minier.',
+                        url: window.location.href
+                    };
 
-            if (buttonPdf) {
-                buttonPdf.addEventListener('click', () => {
-                    window.print();
+                    if (navigator.share) {
+                        // Utilise l'API de partage native (Mobile, Edge, Safari)
+                        try {
+                            await navigator.share(shareData);
+                        } catch (err) {
+                            console.log('Partage annulé ou erreur', err);
+                        }
+                    } else {
+                        // Fallback : Copier dans le presse-papier pour les navigateurs PC non compatibles
+                        try {
+                            await navigator.clipboard.writeText(window.location.href);
+                            alert('Lien copié dans le presse-papier ! Vous pouvez le coller maintenant.');
+                        } catch (err) {
+                            alert('Impossible de copier le lien automatiquement. Veuillez copier l\'URL manuellement.');
+                        }
+                    }
                 });
             }
             
+            const iaModal = document.getElementById('iaModal');
+            const closeBtn = document.querySelector('.close-btn');
+
             // Gestion de la fermeture de la modale
             closeBtn.onclick = function() {
                 iaModal.style.display = "none";
@@ -1319,17 +1193,6 @@
                     iaModal.style.display = "none";
                 }
             }
-            /* -------------------------------------------------------------
-                           --- PARTIE IA DÉSACTIVÉE ---
-            -------------------------------------------------------------
-            // --- GESTIONNAIRE D'ÉVÉNEMENTS DES BOUTONS IA (Affichage de la modale initiale) ---
-            document.querySelectorAll('[data-function-type]').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const functionType = event.currentTarget.getAttribute('data-function-type');
-                    showSelectionModal(functionType);
-                });
-            });
-            ------------------------------------------------------------- */
             
             // --- GESTION DE LA MODALE INTERNE (CHOIX SECTION & MARQUES) ---
             document.getElementById('iaModal').addEventListener('click', (e) => {
@@ -1367,9 +1230,7 @@
             }
         });
     </script>
-    <!-- Insert before </body> -->
-<!-- Remplacer le script actuel par celui-ci (insérer juste avant </body>) -->
-<script>
+    <script>
 document.addEventListener('DOMContentLoaded', function() {
   const groups = Array.from(document.querySelectorAll('.table-group'));
   if (groups.length === 0) return;
@@ -1542,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // utilitaire simple d'échappement
-  const esc = s => (s === 0 ? '0' : (s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''));
+  const esc = s => (s === 0 ? '0' : (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : ''));
 
   // Pour chaque section dans le JSON, remplir le tbody correspondant si présent dans la page
   data.forEach(section => {

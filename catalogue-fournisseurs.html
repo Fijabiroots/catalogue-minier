@@ -9,13 +9,14 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Configuration générale pour l'écran */
-         /* Version_06_Finale_Fleche_Animee_et_Images_Reduites */
+        /* Configuration générale */
+        /* Version_07_Finale_Data_Integree_Arrow_Fix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
             color: #1e293b;
             line-height: 1.5;
+            scroll-behavior: smooth;
         }
         .catalog-page {
             background-color: white;
@@ -32,7 +33,7 @@
             margin-bottom: 15px; 
         }
 
-        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE */
+        /* Tableaux Responsive */
         @media screen and (max-width: 639px) {
             .table-custom {
                 display: block;
@@ -50,7 +51,7 @@
             }
         }
 
-        /* Styles pour les tableaux */
+        /* Styles Tableaux */
         .table-custom th {
             background-color: #e0e7ff;
             color: #1e40af;
@@ -79,7 +80,7 @@
           font-size: 0.95rem;
         }
         
-        /* Popup latéral */
+        /* Popup Consommables */
         .consumables-popup {
           display: none;
           position: absolute;
@@ -133,12 +134,12 @@
           .consumables-popup::before { display: none; }
         }
 
-        .no-screen {
-          display: none !important; 
-        }        
+        .no-screen { display: none !important; }        
+        
         .section-header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             margin-top: 30px;
             margin-bottom: 15px;
             border-left: 4px solid #1e40af;
@@ -153,11 +154,9 @@
             line-height: 1.25; 
         }
         @media screen and (min-width: 640px) {
-            .section-header h3 {
-                font-size: 1.5rem; 
-            }
+            .section-header h3 { font-size: 1.5rem; }
         }
-         .section-header { justify-content: space-between; }
+        
          .toggle-details-btn {
             margin-left: 1rem;
             font-size: 0.95rem;
@@ -173,20 +172,10 @@
             gap: 8px;
           }
           .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
-          .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
           .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
           .section-content { display: none; } 
           .section-content.open { display: block; }
           
-        .pdf-button-container {
-            width: 100%;
-            background-color: white;
-            border-bottom: 4px solid #1e40af;
-            padding: 10px 0;
-            position: sticky; 
-            top: 0;
-            z-index: 20; 
-        }
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -199,9 +188,8 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             transition: background-color 0.3s;
         }
-        .back-to-top:hover {
-            background-color: #1e3a8a;
-        }
+        .back-to-top:hover { background-color: #1e3a8a; }
+        
         .expertise-box {
             border-left: 4px solid #22c55e;
             padding-left: 10px;
@@ -210,109 +198,54 @@
             padding: 10px;
             border-radius: 4px;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: fadeIn 0.3s;
-        }
-        .close-btn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close-btn:hover, .close-btn:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-        .progress-bar {
-            height: 20px;
-            background-color: #22c55e;
-            width: 0%;
-            text-align: center;
-            line-height: 20px;
-            color: white;
-            border-radius: 4px;
-            transition: width 0.5s ease-in-out;
-        }
+        
         .fixed-expertise-band {
             width: 100%;
-            background-color: #166534; /* Vert foncé */
+            background-color: #166534; 
             color: white;
             text-align: center;
             padding: 8px 0;
             font-size: 0.95rem;
             position: sticky;
-            top: 80px; /* Position sous la barre d'outils */
+            top: 80px; 
             z-index: 10;
         }
-        .menu-link {
-          transition: background 0.18s, color 0.18s;
-        }
-        .menu-link:hover,
-        .menu-link:focus,
-        .menu-link:active {
-          background: #119248; /* Vert charte MULTI-PARTS */
-          color: #fff !important;
-        }
+        
+        /* Menu */
+        .menu-link { transition: background 0.18s, color 0.18s; }
+        .menu-link:hover { background: #119248; color: #fff !important; }
         .sommaire-menu a {
-          display: block;
-          padding: 8px 12px;
-          color: #1f2937;
-          text-decoration: none;
+          display: block; padding: 8px 12px; color: #1f2937; text-decoration: none;
           transition: background-color 0.12s, color 0.12s;
         }
-        .sommaire-menu a:hover,
-        .sommaire-menu a:focus {
-          background-color: #119248; /* couleur hover */
-          color: #ffffff;
-        }
-        .sommaire-menu a.active {
-          background-color: #0f6b34; /* couleur sélection persistante */
-          color: #ffffff;
-          font-weight: 600;
-        }
+        .sommaire-menu a:hover { background-color: #119248; color: #ffffff; }
         
-        /* --- NOUVEAU : Style de la flèche animée --- */
+        /* --- FLECHE ANIMEE --- */
         .scroll-arrow-container {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            margin-top: -15px; /* Remonte un peu vers l'image */
-            margin-bottom: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
             cursor: pointer;
+            color: #1e40af;
+            transition: opacity 0.5s;
+        }
+        .scroll-arrow-container.hidden-arrow {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .scroll-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            color: #1e40af;
         }
         .scroll-arrow {
-            width: 32px;
-            height: 32px;
-            color: #1e40af; /* Bleu charte */
+            width: 40px;
+            height: 40px;
             animation: bounce 2s infinite;
         }
         @keyframes bounce {
@@ -321,1080 +254,525 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* ================================================================== */
-/* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
-/* ================================================================== */
+/* PRINT STYLES */
 @media print {
-    @page {
-        margin: 2.5cm 1.5cm 2cm 1.5cm; 
-        @top-left { content: none; }
-        @top-right { content: none; }
-        @bottom-left { content: none; }
-        @bottom-right { content: none; }
-    }
-    body {
-        background-color: white;
-        color: #000000 !important;
-        padding-top: 60px; 
-    }
-    .print-header {
-        display: flex !important; 
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        height: 50px; 
-        padding: 6px 1.5cm;
-        background: #ffffff;
-        border-bottom: 2px solid #1e40af; 
-        align-items: center;
-        justify-content: space-between;
-        z-index: 9999;
-        -webkit-print-color-adjust: exact !important; 
-        print-color-adjust: exact !important;
-    }
+    @page { margin: 2cm; }
+    body { background-color: white; padding-top: 0; }
+    .print-header, .print-footer { display: flex !important; position: fixed; left: 0; right: 0; background: #fff; }
+    .print-header { top: 0; height: 50px; border-bottom: 2px solid #1e40af; z-index: 9999; }
+    .print-footer { bottom: 0; height: 30px; border-top: 1px solid #ccc; font-size: 9pt; color: #555; }
     .print-header img { height: 38px; width: auto; }
-    .print-header::after {
-        content: "Catalogue - MULTIPARTS - Secteur Mines";
-        font-size: 10pt; 
-        color: #1e40af; 
-        font-weight: bold;
-    }
-    .print-footer {
-        display: flex !important;
-        position: fixed;
-        bottom: 0; left: 0; right: 0;
-        height: 30px; 
-        padding: 6px 1.5cm;
-        background: #ffffff;
-        border-top: 1px solid #cccccc;
-        align-items: center;
-        justify-content: space-between; 
-        font-size: 9pt;
-        color: #555;
-        -webkit-print-color-adjust: exact !important; 
-        print-color-adjust: exact !important;
-    }
-    .print-footer .copyright::before {
-        content: "Catalogue - MULTIPARTS - Secteur Mines";
-        font-weight: normal;
-    }
-    .print-footer .page-counter::after {
-        content: "Page " counter(page) " sur " counter(pages); 
-        font-weight: bold;
-        color: #000000;
-    }
-    .catalog-page {
-        box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
-    }
-    .page-number::after, header, .no-print, .toggle-details-btn, .consumables-inline, .scroll-arrow-container {
-        display: none !important;
-    }
-    .no-screen, .section-content {
-        display: block !important;
-    }
-    .consumables-popup {
-        display: block !important; 
-        position: static !important;
-        margin: 0 !important; 
-        margin-right: -100% !important; 
-        width: 200% !important; 
-        background-color: #f0f4f8 !important; 
-        border: 1px solid #cccccc !important;
-        padding: 10px 1.5cm 10px 1.5cm !important; 
-        box-shadow: none !important;
-        max-height: none !important;
-        overflow-y: visible !important;
-        -webkit-print-color-adjust: exact !important; 
-        print-color-adjust: exact !important;
-    }
-    .consumables-popup *, .consumables-popup li {
-        font-style: italic !important;
-        font-size: 0.95rem !important;
-        color: #333333 !important; 
-        line-height: 1.5;
-        white-space: normal !important;
-    }
-    .consumables-popup::before { display: none !important; }
-    .brand-row td:first-child, 
-    .brand-row td:nth-child(2) {
-        border-bottom: none !important;
-    }
-    .table-custom tr td:nth-child(2) .consumables-inline {
-        display: none !important;
-    }
-    .section-header, .section-header h3, .expertise-box {
-        page-break-inside: avoid; 
-        page-break-after: avoid; 
-        margin-top: 10px; 
-    }
-    .table-container, ul, ol, .table-custom, .table-custom tbody, .table-custom tr {
-        page-break-inside: avoid !important;
-    }
-    .table-custom {
-        border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
-        margin-top: 15px;
-    }
-    .table-custom th, .header, .section-header, .print-header, .print-footer {
-        -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
-    }
-    .table-custom th {
-        background-color: #1e40af !important; 
-        color: #ffffff !important; 
-        border: 1px solid #1e40af !important;
-        padding: 8px 5px !important;
-        text-align: left;
-    }
-    .table-custom td {
-        color: #000000 !important; 
-        border: 1px solid #ddd !important; 
-        padding: 8px 5px !important;
-    }
-    .table-custom tr td:first-child {
-        font-weight: bold;
-        color: #1e40af !important; 
-    }
-    .text-xl, .text-2xl, .text-4xl {
-        color: #000000 !important;
-    }
-}            
+    .catalog-page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
+    header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline { display: none !important; }
+    .no-screen, .section-content, .consumables-popup { display: block !important; position: static !important; width: 100% !important; box-shadow: none !important; margin: 0 !important; }
+    .consumables-popup { background: #f9fafb !important; border: 1px solid #eee !important; padding: 10px !important; page-break-inside: avoid; }
+    .table-custom { width: 100% !important; border-collapse: collapse !important; }
+    .table-custom th { background-color: #1e40af !important; color: #fff !important; }
+    .table-custom td { border: 1px solid #ddd !important; }
+}
     </style>
-        </head>
-        <body>
-                    <div class="print-header no-screen" aria-hidden="true">
-                  <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
-                  </div>
-                
-                <div class="print-footer no-screen" aria-hidden="true">
-                <span class="copyright"></span>     <span class="page-counter" aria-hidden="true"></span>
-                </div>
-            <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50">
-            <a href="#top" aria-label="Retour haut de page" class="shrink-0 sm:mr-44">
-                <img src="logo-multiparts.png" alt="Logo MULTIPARTS"
-                  class="h-10 sm:h-24 w-auto" loading="lazy">
-            </a>
-            <nav class="flex-1 min-w-0">
-                <ul class="flex space-x-2 sm:space-x-10 justify-end sm:justify-start">
-                    <li class="relative">
-                        <button id="sommaireToggle"
-                            aria-haspopup="true"
-                            aria-controls="sommaireMenu"
-                            aria-expanded="false"
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 focus:outline-none group">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                            <span class="hidden sm:inline">Sommaire</span>
-                            <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
-                        </button>
-                        <ul id="sommaireMenu"
-                        class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"
-                        role="menu"
-                        aria-labelledby="sommaireToggle">
-                        <li role="none"><a role="menuitem" href="#section-1" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">1. Équipements Lourds & Mobiles</a></li>
-                        <li role="none"><a role="menuitem" href="#section-2" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">2. Traitement des Minerais & Séparation</a></li>
-                        <li role="none"><a role="menuitem" href="#section-3" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">3. Pompes, Vannes & Fluides Spécialisés</a></li>
-                        <li role="none"><a role="menuitem" href="#section-4" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">4. Automatisation, Contrôle & Électronique</a></li>
-                        <li role="none"><a role="menuitem" href="#section-5" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">5. Instrumentation, Laboratoire & Consommables</a></li>
-                        <li role="none"><a role="menuitem" href="#section-6" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100">6. Outillage Spécialisé & Maintenance Critique</a></li>
-                        </ul>
-                    </li>
-        
-                    <li>
-                        <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire"
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group"
-                            target="_blank" rel="noopener">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="hidden sm:inline ml-1">Localisation</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande%20d%27Information%20via%20Catalogue%20Marques%20Minieres"
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
-                            <span class="hidden sm:inline ml-1">Contact</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <a href="#secteurs"
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
-                            <span class="hidden sm:inline ml-1">Secteurs</span>
-                        </a>
-                    </li>
-        
-                    <li>
-                        <button id="shareButton"
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center group">
-                            <svg class="w-6 h-6 sm:w-5 sm:h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-                            <span class="hidden sm:inline ml-1">Partager</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+</head>
+<body>
+
+    <div class="print-header no-screen">
+        <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
+        <span style="font-weight:bold; color:#1e40af;">Catalogue Mines</span>
+    </div>
+    <div class="print-footer no-screen">
+        <span>© 2025 MULTIPARTS</span> <span class="page-counter"></span>
+    </div>
+
+    <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50 no-print">
+        <a href="#top" class="shrink-0 sm:mr-44">
+            <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
+        </a>
+        <nav class="flex-1 min-w-0">
+            <ul class="flex space-x-2 sm:space-x-10 justify-end sm:justify-start">
+                <li class="relative">
+                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 group">
+                        <span class="hidden sm:inline">Sommaire</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    </button>
+                    <ul id="sommaireMenu" class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
+                        <li><a href="#section-1">1. Équipements Lourds</a></li>
+                        <li><a href="#section-2">2. Traitement Minerais</a></li>
+                        <li><a href="#section-3">3. Pompes & Vannes</a></li>
+                        <li><a href="#section-4">4. Automatisation</a></li>
+                        <li><a href="#section-5">5. Instrumentation</a></li>
+                        <li><a href="#section-6">6. Outillage</a></li>
+                    </ul>
+                </li>
+                <li><a href="mailto:contact@multiparts.com" class="menu-link font-semibold text-black px-2 py-2 rounded group">Contact</a></li>
+                <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded group">Partager</button></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="fixed-expertise-band no-print">
-        **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service en Afrique.
-    </div>
-    
-    <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
-    </a>
-
-    <div id="iaModal" class="modal no-print">
-        <div class="modal-content">
-            <span class="close-btn">×</span>
-            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#1e40af]">Configuration de l'Analyse</h3>
-            <div id="modalContent">
-                </div>
-        </div>
+        **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service.
     </div>
 
-
-    <div class="catalog-page page-number" id="top"> 
+    <div class="catalog-page page-number" id="top">
         <header class="header">
             <h1 class="text-2xl sm:text-4xl font-extrabold text-[#1e40af]">MARQUES PARTENAIRES</h1>
             <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier</h2>
         </header>
 
-        <img class="w-full h-auto rounded-lg mb-6" 
-             src="Gemini_Generated_Image_Mining.png"
-             alt="Image d'un tombereau rigide dans une mine à ciel ouvert.">
-
-        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
-            <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm"> <div>
-                    <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
-                </div>
-                <div>
-                    <p><strong>Adresse :</strong> 2ᵉ étage, Immeuble Ganamet, 4565 Boulevard Félix Houphouët-Boigny, Abidjan, Côte d’Ivoire</p>
-                    <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
-                    <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 id="sommaire" class="no-screen text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
-        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700">
-          <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles</a></li>
-          <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation</a></li>
-          <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants</a></li>
-          <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
-          <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
-          <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
-        </ol>
+        <img class="w-full h-auto rounded-lg mb-6" src="Gemini_Generated_Image_Mining.png" alt="Cover">
 
         <div class="table-group" data-section="section-1">
-          <div class="section-header" id="section-1">
-            <div class="flex items-center">
-              <img 
-                src="https://placehold.co/100x50/34d399/1f2937?text=Engins"
-                class="rounded-md mr-3"
-                alt="Icône d'engins de chantier"
-              />
-              <h3>1. Équipements Lourds & Mobiles (Extraction, Concassage et Transport)</h3>
+            <div class="section-header" id="section-1">
+                <div class="flex items-center">
+                    <h3>1. Équipements Lourds & Mobiles</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
             </div>
-        
-            <button 
-              type="button" 
-              class="toggle-details-btn" 
-              aria-expanded="true" 
-              aria-controls="content-section-1"
-            >
-              <span class="toggle-sign">−</span>
-              <span class="sr-only">Réduire / Développer</span>
-              Plus de détails
-            </button>
-          </div>
-        
-          <div id="content-section-1" class="section-content open">
-            <div class="expertise-box">
-              <p class="text-gray-700 italic text-sm">
-                <strong>Notre expertise :</strong> Nous fournissons des pièces neuves et de première monte, 
-                tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.
-              </p>
+            <div id="content-section-1" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Expertise en pièces neuves et première monte pour engins d'extraction.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.svg" loading="lazy" alt="Img Section 1">
+                
+                <div class="scroll-arrow-container no-print" title="Voir les marques">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
+                        <tbody id="dyn-section-1-body"></tbody>
+                    </table>
+                </div>
             </div>
-            
-            <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-                 src="images/section-1.svg"
-                 alt="Illustration Équipements Lourds & Mobiles"
-                 loading="lazy">
-                 
-            <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-                <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
-            
-            <div class="table-container">
-              <table class="w-full table-custom">
-                <thead>
-                  <tr>
-                    <th class="w-1/2">Marque</th>
-                    <th class="w-1/2">Consommables</th>
-                  </tr>
-                </thead>
-        
-                <tbody id="dyn-section-1-body">
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
 
         <div class="table-group" data-section="section-2">
-  <div class="section-header" id="section-2">
-    <div class="flex items-center">
-      <img 
-        src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" 
-        class="rounded-md mr-3" 
-        alt="Icône concentrateur" 
-      />
-      <h3>2. Traitement des Minerais & Séparation (Concentrateur)</h3>
-    </div>
-
-    <button 
-      type="button" 
-      class="toggle-details-btn" 
-      aria-expanded="false" 
-      aria-controls="content-section-2"
-    >
-      <span class="toggle-sign">+</span>
-      <span class="sr-only">Réduire / Développer</span>
-      Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-2" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        <strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés 
-        et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.
-      </p>
-    </div>
-
-    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-         src="images/section-2.svg"
-         alt="Illustration Traitement des Minerais & Séparation"
-         loading="lazy">
-         
-    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Marque</th>
-            <th class="w-1/2">Consommables</th>
-          </tr>
-        </thead>
-
-        <tbody id="dyn-section-2-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-        <div class="table-group" data-section="section-3">
-  <div class="section-header" id="section-3">
-    <div class="flex items-center">
-      <img 
-        src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" 
-        class="rounded-md mr-3"
-        alt="Icône pompe"
-      />
-      <h3>3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)</h3>
-    </div>
-
-    <button 
-      type="button" 
-      class="toggle-details-btn" 
-      aria-expanded="false" 
-      aria-controls="content-section-3"
-    >
-      <span class="toggle-sign">+</span>
-      <span class="sr-only">Réduire / Développer</span>
-      Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-3" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        <strong>Notre expertise :</strong>
-        Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes 
-        haute résistance et de systèmes de dosage fiables.
-      </p>
-    </div>
-
-    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-         src="images/section-3.svg"
-         alt="Illustration Pompes, Vannes & Fluides Spécialisés"
-         loading="lazy">
-         
-    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Marque</th>
-            <th class="w-1/2">Spécialisation</th>
-          </tr>
-        </thead>
-
-        <tbody id="dyn-section-3-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-        <div class="table-group" data-section="section-4">
-  <div class="section-header" id="section-4">
-    <div class="flex items-center">
-      <img 
-        src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" 
-        class="rounded-md mr-3" 
-        alt="Icône automate"
-      />
-      <h3>4. Automatisation, Contrôle & Électronique</h3>
-    </div>
-
-    <button 
-      type="button" 
-      class="toggle-details-btn" 
-      aria-expanded="false" 
-      aria-controls="content-section-4"
-    >
-      <span class="toggle-sign">+</span>
-      <span class="sr-only">Réduire / Développer</span>
-      Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-4" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        <strong>Notre expertise :</strong>
-        Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès 
-        à des systèmes d’automatisation robustes.
-      </p>
-    </div>
-
-    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-         src="images/section-4.svg"
-         alt="Illustration Automatisation, Contrôle & Électronique"
-         loading="lazy">
-         
-    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Marque</th>
-            <th class="w-1/2">Consommables</th>
-          </tr>
-        </thead>
-
-        <tbody id="dyn-section-4-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-        
-<div class="table-group" data-section="section-5">
-  <div class="section-header" id="section-5">
-    <div class="flex items-center">
-      <img 
-        src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" 
-        class="rounded-md mr-3"
-        alt="Icône analyse"
-      />
-      <h3>5. Instrumentation, Laboratoire & Consommables</h3>
-    </div>
-
-    <button 
-      type="button" 
-      class="toggle-details-btn" 
-      aria-expanded="false" 
-      aria-controls="content-section-5"
-    >
-      <span class="toggle-sign">+</span>
-      <span class="sr-only">Réduire / Développer</span>
-      Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-5" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        <strong>Notre expertise :</strong>
-        La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle 
-        de la teneur. Nous fournissons des solutions garantissant la fiabilité.
-      </p>
-    </div>
-
-    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-         src="images/section-5.svg"
-         alt="Illustration Instrumentation, Laboratoire & Consommables"
-         loading="lazy">
-         
-    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Marque</th>
-            <th class="w-1/2">Consommables</th>
-          </tr>
-        </thead>
-
-        <tbody id="dyn-section-5-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-        <div class="table-group" data-section="section-6">
-  <div class="section-header" id="section-6">
-    <div class="flex items-center">
-      <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône d'outils maintenance" />
-      <h3>6. Outillage Spécialisé, Soudage & Maintenance Critique</h3>
-    </div>
-    <button type="button" class="toggle-details-btn" aria-expanded="false" aria-controls="content-section-6">
-      <span class="toggle-sign">+</span><span class="sr-only">Réduire / Développer</span> Plus de détails
-    </button>
-  </div>
-
-  <div id="content-section-6" class="section-content">
-    <div class="expertise-box">
-      <p class="text-gray-700 italic text-sm">
-        **Notre expertise :** L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.
-      </p>
-    </div>
-
-    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
-         src="images/section-6.svg"
-         alt="Illustration Outillage Spécialisé & Maintenance"
-         loading="lazy">
-         
-    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
-        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-    </div>
-
-    <div class="table-container">
-      <table class="w-full table-custom">
-        <thead>
-          <tr>
-            <th class="w-1/2">Marque</th>
-            <th class="w-1/2">Spécialisation</th>
-          </tr>
-        </thead>
-        <tbody id="dyn-section-6-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-      </table>
-    </div>
-  </div>
-</div>
-        
-        <footer class="mt-16 border-t pt-4 text-xs text-gray-600 sm:px-5">
-            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-5 sm:px-0"> <div>
-                    <p class="font-semibold text-red-700">STATUT FOURNISSEUR</p>
-                    <p>Depuis plus de 30 ans, **MULTIPARTS** assure en toute indépendance le sourcing et la revente de matériel neuf, reconditionné ou obsolète, directement auprès des marques ou de fabricants de première monte, avec traçabilité et fiabilité garanties..</p>
+            <div class="section-header" id="section-2">
+                <div class="flex items-center">
+                    <h3>2. Traitement des Minerais (Concentrateur)</h3>
                 </div>
-                <div>
-                    <p class="font-semibold text-blue-700">GARANTIE & CONTACT</p>
-                    <p>Tous les produits fournis bénéficient d'une **garantie de 12 mois**.</p>
-                    <p>Tél. Fixe : <span class="font-bold">+225 27 21 25 01 46</span></p>
-                    <p>Mobile : <span class="font-bold">+225 07 09 39 95 29</span></p>
-                    <p>Email Achat : <span class="font-bold">rafiou.oyeossi@multipartsci.com</span></p>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-section-2" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Solutions pour concassage, broyage et séparation.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.svg" loading="lazy" alt="Img Section 2">
+                
+                <div class="scroll-arrow-container no-print">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
+                        <tbody id="dyn-section-2-body"></tbody>
+                    </table>
                 </div>
             </div>
-            
+        </div>
+
+        <div class="table-group" data-section="section-3">
+            <div class="section-header" id="section-3">
+                <div class="flex items-center">
+                    <h3>3. Pompes, Vannes & Fluides</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-section-3" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Gestion des boues et fluides agressifs.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.svg" loading="lazy" alt="Img Section 3">
+                
+                <div class="scroll-arrow-container no-print">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
+                        <tbody id="dyn-section-3-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-group" data-section="section-4">
+            <div class="section-header" id="section-4">
+                <div class="flex items-center">
+                    <h3>4. Automatisation & Électronique</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-section-4" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Fiabilité électrique et systèmes de contrôle.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.svg" loading="lazy" alt="Img Section 4">
+                
+                <div class="scroll-arrow-container no-print">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
+                        <tbody id="dyn-section-4-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-group" data-section="section-5">
+            <div class="section-header" id="section-5">
+                <div class="flex items-center">
+                    <h3>5. Instrumentation & Laboratoire</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-section-5" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Précision métrologique et équipements d'analyse.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.svg" loading="lazy" alt="Img Section 5">
+                
+                <div class="scroll-arrow-container no-print">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
+                        <tbody id="dyn-section-5-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-group" data-section="section-6">
+            <div class="section-header" id="section-6">
+                <div class="flex items-center">
+                    <h3>6. Outillage & Maintenance</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-section-6" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm">Outils spécialisés, soudage et maintenance critique.</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.svg" loading="lazy" alt="Img Section 6">
+                
+                <div class="scroll-arrow-container no-print">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
+                        <tbody id="dyn-section-6-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-16 border-t pt-4 text-xs text-gray-600 sm:px-5">
+            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
             <p class="mt-4 text-center px-5 sm:px-0">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</p>
         </footer>
     </div>
 
-    <script type="module">
-        
-        // Fonction d'extraction CSV - COPIE LES DONNÉES DU TABLEAU DANS LE PRESSE-PAPIERS
-        function generateCSV(sectionId) {
-            // SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
-            const table = document.querySelector(`#${sectionId}`).closest('.table-group').querySelector('.table-custom');
+<script>
+// DONNÉES INTÉGRÉES (REMPLACEMENT DU FETCH JSON)
+// Cela garantit que le tableau s'affiche immédiatement sans serveur externe.
+const catalogData = [
+    {
+        sectionId: 'section-1',
+        items: [
+            { brand: 'CATERPILLAR', specialization: 'Engins Miniers & BTP', consumables: ['Filtres', 'Joints', 'Injecteurs', 'Pièces Moteur'] },
+            { brand: 'KOMATSU', specialization: 'Excavatrices & Dumpers', consumables: ['Dents de godet', 'Chenilles', 'Filtres Hydrauliques'] },
+            { brand: 'SANDVIK', specialization: 'Forage & Concassage', consumables: ['Tiges de forage', 'Taillants', 'Mâchoires'] },
+            { brand: 'EPIROC', specialization: 'Forage Souterrain', consumables: ['Outils de perforation', 'Pièces de rechange'] },
+            { brand: 'VOLVO CE', specialization: 'Chargeuses & Tombereaux', consumables: ['Kits de maintenance', 'Filtres'] },
+            { brand: 'HITACHI', specialization: 'Pelles Hydrauliques', consumables: ['Pièces de train de roulement', 'Filtres'] },
+            { brand: 'LIEBHERR', specialization: 'Grues & Pelles', consumables: ['Kits de réparation', 'Moteurs'] },
+            { brand: 'BELL', specialization: 'Tombereaux Articulés', consumables: ['Pièces d\'usure', 'Transmission'] },
+            { brand: 'JCB', specialization: 'Engins de chantier', consumables: ['Dents', 'Filtres', 'Pneus'] },
+            { brand: 'BOBCAT', specialization: 'Mini-chargeuses', consumables: ['Chenilles', 'Filtres', 'Accessoires'] }
+        ]
+    },
+    {
+        sectionId: 'section-2',
+        items: [
+            { brand: 'METSO', specialization: 'Concasseurs & Broyeurs', consumables: ['Manteaux', 'Blindages', 'Pièces d\'usure'] },
+            { brand: 'FLSMIDTH', specialization: 'Séparation & Flottation', consumables: ['Rotors', 'Stators', 'Pièces de pompe'] },
+            { brand: 'WEIR MINERALS', specialization: 'Traitement des boues', consumables: ['Revêtements caoutchouc', 'Cyclones'] },
+            { brand: 'MULTOTEC', specialization: 'Classification', consumables: ['Panneaux de criblage', 'Spirales'] },
+            { brand: 'SANDVIK ROCK', specialization: 'Concassage Mobile', consumables: ['Mâchoires', 'Cônes', 'Tamis'] },
+            { brand: 'McCLOSKEY', specialization: 'Criblage Mobile', consumables: ['Grilles', 'Tapis convoyeurs'] },
+            { brand: 'TEREX', specialization: 'Traitement Matériaux', consumables: ['Pièces concasseur', 'Rouleaux'] },
+            { brand: 'OUTOTEC', specialization: 'Technologie de procédé', consumables: ['Filtres presse', 'Épaississeurs'] },
+            { brand: 'MAGOTTEAUX', specialization: 'Broyeurs à boulets', consumables: ['Boulets de broyage', 'Blindages internes'] }
+        ]
+    },
+    {
+        sectionId: 'section-3',
+        items: [
+            { brand: 'WARMAN', specialization: 'Pompes à Boues', consumables: ['Impellers', 'Volutes', 'Joints d\'arbre'] },
+            { brand: 'FLYGT', specialization: 'Pompes Submersibles', consumables: ['Kits d\'étanchéité', 'Câbles', 'Roulements'] },
+            { brand: 'GRUNDFOS', specialization: 'Pompes à Eau', consumables: ['Garnitures mécaniques', 'Clapets'] },
+            { brand: 'KSB', specialization: 'Pompes Industrielles', consumables: ['Roues', 'Arbres', 'Joints'] },
+            { brand: 'SULZER', specialization: 'Pompage de Process', consumables: ['Pièces hydrauliques', 'Joints'] },
+            { brand: 'NETZSCH', specialization: 'Pompes à Vis', consumables: ['Stators', 'Rotors', 'Cardans'] },
+            { brand: 'WILDEN', specialization: 'Pompes Pneumatiques', consumables: ['Membranes', 'Billes', 'Sièges'] },
+            { brand: 'FLOWSERVE', specialization: 'Vannes de Régulation', consumables: ['Positionneurs', 'Kits joints'] },
+            { brand: 'BRAY', specialization: 'Vannes Papillon', consumables: ['Manchettes', 'Disques', 'Actionneurs'] },
+            { brand: 'SAUNDERS', specialization: 'Vannes à Membrane', consumables: ['Membranes caoutchouc', 'PTFE'] }
+        ]
+    },
+    {
+        sectionId: 'section-4',
+        items: [
+            { brand: 'SIEMENS', specialization: 'Automates & Variateurs', consumables: ['Cartes I/O', 'Alimentations', 'Fusibles'] },
+            { brand: 'SCHNEIDER', specialization: 'Distribution Électrique', consumables: ['Disjoncteurs', 'Contacteurs', 'Relais'] },
+            { brand: 'ABB', specialization: 'Moteurs & Variateurs', consumables: ['Ventilateurs', 'Condensateurs', 'Cartes'] },
+            { brand: 'ALLEN BRADLEY', specialization: 'Contrôle Commande', consumables: ['Modules PLC', 'Écrans IHM'] },
+            { brand: 'ROCKWELL', specialization: 'Automation', consumables: ['Logiciels', 'Capteurs', 'Sécurité'] },
+            { brand: 'PHOENIX CONTACT', specialization: 'Connectique', consumables: ['Borniers', 'Relais', 'Alimentations'] },
+            { brand: 'OMRON', specialization: 'Détection', consumables: ['Cellules photo', 'Capteurs', 'Relais'] },
+            { brand: 'IFM ELECTRONIC', specialization: 'Capteurs Industriels', consumables: ['Détecteurs', 'Câbles M12'] },
+            { brand: 'DANFOSS', specialization: 'Variateurs de Fréquence', consumables: ['Cartes de contrôle', 'Ventilateurs'] },
+            { brand: 'EATON', specialization: 'Protection Électrique', consumables: ['Onduleurs', 'Fusibles', 'Disjoncteurs'] }
+        ]
+    },
+    {
+        sectionId: 'section-5',
+        items: [
+            { brand: 'ENDRESS+HAUSER', specialization: 'Instrumentation', consumables: ['Sondes pH', 'Électrodes', 'Joints'] },
+            { brand: 'VEGA', specialization: 'Niveau & Pression', consumables: ['Sondes radar', 'Capteurs'] },
+            { brand: 'METTLER TOLEDO', specialization: 'Pesage & Labo', consumables: ['Cellules de charge', 'Étalons', 'Pipettes'] },
+            { brand: 'HACH', specialization: 'Analyse de l\'Eau', consumables: ['Réactifs', 'Solutions tampons', 'Filtres'] },
+            { brand: 'FLUKE', specialization: 'Appareils de Mesure', consumables: ['Fusibles', 'Câbles de test', 'Batteries'] },
+            { brand: 'SICK', specialization: 'Capteurs Intelligents', consumables: ['Réflecteurs', 'Supports'] },
+            { brand: 'ROSEMOUNT', specialization: 'Transmetteurs', consumables: ['Manifolds', 'Joints'] },
+            { brand: 'WIKA', specialization: 'Manomètres', consumables: ['Siphons', 'Joints'] },
+            { brand: 'TESTO', specialization: 'Mesure Portative', consumables: ['Sondes', 'Filtres'] },
+            { brand: 'FISHER SCIENTIFIC', specialization: 'Matériel de Labo', consumables: ['Verrerie', 'Consommables plastiques'] }
+        ]
+    },
+    {
+        sectionId: 'section-6',
+        items: [
+            { brand: 'FACOM', specialization: 'Outillage à Main', consumables: ['Clés', 'Douilles', 'Tournevis'] },
+            { brand: 'STANLEY', specialization: 'Outillage Général', consumables: ['Lames', 'Mètres', 'Marteaux'] },
+            { brand: 'BOSCH PRO', specialization: 'Outillage Électroportatif', consumables: ['Forets', 'Disques', 'Batteries'] },
+            { brand: 'MAKITA', specialization: 'Outillage Sans Fil', consumables: ['Charbons', 'Lames de scie'] },
+            { brand: 'DEWALT', specialization: 'Construction', consumables: ['Mèches', 'Disques abrasifs'] },
+            { brand: 'ESAB', specialization: 'Soudage', consumables: ['Électrodes', 'Fil à souder', 'Buses'] },
+            { brand: 'LINCOLN ELECTRIC', specialization: 'Postes à Souder', consumables: ['Baguettes', 'Torches', 'Galets'] },
+            { brand: 'MILLER', specialization: 'Soudage Industriel', consumables: ['Pièces d\'usure torche', 'Gaz'] },
+            { brand: 'ENERPAC', specialization: 'Hydraulique HP', consumables: ['Joints vérin', 'Huile hydraulique'] },
+            { brand: 'RIDGID', specialization: 'Plomberie & Tuyauterie', consumables: ['Peignes de filière', 'Lames coupe-tube'] }
+        ]
+    }
+];
+
+// FONCTION DE REMPLISSAGE DES TABLEAUX
+function populateTables() {
+    const sectionsToFill = {
+        'section-1': 'dyn-section-1-body',
+        'section-2': 'dyn-section-2-body',
+        'section-3': 'dyn-section-3-body',
+        'section-4': 'dyn-section-4-body',
+        'section-5': 'dyn-section-5-body',
+        'section-6': 'dyn-section-6-body'
+    };
+
+    const esc = s => (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : '');
+
+    catalogData.forEach(section => {
+        const tbodyId = sectionsToFill[section.sectionId];
+        if (!tbodyId) return;
+        const tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+
+        tbody.innerHTML = ''; // Nettoyer
+
+        section.items.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.className = 'brand-row';
+            tr.setAttribute('tabindex', '0');
             
-            if (!table) return "Erreur: Tableau non trouvé.";
-
-            // Crée l'en-tête CSV avec une colonne vide pour la quantité
-            let csv = "Marque;Spécialisation;Quantité Souhaitée\n";
-
-            // Ajoute les données des lignes du corps du tableau
-            table.querySelectorAll('tbody tr').forEach(row => {
-                const cells = row.querySelectorAll('td');
-                const marque = cells[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                const specialisation = cells[1].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                csv += `"${marque}";"${specialisation}"; \n`;
-            });
-
-            // Tente de copier le CSV dans le presse-papiers
-            navigator.clipboard.writeText(csv).then(() => {
-                alert(`Les données du tableau ont été copiées dans votre presse-papiers au format CSV.\nVous pouvez maintenant les coller dans Excel ou votre système d'achat.`);
-            }).catch(err => {
-                console.error('Erreur de copie:', err);
-                alert('Erreur: Impossible de copier dans le presse-papiers. Voir console.');
-            });
-
-            return csv;
-        }
-
-        // Fonction pour extraire toutes les marques d'une section donnée
-        function extractBrands(sectionId) {
-            // SÉLECTEUR MIS À JOUR: Cibler le conteneur du tableau à l'intérieur du conteneur d'impression (.table-group)
-            const sectionGroup = document.getElementById(sectionId).closest('.table-group');
-            if (!sectionGroup) return [];
+            // Colonne Marque + Popup
+            const tdBrand = document.createElement('td');
+            tdBrand.innerHTML = `<strong>${esc(item.brand)}</strong><div class="text-sm text-gray-600">${esc(item.specialization)}</div>`;
             
-            const tableContainer = sectionGroup.querySelector('.table-container');
+            // Création Popup
+            const popup = document.createElement('div');
+            popup.className = 'consumables-popup no-print';
+            popup.innerHTML = `<strong>Consommables — ${esc(item.brand)}</strong><ul style="margin:0;padding-left:18px;">${item.consumables.map(c => `<li>${esc(c)}</li>`).join('')}</ul>`;
+            tdBrand.appendChild(popup);
 
-            if (!tableContainer) return [];
+            // Colonne Aperçu
+            const tdConsum = document.createElement('td');
+            const preview = item.consumables.slice(0, 3).join(', ');
+            tdConsum.innerHTML = `<div class="consumables-inline">${esc(preview)}${item.consumables.length > 3 ? '…' : ''}</div>`;
 
-            // Extraire les marques du tableau trouvé
-            return Array.from(tableContainer.querySelectorAll('tbody tr')).map(row => {
-                const brand = row.querySelectorAll('td')[0].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
-                // N'inclut pas les lignes d'alternative combinées non principales dans le choix
-                if (brand.toLowerCase().includes('alternatives électriques') || brand.toLowerCase().includes('vannes') || brand.toLowerCase().includes('outillage standard')) {
-                    return ''; 
-                }
-                return brand;
-            }).filter(brand => brand !== ''); // Filtre les marques vides
-        }
-
-        // Fonction pour afficher la modale avec les options de sélection
-        function showSelectionModal(functionType) {
-            const modal = document.getElementById('iaModal');
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            
-            modalTitle.textContent = "Étape 1 : Choisir la section du catalogue";
-            modal.style.display = "block";
-            
-            const sectionTitles = [
-                "1. Équipements Lourds & Mobiles",
-                "2. Traitement des Minerais & Séparation",
-                "3. Pompes, Vannes & Fluides Spécialisés",
-                "4. Automatisation, Contrôle & Électronique",
-                "5. Instrumentation, Laboratoire & Consommables",
-                "6. Outillage Spécialisé, Soudage & Maintenance Critique",
-            ];
-            const sectionIds = ["section-1", "section-2", "section-3", "section-4", "section-5", "section-6"];
-
-            let sectionOptions = '<p class="mb-3 text-sm font-semibold">Sur quelle famille souhaitez-vous lancer l\'analyse ?</p>';
-            sectionIds.forEach((id, index) => {
-                sectionOptions += `
-                    <button class="select-section-btn bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-2 px-3 rounded mb-2 w-full text-left transition duration-150"
-                            data-section-id="${id}"
-                            data-function-type="${functionType}">
-                        ${sectionTitles[index]}
-                    </button>
-                `;
-            });
-
-            modalContentDiv.innerHTML = sectionOptions;
-        }
-        
-        // Étape 2: Afficher les marques après sélection de la section
-        function showBrandSelection(sectionId, functionType) {
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            const brands = extractBrands(sectionId);
-            
-            modalTitle.textContent = `Étape 2 : Sélectionnez 2 ou 3 marques (${brands.length} disponibles)`;
-
-            let brandOptions = '';
-            
-            if (brands.length === 0) {
-                 brandOptions = '<p class="text-red-600 font-semibold">Aucune marque disponible pour cette section.</p>';
-            } else {
-                brandOptions = `<p class="mb-3 text-sm font-semibold text-red-600">Choisissez 2 ou 3 marques pour une analyse pertinente:</p>`;
-                brands.forEach((brand, index) => {
-                    brandOptions += `
-                        <div class="mb-2">
-                            <input type="checkbox" id="brand-${sectionId}-${index}" name="selectedBrands" value="${brand}" class="mr-2 brand-checkbox">
-                            <label for="brand-${sectionId}-${index}">${brand}</label>
-                        </div>
-                    `;
-                });
-            }
-
-
-            modalContentDiv.innerHTML = `
-                <div class="max-h-64 overflow-y-auto border p-3 mb-4 rounded">
-                    ${brandOptions}
-                </div>
-                ${brands.length > 0 ? `
-                <button id="executeIaAnalysis" 
-                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-150"
-                        data-section-id="${sectionId}"
-                        data-function-type="${functionType}">
-                    Lancer l'Analyse
-                </button>` : ''}
-                <div id="iaLoadingArea" class="mt-4"></div>
-            `;
-            
-            // Logique de limitation de sélection à 3 marques
-            document.querySelectorAll('.brand-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const checked = document.querySelectorAll('.brand-checkbox:checked');
-                    if (checked.length > 3) {
-                        checkbox.checked = false;
-                        alert("Vous ne pouvez sélectionner que 3 marques maximum pour l'analyse.");
-                    }
-                });
-            });
-        }
-
-
-        // Fonction pour simuler la progression (pour l'effet visuel)
-        function simulateProgress(loadingArea) {
-            loadingArea.innerHTML = `
-                <p class="text-gray-700 mb-2">Analyse en cours... Patience, l'IA rassemble les données stratégiques.</p>
-                <div class="progress-bar-container">
-                    <div id="progressBar" class="progress-bar">0%</div>
-                </div>
-            `;
-            const progressBar = document.getElementById('progressBar');
-            let progress = 0;
-            
-            const interval = setInterval(() => {
-                if (progress < 90) { // S'arrête à 90% en attendant la réponse du serveur
-                    progress += 5;
-                    progressBar.style.width = progress + '%';
-                    progressBar.textContent = progress + '%';
-                }
-            }, 500); // Mise à jour toutes les 0.5 secondes
-
-            return interval; // Retourne l'ID pour l'arrêter plus tard
-        }
-
-        // Fonction principale d'appel à Gemini (Modifiée pour prendre le tableau de marques)
-        async function callGeminiFunction(selectedBrands, functionType) {
-            const modalContentDiv = document.getElementById('modalContent');
-            const modalTitle = document.getElementById('modalTitle');
-            const loadingArea = document.getElementById('iaLoadingArea');
-            
-            let endpoint = '';
-            let prompt = '';
-            const brandList = selectedBrands.join(', ');
-
-            // Détermine le prompt et l'endpoint en fonction du type de fonction
-            if (functionType === 'marche') {
-                endpoint = 'analyse-marche-equipements-lourds';
-                prompt = `Effectuez une analyse de marché rapide et pertinente sur les fournisseurs majeurs d'équipements lourds ${brandList} dans le secteur minier : listez leurs principales forces et la tendance actuelle des prix des pièces de rechange.`;
-            } else if (functionType === 'risque') {
-                endpoint = 'analyse-risque-fournisseur-plc';
-                prompt = `Analyse les marques ${brandList} dans les régions minières africaines. Quels sont les trois risques majeurs (contrefaçon, absence de garantie internationale, et dépendance aux stocks locaux limités) associés à l'approvisionnement en systèmes PLC/DCS sans passer par un importateur spécialisé ?`;
-            } else if (functionType === 'tco') {
-                endpoint = 'analyse-tco-services';
-                prompt = `Rédigez une analyse TCO comparative sur 5 ans pour les marques premium ${brandList} versus des solutions moins chères dans les services et structure. Concentrez l'analyse sur le coût de la défaillance et la complexité de l'obtention des pièces d'urgence.`;
-            } else {
-                return; // Aucune fonction valide
-            }
-
-            const progressInterval = simulateProgress(loadingArea);
-            modalTitle.textContent = `Analyse ${functionType.toUpperCase()} en cours...`;
-
-            try {
-                // 🛑 BASE URL RÉELLE DES SERVICES CLOUD RUN/FUNCTIONS 🛑
-                const BASE_GEMINI_FUNCTION_URL = 'https://analyse-marche-equipements-lourds-856176478969.europe-west1.run.app/'; 
-                const url = BASE_GEMINI_FUNCTION_URL + endpoint;
-
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: prompt })
-                });
-
-                clearInterval(progressInterval); // Arrête l'intervalle de progression
-                
-                if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}. URL: ${url}`);
-                }
-
-                const data = await response.json();
-                
-                // Finalise la barre à 100%
-                const progressBar = document.getElementById('progressBar');
-                if(progressBar) {
-                    progressBar.style.width = '100%';
-                    progressBar.textContent = '100% - Analyse Complète';
-                }
-
-                // Affiche le résultat dans la modale
-                modalTitle.textContent = `Résultat de l'Analyse IA`;
-                modalContentDiv.innerHTML = `
-                    <h4 class="text-xl font-semibold mb-3 mt-4 text-green-700">✅ Rapport stratégique généré</h4>
-                    <p class="text-gray-600 mb-4 italic">Marques analysées: ${brandList}</p>
-                    <div class="border p-4 bg-gray-50 whitespace-pre-wrap max-h-96 overflow-y-auto">${data.result}</div>
-                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
-                `;
-
-            } catch (error) {
-                clearInterval(progressInterval);
-                loadingArea.innerHTML = '';
-                modalTitle.textContent = `❌ Erreur de Connexion IA`;
-                modalContentDiv.innerHTML = `
-                    <p>Le service Cloud n'est pas accessible ou l'analyse a échoué. Cause: ${error.message}</p>
-                    <p class="mt-2 text-xs text-red-600">Veuillez vérifier que les fonctions Cloud sont déployées et que la variable GEMINI_API_KEY est configurée.</p>
-                    <button class="mt-4 bg-indigo-600 text-white py-2 px-4 rounded close-btn-bottom">Fermer la fenêtre</button>
-                `;
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            // Gestion du bouton Partager (remplace l'ancien bouton PDF)
-            const shareBtn = document.getElementById('shareButton');
-            if (shareBtn) {
-                shareBtn.addEventListener('click', async () => {
-                    const shareData = {
-                        title: 'Catalogue MULTIPARTS - Marques pour le secteur Minier',
-                        text: 'Découvrez notre catalogue de marques partenaires pour le secteur minier.',
-                        url: window.location.href
-                    };
-
-                    if (navigator.share) {
-                        // Utilise l'API de partage native (Mobile, Edge, Safari)
-                        try {
-                            await navigator.share(shareData);
-                        } catch (err) {
-                            console.log('Partage annulé ou erreur', err);
-                        }
-                    } else {
-                        // Fallback : Copier dans le presse-papier pour les navigateurs PC non compatibles
-                        try {
-                            await navigator.clipboard.writeText(window.location.href);
-                            alert('Lien copié dans le presse-papier ! Vous pouvez le coller maintenant.');
-                        } catch (err) {
-                            alert('Impossible de copier le lien automatiquement. Veuillez copier l\'URL manuellement.');
-                        }
-                    }
-                });
-            }
-            
-            const iaModal = document.getElementById('iaModal');
-            const closeBtn = document.querySelector('.close-btn');
-
-            // Gestion de la fermeture de la modale
-            closeBtn.onclick = function() {
-                iaModal.style.display = "none";
-            }
-            window.onclick = function(event) {
-                if (event.target == iaModal || event.target.classList.contains('close-btn-bottom')) {
-                    iaModal.style.display = "none";
-                }
-            }
-            
-            // --- GESTION DE LA MODALE INTERNE (CHOIX SECTION & MARQUES) ---
-            document.getElementById('iaModal').addEventListener('click', (e) => {
-                // 1. Choix de la section (Étape 1)
-                if (e.target && e.target.classList.contains('select-section-btn')) {
-                    const sectionId = e.target.getAttribute('data-section-id');
-                    const functionType = e.target.getAttribute('data-function-type');
-                    showBrandSelection(sectionId, functionType); // Passe à l'étape 2
-                }
-                
-                // 2. Lancement de l'analyse (Étape 2)
-                if (e.target && e.target.id === 'executeIaAnalysis') {
-                    const sectionId = e.target.getAttribute('data-section-id');
-                    const functionType = e.target.getAttribute('data-function-type');
-                    
-                    const selectedCheckboxes = document.querySelectorAll('#modalContent input[name="selectedBrands"]:checked');
-                    const selectedBrands = Array.from(selectedCheckboxes).map(cb => cb.value);
-
-                    if (selectedBrands.length < 2 || selectedBrands.length > 3) {
-                        alert("Veuillez sélectionner au minimum 2 marques et 3 marques maximum pour l'analyse.");
-                        return;
-                    }
-                    
-                    // Lance l'appel à l'API Gemini
-                    callGeminiFunction(selectedBrands, functionType);
-                }
-            });
+            tr.appendChild(tdBrand);
+            tr.appendChild(tdConsum);
+            tbody.appendChild(tr);
         });
-        
-        // 🌟 SCRIPT DE PAGINATION 🌟
-        document.addEventListener('DOMContentLoaded', () => {
-            const catalogPage = document.querySelector('.catalog-page');
-            if (catalogPage && window.matchMedia('print').matches) {
-                catalogPage.style.counterIncrement = 'page 0';
-            }
-        });
-    </script>
-    <script>
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. GESTION ACCORDÉON (SANS SCROLL AUTO, JUSTE OUVERTURE)
-  const groups = Array.from(document.querySelectorAll('.table-group'));
-  if (groups.length > 0) {
-      
-      const headerEl = document.querySelector('header');
-      // Calcul dynamique de la hauteur du header + marge de sécurité
-      const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 20 : 80);
+    // 1. Remplir les tableaux
+    populateTables();
 
-      // Fonction de scroll manuel robuste (utilisée pour le sommaire ou le clic sur l'entête)
-      function smoothScrollTo(element, offset = 0) {
-          if (!element) return;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-          window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-          });
-      }
+    // 2. Gestion Accordéon & Flèche
+    const groups = Array.from(document.querySelectorAll('.table-group'));
+    const headerEl = document.querySelector('header');
+    const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 10 : 80);
 
-      // Initialisation : ouvrir la 1ère section, fermer les autres
-      groups.forEach((group, index) => {
+    function smoothScrollTo(element) {
+        if (!element) return;
+        const offset = getHeaderOffset();
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+
+    groups.forEach((group, index) => {
         const btn = group.querySelector('.toggle-details-btn');
         const content = group.querySelector('.section-content');
         const sign = group.querySelector('.toggle-sign');
-        
-        if (!btn || !content) return;
+        const arrowContainer = group.querySelector('.scroll-arrow-container');
+        const tableContainer = group.querySelector('.table-container');
 
+        // Initial state
         if (index === 0) {
-          content.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          if (sign) sign.textContent = '−';
-        } else {
-          content.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          if (sign) sign.textContent = '+';
-        }
-
-        // --- GESTION DU CLIC ---
-        btn.addEventListener('click', function() {
-          // On vérifie si on est déjà ouvert pour savoir si on doit scroller ou pas après
-          const wasClosed = !content.classList.contains('open');
-
-          // 1. Fermer tous les autres groupes
-          groups.forEach((g) => {
-            if (g !== group) {
-              g.querySelector('.section-content').classList.remove('open');
-              g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'false');
-              const s = g.querySelector('.toggle-sign');
-              if (s) s.textContent = '+';
-            }
-          });
-
-          // 2. Basculer l'état du groupe actuel
-          if (wasClosed) {
-            // OUVERTURE
             content.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
-            if (sign) sign.textContent = '−';
-
-            // Scroll immédiat vers le titre de la section pour bien voir le contenu
-            setTimeout(() => {
-                smoothScrollTo(group.querySelector('.section-header'), getHeaderOffset());
-            }, 50);
-
-          } else {
-            // FERMETURE
+            sign.textContent = '−';
+        } else {
             content.classList.remove('open');
             btn.setAttribute('aria-expanded', 'false');
-            if (sign) sign.textContent = '+';
-          }
-        });
-      });
-  }
+            sign.textContent = '+';
+        }
 
-  // --- GESTION IMPRESSION ---
-  function openAll() {
-    if(groups) groups.forEach((g) => {
-      g.querySelector('.section-content').classList.add('open');
-      g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'true');
-      const s = g.querySelector('.toggle-sign'); if (s) s.textContent = '−';
-    });
-  }
-  function restoreInitial() {
-    if(groups) groups.forEach((g, idx) => {
-      const c = g.querySelector('.section-content');
-      const b = g.querySelector('.toggle-details-btn');
-      const s = g.querySelector('.toggle-sign');
-      if (idx === 0) {
-        c.classList.add('open'); b.setAttribute('aria-expanded', 'true'); if (s) s.textContent = '−';
-      } else {
-        c.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); if (s) s.textContent = '+';
-      }
-    });
-  }
-  window.addEventListener('beforeprint', openAll);
-  window.addEventListener('afterprint', restoreInitial);
-
-  // 2. GESTION MENU SOMMAIRE
-  const toggle = document.getElementById('sommaireToggle');
-  const menu = document.getElementById('sommaireMenu');
-  if (toggle && menu) {
-      toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menu.classList.toggle('hidden');
-        toggle.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
-      });
-
-      // Fermeture au clic sur lien avec scroll manuel
-      menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            menu.classList.add('hidden');
-            toggle.setAttribute('aria-expanded', 'false');
-
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if(targetSection) {
-                // Ouvrir la section correspondante via simulation de clic
-                const group = targetSection.closest('.table-group');
-                const btn = group.querySelector('.toggle-details-btn');
-                
-                if (!group.querySelector('.section-content').classList.contains('open')) {
-                    btn.click(); 
-                } else {
-                    // Juste scroller si déjà ouvert
-                    const headerEl = document.querySelector('header');
-                    const offset = headerEl ? headerEl.offsetHeight + 20 : 80;
-                    const elementPosition = targetSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        // Clic Accordéon
+        btn.addEventListener('click', () => {
+            const isOpen = content.classList.contains('open');
+            
+            // Fermer les autres
+            groups.forEach(g => {
+                if(g !== group) {
+                    g.querySelector('.section-content').classList.remove('open');
+                    g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'false');
+                    g.querySelector('.toggle-sign').textContent = '+';
                 }
+            });
+
+            if (isOpen) {
+                content.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                sign.textContent = '+';
+            } else {
+                content.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                sign.textContent = '−';
+                // Scroll au titre
+                setTimeout(() => smoothScrollTo(group.querySelector('.section-header')), 50);
             }
         });
-      });
 
-      document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && e.target !== toggle) {
-          menu.classList.add('hidden');
-          toggle.setAttribute('aria-expanded', 'false');
+        // LOGIQUE FLECHE ANIMEE
+        if (arrowContainer && tableContainer) {
+            // Clic Flèche -> Scroll vers le tableau
+            arrowContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                smoothScrollTo(tableContainer);
+            });
+
+            // Observer pour masquer la flèche quand le tableau est visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Le tableau est visible, on cache la flèche doucement
+                        arrowContainer.classList.add('hidden-arrow');
+                    } else {
+                        // On remonte, on réaffiche la flèche si on est au dessus
+                        if (entry.boundingClientRect.top > 0) {
+                             arrowContainer.classList.remove('hidden-arrow');
+                        }
+                    }
+                });
+            }, { threshold: 0.2 }); // Déclenche quand 20% du tableau est visible
+
+            observer.observe(tableContainer);
         }
-      });
-  }
+    });
+
+    // 3. Gestion Menu Sommaire (Classique)
+    const toggle = document.getElementById('sommaireToggle');
+    const menu = document.getElementById('sommaireMenu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('hidden');
+        });
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                menu.classList.add('hidden');
+                const targetId = link.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const group = target.closest('.table-group');
+                    const btn = group.querySelector('.toggle-details-btn');
+                    if(!group.querySelector('.section-content').classList.contains('open')) {
+                        btn.click();
+                    } else {
+                        smoothScrollTo(group.querySelector('.section-header'));
+                    }
+                }
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && e.target !== toggle) menu.classList.add('hidden');
+        });
+    }
+    
+    // 4. Partage
+    const shareBtn = document.getElementById('shareButton');
+    if(shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+            if (navigator.share) {
+                try { await navigator.share({ title: document.title, url: window.location.href }); } catch(e) {}
+            } else {
+                try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {}
+            }
+        });
+    }
 });
-</script>    
+</script>
 </body>
 </html>

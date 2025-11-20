@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_08_Finale_Restoration_Layout */
+        /* Version_09_Finale_Menu_Fix_Icons */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -282,15 +282,17 @@
     </div>
 
     <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50 no-print">
-        <a href="#top" class="shrink-0 sm:mr-44">
+        <a href="#top" class="shrink-0 sm:mr-24">
             <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
         </a>
         <nav class="flex-1 min-w-0">
-            <ul class="flex space-x-2 sm:space-x-10 justify-end sm:justify-start">
+            <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center">
+                
                 <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 group">
+                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                         <span class="hidden sm:inline">Sommaire</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                        <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
                     <ul id="sommaireMenu" class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
                         <li><a href="#section-1">1. Équipements Lourds</a></li>
@@ -301,20 +303,40 @@
                         <li><a href="#section-6">6. Outillage</a></li>
                     </ul>
                 </li>
+
                 <li>
-                    <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-1 group">
+                    <a href="https://www.google.com/maps?q=4565+Boulevard+F%C3%A9lix+Houphou%C3%ABt+Boigny,+Abidjan,+C%C3%B4te+d'Ivoire" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
+                       <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                        <span class="hidden sm:inline">Localisation</span>
                     </a>
                 </li>
-                <li><a href="mailto:rafiou.oyeossi@multipartsci.com" class="menu-link font-semibold text-black px-2 py-2 rounded group">Contact</a></li>
-                <li><a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded group">Secteurs</a></li>
-                <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded group">Partager</button></li>
+
+                <li>
+                    <a href="mailto:rafiou.oyeossi@multipartsci.com" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
+                        <span class="hidden sm:inline">Contact</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                        <span class="hidden sm:inline">Secteurs</span>
+                    </a>
+                </li>
+
+                <li>
+                    <button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                        <span class="hidden sm:inline">Partager</span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
 
     <div class="fixed-expertise-band no-print">
-        **MULTIPARTS :** 30 ans d'expertise en sourcing critique international à votre service.
+        <strong>MULTIPARTS :</strong> 30 ans d'expertise en sourcing critique international à votre service.
     </div>
 
     <div class="catalog-page page-number" id="top">
@@ -537,8 +559,7 @@
     </div>
 
 <script>
-// DONNÉES INTÉGRÉES (REMPLACEMENT DU FETCH JSON)
-// Cela garantit que le tableau s'affiche immédiatement sans serveur externe.
+// DONNÉES INTÉGRÉES
 const catalogData = [
     {
         sectionId: 'section-1',

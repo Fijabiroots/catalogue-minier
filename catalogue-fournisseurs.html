@@ -10,7 +10,7 @@
     
     <style>
         /* Configuration générale pour l'écran */
-         /* Version_04_Finale_Avec_Images_SVG */
+         /* Version_05_Finale_Avec_AutoScroll_Tableau */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -1311,9 +1311,39 @@ document.addEventListener('DOMContentLoaded', function() {
             c.classList.add('open');
             b.setAttribute('aria-expanded', 'true');
             if (s) s.textContent = '−';
-            // Scroll to the start of the section after a tiny timeout so layout is updated
-            // (ensures the expanded content doesn't push the header out of the calculated position)
+            
+            // 1. Scroll immédiat au début de la section (titre)
             setTimeout(() => scrollToSectionStart(g), 70);
+
+            // 2. Scroll différé vers le tableau après 1.5s d'inactivité
+            const table = g.querySelector('.table-container');
+            if (table) {
+                // On stocke le timer dans une variable pour pouvoir l'annuler
+                let scrollTimer = setTimeout(() => {
+                    // Recalcul des offsets (Header + Bandeau expertise)
+                    const stickyHeader = document.querySelector('header');
+                    const stickyBand = document.querySelector('.fixed-expertise-band');
+                    let totalOffset = 0;
+                    if (stickyHeader) totalOffset += stickyHeader.offsetHeight;
+                    if (stickyBand) totalOffset += stickyBand.offsetHeight;
+                    totalOffset += 10; // petite marge
+
+                    const tableRect = table.getBoundingClientRect();
+                    const tableY = window.pageYOffset + tableRect.top - totalOffset;
+                    
+                    window.scrollTo({ top: tableY, behavior: 'smooth' });
+                }, 1500); // 1.5 secondes
+
+                // Si l'utilisateur scrolle manuellement pendant ce délai, on annule l'auto-scroll
+                const stopAutoScroll = () => {
+                    clearTimeout(scrollTimer);
+                    window.removeEventListener('scroll', stopAutoScroll);
+                    window.removeEventListener('touchmove', stopAutoScroll);
+                };
+                // On écoute un scroll ou un touch
+                window.addEventListener('scroll', stopAutoScroll, { passive: true });
+                window.addEventListener('touchmove', stopAutoScroll, { passive: true });
+            }
           }
         } else {
           c.classList.remove('open');

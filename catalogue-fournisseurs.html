@@ -10,7 +10,7 @@
     
     <style>
         /* Configuration générale pour l'écran */
-         /* Version_05_Finale_Avec_AutoScroll_Tableau */
+         /* Version_06_Finale_Fleche_Animee_et_Images_Reduites */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -20,24 +20,24 @@
         .catalog-page {
             background-color: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 10px auto; /* Marge réduite sur mobile */
+            margin: 10px auto; 
             max-width: 900px;
-            padding: 20px; /* Padding réduit sur mobile */
+            padding: 20px; 
             min-height: 1200px;
             position: relative;
         }
         .header {
             border-bottom: 4px solid #1e40af;
             padding-bottom: 10px;
-            margin-bottom: 15px; /* Marge réduite sur mobile */
+            margin-bottom: 15px; 
         }
 
-        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE (Moins de 640px) */
+        /* 💻 OPTIMISATION SPÉCIFIQUE DES TABLEAUX POUR MOBILE */
         @media screen and (max-width: 639px) {
             .table-custom {
                 display: block;
-                overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
-                white-space: nowrap; /* Empêche les cellules de revenir à la ligne */
+                overflow-x: auto; 
+                white-space: nowrap; 
             }
             .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr {
                 display: block;
@@ -45,7 +45,6 @@
             .table-custom th, .table-custom td {
                 padding: 6px;
             }
-            /* Rétablit l'affichage normal sur les tableaux pour une lecture plus fluide */
             .table-custom tr {
                 border-bottom: 1px solid #e5e7eb;
             }
@@ -63,34 +62,33 @@
             padding: 8px;
             border-bottom: 1px solid #e5e7eb;
         }
-        /* Survol dynamique des lignes de tableaux .table-custom */
          .table-custom tr:hover {
-            background-color: #119248 !important; /* Vert MULTI-PARTS */
+            background-color: #119248 !important; 
             color: #fff !important;
             transition: background 0.13s, color 0.13s;
          }
-                /* INSÉRER après la ligne 153 */
-        .brand-row td:first-child { position: relative; } /* ancre le popup par rapport à la cellule contenant la popup */
+         
+        .brand-row td:first-child { position: relative; } 
         
         .consumables-inline {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           max-width: 100%;
-          color: #0f172a; /* texte lisible même si la ligne a hover color */
+          color: #0f172a; 
           font-size: 0.95rem;
         }
         
-        /* Popup latéral (caché par défaut) */
+        /* Popup latéral */
         .consumables-popup {
           display: none;
           position: absolute;
-          left: 100%;                 /* s'affiche à droite de la ligne */
+          left: 100%;                 
           top: 0;
-          margin-left: 12px;          /* espace entre la ligne et le popup */
-          width: 360px;               /* largeur fixe pour ne pas changer le layout */
+          margin-left: 12px;          
+          width: 360px;               
           max-width: calc(100vw - 40px);
-          max-height: 320px;          /* si la liste est longue : scroll à l'intérieur */
+          max-height: 320px;          
           overflow-y: auto;
           background: #ffffff;
           border: 1px solid rgba(0,0,0,0.12);
@@ -103,7 +101,6 @@
           line-height: 1.4;
         }
         
-        /* Petite flèche visuelle */
         .consumables-popup::before {
           content: "";
           position: absolute;
@@ -115,15 +112,12 @@
           filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03));
         }
         
-        /* Afficher popup au hover / focus / classe .show (utilisée par le JS) */
-        /* Remplacer les lignes 201-205 (sélecteurs d'affichage) par : */
         .brand-row:hover td:first-child .consumables-popup,
         .brand-row:focus-within td:first-child .consumables-popup,
         .brand-row.show td:first-child .consumables-popup {
           display: block;
         }
         
-        /* Sur très petits écrans : popup devient bloc sous la ligne (responsive) */
         @media screen and (max-width: 639px) {
           .consumables-popup {
             position: static;
@@ -139,192 +133,198 @@
           .consumables-popup::before { display: none; }
         }
 
-        /* veiller à ne pas imprimer les popups */
-        .no-print { } /* ne pas forcer le display ici ; @media print masque .no-print à l'impression */
-        /* À INSÉRER DANS LA BALISE <style> (idéalement près des autres utilitaires .no-print)
-            But : masquer le sommaire dans le corps à l'écran et l'afficher uniquement à l'impression */
         .no-screen {
-          display: none !important; /* Masqué par défaut à l'écran */
+          display: none !important; 
         }        
-                /* Style pour les en-têtes de section avec icônes */
-                .section-header {
-                    display: flex;
-                    align-items: center;
-                    margin-top: 30px;
-                    margin-bottom: 15px;
-                    border-left: 4px solid #1e40af;
-                    padding-left: 10px;
-                }
-                .section-header h3 {
-                font-size: 1.15rem; /* Taille mobile de base, environ 18px */
-                font-weight: bold;
-                color: #1e40af;
-                margin: 0;
-                padding-left: 10px;
-                line-height: 1.25; /* Améliore la coupure */
-                }
-                /* Taille supérieure pour les écrans plus grands que mobile */
-                @media screen and (min-width: 640px) {
-                    .section-header h3 {
-                        font-size: 1.5rem; /* 24px pour le bureau */
-                    }
-                }
-             /* Styles pour l'accordéon des sections */
-                 .section-header { justify-content: space-between; }
-                 .toggle-details-btn {
-                    margin-left: 1rem;
-                    font-size: 0.95rem;
-                    background: transparent;
-                    color: #119248; /* vert charte */
-                    border: 1px solid transparent;
-                    cursor: pointer;
-                    padding: 6px 10px;
-                    border-radius: 6px;
-                    transition: background 0.16s, color 0.16s, border-color 0.16s;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                  }
-                  .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
-                  .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
-                  .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
-                  .section-content { display: none; } /* par défaut : replié */
-                  /* affichage pour la première section (sera activé par JS au chargement) */
-                  .section-content.open { display: block; }
-                /* Conteneur principal du bouton PDF pour gérer le défilement */
-                .pdf-button-container {
-                    width: 100%;
-                    background-color: white;
-                    border-bottom: 4px solid #1e40af;
-                    padding: 10px 0;
-                    position: sticky; /* Rendu 'sticky' sur le conteneur parent */
-                    top: 0;
-                    z-index: 20; /* Z-index plus élevé pour rester au-dessus de la barre d'expertise */
-                }
-                /* Style pour le bouton retour en haut (Fixe en bas à droite) */
-                .back-to-top {
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    z-index: 30; /* Plus élevé que tout */
-                    background-color: #1e40af;
-                    color: white;
-                    border-radius: 50%;
-                    padding: 12px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-                    transition: background-color 0.3s;
-                }
-                .back-to-top:hover {
-                    background-color: #1e3a8a;
-                }
-                /* Style pour le texte d'expertise */
-                .expertise-box {
-                    border-left: 4px solid #22c55e;
-                    padding-left: 10px;
-                    margin-bottom: 15px;
-                    background-color: #f0fdf4;
-                    padding: 10px;
-                    border-radius: 4px;
-                }
-                /* Styles de la modale */
-                .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 100;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    background-color: rgba(0,0,0,0.4);
-                }
-                .modal-content {
-                    background-color: #fefefe;
-                    margin: 5% auto; /* Modifié pour être plus haut */
-                    padding: 20px;
-                    border: 1px solid #888;
-                    width: 90%;
-                    max-width: 700px;
-                    border-radius: 8px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                    animation: fadeIn 0.3s;
-                }
-                .close-btn {
-                    color: #aaa;
-                    float: right;
-                    font-size: 28px;
-                    font-weight: bold;
-                }
-                .close-btn:hover, .close-btn:focus {
-                    color: #000;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-                @keyframes fadeIn {
-                    from {opacity: 0;}
-                    to {opacity: 1;}
-                }
-                .progress-bar-container {
-                    width: 100%;
-                    background-color: #e0e0e0;
-                    border-radius: 4px;
-                    margin-top: 10px;
-                }
-                .progress-bar {
-                    height: 20px;
-                    background-color: #22c55e;
-                    width: 0%;
-                    text-align: center;
-                    line-height: 20px;
-                    color: white;
-                    border-radius: 4px;
-                    transition: width 0.5s ease-in-out;
-                }
-                /* Style pour le bandeau d'expertise fixe */
-                .fixed-expertise-band {
-                    width: 100%;
-                    background-color: #166534; /* Vert foncé */
-                    color: white;
-                    text-align: center;
-                    padding: 8px 0;
-                    font-size: 0.95rem;
-                    position: sticky;
-                    top: 80px; /* Position sous la barre d'outils */
-                    z-index: 10;
-                }
-                /* Style pour le menu principal*/
-                .menu-link {
-                  transition: background 0.18s, color 0.18s;
-                }
-                    .menu-link:hover,
-                    .menu-link:focus,
-                    .menu-link:active {
-                      background: #119248; /* Vert charte MULTI-PARTS */
-                      color: #fff !important;
-                    }
-                        /* Styles pour le sous-menu Sommaire : hover et sélection active */
-                .sommaire-menu a {
-                  display: block;
-                  padding: 8px 12px;
-                  color: #1f2937;
-                  text-decoration: none;
-                  transition: background-color 0.12s, color 0.12s;
-                }
-                .sommaire-menu a:hover,
-                .sommaire-menu a:focus {
-                  background-color: #119248; /* couleur hover */
-                  color: #ffffff;
-                }
-                .sommaire-menu a.active {
-                  background-color: #0f6b34; /* couleur sélection persistante */
-                  color: #ffffff;
-                  font-weight: 600;
-                }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1e40af;
+            padding-left: 10px;
+        }
+        .section-header h3 {
+            font-size: 1.15rem; 
+            font-weight: bold;
+            color: #1e40af;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 1.25; 
+        }
+        @media screen and (min-width: 640px) {
+            .section-header h3 {
+                font-size: 1.5rem; 
+            }
+        }
+         .section-header { justify-content: space-between; }
+         .toggle-details-btn {
+            margin-left: 1rem;
+            font-size: 0.95rem;
+            background: transparent;
+            color: #119248; 
+            border: 1px solid transparent;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 0.16s, color 0.16s, border-color 0.16s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
+          .toggle-details-btn:focus { outline: 2px solid rgba(17,146,72,0.18); }
+          .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
+          .section-content { display: none; } 
+          .section-content.open { display: block; }
+          
+        .pdf-button-container {
+            width: 100%;
+            background-color: white;
+            border-bottom: 4px solid #1e40af;
+            padding: 10px 0;
+            position: sticky; 
+            top: 0;
+            z-index: 20; 
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 30; 
+            background-color: #1e40af;
+            color: white;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s;
+        }
+        .back-to-top:hover {
+            background-color: #1e3a8a;
+        }
+        .expertise-box {
+            border-left: 4px solid #22c55e;
+            padding-left: 10px;
+            margin-bottom: 15px;
+            background-color: #f0fdf4;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover, .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #22c55e;
+            width: 0%;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 4px;
+            transition: width 0.5s ease-in-out;
+        }
+        .fixed-expertise-band {
+            width: 100%;
+            background-color: #166534; /* Vert foncé */
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.95rem;
+            position: sticky;
+            top: 80px; /* Position sous la barre d'outils */
+            z-index: 10;
+        }
+        .menu-link {
+          transition: background 0.18s, color 0.18s;
+        }
+        .menu-link:hover,
+        .menu-link:focus,
+        .menu-link:active {
+          background: #119248; /* Vert charte MULTI-PARTS */
+          color: #fff !important;
+        }
+        .sommaire-menu a {
+          display: block;
+          padding: 8px 12px;
+          color: #1f2937;
+          text-decoration: none;
+          transition: background-color 0.12s, color 0.12s;
+        }
+        .sommaire-menu a:hover,
+        .sommaire-menu a:focus {
+          background-color: #119248; /* couleur hover */
+          color: #ffffff;
+        }
+        .sommaire-menu a.active {
+          background-color: #0f6b34; /* couleur sélection persistante */
+          color: #ffffff;
+          font-weight: 600;
+        }
+        
+        /* --- NOUVEAU : Style de la flèche animée --- */
+        .scroll-arrow-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -15px; /* Remonte un peu vers l'image */
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .scroll-arrow {
+            width: 32px;
+            height: 32px;
+            color: #1e40af; /* Bleu charte */
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
         /* ================================================================== */
 /* == STYLES UNIQUES ET DÉFINITIFS POUR L'IMPRESSION (À NE PAS DUPLIQUER) == */
 /* ================================================================== */
 @media print {
-    /* 1. Configuration de la Page et Marges */
     @page {
         margin: 2.5cm 1.5cm 2cm 1.5cm; 
         @top-left { content: none; }
@@ -332,14 +332,11 @@
         @bottom-left { content: none; }
         @bottom-right { content: none; }
     }
-
     body {
         background-color: white;
         color: #000000 !important;
         padding-top: 60px; 
     }
-
-    /* 2. Style de l'en-tête fixe (Charte graphique : Bleu foncé #1e40af) */
     .print-header {
         display: flex !important; 
         position: fixed;
@@ -361,8 +358,6 @@
         color: #1e40af; 
         font-weight: bold;
     }
-
-    /* 3. Style du pied de page fixe */
     .print-footer {
         display: flex !important;
         position: fixed;
@@ -387,44 +382,30 @@
         font-weight: bold;
         color: #000000;
     }
-
-    /* 4. Ajustement du corps du document et des éléments visibles/cachés */
     .catalog-page {
         box-shadow: none !important; margin: 0 !important; padding: 0 !important; min-height: auto !important;
     }
-    .page-number::after, header, .no-print, .toggle-details-btn, .consumables-inline {
+    .page-number::after, header, .no-print, .toggle-details-btn, .consumables-inline, .scroll-arrow-container {
         display: none !important;
     }
     .no-screen, .section-content {
         display: block !important;
     }
-
-    /* 5. AFFICHAGE DU CONTENU COMPLET DES CONSOMMABLES (Ligne Fusionnée Virtuelle) */
-    
     .consumables-popup {
         display: block !important; 
         position: static !important;
-        
-        /* CORRECTION : Débordement vers la droite pour simuler la fusion */
         margin: 0 !important; 
         margin-right: -100% !important; 
         width: 200% !important; 
-        
-        /* Styles de la ligne fusionnée (fond gris, bordures) */
         background-color: #f0f4f8 !important; 
         border: 1px solid #cccccc !important;
-        
         padding: 10px 1.5cm 10px 1.5cm !important; 
-        
         box-shadow: none !important;
         max-height: none !important;
         overflow-y: visible !important;
-        
         -webkit-print-color-adjust: exact !important; 
         print-color-adjust: exact !important;
     }
-    
-    /* Style du texte à l'intérieur du bloc de consommables */
     .consumables-popup *, .consumables-popup li {
         font-style: italic !important;
         font-size: 0.95rem !important;
@@ -433,19 +414,13 @@
         white-space: normal !important;
     }
     .consumables-popup::before { display: none !important; }
-
-    /* Règle d'isolation visuelle : Supprime la bordure entre la ligne Marque et le bloc Consommables */
     .brand-row td:first-child, 
     .brand-row td:nth-child(2) {
         border-bottom: none !important;
     }
-    
-    /* S'assurer que le contenu condensé (s'il existe) est masqué */
     .table-custom tr td:nth-child(2) .consumables-inline {
         display: none !important;
     }
-
-    /* 6. Règles anti-troncature (Solidarité des blocs) */
     .section-header, .section-header h3, .expertise-box {
         page-break-inside: avoid; 
         page-break-after: avoid; 
@@ -454,8 +429,6 @@
     .table-container, ul, ol, .table-custom, .table-custom tbody, .table-custom tr {
         page-break-inside: avoid !important;
     }
-
-    /* 7. Styles pour les tableaux */
     .table-custom {
         border-collapse: collapse !important; width: 100% !important; table-layout: fixed;
         margin-top: 15px;
@@ -475,18 +448,10 @@
         border: 1px solid #ddd !important; 
         padding: 8px 5px !important;
     }
-    
-    /* Style spécifique pour la Marque */
     .table-custom tr td:first-child {
         font-weight: bold;
         color: #1e40af !important; 
     }
-    
-    /* Nettoyage : retirer la règle display: block du TD2 */
-    .table-custom tr td:nth-child(2) {
-        /* On retire la règle qui forçait 'display: block' pour corriger la mise en page */
-    }
-
     .text-xl, .text-2xl, .text-4xl {
         color: #000000 !important;
     }
@@ -650,10 +615,14 @@
               </p>
             </div>
             
-            <img class="w-full h-auto rounded-lg mb-6" 
+            <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
                  src="images/section-1.svg"
                  alt="Illustration Équipements Lourds & Mobiles"
                  loading="lazy">
+                 
+            <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+                <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
             
             <div class="table-container">
               <table class="w-full table-custom">
@@ -702,10 +671,14 @@
       </p>
     </div>
 
-    <img class="w-full h-auto rounded-lg mb-6" 
+    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
          src="images/section-2.svg"
          alt="Illustration Traitement des Minerais & Séparation"
          loading="lazy">
+         
+    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
 
     <div class="table-container">
       <table class="w-full table-custom">
@@ -756,10 +729,14 @@
       </p>
     </div>
 
-    <img class="w-full h-auto rounded-lg mb-6" 
+    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
          src="images/section-3.svg"
          alt="Illustration Pompes, Vannes & Fluides Spécialisés"
          loading="lazy">
+         
+    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
 
     <div class="table-container">
       <table class="w-full table-custom">
@@ -810,10 +787,14 @@
       </p>
     </div>
 
-    <img class="w-full h-auto rounded-lg mb-6" 
+    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
          src="images/section-4.svg"
          alt="Illustration Automatisation, Contrôle & Électronique"
          loading="lazy">
+         
+    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
 
     <div class="table-container">
       <table class="w-full table-custom">
@@ -864,10 +845,14 @@
       </p>
     </div>
 
-    <img class="w-full h-auto rounded-lg mb-6" 
+    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
          src="images/section-5.svg"
          alt="Illustration Instrumentation, Laboratoire & Consommables"
          loading="lazy">
+         
+    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
 
     <div class="table-container">
       <table class="w-full table-custom">
@@ -903,10 +888,14 @@
       </p>
     </div>
 
-    <img class="w-full h-auto rounded-lg mb-6" 
+    <img class="w-1/2 mx-auto h-auto rounded-lg mb-6 block" 
          src="images/section-6.svg"
          alt="Illustration Outillage Spécialisé & Maintenance"
          loading="lazy">
+         
+    <div class="scroll-arrow-container no-print" onclick="this.nextElementSibling.scrollIntoView({behavior: 'smooth'})">
+        <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
 
     <div class="table-container">
       <table class="w-full table-custom">
@@ -1260,9 +1249,9 @@
             }
         });
     </script>
-<script>
+    <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. GESTION ACCORDÉON & AUTO-SCROLL
+  // 1. GESTION ACCORDÉON (SANS SCROLL AUTO, JUSTE OUVERTURE)
   const groups = Array.from(document.querySelectorAll('.table-group'));
   if (groups.length > 0) {
       
@@ -1270,7 +1259,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Calcul dynamique de la hauteur du header + marge de sécurité
       const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 20 : 80);
 
-      // Fonction de scroll manuel robuste
+      // Fonction de scroll manuel robuste (utilisée pour le sommaire ou le clic sur l'entête)
       function smoothScrollTo(element, offset = 0) {
           if (!element) return;
           const elementPosition = element.getBoundingClientRect().top;
@@ -1322,34 +1311,10 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.setAttribute('aria-expanded', 'true');
             if (sign) sign.textContent = '−';
 
-            // A. Scroll immédiat vers le titre de la section
+            // Scroll immédiat vers le titre de la section pour bien voir le contenu
             setTimeout(() => {
                 smoothScrollTo(group.querySelector('.section-header'), getHeaderOffset());
             }, 50);
-
-            // B. Scroll différé vers le tableau (AUTO-SCROLL)
-            const tableContainer = group.querySelector('.table-container');
-            if (tableContainer) {
-                let userInteracted = false;
-                
-                // Fonction pour annuler le scroll si l'utilisateur touche à quelque chose
-                const detectInteraction = () => { userInteracted = true; };
-                
-                window.addEventListener('wheel', detectInteraction, { once: true });
-                window.addEventListener('touchmove', detectInteraction, { once: true });
-                window.addEventListener('keydown', detectInteraction, { once: true });
-
-                setTimeout(() => {
-                    // On ne scroll que si l'utilisateur n'a pas bougé
-                    if (!userInteracted) {
-                        smoothScrollTo(tableContainer, getHeaderOffset());
-                    }
-                    // Nettoyage des écouteurs
-                    window.removeEventListener('wheel', detectInteraction);
-                    window.removeEventListener('touchmove', detectInteraction);
-                    window.removeEventListener('keydown', detectInteraction);
-                }, 1500); // Délai de 1.5 secondes
-            }
 
           } else {
             // FERMETURE
@@ -1430,272 +1395,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
-</script>
-    
-<script>
-/* Chargement dynamique des sections depuis /data/brands.json
-   Génère les <tr class="brand-row"> et attache les interactions */
-(async function () {
-  const dataUrl = '/data/brands.json';
-  let data;
-  try {
-    const res = await fetch(dataUrl, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    data = await res.json();
-  } catch (err) {
-    console.error('Impossible de charger', dataUrl, err);
-    return;
-  }
-
-  // map sectionId -> tbody id
-  const sectionsToFill = {
-    'section-1': 'dyn-section-1-body',
-    'section-2': 'dyn-section-2-body',
-    'section-3': 'dyn-section-3-body',
-    'section-4': 'dyn-section-4-body',
-    'section-5': 'dyn-section-5-body',
-    'section-6': 'dyn-section-6-body'
-    
-  };
-
-  // utilitaire simple d'échappement
-  const esc = s => (s === 0 ? '0' : (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : ''));
-
-  // Pour chaque section dans le JSON, remplir le tbody correspondant si présent dans la page
-  data.forEach(section => {
-    const tbodyId = sectionsToFill[section.sectionId];
-    if (!tbodyId) return;
-    const tbody = document.getElementById(tbodyId);
-    if (!tbody) return;
-
-    // vider tout contenu existant (au cas où)
-    tbody.innerHTML = '';
-
-    (section.items || []).forEach(item => {
-      const tr = document.createElement('tr');
-      tr.className = 'brand-row';
-      tr.setAttribute('tabindex', '0');
-      tr.setAttribute('aria-expanded', 'false');
-
-      // Colonne marque (contient popup)
-      const tdBrand = document.createElement('td');
-      tdBrand.innerHTML = `<strong>${esc(item.brand || '')}</strong>
-        <div class="text-sm text-gray-600">${esc(item.specialization || '')}</div>`;
-
-      // Popup complet (hidden via CSS)
-      const popup = document.createElement('div');
-      popup.className = 'consumables-popup no-print';
-      popup.setAttribute('role', 'region');
-      popup.setAttribute('aria-label', 'Consommables ' + (item.brand || ''));
-
-      const popupTitle = document.createElement('strong');
-      popupTitle.style.display = 'block';
-      popupTitle.style.marginBottom = '6px';
-      popupTitle.textContent = 'Consommables — ' + (item.brand || '');
-      popup.appendChild(popupTitle);
-
-      const ul = document.createElement('ul');
-      ul.style.margin = '0';
-      ul.style.paddingLeft = '18px';
-      (item.consumables || []).forEach(c => {
-        const li = document.createElement('li');
-        li.textContent = c;
-        ul.appendChild(li);
-      });
-      popup.appendChild(ul);
-      tdBrand.appendChild(popup);
-
-      // Colonne aperçu condensé
-      const tdConsum = document.createElement('td');
-      const preview = (item.consumables || []).slice(0,3).join(', ');
-      tdConsum.innerHTML = `<div class="consumables-inline">${esc(preview)}${(item.consumables && item.consumables.length > 3) ? '…' : ''}</div>`;
-
-      tr.appendChild(tdBrand);
-      tr.appendChild(tdConsum);
-      tbody.appendChild(tr);
-    });
-  });
-
-  // --- Interactions (robuste) ---
-  // Cible toutes les brand-row chargées dans le DOM
-  const allRows = Array.from(document.querySelectorAll('.brand-row')).filter(r => r.querySelector('.consumables-popup'));
-  // état propre
-  allRows.forEach(r => { r.classList.remove('show'); r.setAttribute('aria-expanded','false'); });
-
-  function showRow(row) {
-    allRows.forEach(r => {
-      if (r !== row) { r.classList.remove('show'); r.setAttribute('aria-expanded','false'); }
-    });
-    row.classList.add('show');
-    row.setAttribute('aria-expanded','true');
-  }
-  function hideRow(row) { row.classList.remove('show'); row.setAttribute('aria-expanded','false'); }
-  function toggleRow(row) { if (row.classList.contains('show')) hideRow(row); else showRow(row); }
-
-  allRows.forEach(row => {
-    row.addEventListener('mouseenter', () => showRow(row));
-    row.addEventListener('mouseleave', () => {
-      if (document.activeElement && row.contains(document.activeElement)) return;
-      hideRow(row);
-    });
-    row.addEventListener('focusin', () => showRow(row));
-    row.addEventListener('focusout', (e) => {
-      const related = e.relatedTarget;
-      if (related && row.contains(related)) return;
-      hideRow(row);
-    });
-    row.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return;
-      toggleRow(row);
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.brand-row')) allRows.forEach(h => hideRow(h));
-  }, true);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' || e.key === 'Esc') allRows.forEach(h => hideRow(h));
-  });
-})();
-    // ---------- Gestion robuste et exclusive du sous-menu "Sommaire" ----------
-(function() {
-  const sommaireToggle = document.getElementById('sommaireToggle');
-  const sommaireMenu = document.getElementById('sommaireMenu');
-
-  if (!sommaireToggle || !sommaireMenu) return;
-
-  let menuOpen = false;
-
-  function openMenu() {
-    sommaireMenu.classList.remove('hidden');
-    sommaireToggle.setAttribute('aria-expanded', 'true');
-    menuOpen = true;
-  }
-  function closeMenu() {
-    sommaireMenu.classList.add('hidden');
-    sommaireToggle.setAttribute('aria-expanded', 'false');
-    menuOpen = false;
-  }
-
-  // Toggle bouton : stopper propagation pour éviter que document.click ne ferme tout de suite
-  sommaireToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (menuOpen) closeMenu();
-    else openMenu();
-  });
-
-  // Empêcher la fermeture si on clique DANS le menu
-  sommaireMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-
-  // Clic global : ne fermer que si le menu est ouvert et le clic est hors menu/toggle
-  document.addEventListener('click', (ev) => {
-    if (!menuOpen) return;
-    if (!sommaireMenu.contains(ev.target) && !sommaireToggle.contains(ev.target)) {
-      closeMenu();
-    }
-  });
-
-  // Échap : fermer menu si ouvert
-  document.addEventListener('keydown', (ev) => {
-    if (ev.key === 'Escape' && menuOpen) {
-      closeMenu();
-      sommaireToggle.focus();
-    }
-  });
-
-  // Helper : ferme toutes les sections et remet les toggles à l'état fermé
-  function closeAllSections() {
-    document.querySelectorAll('.section-content.open').forEach(sc => sc.classList.remove('open'));
-    document.querySelectorAll('.section-header').forEach(header => {
-      const btn = header.querySelector('.toggle-details-btn');
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-        const sign = btn.querySelector('.toggle-sign');
-        if (sign) sign.textContent = '+';
-      }
-    });
-  }
-
-  // Clic sur un élément du sommaire : ouvrir EXCLUSIVEMENT la section ciblée
-  sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(link => {
-    link.addEventListener('click', function(ev) {
-      ev.preventDefault();
-      ev.stopPropagation();
-
-      // Marquage visuel dans le sommaire
-      sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
-      this.classList.add('active');
-
-      // Récupérer l'id de la section ciblée
-      const href = this.getAttribute('href') || '';
-      const targetId = href.replace(/^#/, '');
-      if (!targetId) {
-        closeMenu();
-        return;
-      }
-
-      const sectionHeader = document.getElementById(targetId);
-      if (!sectionHeader) {
-        closeMenu();
-        return;
-      }
-
-      // Fermer toutes les sections, puis ouvrir seulement la section ciblée
-      closeAllSections();
-      const tableGroup = sectionHeader.closest('.table-group');
-      if (tableGroup) {
-        const content = tableGroup.querySelector('.section-content');
-        if (content) {
-          content.classList.add('open');
-        }
-        // Mettre à jour le toggle correspondant (accessible depuis sectionHeader)
-        const toggleBtn = sectionHeader.querySelector('.toggle-details-btn');
-        if (toggleBtn) {
-          toggleBtn.setAttribute('aria-expanded', 'true');
-          const sign = toggleBtn.querySelector('.toggle-sign');
-          if (sign) sign.textContent = '−';
-        }
-      }
-
-      // Fermer le menu sommaire
-      closeMenu();
-
-      // Calculer offset dynamique pour que le titre de la section soit bien visible
-      const mainHeader = document.querySelector('header'); // sticky header
-      const extraFixed = document.querySelector('.fixed-expertise-band'); // si visible
-      let offset = 90; // fallback
-      if (mainHeader) offset = mainHeader.offsetHeight + 8;
-      if (extraFixed && getComputedStyle(extraFixed).position === 'sticky') offset += extraFixed.offsetHeight;
-
-      // Scroller vers l'en-tête de section : on vise sectionHeader (titre)
-      const rect = sectionHeader.getBoundingClientRect();
-      const absoluteY = window.scrollY + rect.top - offset;
-
-      // Scroll smooth et s'assurer que le titre soit visible (arrondir)
-      window.scrollTo({ top: Math.max(0, Math.round(absoluteY)), behavior: 'smooth' });
-
-      // Mettre le focus sur le titre pour accessibilité après scroll
-      setTimeout(() => {
-        // essayer de focus le H3 si possible
-        const h3 = sectionHeader.querySelector('h3') || sectionHeader;
-        if (h3 && typeof h3.focus === 'function') {
-          h3.setAttribute('tabindex', '-1');
-          h3.focus({ preventScroll: true });
-        }
-      }, 300);
-    });
-
-    // Focus keyboard : visuel actif
-    link.addEventListener('focus', function() {
-      sommaireMenu.querySelectorAll('a[role="menuitem"]').forEach(a => a.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-})();
 </script>    
 </body>
 </html>
-

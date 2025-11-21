@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_32_Finale_Menu_Children_Selector_Fix */
+        /* Version_34_Finale_Menu_Phantom_Effect */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -34,7 +34,7 @@
         /* --- ONBOARDING GUIDE --- */
         #onboarding-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
+            background: rgba(0,0,0,0.7); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
         }
         .onboarding-tooltip {
             position: fixed; background-color: #1e40af; color: white;
@@ -111,6 +111,7 @@
         .expertise-box { border-left: 4px solid #22c55e; padding-left: 10px; margin-bottom: 15px; background-color: #f0fdf4; padding: 10px; border-radius: 4px; }
         .fixed-expertise-band { width: 100%; background-color: #166534; color: white; text-align: center; padding: 8px 0; font-size: 0.95rem; position: sticky; top: 80px; z-index: 10; }
         
+        /* MENU STYLES - Important: justify-start pour le collapse */
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #119248; color: #fff !important; }
         .sommaire-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
@@ -123,7 +124,7 @@
         .scroll-arrow { width: 40px; height: 40px; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* CONTENEUR IMAGE STANDARDISÉ */
+        /* IMAGE CONTAINER */
         .illustration-container {
             width: 100%; max-width: 600px; height: 250px; margin: 0 auto 1.5rem auto;
             background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center;
@@ -182,7 +183,8 @@
         </a>
         <nav class="flex-1 min-w-0 overflow-x-auto" id="navbar">
             <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max" id="menu-list">
-                <li class="relative">
+                
+                <li class="relative" id="nav-item-1">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
@@ -199,8 +201,8 @@
                     </ul>
                 </li>
                 
-                <li>
-                    <a href="https://www.google.com/maps/dir/?api=1..." target="_blank" rel="noopener" 
+                <li id="nav-item-2">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -208,7 +210,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li id="nav-item-3">
                     <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande_Informations_Catalogue_Multiparts" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
                        data-step="3" data-text="Envoyez un email direct.">
@@ -217,7 +219,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li id="nav-item-4">
                     <a href="#secteurs" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
                        data-step="4" data-text="Découvrez nos secteurs d'activité.">
@@ -226,7 +228,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li id="nav-item-5">
                     <button id="shareButton" 
                             class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
                             data-step="5" data-text="Partagez le catalogue avec vos contacts.">
@@ -295,7 +297,7 @@
                 </div>
                 
                 <div class="illustration-container">
-                    <img src="images/section-1.svg" alt="Équipements Lourds">
+                    <img src="images/section-1.jpg" alt="Équipements Lourds">
                 </div>
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
@@ -327,7 +329,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-2.svg" alt="Traitement Minerais">
+                    <img src="images/section-2.jpg" alt="Traitement Minerais">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -357,7 +359,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-3.svg" alt="Pompes et Vannes">
+                    <img src="images/section-3.jpg" alt="Pompes et Vannes">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -387,7 +389,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-4.svg" alt="Automatisation">
+                    <img src="images/section-4.jpg" alt="Automatisation">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -417,7 +419,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-5.svg" alt="Instrumentation">
+                    <img src="images/section-5.jpg" alt="Instrumentation">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -447,7 +449,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-6.svg" alt="Outillage">
+                    <img src="images/section-6.jpg" alt="Outillage">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -484,12 +486,10 @@ async function loadCatalogData() {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
         populateTables(data, sectionsToFill);
-        return true; // Indique succès
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
-        return false;
     }
 }
 
@@ -521,9 +521,8 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 // === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", async () => {
-    // 1. Charger les données JSON
-    await loadCatalogData();
+document.addEventListener("DOMContentLoaded", () => {
+    loadCatalogData();
     
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
@@ -553,43 +552,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // Pour le test : commenter la ligne ci-dessous
+        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
         // if (localStorage.getItem('menuOnboardingDone')) return;
 
-        const isMobile = window.innerWidth < 640;
-
+        // --- DEFINITION DES ETAPES AVEC TEXTE EN DUR ---
         const steps = [
-            { selector: '[data-step="1"]' }, 
-            { selector: '[data-step="2"]' },
-            { selector: '[data-step="3"]' },
-            { selector: '[data-step="4"]' },
-            { selector: '[data-step="5"]' },
-            // Texte conditionnel pour l'étape 6
-            { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
+            { selector: '[data-step="1"]', text: "Naviguez rapidement entre les 6 familles de produits." }, 
+            { selector: '[data-step="2"]', text: "Trouvez notre itinéraire GPS." },
+            { selector: '[data-step="3"]', text: "Envoyez un email direct." },
+            { selector: '[data-step="4"]', text: "Découvrez nos secteurs d'activité." },
+            { selector: '[data-step="5"]', text: "Partagez le catalogue avec vos contacts." },
+            { selector: '#dyn-section-1-body tr:first-child', text: window.innerWidth < 640 ? "Appuyez sur la marque pour voir les consommables." : "Passez sur la marque pour voir les consommables." }
         ];
 
         let currentStep = 0;
         const overlay = document.getElementById('onboarding-overlay');
         const tooltip = document.getElementById('onboarding-tooltip');
         const navContainer = document.getElementById('navbar');
-        const menuList = document.getElementById('menu-list');
+        const menuList = document.getElementById('menu-list'); // ID Ajouté dans le HTML
 
         if (!overlay || !tooltip) return;
 
         function showStep(index) {
             if (index >= steps.length) {
-                // Fin du guide
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
                 
                 // Reset Menu Mobile
                 if (menuList) {
-                    const items = menuList.children; // Correction: .children
+                    const items = menuList.children;
                     Array.from(items).forEach(li => li.style.display = 'block');
                 }
-                if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 
-                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
                 
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
@@ -604,19 +599,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // --- LOGIQUE CAROUSEL MENU MOBILE ---
-                if (isMobile && menuList) {
-                    const items = menuList.children; // Correction: .children
+                // --- LOGIQUE CAROUSEL MENU MOBILE (Corrigée) ---
+                if (window.innerWidth < 640 && menuList) {
+                    const items = menuList.children;
                     Array.from(items).forEach(li => li.style.display = 'block'); // Reset
                     
-                    if (index === 3) { // Industries (Masquer 1er)
+                    // Masquage sélectif et FORCAGE du scroll
+                    if (index === 3) { // Industries
+                        items[0].style.display = 'none'; // Cache Sommaire
+                        navContainer.scrollLeft = 0; // Force le recallage à gauche
+                    } else if (index === 4) { // Partager
                         items[0].style.display = 'none';
-                        navContainer.scrollLeft = 0; // Force align gauche
-                    } else if (index === 4) { // Partager (Masquer 2 premiers)
-                        items[0].style.display = 'none';
-                        items[1].style.display = 'none';
-                        navContainer.scrollLeft = 0; // Force align gauche
-                    } else if (index === 5) { // Tableau (Tout réafficher + Scroll 0)
+                        items[1].style.display = 'none'; // Cache Localisation
+                        navContainer.scrollLeft = 0; // Force le recallage à gauche
+                    } else if (index === 5) { // Tableau (Reverse Effect)
                          Array.from(items).forEach(li => li.style.display = 'block');
                          navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                     }
@@ -625,15 +621,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                    element.classList.add('show'); // Force l'affichage du popup
+                    element.classList.add('show');
                 } else {
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
                 }
 
-                // Positionnement Tooltip après un court délai
                 setTimeout(() => {
                     const rect = element.getBoundingClientRect();
-                    tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+                    tooltip.textContent = step.text; // Texte défini dans le tableau JS
                     
                     tooltip.style.top = (rect.bottom + 14) + 'px';
                     let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);

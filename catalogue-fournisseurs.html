@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_23.1_GPS_Only_Fix */
+        /* Version_24_Finale_Emails_Updated */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -91,7 +91,7 @@
         .section-header h3 { font-size: 1.15rem; font-weight: bold; color: #1e40af; margin: 0; padding-left: 10px; line-height: 1.25; }
         @media screen and (min-width: 640px) { .section-header h3 { font-size: 1.5rem; } }
         
-        .toggle-details-btn { margin-left: 1rem; font-size: 0.95rem; background: transparent; color: #119248; border: 1px solid transparent; cursor: pointer; padding: 6px 10px; border-radius: 6px; transition: background 0.16s; display: inline-flex; align-items: center; gap: 8px; }
+        .toggle-details-btn { margin-left: 1rem; font-size: 0.95rem; background: transparent; color: #119248; border: 1px solid transparent; cursor: pointer; padding: 6px 10px; border-radius: 6px; transition: background 0.16s, color 0.16s, border-color 0.16s; display: inline-flex; align-items: center; gap: 8px; }
         .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
         .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
         .section-content { display: none; } 
@@ -99,7 +99,7 @@
           
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
         
         .expertise-box { border-left: 4px solid #22c55e; padding-left: 10px; margin-bottom: 15px; background-color: #f0fdf4; padding: 10px; border-radius: 4px; }
@@ -194,7 +194,7 @@
                 </li>
 
                 <li>
-                    <a href="mailto:rafiou.oyeossi@multipartsci.com" 
+                    <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande_Informations_Catalogue_Multiparts" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
                        data-step="3" data-text="Envoyez un email direct.">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
@@ -249,7 +249,7 @@
                     <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
                     <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
                     <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com<br>mmultipart@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -491,13 +491,13 @@ function populateTables(catalogData, sectionsToFill) {
     });
 }
 
-// === PRELOADER LOGIC ===
+// === PRELOADER & ONBOARDING ===
 document.addEventListener("DOMContentLoaded", () => {
     loadCatalogData();
+    
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
-    
     const images = Array.from(document.images);
     let imagesLoaded = 0;
     const totalImages = images.length;
@@ -518,90 +518,64 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
         }
     }
+    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
+    else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
+    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
-    if (totalImages === 0) {
-        if(preloader) preloader.style.display = 'none';
-        document.body.classList.remove('loading');
-        startOnboarding();
-    } else {
-        images.forEach(img => {
-            if (img.complete) {
-                imageLoaded();
-            } else {
-                img.addEventListener('load', imageLoaded);
-                img.addEventListener('error', imageLoaded);
+    function startOnboarding() {
+        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
+        // if (localStorage.getItem('menuOnboardingDone')) return;
+
+        const steps = [
+            { selector: '[data-step="1"]' }, 
+            { selector: '[data-step="2"]' },
+            { selector: '[data-step="3"]' },
+            { selector: '[data-step="4"]' },
+            { selector: '[data-step="5"]' }
+        ];
+
+        let currentStep = 0;
+        const overlay = document.getElementById('onboarding-overlay');
+        const tooltip = document.getElementById('onboarding-tooltip');
+
+        if (!overlay || !tooltip) return;
+
+        function showStep(index) {
+            if (index >= steps.length) {
+                overlay.style.opacity = '0';
+                tooltip.classList.remove('show');
+                setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
+                document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
+                return;
             }
-        });
-    }
-    
-    setTimeout(() => {
-        if(preloader && preloader.style.opacity !== '0') {
-            preloader.style.opacity = '0';
-            document.body.classList.remove('loading');
-            setTimeout(() => preloader.remove(), 500);
-            startOnboarding();
+
+            const step = steps[index];
+            const element = document.querySelector(step.selector);
+
+            if (element) {
+                document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
+                element.classList.add('highlight-element');
+                const rect = element.getBoundingClientRect();
+
+                tooltip.textContent = element.getAttribute('data-text') || "Information";
+                
+                tooltip.style.top = (rect.bottom + 14) + 'px';
+                let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+                if (leftPos < 10) leftPos = 10;
+                if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
+                
+                tooltip.style.left = leftPos + 'px';
+                tooltip.classList.add('show');
+            }
+            setTimeout(() => { showStep(index + 1); }, 2500);
         }
-    }, 6000);
+        
+        overlay.style.display = 'block';
+        overlay.offsetHeight; 
+        overlay.style.opacity = '1';
+        setTimeout(() => showStep(0), 500);
+    }
 });
-
-// === ONBOARDING LOGIC ===
-function startOnboarding() {
-    // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
-    // if (localStorage.getItem('menuOnboardingDone')) return;
-
-    const steps = [
-        { selector: '[data-step="1"]' }, 
-        { selector: '[data-step="2"]' },
-        { selector: '[data-step="3"]' },
-        { selector: '[data-step="4"]' },
-        { selector: '[data-step="5"]' }
-    ];
-
-    let currentStep = 0;
-    const overlay = document.getElementById('onboarding-overlay');
-    const tooltip = document.getElementById('onboarding-tooltip');
-
-    if (!overlay || !tooltip) return;
-
-    function showStep(index) {
-        if (index >= steps.length) {
-            overlay.style.opacity = '0';
-            tooltip.classList.remove('show');
-            setTimeout(() => { 
-                overlay.style.display = 'none'; 
-                localStorage.setItem('menuOnboardingDone', 'true');
-            }, 300);
-            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-            return;
-        }
-
-        const step = steps[index];
-        const element = document.querySelector(step.selector);
-
-        if (element) {
-            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-            element.classList.add('highlight-element');
-            const rect = element.getBoundingClientRect();
-
-            tooltip.textContent = element.getAttribute('data-text') || "Information";
-            
-            tooltip.style.top = (rect.bottom + 14) + 'px';
-            let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-            if (leftPos < 10) leftPos = 10;
-            if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
-            
-            tooltip.style.left = leftPos + 'px';
-            tooltip.classList.add('show');
-        }
-
-        setTimeout(() => { showStep(index + 1); }, 2500);
-    }
-    
-    overlay.style.display = 'block';
-    overlay.offsetHeight; 
-    overlay.style.opacity = '1';
-    setTimeout(() => showStep(0), 500);
-}
 
 // === LOGIQUE INTERFACE ===
 document.addEventListener('DOMContentLoaded', function() {

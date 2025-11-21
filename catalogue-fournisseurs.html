@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_24_Finale_Emails_Updated */
+        /* Version_26_Finale_WhatsApp_Pulse_Animation */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -99,8 +99,35 @@
           
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s; }
+
+        /* --- ANIMATION WHATSAPP ONDE --- */
+        @keyframes whatsapp-wave {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        .whatsapp-float {
+            position: fixed; bottom: 20px; left: 20px;
+            background-color: #25d366; color: white; border-radius: 50%;
+            width: 56px; height: 56px; z-index: 40;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
+        
+        /* Le cercle qui s'agrandit (l'onde) */
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background-color: #25d366;
+            opacity: 0.6;
+            z-index: -1;
+            animation: whatsapp-wave 2s infinite;
+        }
         
         .expertise-box { border-left: 4px solid #22c55e; padding-left: 10px; margin-bottom: 15px; background-color: #f0fdf4; padding: 10px; border-radius: 4px; }
         .fixed-expertise-band { width: 100%; background-color: #166534; color: white; text-align: center; padding: 8px 0; font-size: 0.95rem; position: sticky; top: 80px; z-index: 10; }
@@ -165,8 +192,8 @@
         <a href="#top" class="shrink-0 sm:mr-24">
             <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
         </a>
-        <nav class="flex-1 min-w-0">
-            <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center">
+        <nav class="flex-1 min-w-0 overflow-x-auto" id="navbar">
+            <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max">
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
@@ -249,7 +276,7 @@
                     <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
                     <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
                     <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com<br>mmultipart@gmail.com</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
                 </div>
             </div>
         </div>
@@ -531,12 +558,14 @@ document.addEventListener("DOMContentLoaded", () => {
             { selector: '[data-step="2"]' },
             { selector: '[data-step="3"]' },
             { selector: '[data-step="4"]' },
-            { selector: '[data-step="5"]' }
+            { selector: '[data-step="5"]' },
+            { selector: '#dyn-section-1-body tr:first-child', text: "Cliquez sur une marque pour voir les consommables." }
         ];
 
         let currentStep = 0;
         const overlay = document.getElementById('onboarding-overlay');
         const tooltip = document.getElementById('onboarding-tooltip');
+        const navContainer = document.getElementById('navbar');
 
         if (!overlay || !tooltip) return;
 
@@ -544,6 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index >= steps.length) {
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
+                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' }); // Reset menu scroll
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 return;
@@ -555,9 +585,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if (element) {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
-                const rect = element.getBoundingClientRect();
+                
+                // MOBILE MENU SCROLL LOGIC
+                if (window.innerWidth < 640 && navContainer && navContainer.contains(element)) {
+                    const offsetLeft = element.offsetLeft;
+                    const containerWidth = navContainer.offsetWidth;
+                    const elWidth = element.offsetWidth;
+                    navContainer.scrollTo({
+                        left: offsetLeft - (containerWidth / 2) + (elWidth / 2),
+                        behavior: 'smooth'
+                    });
+                }
 
-                tooltip.textContent = element.getAttribute('data-text') || "Information";
+                const rect = element.getBoundingClientRect();
+                tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
                 
                 tooltip.style.top = (rect.bottom + 14) + 'px';
                 let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
@@ -567,13 +608,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 tooltip.style.left = leftPos + 'px';
                 tooltip.classList.add('show');
             }
-            setTimeout(() => { showStep(index + 1); }, 2500);
+            setTimeout(() => { showStep(index + 1); }, 3500); // Un peu plus lent pour laisser le temps de lire
         }
         
         overlay.style.display = 'block';
         overlay.offsetHeight; 
         overlay.style.opacity = '1';
-        setTimeout(() => showStep(0), 500);
+        setTimeout(() => showStep(0), 1000);
     }
 });
 
@@ -680,4 +721,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-

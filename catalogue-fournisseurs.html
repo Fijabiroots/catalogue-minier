@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_26_Finale_WhatsApp_Pulse_Animation */
+        /* Version_27_Finale_MenuScrollFix_TableTimingFix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -49,6 +49,8 @@
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
         .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
+        
+        /* Highlight et Scroll Menu Mobile */
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
             border-radius: 6px; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0,0,0,0.5);
@@ -100,34 +102,14 @@
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
 
-        /* --- ANIMATION WHATSAPP ONDE --- */
+        /* Animation WhatsApp */
         @keyframes whatsapp-wave {
             0% { transform: scale(1); opacity: 0.6; }
             100% { transform: scale(1.5); opacity: 0; }
         }
-        
-        .whatsapp-float {
-            position: fixed; bottom: 20px; left: 20px;
-            background-color: #25d366; color: white; border-radius: 50%;
-            width: 56px; height: 56px; z-index: 40;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.3s, background-color 0.3s;
-        }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
-        
-        /* Le cercle qui s'agrandit (l'onde) */
-        .whatsapp-float::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background-color: #25d366;
-            opacity: 0.6;
-            z-index: -1;
-            animation: whatsapp-wave 2s infinite;
-        }
+        .whatsapp-float::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background-color: #25d366; opacity: 0.6; z-index: -1; animation: whatsapp-wave 2s infinite; }
         
         .expertise-box { border-left: 4px solid #22c55e; padding-left: 10px; margin-bottom: 15px; background-color: #f0fdf4; padding: 10px; border-radius: 4px; }
         .fixed-expertise-band { width: 100%; background-color: #166534; color: white; text-align: center; padding: 8px 0; font-size: 0.95rem; position: sticky; top: 80px; z-index: 10; }
@@ -212,7 +194,7 @@
                 </li>
                 
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
+                    <a href="https://www.google.com/maps/dir/?api=1..." target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -484,10 +466,12 @@ async function loadCatalogData() {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
         populateTables(data, sectionsToFill);
+        return true; // Signal succès
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
+        return false;
     }
 }
 
@@ -519,9 +503,10 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 // === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", () => {
-    loadCatalogData();
-    
+document.addEventListener("DOMContentLoaded", async () => {
+    // Attend le chargement des données AVANT de gérer le preloader
+    await loadCatalogData();
+
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
@@ -545,20 +530,34 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
         }
     }
-    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
-    else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
-    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
+
+    if (totalImages === 0) {
+        if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); }
+    } else {
+        images.forEach(img => {
+            if (img.complete) imageLoaded();
+            else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); }
+        });
+    }
+    
+    setTimeout(() => {
+        if(preloader && preloader.style.opacity !== '0') {
+            preloader.style.opacity = '0';
+            document.body.classList.remove('loading');
+            setTimeout(() => { preloader.remove(); startOnboarding(); }, 500);
+        }
+    }, 6000);
 
     function startOnboarding() {
-        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
-        // if (localStorage.getItem('menuOnboardingDone')) return;
-
+        // localStorage.getItem('menuOnboardingDone'); // DECOMMENTER EN PROD
+        
         const steps = [
             { selector: '[data-step="1"]' }, 
             { selector: '[data-step="2"]' },
             { selector: '[data-step="3"]' },
             { selector: '[data-step="4"]' },
             { selector: '[data-step="5"]' },
+            // Sélecteur corrigé et robuste pour le tableau
             { selector: '#dyn-section-1-body tr:first-child', text: "Cliquez sur une marque pour voir les consommables." }
         ];
 
@@ -573,7 +572,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index >= steps.length) {
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
-                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' }); // Reset menu scroll
+                // Reset scroll menu
+                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 return;
@@ -586,15 +586,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // MOBILE MENU SCROLL LOGIC
+                // SCROLL MENU AUTO (MOBILE)
                 if (window.innerWidth < 640 && navContainer && navContainer.contains(element)) {
-                    const offsetLeft = element.offsetLeft;
-                    const containerWidth = navContainer.offsetWidth;
-                    const elWidth = element.offsetWidth;
-                    navContainer.scrollTo({
-                        left: offsetLeft - (containerWidth / 2) + (elWidth / 2),
-                        behavior: 'smooth'
-                    });
+                   element.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+                }
+
+                // SCROLL PAGE SI TABLEAU HORS ECRAN (STEP 6)
+                if(index === 5) {
+                    element.scrollIntoView({ block: 'center', behavior: 'smooth' });
                 }
 
                 const rect = element.getBoundingClientRect();
@@ -607,14 +606,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 tooltip.style.left = leftPos + 'px';
                 tooltip.classList.add('show');
+                
+                setTimeout(() => { showStep(index + 1); }, 3500);
+            } else {
+                // Si élément non trouvé (ex: erreur chargement tableau), on saute
+                showStep(index + 1);
             }
-            setTimeout(() => { showStep(index + 1); }, 3500); // Un peu plus lent pour laisser le temps de lire
         }
         
         overlay.style.display = 'block';
         overlay.offsetHeight; 
         overlay.style.opacity = '1';
-        setTimeout(() => showStep(0), 1000);
+        setTimeout(() => showStep(0), 800);
     }
 });
 

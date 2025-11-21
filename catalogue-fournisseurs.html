@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_30_Finale_Mobile_Menu_Slide_Fix */
+        /* Version_31_Finale_Mobile_Li_Targeting */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -82,8 +82,6 @@
           box-shadow: 0 10px 30px rgba(2,6,23,0.12); padding: 0.6rem; border-radius: 8px; z-index: 60; color: #0b1220; font-size: 0.95rem; line-height: 1.4;
         }
         .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 12px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 8px solid #fff; filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03)); }
-        
-        /* Affichage du popup */
         .brand-row:hover td:first-child .consumables-popup, 
         .brand-row:focus-within td:first-child .consumables-popup, 
         .brand-row.show td:first-child .consumables-popup { display: block; }
@@ -190,7 +188,6 @@
         </a>
         <nav class="flex-1 min-w-0 overflow-x-auto" id="navbar">
             <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max" id="menu-list">
-                
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
@@ -209,7 +206,7 @@
                 </li>
                 
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1..." target="_blank" rel="noopener" 
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -493,12 +490,10 @@ async function loadCatalogData() {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
         populateTables(data, sectionsToFill);
-        return true; // Indique succès
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
-        return false;
     }
 }
 
@@ -530,9 +525,8 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 // === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", async () => {
-    // 1. Charger les données JSON
-    await loadCatalogData();
+document.addEventListener("DOMContentLoaded", () => {
+    loadCatalogData();
     
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
@@ -562,10 +556,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // Pour tester : commenter la ligne ci-dessous
+        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
         // if (localStorage.getItem('menuOnboardingDone')) return;
-
-        const isMobile = window.innerWidth < 640;
 
         const steps = [
             { selector: '[data-step="1"]' }, 
@@ -573,8 +565,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             { selector: '[data-step="3"]' },
             { selector: '[data-step="4"]' },
             { selector: '[data-step="5"]' },
-            // Texte conditionnel pour l'étape 6
-            { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
+            { selector: '#dyn-section-1-body tr:first-child', text: window.innerWidth < 640 ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
         ];
 
         let currentStep = 0;
@@ -591,14 +582,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
                 
-                // Reset Menu Mobile
+                // Reset Menu Mobile (Tout réafficher)
                 if (menuList) {
                     const items = menuList.querySelectorAll('li');
                     items.forEach(li => li.style.display = 'block');
                 }
-                if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 
-                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
                 
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
@@ -613,17 +603,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // --- LOGIQUE CAROUSEL MENU MOBILE ---
-                if (isMobile && menuList) {
-                    const items = menuList.querySelectorAll('li');
-                    items.forEach(li => li.style.display = 'block'); // Reset pour éviter bug
+                // --- LOGIQUE "CAROUSEL" AMÉLIORÉE (Ciblage Parents <li>) ---
+                if (window.innerWidth < 640 && menuList) {
+                    const items = menuList.querySelectorAll('li'); // On récupère les <li>
+                    // Reset display pour être propre
+                    items.forEach(li => li.style.display = 'block');
                     
-                    if (index === 3) { // Industries (Masquer 1er)
-                        items[0].style.display = 'none';
-                    } else if (index === 4) { // Partager (Masquer 2 premiers)
-                        items[0].style.display = 'none';
-                        items[1].style.display = 'none';
-                    } else if (index === 5) { // Tableau (Reset complet)
+                    // Masquage sélectif des premiers éléments
+                    if (index === 3) { // Industries
+                        items[0].style.display = 'none'; // Cache Sommaire
+                        navContainer.scrollLeft = 0; // Force le recallage
+                    } else if (index === 4) { // Partager
+                        items[0].style.display = 'none'; // Cache Sommaire
+                        items[1].style.display = 'none'; // Cache Localisation
+                        navContainer.scrollLeft = 0;
+                    } else if (index === 5) { // Tableau (Reverse Effect)
                          items.forEach(li => li.style.display = 'block');
                          navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                     }
@@ -632,12 +626,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                    element.classList.add('show'); // Force l'affichage du popup
+                    element.classList.add('show');
                 } else {
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
                 }
 
-                // Positionnement Tooltip après un court délai
                 setTimeout(() => {
                     const rect = element.getBoundingClientRect();
                     tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
@@ -650,7 +643,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                     tooltip.style.left = leftPos + 'px';
                     tooltip.classList.add('show');
-                }, 100);
+                }, 150);
 
             }
             setTimeout(() => { showStep(index + 1); }, 3500);

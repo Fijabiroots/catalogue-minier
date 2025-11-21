@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_21_Finale_Tooltips_Fixed */
+        /* Version_22_Finale_RealImages_FullOnboarding */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -96,15 +96,6 @@
         .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
         .section-content { display: none; } 
         .section-content.open { display: block; }
-        
-        /* CONTENEUR IMAGE */
-        .illustration-container {
-            width: 100%; max-width: 600px; height: 250px; margin: 0 auto 1.5rem auto;
-            background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            overflow: hidden; border: 1px solid #e2e8f0;
-        }
-        .illustration-container svg { width: 100%; height: 100%; object-fit: contain; }
-        @media screen and (max-width: 639px) { .illustration-container { height: 180px; } }
           
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
@@ -191,13 +182,10 @@
                         <li><a href="#section-6">6. Outillage</a></li>
                     </ul>
                 </li>
-                
-                <li><a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" data-step="2" data-text="Trouvez notre itinéraire GPS"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="hidden sm:inline">Localisation</span></a></li>
-                
+                <li><a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" rel="noopener" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" data-step="2" data-text="Trouvez notre itinéraire GPS"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="hidden sm:inline">Localisation</span></a></li>
                 <li><a href="mailto:rafiou.oyeossi@multipartsci.com" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" data-step="3" data-text="Envoyez-nous un email"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg><span class="hidden sm:inline">Contact</span></a></li>
-                
-                <li><a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg><span class="hidden sm:inline">Secteurs</span></a></li>
-                <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg><span class="hidden sm:inline">Partager</span></button></li>
+                <li><a href="#secteurs" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" data-step="4" data-text="Découvrez nos secteurs d'activité"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg><span class="hidden sm:inline">Secteurs</span></a></li>
+                <li><button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" data-step="5" data-text="Partagez le catalogue avec vos contacts"><svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg><span class="hidden sm:inline">Partager</span></button></li>
             </ul>
         </nav>
     </header>
@@ -257,13 +245,14 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M150 180 L200 130 L400 130 L450 180 Z" fill="#1e40af" opacity="0.1"/><path d="M100 180 H200 V140 H280 L320 110 H450 V180 H500 V150 H530 V200 H100 Z" fill="#1e40af"/><circle cx="200" cy="320" r="40" fill="#119248"/><circle cx="550" cy="320" r="40" fill="#119248"/><rect x="350" y="125" width="80" height="40" fill="#e2e8f0"/><text x="300" y="240" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">Extraction & Transport</text></svg>
-                </div>
+                
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.jpg" alt="Équipements Lourds">
+                
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </div>
+
                 <div class="table-container">
                     <table class="w-full table-custom">
                         <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
@@ -287,9 +276,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M100 300 L700 300" stroke="#334155" stroke-width="10"/><circle cx="150" cy="300" r="20" fill="#1e40af"/><circle cx="650" cy="300" r="20" fill="#1e40af"/><path d="M250 150 L350 150 L400 250 L200 250 Z" fill="#119248"/><path d="M450 200 L550 200 L600 280 L400 280 Z" fill="#119248" opacity="0.8"/><rect x="380" y="100" width="40" height="100" fill="#94a3b8"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Concentration & Séparation</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.jpg" alt="Traitement Minerais">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -317,9 +304,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><circle cx="400" cy="200" r="100" fill="#1e40af"/><circle cx="400" cy="200" r="70" fill="#f8fafc"/><path d="M400 130 L400 270 M330 200 L470 200" stroke="#119248" stroke-width="20"/><rect x="200" y="180" width="130" height="40" fill="#334155"/><rect x="470" y="180" width="130" height="40" fill="#334155"/><path d="M380 100 L420 100 L400 60 Z" fill="#ef4444"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Gestion des Fluides</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.jpg" alt="Pompes et Vannes">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -347,9 +332,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><rect x="200" y="100" width="400" height="200" rx="20" fill="#1e40af"/><rect x="220" y="120" width="360" height="160" fill="#0f172a"/><circle cx="250" cy="200" r="10" fill="#22c55e"/><circle cx="280" cy="200" r="10" fill="#ef4444"/><path d="M350 200 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 220 H550" stroke="#22c55e" stroke-width="4"/><path d="M350 180 H450" stroke="#22c55e" stroke-width="4"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Contrôle & Électronique</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.jpg" alt="Automatisation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -377,9 +360,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><path d="M350 300 L450 300 L420 100 L380 100 Z" fill="#e2e8f0" stroke="#334155" stroke-width="2"/><path d="M385 280 L415 280 L415 200 L385 200 Z" fill="#119248" opacity="0.6"/><rect x="500" y="200" width="20" height="100" fill="#cbd5e1"/><circle cx="510" cy="180" r="40" stroke="#1e40af" stroke-width="4" fill="white"/><path d="M510 180 L530 160" stroke="#ef4444" stroke-width="2"/><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Analyse & Mesure</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.jpg" alt="Instrumentation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -407,9 +388,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
                 </div>
-                <div class="illustration-container">
-                    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f1f5f9"/><g transform="rotate(45, 350, 200)"><rect x="330" y="100" width="40" height="200" rx="5" fill="#64748b"/><circle cx="350" cy="120" r="30" fill="#1e40af"/><circle cx="350" cy="120" r="15" fill="#f1f5f9"/></g><g transform="rotate(-45, 450, 200)"><rect x="430" y="100" width="40" height="200" rx="5" fill="#64748b"/><path d="M430 100 L470 100 L480 80 L420 80 Z" fill="#119248"/></g><text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#475569">Maintenance & Soudage</text></svg>
-                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.jpg" alt="Outillage">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -483,7 +462,6 @@ function populateTables(catalogData, sectionsToFill) {
 document.addEventListener("DOMContentLoaded", () => {
     loadCatalogData();
     
-    // --- Preloader Logic ---
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
@@ -511,16 +489,16 @@ document.addEventListener("DOMContentLoaded", () => {
     else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
-    // --- Onboarding Logic ---
     function startOnboarding() {
         // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
         // if (localStorage.getItem('menuOnboardingDone')) return;
 
-        // Ciblage dynamique par attributs data
         const steps = [
-            { selector: '[data-step="1"]', text: '' }, // Texte récupéré depuis HTML
+            { selector: '[data-step="1"]', text: '' }, 
             { selector: '[data-step="2"]', text: '' },
-            { selector: '[data-step="3"]', text: '' }
+            { selector: '[data-step="3"]', text: '' },
+            { selector: '[data-step="4"]', text: '' },
+            { selector: '[data-step="5"]', text: '' }
         ];
 
         let currentStep = 0;
@@ -546,13 +524,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 element.classList.add('highlight-element');
                 const rect = element.getBoundingClientRect();
 
-                // Récupérer le texte depuis l'attribut HTML
                 tooltip.textContent = element.getAttribute('data-text') || "Information";
                 
-                // Positionnement
                 tooltip.style.top = (rect.bottom + 14) + 'px';
                 let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-                // Garde-fou pour ne pas sortir de l'écran
                 if (leftPos < 10) leftPos = 10;
                 if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
                 

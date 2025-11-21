@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_29_Finale_Menu_Carousel_Logic */
+        /* Version_30_Finale_Mobile_Menu_Slide_Fix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -37,7 +37,7 @@
             background: rgba(0,0,0,0.6); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
         }
         .onboarding-tooltip {
-            position: fixed; /* Changé en fixed pour éviter les soucis de scroll */
+            position: fixed; /* Fixe pour éviter les conflits de scroll */
             background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
             z-index: 70; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
@@ -50,8 +50,6 @@
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
         .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
-        
-        /* Highlight */
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
             border-radius: 6px; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0,0,0,0.5);
@@ -67,7 +65,8 @@
         .table-custom { border-collapse: collapse; width: 100%; }
         .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
         .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
-        .table-custom tr:hover { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
+        .table-custom tr:hover, .table-custom tr.show { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
+        
         @media screen and (max-width: 639px) {
             .table-custom { display: block; overflow-x: auto; white-space: nowrap; }
             .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr { display: block; }
@@ -77,7 +76,6 @@
         .brand-row td:first-child { position: relative; } 
         .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #0f172a; font-size: 0.95rem; }
         
-        /* Popup Consommables */
         .consumables-popup {
           display: none; position: absolute; left: 100%; top: 0; margin-left: 12px; width: 360px; max-width: calc(100vw - 40px);
           max-height: 320px; overflow-y: auto; background: #ffffff; border: 1px solid rgba(0,0,0,0.12);
@@ -85,7 +83,7 @@
         }
         .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 12px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 8px solid #fff; filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03)); }
         
-        /* IMPORTANT: Affichage forcé si classe .show présente */
+        /* Affichage du popup */
         .brand-row:hover td:first-child .consumables-popup, 
         .brand-row:focus-within td:first-child .consumables-popup, 
         .brand-row.show td:first-child .consumables-popup { display: block; }
@@ -133,7 +131,7 @@
         .scroll-arrow { width: 40px; height: 40px; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* CONTENEUR IMAGE STANDARDISÉ */
+        /* CONTENEUR IMAGE STANDARDISÉ (VRAIES IMAGES) */
         .illustration-container {
             width: 100%; max-width: 600px; height: 250px; margin: 0 auto 1.5rem auto;
             background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center;
@@ -191,7 +189,8 @@
             <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
         </a>
         <nav class="flex-1 min-w-0 overflow-x-auto" id="navbar">
-            <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max relative transition-all duration-500" id="menu-list">
+            <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max" id="menu-list">
+                
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
@@ -305,7 +304,7 @@
                 </div>
                 
                 <div class="illustration-container">
-                    <img src="images/section-1.jpg" alt="Équipements Lourds">
+                    <img src="images/section-1.svg" alt="Équipements Lourds">
                 </div>
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
@@ -337,7 +336,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-2.jpg" alt="Traitement Minerais">
+                    <img src="images/section-2.svg" alt="Traitement Minerais">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -367,7 +366,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-3.jpg" alt="Pompes et Vannes">
+                    <img src="images/section-3.svg" alt="Pompes et Vannes">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -397,7 +396,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-4.jpg" alt="Automatisation">
+                    <img src="images/section-4.svg" alt="Automatisation">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -427,7 +426,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-5.jpg" alt="Instrumentation">
+                    <img src="images/section-5.svg" alt="Instrumentation">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -457,7 +456,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
                 </div>
                 <div class="illustration-container">
-                    <img src="images/section-6.jpg" alt="Outillage">
+                    <img src="images/section-6.svg" alt="Outillage">
                 </div>
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
@@ -494,10 +493,12 @@ async function loadCatalogData() {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
         populateTables(data, sectionsToFill);
+        return true; // Indique succès
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
+        return false;
     }
 }
 
@@ -529,8 +530,9 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 // === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", () => {
-    loadCatalogData();
+document.addEventListener("DOMContentLoaded", async () => {
+    // 1. Charger les données JSON
+    await loadCatalogData();
     
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
@@ -555,26 +557,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
         }
     }
-
-    if (totalImages === 0) {
-        if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); }
-    } else {
-        images.forEach(img => {
-            if (img.complete) imageLoaded();
-            else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); }
-        });
-    }
-    
-    setTimeout(() => {
-        if(preloader && preloader.style.opacity !== '0') {
-            preloader.style.opacity = '0';
-            document.body.classList.remove('loading');
-            setTimeout(() => { preloader.remove(); startOnboarding(); }, 500);
-        }
-    }, 6000);
+    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
+    else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
+    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // localStorage.getItem('menuOnboardingDone'); // Decommenter pour activer l'historique
+        // Pour tester : commenter la ligne ci-dessous
+        // if (localStorage.getItem('menuOnboardingDone')) return;
+
+        const isMobile = window.innerWidth < 640;
 
         const steps = [
             { selector: '[data-step="1"]' }, 
@@ -582,7 +573,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { selector: '[data-step="3"]' },
             { selector: '[data-step="4"]' },
             { selector: '[data-step="5"]' },
-            { selector: '#dyn-section-1-body tr:first-child', text: window.innerWidth < 640 ? "Appuyez sur la marque pour voir les consommables." : "Survolez la marque pour voir les consommables." }
+            // Texte conditionnel pour l'étape 6
+            { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
         ];
 
         let currentStep = 0;
@@ -595,18 +587,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function showStep(index) {
             if (index >= steps.length) {
-                // Fin du guide : réinitialiser l'état
+                // Fin du guide
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
                 
-                // Réafficher tous les items du menu
+                // Reset Menu Mobile
                 if (menuList) {
                     const items = menuList.querySelectorAll('li');
                     items.forEach(li => li.style.display = 'block');
                 }
-                // Reset scroll menu
-                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 
+                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
                 
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
@@ -622,17 +614,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 element.classList.add('highlight-element');
                 
                 // --- LOGIQUE CAROUSEL MENU MOBILE ---
-                if (window.innerWidth < 640 && menuList) {
+                if (isMobile && menuList) {
                     const items = menuList.querySelectorAll('li');
-                    // Reset display
-                    items.forEach(li => li.style.display = 'block');
+                    items.forEach(li => li.style.display = 'block'); // Reset pour éviter bug
                     
-                    if (index === 3) { // Industries : Masquer le 1er
+                    if (index === 3) { // Industries (Masquer 1er)
                         items[0].style.display = 'none';
-                    } else if (index === 4) { // Partager : Masquer les 2 premiers
+                    } else if (index === 4) { // Partager (Masquer 2 premiers)
                         items[0].style.display = 'none';
                         items[1].style.display = 'none';
-                    } else if (index === 5) { // Tableau : Tout réafficher (Reverse)
+                    } else if (index === 5) { // Tableau (Reset complet)
                          items.forEach(li => li.style.display = 'block');
                          navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                     }
@@ -641,12 +632,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                    element.classList.add('show');
+                    element.classList.add('show'); // Force l'affichage du popup
                 } else {
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
                 }
 
-                // CALCUL POSITION TOOLTIP APRES MODIFICATION DOM
+                // Positionnement Tooltip après un court délai
                 setTimeout(() => {
                     const rect = element.getBoundingClientRect();
                     tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
@@ -654,13 +645,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     tooltip.style.top = (rect.bottom + 14) + 'px';
                     let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
                     
-                    // Garde-fou écrans
                     if (leftPos < 10) leftPos = 10;
                     if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
                     
                     tooltip.style.left = leftPos + 'px';
                     tooltip.classList.add('show');
-                }, 100); // Petit délai pour laisser le temps au layout de se faire
+                }, 100);
 
             }
             setTimeout(() => { showStep(index + 1); }, 3500);

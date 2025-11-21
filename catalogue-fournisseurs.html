@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_31_Finale_Mobile_Li_Targeting */
+        /* Version_32_Finale_Menu_Children_Selector_Fix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -37,8 +37,7 @@
             background: rgba(0,0,0,0.6); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
         }
         .onboarding-tooltip {
-            position: fixed; /* Fixe pour éviter les conflits de scroll */
-            background-color: #1e40af; color: white;
+            position: fixed; background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
             z-index: 70; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             opacity: 0; transition: opacity 0.3s, transform 0.3s;
@@ -66,7 +65,6 @@
         .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
         .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
         .table-custom tr:hover, .table-custom tr.show { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
-        
         @media screen and (max-width: 639px) {
             .table-custom { display: block; overflow-x: auto; white-space: nowrap; }
             .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr { display: block; }
@@ -105,11 +103,7 @@
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
 
-        /* Animation WhatsApp */
-        @keyframes whatsapp-wave {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
+        @keyframes whatsapp-wave { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
         .whatsapp-float::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background-color: #25d366; opacity: 0.6; z-index: -1; animation: whatsapp-wave 2s infinite; }
@@ -129,7 +123,7 @@
         .scroll-arrow { width: 40px; height: 40px; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* CONTENEUR IMAGE STANDARDISÉ (VRAIES IMAGES) */
+        /* CONTENEUR IMAGE STANDARDISÉ */
         .illustration-container {
             width: 100%; max-width: 600px; height: 250px; margin: 0 auto 1.5rem auto;
             background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center;
@@ -206,7 +200,7 @@
                 </li>
                 
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
+                    <a href="https://www.google.com/maps/dir/?api=1..." target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -490,10 +484,12 @@ async function loadCatalogData() {
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         const data = await response.json();
         populateTables(data, sectionsToFill);
+        return true; // Indique succès
     } catch (error) {
         console.error("Erreur chargement catalogue:", error);
         const fallback = document.querySelectorAll('.table-custom tbody');
         fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
+        return false;
     }
 }
 
@@ -525,8 +521,9 @@ function populateTables(catalogData, sectionsToFill) {
 }
 
 // === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", () => {
-    loadCatalogData();
+document.addEventListener("DOMContentLoaded", async () => {
+    // 1. Charger les données JSON
+    await loadCatalogData();
     
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
@@ -556,8 +553,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
+        // Pour le test : commenter la ligne ci-dessous
         // if (localStorage.getItem('menuOnboardingDone')) return;
+
+        const isMobile = window.innerWidth < 640;
 
         const steps = [
             { selector: '[data-step="1"]' }, 
@@ -565,7 +564,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { selector: '[data-step="3"]' },
             { selector: '[data-step="4"]' },
             { selector: '[data-step="5"]' },
-            { selector: '#dyn-section-1-body tr:first-child', text: window.innerWidth < 640 ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
+            // Texte conditionnel pour l'étape 6
+            { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Passez sur la marque pour voir la liste des consommables." }
         ];
 
         let currentStep = 0;
@@ -582,13 +582,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
                 
-                // Reset Menu Mobile (Tout réafficher)
+                // Reset Menu Mobile
                 if (menuList) {
-                    const items = menuList.querySelectorAll('li');
-                    items.forEach(li => li.style.display = 'block');
+                    const items = menuList.children; // Correction: .children
+                    Array.from(items).forEach(li => li.style.display = 'block');
                 }
-                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 
+                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
                 
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
@@ -603,22 +604,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // --- LOGIQUE "CAROUSEL" AMÉLIORÉE (Ciblage Parents <li>) ---
-                if (window.innerWidth < 640 && menuList) {
-                    const items = menuList.querySelectorAll('li'); // On récupère les <li>
-                    // Reset display pour être propre
-                    items.forEach(li => li.style.display = 'block');
+                // --- LOGIQUE CAROUSEL MENU MOBILE ---
+                if (isMobile && menuList) {
+                    const items = menuList.children; // Correction: .children
+                    Array.from(items).forEach(li => li.style.display = 'block'); // Reset
                     
-                    // Masquage sélectif des premiers éléments
-                    if (index === 3) { // Industries
-                        items[0].style.display = 'none'; // Cache Sommaire
-                        navContainer.scrollLeft = 0; // Force le recallage
-                    } else if (index === 4) { // Partager
-                        items[0].style.display = 'none'; // Cache Sommaire
-                        items[1].style.display = 'none'; // Cache Localisation
-                        navContainer.scrollLeft = 0;
-                    } else if (index === 5) { // Tableau (Reverse Effect)
-                         items.forEach(li => li.style.display = 'block');
+                    if (index === 3) { // Industries (Masquer 1er)
+                        items[0].style.display = 'none';
+                        navContainer.scrollLeft = 0; // Force align gauche
+                    } else if (index === 4) { // Partager (Masquer 2 premiers)
+                        items[0].style.display = 'none';
+                        items[1].style.display = 'none';
+                        navContainer.scrollLeft = 0; // Force align gauche
+                    } else if (index === 5) { // Tableau (Tout réafficher + Scroll 0)
+                         Array.from(items).forEach(li => li.style.display = 'block');
                          navContainer.scrollTo({ left: 0, behavior: 'smooth' });
                     }
                 }
@@ -626,11 +625,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                    element.classList.add('show');
+                    element.classList.add('show'); // Force l'affichage du popup
                 } else {
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
                 }
 
+                // Positionnement Tooltip après un court délai
                 setTimeout(() => {
                     const rect = element.getBoundingClientRect();
                     tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";

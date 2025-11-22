@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_30_Finale_Timing_Optimized */
+        /* Version_31_Finale_Complete */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -44,19 +44,31 @@
             pointer-events: none; max-width: 250px; text-align: center;
             line-height: 1.4;
         }
+        
         /* Adaptation Mobile Verticale */
         @media screen and (max-width: 640px) {
             .onboarding-tooltip {
-                max-width: 200px; /* Force la verticalité du texte */
+                max-width: 200px; 
                 white-space: normal;
             }
         }
 
+        /* Flèche par défaut (pointe vers le haut, bulle en dessous) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
+
+        /* Flèche inversée (pointe vers le bas, bulle au-dessus) */
+        .onboarding-tooltip.tooltip-top::after {
+            top: auto; bottom: -6px;
+            border-width: 6px 6px 0 6px;
+            border-color: #1e40af transparent transparent transparent;
+        }
+
         .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
+        /* Correction du saut visuel quand la bulle est au-dessus */
+        .onboarding-tooltip.tooltip-top.show { transform: translateY(-12px); }
         
         /* Highlight */
         .highlight-element {
@@ -194,7 +206,7 @@
             <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max">
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
-                            data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
+                            data-step="1" data-text="Naviguer entre les familles de produits.">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                         <span class="hidden sm:inline">Sommaire</span>
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
@@ -304,7 +316,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.</p>
                 </div>
                 
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.svg" alt="Équipements Lourds">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.jpg" alt="Équipements Lourds">
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
@@ -334,7 +346,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.svg" alt="Traitement Minerais">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.jpg" alt="Traitement Minerais">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -362,7 +374,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.svg" alt="Pompes et Vannes">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.jpg" alt="Pompes et Vannes">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -390,7 +402,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.svg" alt="Automatisation">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.jpg" alt="Automatisation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -418,7 +430,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.svg" alt="Instrumentation">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.jpg" alt="Instrumentation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -446,7 +458,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.svg" alt="Outillage">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.jpg" alt="Outillage">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -597,13 +609,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
                 }
-
-                const rect = element.getBoundingClientRect();
+                
+                // Contenu de l'info-bulle
                 tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+
+                // CALCUL DE LA POSITION
+                const rect = element.getBoundingClientRect();
+                let topPos = rect.bottom + 14;
                 
-                tooltip.style.top = (rect.bottom + 14) + 'px';
+                // Réinitialise la classe pour la flèche
+                tooltip.classList.remove('tooltip-top');
+
+                // --- ACTIONS 1 & 2 : Si c'est l'étape 6 (Tableau), on met l'info-bulle AU-DESSUS ---
+                if (index === 5) {
+                    // top = position haut élément - hauteur bulle - espace
+                    topPos = rect.top - tooltip.offsetHeight - 14;
+                    tooltip.classList.add('tooltip-top'); // Ajoute la flèche vers le bas
+                }
+                
+                tooltip.style.top = topPos + 'px';
+
+                // Calcul Horizontal (Centrage et Limites)
                 let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-                
                 if (leftPos < 10) leftPos = 10;
                 if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
                 
@@ -611,7 +638,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 tooltip.classList.add('show');
             }
             
-            // --- LOGIQUE DE TEMPS UX ---
             // 5.5 secondes pour l'étape complexe (Tableau), 3.5 secondes pour le reste
             const stepDuration = (index === 5) ? 5500 : 3500;
             setTimeout(() => { showStep(index + 1); }, stepDuration);
@@ -695,6 +721,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // --- ACTION 3: GESTION DU SOUS-MENU (Code actif) ---
     const toggle = document.getElementById('sommaireToggle');
     const menu = document.getElementById('sommaireMenu');
     if (toggle && menu) {

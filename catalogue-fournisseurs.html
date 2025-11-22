@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_38_Finale_Tooltip_Animation_Direction_Fix */
+        /* Version_39_Finale_NoAutoScroll_SubmenuFix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -31,7 +31,7 @@
         .loader-text { margin-top: 10px; color: #64748b; font-size: 0.9rem; font-weight: 600; }
         body.loading { overflow: hidden; }
 
-        /* --- ONBOARDING GUIDE --- */
+        /* --- ONBOARDING --- */
         #onboarding-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
@@ -40,38 +40,31 @@
             position: fixed; background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
             z-index: 80; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            opacity: 0; 
-            /* Transition par défaut (vers le bas) */
-            transform: translateY(0); 
-            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0; transition: opacity 0.3s, transform 0.3s;
             pointer-events: none; max-width: 250px; text-align: center;
             line-height: 1.4;
         }
-        
+        /* Mode Vertical Mobile (Pour éviter troncature sur les bords) */
         .onboarding-tooltip.vertical-mode {
-            max-width: 120px !important;
+            max-width: 140px !important;
             white-space: normal !important;
         }
 
-        /* Flèche Standard (Pointe vers le haut) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
-
-        /* Flèche Inversée (Pointe vers le bas) */
+        
+        /* Flèche Inversée (Pour l'étape tableau) */
         .onboarding-tooltip.above::after {
             top: auto; bottom: -6px;
             border-width: 6px 6px 0;
             border-color: #1e40af transparent transparent transparent;
         }
-
-        /* Animation d'apparition Standard (Descend) */
-        .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
-
-        /* Animation d'apparition Inversée (Monte) - CRITIQUE POUR LE TABLEAU */
-        .onboarding-tooltip.above.show { opacity: 1; transform: translateY(-12px); }
         
+        .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
+        .onboarding-tooltip.above.show { opacity: 1; transform: translateY(-12px); } /* Monte au lieu de descendre */
+
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
             border-radius: 6px; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0,0,0,0.5);
@@ -136,9 +129,30 @@
         
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #119248; color: #fff !important; }
+        
+        /* Correction Sous-menu Sommaire pour Mobile */
         .sommaire-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
         .sommaire-menu a:hover { background-color: #119248; color: #ffffff; }
         
+        /* Sur mobile, on fixe le menu pour sortir du contexte scrollable */
+        @media screen and (max-width: 639px) {
+            .sommaire-menu.hidden { display: none; }
+            .sommaire-menu {
+                display: block;
+                position: fixed; /* Fixe pour éviter d'être coupé */
+                left: 5%; right: 5%; /* Centré */
+                top: 80px; /* Sous le header */
+                width: 90%;
+                max-height: 60vh;
+                overflow-y: auto;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 100; /* Très haut */
+                border: 1px solid #e5e7eb;
+            }
+        }
+
         /* Arrow */
         .scroll-arrow-container { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 20px; cursor: pointer; color: #1e40af; transition: opacity 0.5s; }
         .scroll-arrow-container.hidden-arrow { opacity: 0; pointer-events: none; }
@@ -223,7 +237,7 @@
                 </li>
                 
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
+                    <a href="http://googleusercontent.com/maps.google.com/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -287,7 +301,7 @@
                     <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
                     <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
                     <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com<br>mmultipart@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -573,11 +587,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
-        // if (localStorage.getItem('menuOnboardingDone')) return;
-
+        // localStorage.getItem('menuOnboardingDone'); // DECOMMENTER EN PROD
+        
         const isMobile = window.innerWidth < 640;
-
         const steps = [
             { selector: '[data-step="1"]', text: "Naviguez rapidement entre les sections." }, 
             { selector: '[data-step="2"]', text: "Trouvez notre itinéraire GPS." },
@@ -590,8 +602,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         let currentStep = 0;
         const overlay = document.getElementById('onboarding-overlay');
         const tooltip = document.getElementById('onboarding-tooltip');
-        const navContainer = document.getElementById('navbar');
-        const menuList = document.getElementById('menu-list');
 
         if (!overlay || !tooltip) return;
 
@@ -599,16 +609,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (index >= steps.length) {
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
-                // Reset Menu Mobile
-                if (menuList) {
-                    const items = menuList.children;
-                    Array.from(items).forEach(li => li.style.display = 'block');
-                }
-                if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
-                
-                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
-                
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 return;
@@ -621,25 +622,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // --- LOGIQUE CAROUSEL MENU MOBILE (Corrigée) ---
-                if (isMobile && menuList) {
-                    const items = menuList.children;
-                    Array.from(items).forEach(li => li.style.display = 'block'); // Reset
-                    
-                    // Masquage sélectif et FORCAGE du scroll
-                    if (index === 3) { // Industries
-                        items[0].style.display = 'none'; // Cache Sommaire
-                        navContainer.scrollLeft = 0; // Force le recallage à gauche
-                    } else if (index === 4) { // Partager
-                        items[0].style.display = 'none';
-                        items[1].style.display = 'none'; // Cache Localisation
-                        navContainer.scrollLeft = 0; // Force le recallage à gauche
-                    } else if (index === 5) { // Tableau (Reverse Effect)
-                         Array.from(items).forEach(li => li.style.display = 'block');
-                         navContainer.scrollTo({ left: 0, behavior: 'smooth' });
-                    }
-                }
-
                 // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -648,18 +630,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     // Positionnement AU DESSUS pour l'étape 6
                     setTimeout(() => {
                         const rect = element.getBoundingClientRect();
-                        tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+                        tooltip.textContent = step.text;
                         tooltip.style.visibility = 'hidden'; 
                         tooltip.style.display = 'block'; 
                         
-                        // Mode vertical pour mobile
-                        if (isMobile && (index === 3 || index === 4)) {
-                             tooltip.classList.add('vertical-mode');
-                        } else {
-                             tooltip.classList.remove('vertical-mode');
-                        }
+                        if (isMobile && (index === 3 || index === 4)) tooltip.classList.add('vertical-mode');
+                        else tooltip.classList.remove('vertical-mode');
 
-                        // Forcer position au dessus
                         tooltip.classList.add('above');
                         const tooltipHeight = tooltip.offsetHeight;
                         tooltip.style.top = (rect.top - tooltipHeight - 14) + 'px';
@@ -674,20 +651,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }, 150);
 
                 } else {
-                    // Comportement normal (en dessous) pour les autres étapes
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
-                    tooltip.classList.remove('above'); // Reset flèche
+                    tooltip.classList.remove('above'); 
                     
                     setTimeout(() => {
                         const rect = element.getBoundingClientRect();
-                        tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+                        tooltip.textContent = step.text;
                         
-                        // Mode vertical pour mobile
-                        if (isMobile && (index === 3 || index === 4)) {
-                             tooltip.classList.add('vertical-mode');
-                        } else {
-                             tooltip.classList.remove('vertical-mode');
-                        }
+                        if (isMobile && (index === 3 || index === 4)) tooltip.classList.add('vertical-mode');
+                        else tooltip.classList.remove('vertical-mode');
     
                         tooltip.style.top = (rect.bottom + 14) + 'px';
                         let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
@@ -698,7 +670,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         tooltip.classList.add('show');
                     }, 150);
                 }
-
             }
             setTimeout(() => { showStep(index + 1); }, 3500);
         }

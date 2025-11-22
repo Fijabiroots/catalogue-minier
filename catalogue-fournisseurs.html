@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_39_Finale_NoAutoScroll_SubmenuFix */
+        /* Version_40_Finale_Step6_Fix_Only */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -39,23 +39,20 @@
         .onboarding-tooltip {
             position: fixed; background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
-            z-index: 80; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            z-index: 9999; /* FORCE AU DESSUS DE TOUT */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             opacity: 0; transition: opacity 0.3s, transform 0.3s;
             pointer-events: none; max-width: 250px; text-align: center;
             line-height: 1.4;
         }
-        /* Mode Vertical Mobile (Pour éviter troncature sur les bords) */
-        .onboarding-tooltip.vertical-mode {
-            max-width: 140px !important;
-            white-space: normal !important;
-        }
+        .onboarding-tooltip.vertical-mode { max-width: 140px !important; white-space: normal !important; }
 
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
         
-        /* Flèche Inversée (Pour l'étape tableau) */
+        /* Flèche inversée (si affiché au dessus) */
         .onboarding-tooltip.above::after {
             top: auto; bottom: -6px;
             border-width: 6px 6px 0;
@@ -63,7 +60,8 @@
         }
         
         .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
-        .onboarding-tooltip.above.show { opacity: 1; transform: translateY(-12px); } /* Monte au lieu de descendre */
+        /* Correction animation pour tooltip au dessus : on ne bouge pas le transform pour éviter les conflits */
+        .onboarding-tooltip.above.show { opacity: 1; transform: translateY(0); }
 
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
@@ -130,29 +128,13 @@
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #119248; color: #fff !important; }
         
-        /* Correction Sous-menu Sommaire pour Mobile */
+        /* Fix Sous-Menu Mobile */
+        @media screen and (max-width: 639px) {
+            .sommaire-menu { position: fixed; left: 5%; right: 5%; top: 80px; width: 90%; max-height: 60vh; overflow-y: auto; background: white; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; border: 1px solid #e5e7eb; }
+        }
         .sommaire-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
         .sommaire-menu a:hover { background-color: #119248; color: #ffffff; }
         
-        /* Sur mobile, on fixe le menu pour sortir du contexte scrollable */
-        @media screen and (max-width: 639px) {
-            .sommaire-menu.hidden { display: none; }
-            .sommaire-menu {
-                display: block;
-                position: fixed; /* Fixe pour éviter d'être coupé */
-                left: 5%; right: 5%; /* Centré */
-                top: 80px; /* Sous le header */
-                width: 90%;
-                max-height: 60vh;
-                overflow-y: auto;
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-                z-index: 100; /* Très haut */
-                border: 1px solid #e5e7eb;
-            }
-        }
-
         /* Arrow */
         .scroll-arrow-container { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 20px; cursor: pointer; color: #1e40af; transition: opacity 0.5s; }
         .scroll-arrow-container.hidden-arrow { opacity: 0; pointer-events: none; }
@@ -301,7 +283,7 @@
                     <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
                     <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
                     <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com<br>mmultipart@gmail.com</p>
+                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
                 </div>
             </div>
         </div>
@@ -348,154 +330,68 @@
                 </div>
             </div>
         </div>
-
         <div class="table-group" data-section="section-2">
             <div class="section-header" id="section-2">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md mr-3" alt="Icône">
-                    <h3>2. Traitement des Minerais</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="flex items-center"><img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md mr-3" alt="Icône"><h3>2. Traitement des Minerais</h3></div>
+                <button type="button" class="toggle-details-btn"><span class="toggle-sign">+</span> Plus de détails</button>
             </div>
             <div id="content-section-2" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
-                </div>
-                <div class="illustration-container">
-                    <img src="images/section-2.svg" alt="Traitement Minerais">
-                </div>
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-2-body"></tbody>
-                    </table>
-                </div>
+                <div class="expertise-box"><p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p></div>
+                <div class="illustration-container"><img src="images/section-2.svg" alt="Traitement Minerais"></div>
+                <div class="scroll-arrow-container no-print"><span class="scroll-text">Voir les Marques</span><svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                <div class="table-container"><table class="w-full table-custom"><thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead><tbody id="dyn-section-2-body"></tbody></table></div>
             </div>
         </div>
 
         <div class="table-group" data-section="section-3">
             <div class="section-header" id="section-3">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md mr-3" alt="Icône">
-                    <h3>3. Pompes, Vannes & Fluides</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="flex items-center"><img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md mr-3" alt="Icône"><h3>3. Pompes, Vannes & Fluides</h3></div>
+                <button type="button" class="toggle-details-btn"><span class="toggle-sign">+</span> Plus de détails</button>
             </div>
             <div id="content-section-3" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
-                </div>
-                <div class="illustration-container">
-                    <img src="images/section-3.svg" alt="Pompes et Vannes">
-                </div>
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
-                        <tbody id="dyn-section-3-body"></tbody>
-                    </table>
-                </div>
+                <div class="expertise-box"><p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p></div>
+                <div class="illustration-container"><img src="images/section-3.svg" alt="Pompes et Vannes"></div>
+                <div class="scroll-arrow-container no-print"><span class="scroll-text">Voir les Marques</span><svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                <div class="table-container"><table class="w-full table-custom"><thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead><tbody id="dyn-section-3-body"></tbody></table></div>
             </div>
         </div>
 
         <div class="table-group" data-section="section-4">
             <div class="section-header" id="section-4">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md mr-3" alt="Icône">
-                    <h3>4. Automatisation & Électronique</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="flex items-center"><img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md mr-3" alt="Icône"><h3>4. Automatisation & Électronique</h3></div>
+                <button type="button" class="toggle-details-btn"><span class="toggle-sign">+</span> Plus de détails</button>
             </div>
             <div id="content-section-4" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
-                </div>
-                <div class="illustration-container">
-                    <img src="images/section-4.svg" alt="Automatisation">
-                </div>
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-4-body"></tbody>
-                    </table>
-                </div>
+                <div class="expertise-box"><p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p></div>
+                <div class="illustration-container"><img src="images/section-4.svg" alt="Automatisation"></div>
+                <div class="scroll-arrow-container no-print"><span class="scroll-text">Voir les Marques</span><svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                <div class="table-container"><table class="w-full table-custom"><thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead><tbody id="dyn-section-4-body"></tbody></table></div>
             </div>
         </div>
 
         <div class="table-group" data-section="section-5">
             <div class="section-header" id="section-5">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md mr-3" alt="Icône">
-                    <h3>5. Instrumentation & Laboratoire</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="flex items-center"><img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md mr-3" alt="Icône"><h3>5. Instrumentation & Laboratoire</h3></div>
+                <button type="button" class="toggle-details-btn"><span class="toggle-sign">+</span> Plus de détails</button>
             </div>
             <div id="content-section-5" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
-                </div>
-                <div class="illustration-container">
-                    <img src="images/section-5.svg" alt="Instrumentation">
-                </div>
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-5-body"></tbody>
-                    </table>
-                </div>
+                <div class="expertise-box"><p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p></div>
+                <div class="illustration-container"><img src="images/section-5.svg" alt="Instrumentation"></div>
+                <div class="scroll-arrow-container no-print"><span class="scroll-text">Voir les Marques</span><svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                <div class="table-container"><table class="w-full table-custom"><thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead><tbody id="dyn-section-5-body"></tbody></table></div>
             </div>
         </div>
 
         <div class="table-group" data-section="section-6">
             <div class="section-header" id="section-6">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône">
-                    <h3>6. Outillage & Maintenance</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="flex items-center"><img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône"><h3>6. Outillage & Maintenance</h3></div>
+                <button type="button" class="toggle-details-btn"><span class="toggle-sign">+</span> Plus de détails</button>
             </div>
             <div id="content-section-6" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
-                </div>
-                <div class="illustration-container">
-                    <img src="images/section-6.svg" alt="Outillage">
-                </div>
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
-                        <tbody id="dyn-section-6-body"></tbody>
-                    </table>
-                </div>
+                <div class="expertise-box"><p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p></div>
+                <div class="illustration-container"><img src="images/section-6.svg" alt="Outillage"></div>
+                <div class="scroll-arrow-container no-print"><span class="scroll-text">Voir les Marques</span><svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div>
+                <div class="table-container"><table class="w-full table-custom"><thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead><tbody id="dyn-section-6-body"></tbody></table></div>
             </div>
         </div>
 
@@ -587,8 +483,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
-        // localStorage.getItem('menuOnboardingDone'); // DECOMMENTER EN PROD
-        
+        // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
+        // if (localStorage.getItem('menuOnboardingDone')) return;
+
         const isMobile = window.innerWidth < 640;
         const steps = [
             { selector: '[data-step="1"]', text: "Naviguez rapidement entre les sections." }, 

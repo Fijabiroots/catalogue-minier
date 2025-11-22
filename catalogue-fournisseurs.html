@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_37_Finale_Tooltip_Position_Fix */
+        /* Version_38_Finale_Tooltip_Animation_Direction_Fix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -39,34 +39,38 @@
         .onboarding-tooltip {
             position: fixed; background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
-            z-index: 80; /* Augmenté pour être sûr d'être au dessus de tout */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            opacity: 0; transition: opacity 0.3s, transform 0.3s;
+            z-index: 80; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            opacity: 0; 
+            /* Transition par défaut (vers le bas) */
+            transform: translateY(0); 
+            transition: opacity 0.3s, transform 0.3s;
             pointer-events: none; max-width: 250px; text-align: center;
             line-height: 1.4;
         }
         
-        /* Mode Vertical Mobile */
         .onboarding-tooltip.vertical-mode {
             max-width: 120px !important;
             white-space: normal !important;
         }
 
-        /* Flèche par défaut (Haut du tooltip -> pointe vers le haut) */
+        /* Flèche Standard (Pointe vers le haut) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
 
-        /* Flèche inversée (Bas du tooltip -> pointe vers le bas) pour l'affichage AU DESSUS */
+        /* Flèche Inversée (Pointe vers le bas) */
         .onboarding-tooltip.above::after {
-            top: auto;
-            bottom: -6px;
+            top: auto; bottom: -6px;
             border-width: 6px 6px 0;
             border-color: #1e40af transparent transparent transparent;
         }
 
-        .onboarding-tooltip.show { opacity: 1; }
+        /* Animation d'apparition Standard (Descend) */
+        .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
+
+        /* Animation d'apparition Inversée (Monte) - CRITIQUE POUR LE TABLEAU */
+        .onboarding-tooltip.above.show { opacity: 1; transform: translateY(-12px); }
         
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
@@ -142,7 +146,7 @@
         .scroll-arrow { width: 40px; height: 40px; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        /* CONTENEUR IMAGE STANDARDISÉ */
+        /* IMAGE CONTAINER */
         .illustration-container {
             width: 100%; max-width: 600px; height: 250px; margin: 0 auto 1.5rem auto;
             background-color: #f8fafc; border-radius: 8px; display: flex; align-items: center; justify-content: center;
@@ -201,7 +205,6 @@
         </a>
         <nav class="flex-1 min-w-0 overflow-x-auto md:overflow-visible" id="navbar">
             <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max" id="menu-list">
-                
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
@@ -220,7 +223,7 @@
                 </li>
                 
                 <li>
-                    <a href="http://googleusercontent.com/maps.google.com/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -576,12 +579,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const isMobile = window.innerWidth < 640;
 
         const steps = [
-            { selector: '[data-step="1"]' }, 
-            { selector: '[data-step="2"]' },
-            { selector: '[data-step="3"]' },
-            { selector: '[data-step="4"]' },
-            { selector: '[data-step="5"]' },
-            // Texte conditionnel pour l'étape 6
+            { selector: '[data-step="1"]', text: "Naviguez rapidement entre les sections." }, 
+            { selector: '[data-step="2"]', text: "Trouvez notre itinéraire GPS." },
+            { selector: '[data-step="3"]', text: "Envoyez un email direct." },
+            { selector: '[data-step="4"]', text: "Découvrez nos secteurs d'activité." },
+            { selector: '[data-step="5"]', text: "Partagez le catalogue avec vos contacts." },
             { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Survolez la marque pour voir la liste des consommables." }
         ];
 
@@ -595,10 +597,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         function showStep(index) {
             if (index >= steps.length) {
-                // Fin du guide
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
-                
                 // Reset Menu Mobile
                 if (menuList) {
                     const items = menuList.children;

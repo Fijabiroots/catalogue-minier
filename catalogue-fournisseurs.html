@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_36_Finale_SubmenuFix_VerticalTooltips */
+        /* Version_37_Finale_Tooltip_Position_Fix */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -39,22 +39,35 @@
         .onboarding-tooltip {
             position: fixed; background-color: #1e40af; color: white;
             padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
-            z-index: 70; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            z-index: 80; /* Augmenté pour être sûr d'être au dessus de tout */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             opacity: 0; transition: opacity 0.3s, transform 0.3s;
             pointer-events: none; max-width: 250px; text-align: center;
             line-height: 1.4;
         }
-        /* Classe spéciale pour le mode vertical sur mobile */
+        
+        /* Mode Vertical Mobile */
         .onboarding-tooltip.vertical-mode {
-            max-width: 120px !important; /* Force le retour à la ligne */
+            max-width: 120px !important;
             white-space: normal !important;
         }
-        
+
+        /* Flèche par défaut (Haut du tooltip -> pointe vers le haut) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
-        .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
+
+        /* Flèche inversée (Bas du tooltip -> pointe vers le bas) pour l'affichage AU DESSUS */
+        .onboarding-tooltip.above::after {
+            top: auto;
+            bottom: -6px;
+            border-width: 6px 6px 0;
+            border-color: #1e40af transparent transparent transparent;
+        }
+
+        .onboarding-tooltip.show { opacity: 1; }
+        
         .highlight-element {
             position: relative; z-index: 71; background-color: white;
             border-radius: 6px; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0,0,0,0.5);
@@ -188,6 +201,7 @@
         </a>
         <nav class="flex-1 min-w-0 overflow-x-auto md:overflow-visible" id="navbar">
             <ul class="flex space-x-4 sm:space-x-8 justify-end sm:justify-start items-center min-w-max" id="menu-list">
+                
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguez rapidement entre les 6 familles de produits.">
@@ -206,7 +220,7 @@
                 </li>
                 
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
+                    <a href="http://googleusercontent.com/maps.google.com/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
                        class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                        data-step="2" data-text="Trouvez notre itinéraire GPS.">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -527,7 +541,7 @@ function populateTables(catalogData, sectionsToFill) {
 // === PRELOADER & ONBOARDING ===
 document.addEventListener("DOMContentLoaded", async () => {
     await loadCatalogData();
-
+    
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
@@ -551,35 +565,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             }, 300);
         }
     }
-
-    if (totalImages === 0) {
-        if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); }
-    } else {
-        images.forEach(img => {
-            if (img.complete) imageLoaded();
-            else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); }
-        });
-    }
-    
-    setTimeout(() => {
-        if(preloader && preloader.style.opacity !== '0') {
-            preloader.style.opacity = '0';
-            document.body.classList.remove('loading');
-            setTimeout(() => { preloader.remove(); startOnboarding(); }, 500);
-        }
-    }, 6000);
+    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
+    else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
+    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     function startOnboarding() {
         // Pour le test : retirer la ligne ci-dessous pour ne pas stocker l'état
         // if (localStorage.getItem('menuOnboardingDone')) return;
 
         const isMobile = window.innerWidth < 640;
+
         const steps = [
-            { selector: '[data-step="1"]', text: "Naviguez rapidement entre les sections." }, 
-            { selector: '[data-step="2"]', text: "Trouvez notre itinéraire GPS." },
-            { selector: '[data-step="3"]', text: "Envoyez un email direct." },
-            { selector: '[data-step="4"]', text: "Découvrez nos secteurs d'activité." },
-            { selector: '[data-step="5"]', text: "Partagez le catalogue avec vos contacts." },
+            { selector: '[data-step="1"]' }, 
+            { selector: '[data-step="2"]' },
+            { selector: '[data-step="3"]' },
+            { selector: '[data-step="4"]' },
+            { selector: '[data-step="5"]' },
+            // Texte conditionnel pour l'étape 6
             { selector: '#dyn-section-1-body tr:first-child', text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Survolez la marque pour voir la liste des consommables." }
         ];
 
@@ -587,15 +589,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         const overlay = document.getElementById('onboarding-overlay');
         const tooltip = document.getElementById('onboarding-tooltip');
         const navContainer = document.getElementById('navbar');
+        const menuList = document.getElementById('menu-list');
 
         if (!overlay || !tooltip) return;
 
         function showStep(index) {
             if (index >= steps.length) {
+                // Fin du guide
                 overlay.style.opacity = '0';
                 tooltip.classList.remove('show');
+                
+                // Reset Menu Mobile
+                if (menuList) {
+                    const items = menuList.children;
+                    Array.from(items).forEach(li => li.style.display = 'block');
+                }
                 if (isMobile && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                
+                // Reset surlignage tableau
                 document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
+                
                 setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 return;
@@ -608,45 +621,84 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
                 element.classList.add('highlight-element');
                 
-                // Scroll Menu Mobile (Centrage simple)
-                if (isMobile && navContainer && navContainer.contains(element)) {
-                    element.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+                // --- LOGIQUE CAROUSEL MENU MOBILE (Corrigée) ---
+                if (isMobile && menuList) {
+                    const items = menuList.children;
+                    Array.from(items).forEach(li => li.style.display = 'block'); // Reset
+                    
+                    // Masquage sélectif et FORCAGE du scroll
+                    if (index === 3) { // Industries
+                        items[0].style.display = 'none'; // Cache Sommaire
+                        navContainer.scrollLeft = 0; // Force le recallage à gauche
+                    } else if (index === 4) { // Partager
+                        items[0].style.display = 'none';
+                        items[1].style.display = 'none'; // Cache Localisation
+                        navContainer.scrollLeft = 0; // Force le recallage à gauche
+                    } else if (index === 5) { // Tableau (Reverse Effect)
+                         Array.from(items).forEach(li => li.style.display = 'block');
+                         navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                    }
                 }
 
-                // Scroll Tableau
+                // SCROLL PAGE VERS TABLEAU (STEP 6)
                 if(index === 5) {
                     element.scrollIntoView({ block: 'center', behavior: 'smooth' });
                     element.classList.add('show');
+                    
+                    // Positionnement AU DESSUS pour l'étape 6
+                    setTimeout(() => {
+                        const rect = element.getBoundingClientRect();
+                        tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+                        tooltip.style.visibility = 'hidden'; 
+                        tooltip.style.display = 'block'; 
+                        
+                        // Mode vertical pour mobile
+                        if (isMobile && (index === 3 || index === 4)) {
+                             tooltip.classList.add('vertical-mode');
+                        } else {
+                             tooltip.classList.remove('vertical-mode');
+                        }
+
+                        // Forcer position au dessus
+                        tooltip.classList.add('above');
+                        const tooltipHeight = tooltip.offsetHeight;
+                        tooltip.style.top = (rect.top - tooltipHeight - 14) + 'px';
+                        
+                        let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+                        if (leftPos < 10) leftPos = 10;
+                        if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
+                        
+                        tooltip.style.left = leftPos + 'px';
+                        tooltip.style.visibility = 'visible';
+                        tooltip.classList.add('show');
+                    }, 150);
+
                 } else {
+                    // Comportement normal (en dessous) pour les autres étapes
                     document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
+                    tooltip.classList.remove('above'); // Reset flèche
+                    
+                    setTimeout(() => {
+                        const rect = element.getBoundingClientRect();
+                        tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+                        
+                        // Mode vertical pour mobile
+                        if (isMobile && (index === 3 || index === 4)) {
+                             tooltip.classList.add('vertical-mode');
+                        } else {
+                             tooltip.classList.remove('vertical-mode');
+                        }
+    
+                        tooltip.style.top = (rect.bottom + 14) + 'px';
+                        let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+                        if (leftPos < 10) leftPos = 10;
+                        if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
+                        
+                        tooltip.style.left = leftPos + 'px';
+                        tooltip.classList.add('show');
+                    }, 150);
                 }
 
-                // Calcul Position Info-bulle (Intelligent)
-                setTimeout(() => {
-                    const rect = element.getBoundingClientRect();
-                    tooltip.textContent = step.text;
-                    
-                    // Vertical mode pour les derniers boutons sur mobile
-                    if (isMobile && (index === 3 || index === 4)) {
-                         tooltip.classList.add('vertical-mode');
-                    } else {
-                         tooltip.classList.remove('vertical-mode');
-                    }
-
-                    tooltip.style.top = (rect.bottom + 14) + 'px';
-                    
-                    // Centrage par défaut
-                    let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-                    
-                    // Correction Bords Écran
-                    if (leftPos + tooltip.offsetWidth > window.innerWidth) {
-                        leftPos = window.innerWidth - tooltip.offsetWidth - 10;
-                    }
-                    if (leftPos < 10) leftPos = 10;
-                    
-                    tooltip.style.left = leftPos + 'px';
-                    tooltip.classList.add('show');
-                }, 200);
             }
             setTimeout(() => { showStep(index + 1); }, 3500);
         }

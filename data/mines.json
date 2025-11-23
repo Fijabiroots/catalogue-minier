@@ -9,7 +9,7 @@
   "sections": [
     {
       "id": "section-1",
-      "title": "1. Équipements Lourds & Mobiles (Extraction, Concassage et Transport)",
+      "title": "1. Pièces Détachées pour Engins Miniers, Extraction & Terrassement",
       "icon": "https://placehold.co/100x50/34d399/1f2937?text=Engins",
       "expertiseText": "Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.",
       "sectionImage": "images/section-1.svg",
@@ -189,7 +189,7 @@
     },
     {
       "id": "section-2",
-      "title": "2. Traitement des Minerais & Séparation (Concentrateur)",
+      "title": "2. Solutions de Concassage, Broyage & Pièces d'Usure (Process Minéral)",
       "icon": "https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur",
       "expertiseText": "Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.",
       "sectionImage": "images/section-2.svg",
@@ -299,7 +299,7 @@
     },
     {
       "id": "section-3",
-      "title": "3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
+      "title": "3. Pompes à Boues, Vannes Industrielles & Gestion des Fluides Critiques",
       "icon": "https://placehold.co/100x50/3b82f6/1f2937?text=Pompes",
       "expertiseText": "Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.",
       "sectionImage": "images/section-3.svg",
@@ -509,7 +509,7 @@
     },
     {
       "id": "section-4",
-      "title": "4. Automatisation, Contrôle & Électronique",
+      "title": "4. Automatisation, Distribution Électrique & Variation de Vitesse",
       "icon": "https://placehold.co/100x50/93c5fd/1f2937?text=Automate",
       "expertiseText": "Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.",
       "sectionImage": "images/section-4.svg",

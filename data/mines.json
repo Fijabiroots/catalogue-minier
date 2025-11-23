@@ -4,7 +4,7 @@
     "pageTitle": "NOS MARQUES PARTENAIRES",
     "pageSubtitle": "Équipement Minier",
     "coverImage": "images/cover_mines.png",
-    "description": "Fournisseur de solutions et d'équipements pour l'industrie minière..."
+    "description": "Fournisseur de solutions pour l'industrie minière et extractive, expert dans l’approvisionnement en pièces d'usure, composants pour engins mobiles, concassage et traitement du minerai, assurant une logistique fluide pour vos sites isolés."
   },
   "sections": [
     {
@@ -144,6 +144,46 @@
           "brand": "Vecor",
           "specialization": "Protection Anti-Usure",
           "details": ["Revêtements céramique", "Plaques anti-usure", "Tôles polyuréthane", "Manchons anti-abrasion", "Tapis anti-impact"]
+        },
+        {
+          "brand": "Wacker Neuson",
+          "specialization": "Équipements Compacts & Légers",
+          "details": ["Filtres pilonneuses/plaques", "Bougies", "Kits carburateur", "Courroies", "Pièces de vibration"]
+        },
+        {
+          "brand": "Sandvik Aftermarket",
+          "specialization": "Pièces de Rechange (Forage & Chargeuses)",
+          "details": ["Kits de maintenance 500h/1000h", "Filtres alternatifs", "Pièces châssis", "Bagues & axes"]
+        },
+        {
+          "brand": "ROC",
+          "specialization": "Outils de Forage",
+          "details": ["Marteaux fond de trou", "Taillants", "Tiges de forage", "Amortisseurs"]
+        },
+        {
+          "brand": "Almonte",
+          "specialization": "Accessoires de Forage (Carottage)",
+          "details": ["Lames de scie carotteuse", "Guides de carotte", "Accessoires de manipulation carottes", "Systèmes de coupe automatisés"]
+        },
+        {
+          "brand": "MeccAlte",
+          "specialization": "Alternateurs & Génératrices",
+          "details": ["Régulateurs de tension (AVR)", "Diodes rotatives", "Roulements", "Ventilateurs de refroidissement"]
+        },
+        {
+          "brand": "OEX",
+          "specialization": "Électricité Auto & Heavy Duty",
+          "details": ["Démarreurs", "Alternateurs", "Compresseurs AC", "Éclairage LED", "Relais et fusibles"]
+        },
+        {
+          "brand": "Sigma",
+          "specialization": "Climatisation Heavy Duty",
+          "details": ["Filtres habitacle", "Compresseurs", "Détendeurs", "Ventilateurs condenseur", "Pressostats"]
+        },
+        {
+          "brand": "HYWG (Hongyuan)",
+          "specialization": "Jantes & Roues OTR",
+          "details": ["Jantes pour dumpers", "Cerclages", "Lock rings", "Composants de roue"]
         }
       ]
     },
@@ -234,6 +274,26 @@
           "brand": "Solvay",
           "specialization": "Réactifs de Flottation",
           "details": ["Collecteurs", "Moussiants", "Déprimants", "Agents modificateurs"]
+        },
+        {
+          "brand": "Linatex",
+          "specialization": "Revêtements Caoutchouc Premium",
+          "details": ["Feuilles caoutchouc Linatex", "Linard", "Revêtements de chute", "Manchons de vannes", "Composants moulés"]
+        },
+        {
+          "brand": "Valmet",
+          "specialization": "Filtration & Toiles",
+          "details": ["Toiles filtrantes", "Sacs de filtre presse", "Courroies de filtration", "Pièces de rechange filtres"]
+        },
+        {
+          "brand": "Sanwest",
+          "specialization": "Criblage & Tamisage",
+          "details": ["Panneaux de crible", "Supports de toile", "Amortisseurs caoutchouc", "Rails de fixation"]
+        },
+        {
+          "brand": "Mintap Services",
+          "specialization": "Consommables Miniers Spécifiques",
+          "details": ["Capsules de résine", "Boulons d'ancrage", "Treillis minier", "Accessoires de soutènement"]
         }
       ]
     },
@@ -384,6 +444,66 @@
           "brand": "Emerson",
           "specialization": "Actionneurs de Vannes",
           "details": ["Cartouches & joints", "Servomoteurs", "Capteurs de position", "Kits de réparation", "Modules Fieldbus", "Accessoires pneumatiques"]
+        },
+        {
+          "brand": "Pioneer Pump",
+          "specialization": "Pompes d'Exhaure & Drainage",
+          "details": ["Roues (Impellers)", "Joints mécaniques", "Kits d'amorçage", "Paliers", "Clapets anti-retour"]
+        },
+        {
+          "brand": "Tsurumi",
+          "specialization": "Pompes Submersibles (Chantier/Mine)",
+          "details": ["Kits joints étanchéité", "Impellers", "Plaques d'usure", "Câbles électriques étanches", "Agitateurs"]
+        },
+        {
+          "brand": "JS Pumps",
+          "specialization": "Pompes Submersibles Boueuses",
+          "details": ["Joints mécaniques", "Roulements", "Câbles", "Turbines vortex", "Stators"]
+        },
+        {
+          "brand": "Finish Thompson",
+          "specialization": "Pompes Chimiques (Mag Drive)",
+          "details": ["Impellers magnétiques", "Bagues carbone", "Joints toriques FKM/EPDM", "Arbres céramique"]
+        },
+        {
+          "brand": "Ubusch",
+          "specialization": "Pompes à Vide",
+          "details": ["Palettes", "Filtres séparateurs", "Huiles pompes à vide", "Kits de joints", "Filtres d'admission"]
+        },
+        {
+          "brand": "AZ Armaturen",
+          "specialization": "Vannes à Boisseau (Plug Valves)",
+          "details": ["Manchons PTFE", "Boisseaux", "Joints de couvercle", "Leviers et actionneurs"]
+        },
+        {
+          "brand": "Neles (Valmet)",
+          "specialization": "Vannes de Régulation / On-Off",
+          "details": ["Sièges métal/métal", "Joints graphites", "Kits maintenance actionneurs", "Positionneurs"]
+        },
+        {
+          "brand": "Vincer",
+          "specialization": "Vannes Industrielles",
+          "details": ["Vannes à boisseau sphérique", "Vannes papillon", "Clapets anti-retour", "Sièges et joints"]
+        },
+        {
+          "brand": "Tosaca",
+          "specialization": "Soupapes de Sûreté",
+          "details": ["Ressorts", "Buses", "Disques", "Joints d'étanchéité", "Leviers de test"]
+        },
+        {
+          "brand": "Straub",
+          "specialization": "Raccords de Tuyauterie",
+          "details": ["Raccords Grip-L", "Raccords Flex", "Manchettes d'étanchéité EPDM/NBR", "Bandes inox"]
+        },
+        {
+          "brand": "Minsup",
+          "specialization": "Raccords Miniers & Air Comprimé",
+          "details": ["Raccords griffe (Claw)", "Colliers de sécurité", "Vannes d'arrêt", "Flexibles air"]
+        },
+        {
+          "brand": "PRM Filtration",
+          "specialization": "Filtration de Fluides",
+          "details": ["Poches filtrantes", "Cartouches", "Corps de filtre", "Joints toriques"]
         }
       ]
     },
@@ -534,6 +654,56 @@
           "brand": "Yokogawa",
           "specialization": "Vibration & Mesure",
           "details": ["Capteurs vibration", "Câbles", "Adaptateurs", "Accessoires de mesure", "Modules d’analyse"]
+        },
+        {
+          "brand": "Schneider - Legrand",
+          "specialization": "Appareillage Électrique",
+          "details": ["Prises industrielles Hypra/P17", "Coffrets", "Disjoncteurs modulaires", "Accessoires de câblage"]
+        },
+        {
+          "brand": "Omron",
+          "specialization": "Détection & Automatisation",
+          "details": ["Capteurs photoélectriques", "Automates Sysmac", "Relais de sécurité", "Fins de course", "Alimentations"]
+        },
+        {
+          "brand": "Safe-T",
+          "specialization": "Sécurité Convoyeurs",
+          "details": ["Arrêts d'urgence à câble", "Capteurs de déport de bande", "Interrupteurs de sécurité", "Boîtiers de commande"]
+        },
+        {
+          "brand": "Finder",
+          "specialization": "Relais & Composants",
+          "details": ["Relais embrochables", "Embases", "Temporisateurs", "Modules d'interface"]
+        },
+        {
+          "brand": "SMC",
+          "specialization": "Pneumatique",
+          "details": ["Vérins pneumatiques", "Distributeurs", "Filtres régulateurs (FRL)", "Raccords instantanés", "Silencieux"]
+        },
+        {
+          "brand": "Conductix Wampfler",
+          "specialization": "Transmission d'Énergie",
+          "details": ["Enrouleurs de câble", "Rails conducteurs", "Charbons de contact", "Chariots porte-câbles"]
+        },
+        {
+          "brand": "Regal Rexnord",
+          "specialization": "Transmission de Puissance",
+          "details": ["Accouplements", "Réducteurs", "Roulements montés", "Chaînes industrielles"]
+        },
+        {
+          "brand": "Ziehl-Abegg",
+          "specialization": "Ventilation Industrielle",
+          "details": ["Ventilateurs axiaux", "Turbines", "Modules de contrôle", "Capteurs"]
+        },
+        {
+          "brand": "Trafindo",
+          "specialization": "Transformateurs",
+          "details": ["Isolateurs", "Joints d'étanchéité", "Silicagel", "Accessoires de connexion"]
+        },
+        {
+          "brand": "Noris",
+          "specialization": "Capteurs & Automation",
+          "details": ["Capteurs de vitesse", "Sondes de température", "Afficheurs", "Transmetteurs"]
         }
       ]
     },
@@ -589,6 +759,11 @@
           "brand": "Lhoist",
           "specialization": "Réactifs Laboratoire",
           "details": ["Chaux vive", "Chaux hydratée", "Correcteurs pH", "Réactifs minéraux", "Poudres granulées"]
+        },
+        {
+          "brand": "Test Sieve",
+          "specialization": "Granulométrie",
+          "details": ["Tamis de laboratoire (maille inox/laiton)", "Fonds et couvercles", "Joints de tamis", "Brosses de nettoyage"]
         }
       ]
     },
@@ -674,6 +849,71 @@
           "brand": "Makita",
           "specialization": "Outillage Standard",
           "details": ["Batteries LXT", "Disques abrasifs", "Forets", "Lames scies", "Brosses carbone", "Filtres"]
+        },
+        {
+          "brand": "Abus",
+          "specialization": "Levage & Ponts Roulants",
+          "details": ["Chaînes de levage", "Boîtes à boutons", "Fins de course", "Freins de palan", "Guides-câble"]
+        },
+        {
+          "brand": "Beaver",
+          "specialization": "Élingage & Manutention",
+          "details": ["Palans à chaîne", "Élingues textile/câble", "Manilles", "Crochets de sécurité", "Tire-forts"]
+        },
+        {
+          "brand": "Boscaro",
+          "specialization": "Accessoires de Grue",
+          "details": ["Bennes à béton", "Fourches lève-palettes", "Bacs à gravats", "Chaînes de sécurité"]
+        },
+        {
+          "brand": "Layher",
+          "specialization": "Échafaudage & Accès",
+          "details": ["Colliers d'échafaudage", "Planchers", "Garde-corps", "Vérins de pied", "Échelles d'accès"]
+        },
+        {
+          "brand": "Oxylance",
+          "specialization": "Découpe Thermique",
+          "details": ["Lances thermiques", "Porte-lances", "Tuyaux oxygène", "Raccords rapides", "Joints d'étanchéité"]
+        },
+        {
+          "brand": "Weldy",
+          "specialization": "Soudage Plastique (by Leister)",
+          "details": ["Buses à fente", "Rouleaux de pression", "Éléments chauffants", "Fils à souder PE/PP"]
+        },
+        {
+          "brand": "Uryu",
+          "specialization": "Outillage Pneumatique",
+          "details": ["Palettes de moteur", "Kits joints", "Carrés d'entraînement", "Raccords d'air", "Lubrifiants outils air"]
+        },
+        {
+          "brand": "Pruftechnik",
+          "specialization": "Alignement & Vibration",
+          "details": ["Cales d'alignement (Shims)", "Cibles laser", "Câbles capteurs", "Batteries", "Supports de montage"]
+        },
+        {
+          "brand": "Spitwater",
+          "specialization": "Nettoyage Haute Pression",
+          "details": ["Buses HP", "Flexibles lavage", "Kits joints pompe", "Lances", "Filtres eau"]
+        },
+        {
+          "brand": "Camfil",
+          "specialization": "Filtration d'Air Industrielle",
+          "details": ["Pré-filtres", "Filtres à poches", "Filtres absolus (HEPA)", "Cartouches dépoussiéreur"]
+        },
+        {
+          "brand": "3f Filippi",
+          "specialization": "Éclairage Industriel & ATEX",
+          "details": ["Tubes LED", "Drivers/Ballasts", "Vasques de rechange", "Clips de fermeture", "Joints étanchéité"]
+        },
+        {
+          "brand": "Baileigh",
+          "specialization": "Machines-Outils Atelier",
+          "details": ["Lames de scie ruban", "Matrices de cintrage", "Poinçons & matrices", "Huile de coupe"]
+        },
+        {
+          "brand": "PBA Safety",
+          "specialization": "Sécurité & EPI",
+          "details": ["Cadenas de consignation", "Étiquettes LOTO", "Gants protection", "Lunettes sécurité", "Signalétique"]
         }
       ]
     },

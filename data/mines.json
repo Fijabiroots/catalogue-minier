@@ -1,0 +1,706 @@
+{
+  "meta": {
+    "id": "mines",
+    "pageTitle": "NOS MARQUES PARTENAIRES",
+    "pageSubtitle": "Équipement Minier",
+    "coverImage": "images/cover_mines.png",
+    "description": "Fournisseur de solutions et d'équipements pour l'industrie minière..."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Équipements Lourds & Mobiles (Extraction, Concassage et Transport)",
+      "icon": "https://placehold.co/100x50/34d399/1f2937?text=Engins",
+      "expertiseText": "Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Caterpillar",
+          "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+          "details": ["Filtres (air, huile, carburant, hydraulique, cabine)", "Kits d'entretien périodique", "Courroies", "Flexibles hydrauliques", "Garnitures de freins", "Graisses & lubrifiants", "Éléments de trains de roulement", "Pièces d'usure (dents, lames, segments)"]
+        },
+        {
+          "brand": "Komatsu",
+          "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+          "details": ["Filtres complets", "Kits maintenance programmée", "Courroies & flexibles", "Garnitures de freins", "Lubrifiants moteurs & hydrauliques", "Pièces d'usure GET", "Éléments de trains de roulement"]
+        },
+        {
+          "brand": "Hitachi",
+          "specialization": "Équipements (Pelles, Chargeuses, Camions)",
+          "details": ["Filtres complets", "Flexibles hydrauliques", "Courroies", "Joints & kits de joints", "Lubrifiants", "Pièces d'usure (GET)"]
+        },
+        {
+          "brand": "Bell Equipment",
+          "specialization": "Équipements (Afrique du Sud)",
+          "details": ["Kits filtres", "Courroies", "Flexibles HP", "Joints hydrauliques", "Graisses & huiles", "Pièces d'usure"]
+        },
+        {
+          "brand": "Volvo",
+          "specialization": "Équipements (Europe)",
+          "details": ["Filtres OEM", "Courroies moteur", "Flexibles HP & LP", "Lubrifiants Volvo", "Silentblocs", "Pièces d'usure"]
+        },
+        {
+          "brand": "XCMG",
+          "specialization": "Équipements (Chine)",
+          "details": ["Filtres OEM", "Kits maintenance", "Flexibles hydrauliques", "Courroies", "Freins & garnitures", "Pièces d'usure"]
+        },
+        {
+          "brand": "Epiroc",
+          "specialization": "Forage & Excavation",
+          "details": ["Bits DTH & Top Hammer", "Tiges de forage", "Adaptateurs & shanks", "Lubrifiants HP", "Kits marteaux", "Raccords & coupleurs"]
+        },
+        {
+          "brand": "Sandvik",
+          "specialization": "Forage & Excavation",
+          "details": ["Buttons bits", "Tiges de forage", "Shanks et adaptateurs", "Lubrifiants marteaux", "Flexibles HP", "Outils DTH"]
+        },
+        {
+          "brand": "Atlas Copco",
+          "specialization": "Forage & Excavation",
+          "details": ["Couronnes diamant", "Tiges et tubes", "Outils DTH", "Lubrifiants de forage", "Kits d'entretien marteaux"]
+        },
+        {
+          "brand": "Boart Longyear",
+          "specialization": "Forage de Sondage",
+          "details": ["Couronnes diamant HQ/NQ/BQ", "Tiges de carottage", "Additifs de forage", "Lubrifiant tiges", "Carottiers & tubes échantillons"]
+        },
+        {
+          "brand": "Cummins",
+          "specialization": "Moteurs Diesel & Puissance",
+          "details": ["Filtres complets", "Kits 250h / 500h / 1000h", "Courroies", "Joints & kits", "Lubrifiants", "Pompes à eau", "Injecteurs"]
+        },
+        {
+          "brand": "MTU",
+          "specialization": "Moteurs Diesel & Puissance",
+          "details": ["Filtres OEM", "Lubrifiants MTU", "Kits maintenance", "Kits joints", "Courroies & tendeurs"]
+        },
+        {
+          "brand": "Yaskawa",
+          "specialization": "Alternatives Électriques & Moteurs",
+          "details": ["Charbons", "Roulements", "Condensateurs", "Kits isolation", "Ventilateurs", "Fusibles & protections"]
+        },
+        {
+          "brand": "WEG Electric",
+          "specialization": "Alternatives Électriques & Moteurs",
+          "details": ["Roulements", "Condensateurs", "Kits de ventilation", "Joints électriques", "Protections moteur"]
+        },
+        {
+          "brand": "Kubota",
+          "specialization": "Alternatives Électriques & Moteurs",
+          "details": ["Filtres OEM", "Bougies préchauffage", "Kits d'entretien", "Courroies", "Lubrifiants"]
+        },
+        {
+          "brand": "Manitou",
+          "specialization": "Manutention Spécialisée",
+          "details": ["Filtres", "Flexibles hydrauliques", "Freins", "Fourches & patins", "Lubrifiants hydrauliques"]
+        },
+        {
+          "brand": "Loaders Australia",
+          "specialization": "Manutention Spécialisée",
+          "details": ["Filtres OEM", "Courroies", "Flexibles HP", "Freins & garnitures", "Lubrifiants"]
+        },
+        {
+          "brand": "MacLean Engineering",
+          "specialization": "Manutention (Souterrain)",
+          "details": ["Filtres", "Flexibles HP", "Pièces d'usure", "Lubrifiants", "Éclairages et capteurs"]
+        },
+        {
+          "brand": "Metso Outotec",
+          "specialization": "Composants Châssis / Pièces dures",
+          "details": ["Liners broyeurs", "Manganèse (bowl liner, mantle)", "Grilles & cribles", "Segments & bagues", "Roulements haute résistance", "Lubrifiants broyeurs"]
+        },
+        {
+          "brand": "FLSmidth",
+          "specialization": "Composants Châssis / Pièces dures",
+          "details": ["Liners & pièces d'usure", "Pièces de criblage", "Segments", "Roulements", "Lubrifiants spécifiques", "Barres de grille"]
+        },
+        {
+          "brand": "Polydeck",
+          "specialization": "Composants Châssis / Pièces dures",
+          "details": ["Tamis polyuréthane", "Tôles anti-abrasion", "Barres de maintien", "Segments", "Plaques de remplacement"]
+        },
+        {
+          "brand": "Trelleborg",
+          "specialization": "Caoutchouc & Protection",
+          "details": ["Tôles anti-usure", "Revêtements caoutchouc", "Protections anti-impact", "Bandes transporteuses", "Plaques polyuréthane", "Manchons anti-abrasion"]
+        },
+        {
+          "brand": "Rema Tip Top",
+          "specialization": "Bandes Transporteuses",
+          "details": ["Bandes transporteuses", "Kits réparation bande", "Racleurs", "Rouleaux & stations", "Adhésifs & solvants", "Revêtements tambour"]
+        },
+        {
+          "brand": "Flexco",
+          "specialization": "Raccords pour Bandes Transporteuses",
+          "details": ["Agrafes & jonctions", "Racleurs primaires/secondaires", "Outils d'assemblage", "Tendeurs", "Kit réparation bande"]
+        },
+        {
+          "brand": "Wear-Tek",
+          "specialization": "Protection Anti-Usure",
+          "details": ["Plaques anti-abrasion", "Tôles céramique", "Protections de chutes", "Manchons anti-usure", "Segments de remplacement"]
+        },
+        {
+          "brand": "Vecor",
+          "specialization": "Protection Anti-Usure",
+          "details": ["Revêtements céramique", "Plaques anti-usure", "Tôles polyuréthane", "Manchons anti-abrasion", "Tapis anti-impact"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Traitement des Minerais & Séparation (Concentrateur)",
+      "icon": "https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur",
+      "expertiseText": "Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.",
+      "sectionImage": "images/section-2.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Metso",
+          "specialization": "Concassage",
+          "details": ["Bowl liners", "Mantles", "Jaw plates", "Concasseur wear plates", "Barres grizzly"]
+        },
+        {
+          "brand": "Sandvik",
+          "specialization": "Concassage",
+          "details": ["Jaw plates", "Cones manganese", "Tôles anti-usure", "Segments & bagues"]
+        },
+        {
+          "brand": "Metso Outotec",
+          "specialization": "Broyage (SAG & Ball Mills)",
+          "details": ["Liners SAG", "Liners ball mill", "Barres de levage", "Grilles de décharge", "Billes de broyage"]
+        },
+        {
+          "brand": "Magotteaux",
+          "specialization": "Broyage – Médias & Liners",
+          "details": ["Billes acier & alliage", "Segment liners", "Classificateurs", "Chemises anti-usure"]
+        },
+        {
+          "brand": "Weir Minerals (Vulco)",
+          "specialization": "Classification – Hydrocyclones",
+          "details": ["Liners hydrocyclone", "Vortex finders", "Apex cones", "Coiffes & joints", "Segments PU"]
+        },
+        {
+          "brand": "Multotec",
+          "specialization": "Classification – Criblage & Cyclones",
+          "details": ["Panneaux polyuréthane", "Segments & modules", "Buses cyclones", "Joints & bagues"]
+        },
+        {
+          "brand": "Gekko Systems",
+          "specialization": "Séparation Gravimétrique",
+          "details": ["Spirales gravimétriques", "ILR parts (Intensive Leach Reactor)", "Pompes ILR", "Revêtements anti-abrasion", "Kits de maintenance"]
+        },
+        {
+          "brand": "Metso Outotec",
+          "specialization": "Flottation",
+          "details": ["Cellules de flottation parts", "Rotor/stator", "Air diffusers", "Joints flottation", "Pales & revêtements"]
+        },
+        {
+          "brand": "Eriez",
+          "specialization": "Séparation Magnétique / Flottation Avancée",
+          "details": ["Plaques magnétiques", "Matrices", "Électroaimants", "Pièces de maintenance"]
+        },
+        {
+          "brand": "FLSmidth",
+          "specialization": "Épaississement & Déshydratation",
+          "details": ["Floculants", "Racleurs", "Patins thickener", "Drive units parts", "Capteurs densité & niveau"]
+        },
+        {
+          "brand": "Endress+Hauser",
+          "specialization": "Instrumentation Process",
+          "details": ["Sondes pH/ORP", "Capteurs débit/densité", "Solutions tampons", "Membranes", "Kits étalonnage"]
+        },
+        {
+          "brand": "VEGA",
+          "specialization": "Mesure Niveau & Densité",
+          "details": ["Cellules radar", "Capteurs densité", "Joints process", "Supports & adaptateurs"]
+        },
+        {
+          "brand": "Mettler Toledo",
+          "specialization": "Laboratoire & Mesures",
+          "details": ["Cellules de pesée", "Electrodes pH", "Solutions étalon", "Papier filtre", "Poids d’étalonnage"]
+        },
+        {
+          "brand": "Retsch",
+          "specialization": "Broyage & Tamisage Laboratoire",
+          "details": ["Tamis analytiques", "Joints", "Bols de broyage", "Billes de broyage", "Lubrifiants broyeurs"]
+        },
+        {
+          "brand": "SNF Floerger",
+          "specialization": "Réactifs – Floculants",
+          "details": ["Floculants anioniques", "Floculants cationiques", "Agents polymères", "Activateurs chimiques"]
+        },
+        {
+          "brand": "Solvay",
+          "specialization": "Réactifs de Flottation",
+          "details": ["Collecteurs", "Moussiants", "Déprimants", "Agents modificateurs"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Pompes, Vannes & Composants de Fluides Spécialisés (Boues, Agressifs)",
+      "icon": "https://placehold.co/100x50/3b82f6/1f2937?text=Pompes",
+      "expertiseText": "Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Spécialisation"],
+      "items": [
+        {
+          "brand": "Weir Minerals (Warman)",
+          "specialization": "Pompes à Boues / Abrasives",
+          "details": ["Épaississeurs & liners", "Turbines & volutes", "Bagues d’usure", "Roulements", "Garnitures mécaniques", "Revêtements anti-abrasion"]
+        },
+        {
+          "brand": "ITT Goulds",
+          "specialization": "Pompes à Boues / Abrasives",
+          "details": ["Impellers", "Liners", "Garnitures mécaniques", "Roulements", "Joints & kits", "Revêtements anti-usure"]
+        },
+        {
+          "brand": "KSB Etabloc",
+          "specialization": "Pompes à Boues / Abrasives",
+          "details": ["Roue & volute", "Garnitures mécaniques", "Joints toriques", "Roulements", "Kits hydrauliques", "Revêtements anti-abrasion"]
+        },
+        {
+          "brand": "EDDY Pump",
+          "specialization": "Pompes à Boues / Abrasives",
+          "details": ["Têtes vortex", "Revêtements anti-usure", "Joints haute résistance", "Kits de maintenance", "Roulements", "Flexibles boue"]
+        },
+        {
+          "brand": "Andritz",
+          "specialization": "Pompes à Boues / Abrasives",
+          "details": ["Rotors & stators", "Joints hydrauliques", "Roulements", "Garnitures mécaniques", "Revêtements anti-usure"]
+        },
+        {
+          "brand": "LEWA",
+          "specialization": "Pompes Doseuses (Réactifs)",
+          "details": ["Membranes doseuses", "Soupapes & clapets", "Kits tête de dosage", "Joints PTFE", "Huile hydraulique spéciale", "Kits maintenance"]
+        },
+        {
+          "brand": "ProMinent",
+          "specialization": "Pompes Doseuses (Réactifs)",
+          "details": ["Membranes", "Têtes doseuses", "Clapets & billes", "Joints PTFE", "Flexibles PVC", "Kits maintenance"]
+        },
+        {
+          "brand": "NETZSCH",
+          "specialization": "Pompes Doseuses (Péristaltiques)",
+          "details": ["Tubes péristaltiques", "Lubrifiant rotor", "Billes & clapets", "Joints haute résistance", "Kits tête de pompe"]
+        },
+        {
+          "brand": "Debem",
+          "specialization": "Pompes Doseuses (Péristaltiques)",
+          "details": ["Tubes de rechange", "Lubrifiants", "Joints & membranes", "Filtres aspiration", "Kits de maintenance"]
+        },
+        {
+          "brand": "Orbinox",
+          "specialization": "Vannes Boues (Guillotine)",
+          "details": ["Lames guillotine", "Joints EPDM/NBR", "Kits d’étanchéité", "Boulonnerie inox", "Servomoteurs"]
+        },
+        {
+          "brand": "Weir Minerals (Isogate)",
+          "specialization": "Vannes Boues (Guillotine)",
+          "details": ["Liners compacts", "Joints de siège", "Lames guillotine", "Kits de tiges", "Revêtements anti-abrasion"]
+        },
+        {
+          "brand": "KDV",
+          "specialization": "Vannes Corrosifs / Régulation",
+          "details": ["Sièges PTFE", "Joints & garnitures", "Membranes", "Kits d’actionneurs", "Revêtements spéciaux"]
+        },
+        {
+          "brand": "Richter",
+          "specialization": "Vannes Corrosifs / Régulation",
+          "details": ["Revêtements PFA", "Sièges PTFE", "Joints élastomères", "Garnitures de tiges", "Kits réparation"]
+        },
+        {
+          "brand": "Samson",
+          "specialization": "Vannes Corrosifs / Régulation",
+          "details": ["Sièges & clapets", "Membranes régulation", "Joints & kits", "Kits actionneurs", "Servomoteurs"]
+        },
+        {
+          "brand": "Xylem (Flygt)",
+          "specialization": "Pompes Eaux / Drainage",
+          "details": ["Impellers Flygt", "Garnitures mécaniques", "Câbles étanches", "Roulements", "Joints d’arbre", "Kits 500h / 1000h"]
+        },
+        {
+          "brand": "Grundfos",
+          "specialization": "Pompes Eaux / Drainage",
+          "details": ["Roues & volutes", "Cartouches mécaniques", "Kits hydrauliques", "Joints", "Capteurs niveau"]
+        },
+        {
+          "brand": "Wilo",
+          "specialization": "Pompes Eaux / Drainage",
+          "details": ["Impellers", "Roulements", "Garnitures mécaniques", "Joints", "Kits d’entretien"]
+        },
+        {
+          "brand": "Lowara",
+          "specialization": "Pompes Eaux / Drainage",
+          "details": ["Joints mécaniques", "Roue hydraulique", "Kits de réparation", "Roulements", "Boulonnerie inox"]
+        },
+        {
+          "brand": "Piusi",
+          "specialization": "Pompes GO / Fluides",
+          "details": ["Filtres GO", "Tuyaux GO", "Joints", "Kits de réparation", "Accessoires d’aspiration"]
+        },
+        {
+          "brand": "Parker",
+          "specialization": "Hydraulique / Raccords",
+          "details": ["Flexibles hydrauliques", "Embouts & raccords", "Adaptateurs", "Joints", "Filtres hydrauliques"]
+        },
+        {
+          "brand": "Victaulic",
+          "specialization": "Raccords pour Tuyauterie (Joints)",
+          "details": ["Joints Victaulic", "Colliers & brides", "Segments", "Lubrifiants", "Kits de montage"]
+        },
+        {
+          "brand": "Klinger",
+          "specialization": "Étanchéité / Raccords",
+          "details": ["Feuilles joint KLINGER", "Joints spiralés", "Joints fibre", "Garnitures tresses", "Produits d’étanchéité"]
+        },
+        {
+          "brand": "Dixon",
+          "specialization": "Étanchéité / Raccords",
+          "details": ["Raccords camlock", "Flexibles", "Joints", "Colliers", "Kits de réparation"]
+        },
+        {
+          "brand": "Swagelok",
+          "specialization": "Étanchéité / Raccords",
+          "details": ["Embouts & fittings", "Bagues ferrule", "Soupapes & clapets", "Joints PTFE", "Kits de réparation"]
+        },
+        {
+          "brand": "Rotork",
+          "specialization": "Actionneurs de Vannes",
+          "details": ["Joints kits", "Graisses", "Servomoteurs", "Kits tiges", "Capteurs fin de course"]
+        },
+        {
+          "brand": "Topworx",
+          "specialization": "Actionneurs de Vannes",
+          "details": ["Kits contacts", "Capteurs fin de course", "Joints & couvercles", "Modules communication", "Accessoires montage"]
+        },
+        {
+          "brand": "A-T Controls",
+          "specialization": "Actionneurs de Vannes",
+          "details": ["Joints", "Kits connexion", "Capteurs", "Mécanismes internes", "Servomoteurs"]
+        },
+        {
+          "brand": "Emerson",
+          "specialization": "Actionneurs de Vannes",
+          "details": ["Cartouches & joints", "Servomoteurs", "Capteurs de position", "Kits de réparation", "Modules Fieldbus", "Accessoires pneumatiques"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Automatisation, Contrôle & Électronique",
+      "icon": "https://placehold.co/100x50/93c5fd/1f2937?text=Automate",
+      "expertiseText": "Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Siemens",
+          "specialization": "Automates (PLC/DCS)",
+          "details": ["Modules I/O", "Alimentations", "Cartes CPU", "Relais", "Connecteurs", "Câbles industriels"]
+        },
+        {
+          "brand": "Schneider Electric",
+          "specialization": "Automates (PLC/DCS)",
+          "details": ["Modules I/O Modicon", "Cartes CPU", "Alimentations", "Contacteurs", "Relais de sécurité"]
+        },
+        {
+          "brand": "Rockwell (Allen-Bradley)",
+          "specialization": "Automates (PLC/DCS)",
+          "details": ["Modules I/O ControlLogix", "Modules CompactLogix", "Alimentations", "Relais", "Câbles industriels"]
+        },
+        {
+          "brand": "Yokogawa",
+          "specialization": "Alternatives Automates",
+          "details": ["Modules I/O", "CPU", "Écrans opérateur", "Câbles", "Kits communication"]
+        },
+        {
+          "brand": "Beckhoff",
+          "specialization": "Alternatives Automates",
+          "details": ["Modules EtherCAT", "Cartes CPU", "Alimentations", "Écrans HMI", "Connecteurs"]
+        },
+        {
+          "brand": "Vipa",
+          "specialization": "Alternatives Automates",
+          "details": ["Modules Speed7", "Extensions I/O", "CPU S7", "Connecteurs", "Câbles"]
+        },
+        {
+          "brand": "Unitronics",
+          "specialization": "Alternatives Automates",
+          "details": ["Écrans HMI", "Modules I/O", "CPU Vision/Samba", "Câbles", "Cartes mémoire"]
+        },
+        {
+          "brand": "ABB",
+          "specialization": "Variateurs & Moteurs",
+          "details": ["Cartes électroniques", "Ventilateurs variateur", "Kits de puissance", "Fusibles", "Filtres CEM"]
+        },
+        {
+          "brand": "SEW Eurodrive",
+          "specialization": "Variateurs & Moteurs",
+          "details": ["Ventilateurs moteurs", "Capteurs", "Kits joints", "Modules de puissance", "Câbles"]
+        },
+        {
+          "brand": "Danfoss",
+          "specialization": "Variateurs & Moteurs",
+          "details": ["Ventilateurs", "Cartes électroniques", "Filtres CEM", "Fusibles", "Connecteurs"]
+        },
+        {
+          "brand": "Voith",
+          "specialization": "Transmissions & Moteurs",
+          "details": ["Accouplements", "Fluides spéciaux", "Kits d’étanchéité", "Roulements", "Segments"]
+        },
+        {
+          "brand": "WEG Electric",
+          "specialization": "Transmissions & Moteurs",
+          "details": ["Roulements", "Ventilateurs", "Kits de réparation", "Condensateurs", "Joints"]
+        },
+        {
+          "brand": "Lenze",
+          "specialization": "Transmissions & Moteurs",
+          "details": ["Ventilateurs", "Cartes variateur", "Kits de réparation", "Fusibles", "Connecteurs"]
+        },
+        {
+          "brand": "Pilz",
+          "specialization": "Sécurité Critique",
+          "details": ["Relais de sécurité", "Modules arrêt d’urgence", "Capteurs", "Kits de communication", "Connecteurs"]
+        },
+        {
+          "brand": "Triconex",
+          "specialization": "Sécurité Critique",
+          "details": ["Cartes processeur", "Modules I/O", "Câbles", "Connecteurs", "Modules communication"]
+        },
+        {
+          "brand": "Sick",
+          "specialization": "Sécurité Critique",
+          "details": ["Capteurs industriels", "Barrières immatérielles", "Câbles", "Relais sécurité", "Modules d’E/S"]
+        },
+        {
+          "brand": "Hima",
+          "specialization": "Sécurité & Protection Électrique",
+          "details": ["Cartes modules", "Câbles", "Connecteurs", "Relais", "Kits extension"]
+        },
+        {
+          "brand": "Pepperl Fuchs",
+          "specialization": "Sécurité & Protection Électrique",
+          "details": ["Barrières Zener", "Convertisseurs", "Connecteurs", "Câbles", "Modules de puissance"]
+        },
+        {
+          "brand": "Eaton",
+          "specialization": "Sécurité & Protection Électrique",
+          "details": ["Disjoncteurs", "Fusibles", "Relais", "Modules I/O", "Contacteurs"]
+        },
+        {
+          "brand": "Wago",
+          "specialization": "Connectivité & I/O",
+          "details": ["Bornes Wago", "Connecteurs", "Modules I/O", "Câbles", "Accessoires montage"]
+        },
+        {
+          "brand": "Weidmuller",
+          "specialization": "Connectivité & I/O",
+          "details": ["Bornes", "Connecteurs", "Blocs jonction", "Câbles", "Kits accessoires"]
+        },
+        {
+          "brand": "Phoenix Contact",
+          "specialization": "Connectivité & I/O",
+          "details": ["Bornes", "Fusibles", "Connecteurs", "Modules relais", "Câbles"]
+        },
+        {
+          "brand": "Turck",
+          "specialization": "Réseaux & Connecteurs",
+          "details": ["Capteurs", "Câbles M12", "Connecteurs industriels", "Modules réseau", "Kits accessoires"]
+        },
+        {
+          "brand": "Moxa",
+          "specialization": "Réseaux & Connecteurs",
+          "details": ["Switches industriels", "Convertisseurs", "Alimentations", "Câbles réseau", "Modules fibre optique"]
+        },
+        {
+          "brand": "Wieland",
+          "specialization": "Réseaux & Connecteurs",
+          "details": ["Bornes", "Connecteurs", "Câbles", "Modules communication", "Accessoires électriques"]
+        },
+        {
+          "brand": "Fluke",
+          "specialization": "Calibration & Mesure",
+          "details": ["Cordons de test", "Sondes", "Embouts de mesure", "Fusibles multimètre", "Accessoires calibration"]
+        },
+        {
+          "brand": "Bruel & Kjaer",
+          "specialization": "Vibration & Mesure",
+          "details": ["Accéléromètres", "Câbles vibration", "Adaptateurs", "Capteurs", "Kits d’analyse"]
+        },
+        {
+          "brand": "Yokogawa",
+          "specialization": "Vibration & Mesure",
+          "details": ["Capteurs vibration", "Câbles", "Adaptateurs", "Accessoires de mesure", "Modules d’analyse"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Instrumentation, Laboratoire & Consommables",
+      "icon": "https://placehold.co/100x50/a78bfa/1f2937?text=Analyse",
+      "expertiseText": "La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Mitutoyo",
+          "specialization": "Métrologie & Contrôle",
+          "details": ["Calibres étalon", "Embouts de palpeurs", "Pointes comparateurs", "Kits de calibration", "Câbles de mesure", "Batteries instruments"]
+        },
+        {
+          "brand": "Starrett",
+          "specialization": "Métrologie & Contrôle",
+          "details": ["Lames", "Pointes", "Huiles métrologie", "Étuis & coffrets", "Accessoires micromètres"]
+        },
+        {
+          "brand": "Renishaw",
+          "specialization": "Alignement Laser",
+          "details": ["Stylus / pointes de palpage", "Sphères étalons", "Modules de palpeur", "Kits nettoyage optique", "Câbles Renishaw"]
+        },
+        {
+          "brand": "Heidenhain",
+          "specialization": "Codeurs",
+          "details": ["Bandes codeurs", "Rubans magnétiques", "Connecteurs TTL/HTL", "Capots & joints", "Kits réparation codeurs"]
+        },
+        {
+          "brand": "Mettler Toledo",
+          "specialization": "Équipement Laboratoire (Balances)",
+          "details": ["Pesettes", "Papier filtre", "Électrodes pH", "Solutions tampon", "Poids étalonnage"]
+        },
+        {
+          "brand": "Retsch",
+          "specialization": "Équipement Laboratoire",
+          "details": ["Tamis analytiques", "Joints", "Bols & billes", "Kits entretien", "Lubrifiants broyeurs"]
+        },
+        {
+          "brand": "Gilson",
+          "specialization": "Tamisage Laboratoire",
+          "details": ["Tamis ASTM/ISO", "Cadres & anneaux", "Brosses nettoyage", "Plateaux tamisage"]
+        },
+        {
+          "brand": "Vaisala",
+          "specialization": "Réactifs Laboratoire",
+          "details": ["Capteurs HR", "Solutions étalon", "Solutions tampons", "Filtres capteurs", "Liquides maintenance"]
+        },
+        {
+          "brand": "Lhoist",
+          "specialization": "Réactifs Laboratoire",
+          "details": ["Chaux vive", "Chaux hydratée", "Correcteurs pH", "Réactifs minéraux", "Poudres granulées"]
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "6. Outillage Spécialisé, Soudage & Maintenance Critique",
+      "icon": "https://placehold.co/100x50/f87171/1f2937?text=Outillage",
+      "expertiseText": "L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.",
+      "sectionImage": "images/section-6.jpg",
+      "tableHeaders": ["Marque", "Spécialisation"],
+      "items": [
+        {
+          "brand": "Enerpac",
+          "specialization": "Hydraulique & Serrage",
+          "details": ["Flexibles HP", "Joints & kits", "Huile hydraulique", "Coupleurs rapides", "Têtes & embouts", "Kits maintenance vérins"]
+        },
+        {
+          "brand": "Norbar",
+          "specialization": "Hydraulique & Serrage",
+          "details": ["Embouts dynamométriques", "Adaptateurs hexagonaux", "Douilles lourdes", "Kits calibration", "Lubrifiants couple", "Cartouches maintenance"]
+        },
+        {
+          "brand": "SKF",
+          "specialization": "Alignement / Extraction",
+          "details": ["Graisses LGHP/LGLE", "Extracteurs", "Joints & bagues", "Cales & shims", "Cibles laser", "Kits calibration laser"]
+        },
+        {
+          "brand": "Parker",
+          "specialization": "Hydraulique",
+          "details": ["Flexibles", "Embouts", "Filtres hydrauliques", "Joints toriques", "Huile hydraulique", "Adaptateurs"]
+        },
+        {
+          "brand": "Lincoln Electric",
+          "specialization": "Soudage & Coupage",
+          "details": ["Fils MIG/MAG", "Électrodes enrobées", "Buses", "Diffuseurs", "Pointes contact", "Gaz soudage"]
+        },
+        {
+          "brand": "Miller Electric",
+          "specialization": "Soudage & Coupage",
+          "details": ["Fils MIG/MAG", "Tungstène TIG", "Buses & gorges", "Baguettes brasage", "Protections soudage"]
+        },
+        {
+          "brand": "Magmaweld",
+          "specialization": "Plasma / Soudage Plastique",
+          "details": ["Électrodes plasma", "Buses plasma", "Fils plastique PE/PP/PVC", "Électrodes enrobées", "Bobines soudage", "Embouts chauffants"]
+        },
+        {
+          "brand": "Hypertherm",
+          "specialization": "Plasma",
+          "details": ["Électrodes plasma", "Buses coupe", "Boucliers", "Retaining caps", "Anneaux tourbillons", "Filtres air"]
+        },
+        {
+          "brand": "Leister",
+          "specialization": "Soudage Plastique",
+          "details": ["Buses soudage", "Fils plastique", "Pannes chauffantes", "Résistances chauffantes", "Filtres air", "Embouts interchangeables"]
+        },
+        {
+          "brand": "Snap-on",
+          "specialization": "Outillage à Main / Lourd",
+          "details": ["Douilles HD", "Embouts vissage", "Jeux de clés", "Graisses mécanisme", "Brosses atelier"]
+        },
+        {
+          "brand": "Hilti",
+          "specialization": "Outillage à Main / Lourd",
+          "details": ["Forets béton/acier", "Disques diamant", "Batteries", "Burins", "Clous", "Lames sabre"]
+        },
+        {
+          "brand": "Husqvarna",
+          "specialization": "Outillage à Main / Lourd",
+          "details": ["Disques diamant", "Chaînes tronçonneuse", "Filtres air", "Bougies", "Huile chaîne", "Lames coupe"]
+        },
+        {
+          "brand": "Catu",
+          "specialization": "Sécurité Électrique",
+          "details": ["Gants isolants", "Tapis isolants", "Casques arc flash", "Perches isolées", "Détecteurs tension", "Kits EPI HT"]
+        },
+        {
+          "brand": "DeWalt",
+          "specialization": "Outillage Standard",
+          "details": ["Batteries", "Disques coupe", "Forets", "Lames scie", "Embouts vissage", "Filtres aspirateurs"]
+        },
+        {
+          "brand": "Makita",
+          "specialization": "Outillage Standard",
+          "details": ["Batteries LXT", "Disques abrasifs", "Forets", "Lames scies", "Brosses carbone", "Filtres"]
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "7. Services",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Services",
+      "expertiseText": "Une offre de service complète pour accompagner vos opérations, de la logistique au support technique sur site.",
+      "sectionImage": "images/section-7.svg",
+      "tableHeaders": ["Service", "Livrables"],
+      "items": [
+        {
+          "brand": "Support Technique",
+          "specialization": "Assistance à la maintenance, diagnostic et dépannage",
+          "details": ["Assistance à distance", "Interventions sur site", "Diagnostics techniques", "Rapports d'intervention", "Support maintenance préventive"]
+        },
+        {
+          "brand": "Logistique & Sourcing",
+          "specialization": "Approvisionnement, gestion des pièces critiques et optimisation logistique",
+          "details": ["Recherche et sourcing fournisseurs", "Gestion des pièces critiques", "Suivi des expéditions", "Consolidation logistique", "Optimisation des délais"]
+        },
+        {
+          "brand": "Formation",
+          "specialization": "Formation opérateurs et équipes maintenance",
+          "details": ["Modules opérateur", "Modules maintenance", "Formation sécurité", "Supports pédagogiques", "Sessions pratiques sur site"]
+        }
+      ]
+    }
+  ]
+}

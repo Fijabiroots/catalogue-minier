@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catalogue officiel MULTIPARTS : Découvrez nos marques partenaires pour le secteur minier et industriel en Côte d'Ivoire et Afrique de l'Ouest.">
-    <title>Catalogue MULTIPARTS - Marques pour le secteur Minier</title>
+    <meta name="description" content="Catalogue officiel MULTIPARTS : Découvrez nos marques partenaires pour le secteur industriel en Côte d'Ivoire et Afrique de l'Ouest.">
+    <title>Catalogue MULTIPARTS - Marques Partenaires</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_34_Industries_Menu_Added */
+        /* Version_36_Dynamic_Description */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -45,7 +45,6 @@
             line-height: 1.4;
         }
         
-        /* Adaptation Mobile Verticale */
         @media screen and (max-width: 640px) {
             .onboarding-tooltip {
                 max-width: 200px; 
@@ -53,13 +52,11 @@
             }
         }
 
-        /* Flèche par défaut (pointe vers le haut) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
 
-        /* Flèche inversée (pointe vers le bas) */
         .onboarding-tooltip.tooltip-top::after {
             top: auto; bottom: -6px;
             border-width: 6px 6px 0 6px;
@@ -141,7 +138,6 @@
         
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #119248; color: #fff !important; }
-        /* Style générique pour tous les sous-menus */
         .dropdown-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
         .dropdown-menu a:hover { background-color: #119248; color: #ffffff; }
         
@@ -184,7 +180,7 @@
 
     <div class="print-header no-screen">
         <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
-        <span style="font-weight:bold; color:#1e40af;">Catalogue Mines</span>
+        <span style="font-weight:bold; color:#1e40af;">Catalogue</span>
     </div>
     <div class="print-footer no-screen">
         <span>© 2025 MULTIPARTS</span> <span class="page-counter"></span>
@@ -210,12 +206,6 @@
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
                     <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
-                        <li><a href="#section-1">1. Équipements Lourds</a></li>
-                        <li><a href="#section-2">2. Traitement Minerais</a></li>
-                        <li><a href="#section-3">3. Pompes & Vannes</a></li>
-                        <li><a href="#section-4">4. Automatisation</a></li>
-                        <li><a href="#section-5">5. Instrumentation</a></li>
-                        <li><a href="#section-6">6. Outillage</a></li>
                     </ul>
                 </li>
                 
@@ -245,15 +235,15 @@
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
                     <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
-                        <li><a href="#top">Mines</a></li>
-                        <li><a href="#">Pétrole & gaz</a></li>
-                        <li><a href="#">Industrie chimique/pétrochimique</a></li>
-                        <li><a href="#">Énergie & centrales</a></li>
-                        <li><a href="#">Agro-alimentaire</a></li>
-                        <li><a href="#">Cimenterie</a></li>
-                        <li><a href="#">Infrastructure & transport</a></li>
-                        <li><a href="#">Carrières</a></li>
-                        <li><a href="#">BTP</a></li>
+                        <li><a href="?ind=mines">Mines</a></li>
+                        <li><a href="?ind=petrole-gaz">Pétrole & gaz</a></li>
+                        <li><a href="?ind=chimie">Industrie chimique/pétrochimique</a></li>
+                        <li><a href="?ind=energie">Énergie & centrales</a></li>
+                        <li><a href="?ind=agro">Agro-alimentaire</a></li>
+                        <li><a href="?ind=cimenterie">Cimenterie</a></li>
+                        <li><a href="?ind=infrastructure">Infrastructure & transport</a></li>
+                        <li><a href="?ind=carrieres">Carrières</a></li>
+                        <li><a href="?ind=btp">BTP</a></li>
                     </ul>
                 </li>
 
@@ -279,17 +269,17 @@
 
     <div class="catalog-page page-number" id="top">
         <header class="header">
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-[#1e40af]">MARQUES PARTENAIRES</h1>
-            <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1">Équipement Industriel & Minier</h2>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-[#1e40af]" id="page-title">NOS MARQUES PARTENAIRES</h1>
+            <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1" id="page-subtitle">Chargement...</h2>
         </header>
 
-        <img class="w-full h-auto rounded-lg mb-6" src="Gemini_Generated_Image_Mining.png" alt="Cover">
+        <img class="w-full h-auto rounded-lg mb-6" id="cover-image" src="" alt="Cover">
 
         <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
             <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm">
                 <div>
-                    <p><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
+                    <p id="company-activity"><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
                 </div>
                 <div>
                     <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
@@ -300,186 +290,32 @@
             </div>
         </div>
 
+        <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg shadow-sm">
+            <div class="flex items-start">
+                <div class="flex-shrink-0">
+                    <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-bold text-blue-800 uppercase tracking-wide">Offre Globale & Disponibilité</h3>
+                    <div class="mt-1 text-sm text-blue-700">
+                        <p>
+                            <strong>Machines & Organes Complets :</strong> Au-delà des pièces détachées, nous assurons la fourniture des 
+                            <strong>machines neuves</strong> et des <strong>organes complets</strong> (moteurs, boîtes, ponts) de l'ensemble de ces marques partenaires.
+                        </p>
+                        <p class="mt-2 text-xs italic text-blue-600">
+                            * La liste des consommables présentée ci-dessous est donnée à titre indicatif et <strong>n'est pas exhaustive</strong>. Contactez-nous pour toute référence spécifique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <h3 id="industries" class="no-screen text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
-        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700" id="secteurs">
-          <li><a href="#section-1" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Équipements Lourds & Mobiles</a></li>
-          <li><a href="#section-2" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Traitement des Minerais & Séparation</a></li>
-          <li><a href="#section-3" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Pompes, Vannes & Composants</a></li>
-          <li><a href="#section-4" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Automatisation, Contrôle & Électronique</a></li>
-          <li><a href="#section-5" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Instrumentation, Laboratoire & Consommables</a></li>
-          <li><a href="#section-6" class="text-indigo-600 hover:text-indigo-800 transition duration-150">Outillage Spécialisé & Maintenance</a></li>
-        </ol>
+        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700" id="secteurs-list"></ol>
 
-        <div class="table-group" data-section="section-1">
-            <div class="section-header" id="section-1">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/34d399/1f2937?text=Engins" class="rounded-md mr-3" alt="Icône">
-                    <h3>1. Équipements Lourds & Mobiles</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-1" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.</p>
-                </div>
-                
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.jpg" alt="Équipements Lourds">
-                
-                <div class="scroll-arrow-container no-print" title="Voir les marques">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-1-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-group" data-section="section-2">
-            <div class="section-header" id="section-2">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/fcd34d/1f2937?text=Concentrateur" class="rounded-md mr-3" alt="Icône">
-                    <h3>2. Traitement des Minerais</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-2" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
-                </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.jpg" alt="Traitement Minerais">
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-2-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-group" data-section="section-3">
-            <div class="section-header" id="section-3">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/3b82f6/1f2937?text=Pompes" class="rounded-md mr-3" alt="Icône">
-                    <h3>3. Pompes, Vannes & Fluides</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-3" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
-                </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.jpg" alt="Pompes et Vannes">
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
-                        <tbody id="dyn-section-3-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-group" data-section="section-4">
-            <div class="section-header" id="section-4">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/93c5fd/1f2937?text=Automate" class="rounded-md mr-3" alt="Icône">
-                    <h3>4. Automatisation & Électronique</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-4" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
-                </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.jpg" alt="Automatisation">
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-4-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-group" data-section="section-5">
-            <div class="section-header" id="section-5">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/a78bfa/1f2937?text=Analyse" class="rounded-md mr-3" alt="Icône">
-                    <h3>5. Instrumentation & Laboratoire</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-5" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
-                </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.jpg" alt="Instrumentation">
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Consommables</th></tr></thead>
-                        <tbody id="dyn-section-5-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-group" data-section="section-6">
-            <div class="section-header" id="section-6">
-                <div class="flex items-center">
-                    <img src="https://placehold.co/100x50/f87171/1f2937?text=Outillage" class="rounded-md mr-3" alt="Icône">
-                    <h3>6. Outillage & Maintenance</h3>
-                </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
-            </div>
-            <div id="content-section-6" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
-                </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.jpg" alt="Outillage">
-                <div class="scroll-arrow-container no-print">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">Marque</th><th class="w-1/2">Spécialisation</th></tr></thead>
-                        <tbody id="dyn-section-6-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <div id="catalog-container"></div>
 
         <footer class="mt-16 border-t pt-4 text-xs text-gray-600 sm:px-5">
             <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
@@ -488,59 +324,121 @@
     </div>
 
 <script>
-// Chargement dynamique
-async function loadCatalogData() {
-    const sectionsToFill = {
-        'section-1': 'dyn-section-1-body',
-        'section-2': 'dyn-section-2-body',
-        'section-3': 'dyn-section-3-body',
-        'section-4': 'dyn-section-4-body',
-        'section-5': 'dyn-section-5-body',
-        'section-6': 'dyn-section-6-body'
-    };
-    try {
-        const response = await fetch('data/brands.json');
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-        const data = await response.json();
-        populateTables(data, sectionsToFill);
-    } catch (error) {
-        console.error("Erreur chargement catalogue:", error);
-        const fallback = document.querySelectorAll('.table-custom tbody');
-        fallback.forEach(el => el.innerHTML = `<tr><td colspan="2" class="text-red-600 p-4">Chargement impossible. Vérifiez la connexion.</td></tr>`);
-    }
-}
+// --- LOGIQUE PRINCIPALE ---
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    // 1. Récupérer le paramètre d'industrie (par défaut 'mines')
+    const urlParams = new URLSearchParams(window.location.search);
+    const industry = urlParams.get('ind') || 'mines';
+    const dataFile = `data/${industry}.json`;
 
-function populateTables(catalogData, sectionsToFill) {
+    // 2. Charger les données
+    try {
+        const response = await fetch(dataFile);
+        if (!response.ok) throw new Error("Fichier introuvable");
+        const data = await response.json();
+        
+        // 3. Construire la page
+        buildPage(data);
+        
+        // 4. Initialiser les interactions (Scroll, Menus, Onboarding) une fois le DOM prêt
+        initInteractions();
+        
+    } catch (error) {
+        console.error("Erreur:", error);
+        document.getElementById('page-subtitle').textContent = "Erreur de chargement des données.";
+        // Fallback: si erreur, essayer de charger mines par défaut si ce n'était pas le cas
+        if (industry !== 'mines') {
+            window.location.href = '?ind=mines';
+        }
+    }
+});
+
+function buildPage(data) {
     const esc = s => (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : '');
-    catalogData.forEach(section => {
-        const tbodyId = sectionsToFill[section.sectionId];
-        const tbody = document.getElementById(tbodyId);
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        section.items.forEach(item => {
-            const tr = document.createElement('tr');
-            tr.className = 'brand-row';
-            tr.setAttribute('tabindex', '0');
-            const tdBrand = document.createElement('td');
-            tdBrand.innerHTML = `<strong>${esc(item.brand)}</strong><div class="text-sm text-gray-600">${esc(item.specialization)}</div>`;
-            const popup = document.createElement('div');
-            popup.className = 'consumables-popup no-print';
-            popup.innerHTML = `<strong>Consommables — ${esc(item.brand)}</strong><ul style="margin:0;padding-left:18px;">${item.consumables.map(c => `<li>${esc(c)}</li>`).join('')}</ul>`;
-            tdBrand.appendChild(popup);
-            const tdConsum = document.createElement('td');
-            const preview = item.consumables.slice(0, 3).join(', ');
-            tdConsum.innerHTML = `<div class="consumables-inline">${esc(preview)}${item.consumables.length > 3 ? '…' : ''}</div>`;
-            tr.appendChild(tdBrand);
-            tr.appendChild(tdConsum);
-            tbody.appendChild(tr);
-        });
+
+    // A. Remplir le Header & Métadonnées
+    document.getElementById('page-title').textContent = data.meta.pageTitle;
+    document.getElementById('page-subtitle').textContent = data.meta.pageSubtitle;
+    document.getElementById('cover-image').src = data.meta.coverImage;
+    document.title = `Catalogue MULTIPARTS - ${data.meta.pageSubtitle}`;
+    
+    // Injection de la description dynamique (Modification demandée)
+    if(data.meta.description) {
+        document.getElementById('company-activity').innerHTML = '<strong>Activité :</strong> ' + esc(data.meta.description);
+    }
+
+    const container = document.getElementById('catalog-container');
+    const summaryList = document.getElementById('secteurs-list');
+    const summaryMenu = document.getElementById('sommaireMenu');
+    
+    container.innerHTML = ''; // Nettoyer
+    summaryList.innerHTML = ''; 
+    summaryMenu.innerHTML = '';
+
+    // B. Générer les Sections
+    data.sections.forEach((section, index) => {
+        // 1. Ajouter au sommaire (Page & Menu)
+        const linkId = section.id;
+        const summaryItem = `<li><a href="#${linkId}" class="text-indigo-600 hover:text-indigo-800 transition duration-150">${esc(section.title)}</a></li>`;
+        summaryList.innerHTML += summaryItem;
+        summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
+
+        // 2. Créer le HTML de la section
+        const sectionHTML = `
+        <div class="table-group" data-section="${linkId}">
+            <div class="section-header" id="${linkId}">
+                <div class="flex items-center">
+                    <img src="${esc(section.icon)}" class="rounded-md mr-3" alt="Icone">
+                    <h3>${esc(section.title)}</h3>
+                </div>
+                <button type="button" class="toggle-details-btn">
+                    <span class="toggle-sign">+</span> Plus de détails
+                </button>
+            </div>
+            <div id="content-${linkId}" class="section-content">
+                <div class="expertise-box">
+                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> ${esc(section.expertiseText)}</p>
+                </div>
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}">
+                
+                <div class="scroll-arrow-container no-print" title="Voir les marques">
+                    <span class="scroll-text">Voir les Marques</span>
+                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+
+                <div class="table-container">
+                    <table class="w-full table-custom">
+                        <thead><tr><th class="w-1/2">${esc(section.tableHeaders[0])}</th><th class="w-1/2">${esc(section.tableHeaders[1])}</th></tr></thead>
+                        <tbody>
+                            ${section.items.map(item => {
+                                const detailsList = item.details.map(d => `<li>${esc(d)}</li>`).join('');
+                                const detailsPreview = item.details.slice(0, 3).join(', ') + (item.details.length > 3 ? '…' : '');
+                                return `
+                                <tr class="brand-row" tabindex="0">
+                                    <td>
+                                        <strong>${esc(item.brand)}</strong>
+                                        <div class="text-sm text-gray-600">${esc(item.specialization)}</div>
+                                        <div class="consumables-popup no-print">
+                                            <strong>${esc(section.tableHeaders[1])} — ${esc(item.brand)}</strong>
+                                            <ul style="margin:0;padding-left:18px;">${detailsList}</ul>
+                                        </div>
+                                    </td>
+                                    <td><div class="consumables-inline">${esc(detailsPreview)}</div></td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>`;
+        
+        container.insertAdjacentHTML('beforeend', sectionHTML);
     });
 }
 
-// === PRELOADER & ONBOARDING ===
-document.addEventListener("DOMContentLoaded", () => {
-    loadCatalogData();
-    
+function initInteractions() {
+    // --- PRELOADER ---
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
@@ -566,105 +464,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
     else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
+    
+    // Sécurité Preloader (max 6s)
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
-    function startOnboarding() {
-        // --- ACTIVATION MODE 1ère VISITE UNIQUEMENT ---
-        if (localStorage.getItem('menuOnboardingDone')) return;
-
-        const isMobile = window.innerWidth < 640;
-
-        const steps = [
-            { selector: '[data-step="1"]' }, 
-            { selector: '[data-step="2"]' },
-            { selector: '[data-step="3"]' },
-            { selector: '[data-step="4"]' },
-            { selector: '[data-step="5"]' },
-            { 
-                selector: '#dyn-section-1-body tr:first-child', 
-                text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Survolez la marque pour voir la liste des consommables." 
-            }
-        ];
-
-        let currentStep = 0;
-        const overlay = document.getElementById('onboarding-overlay');
-        const tooltip = document.getElementById('onboarding-tooltip');
-        const navContainer = document.getElementById('navbar');
-
-        if (!overlay || !tooltip) return;
-
-        function showStep(index) {
-            if (index >= steps.length) {
-                overlay.style.opacity = '0';
-                tooltip.classList.remove('show');
-                if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
-                document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
-                
-                setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
-                document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-                return;
-            }
-
-            const step = steps[index];
-            const element = document.querySelector(step.selector);
-
-            if (element) {
-                document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-                element.classList.add('highlight-element');
-                
-                // SCROLL PAGE SI TABLEAU HORS ECRAN (STEP 6)
-                if(index === 5) {
-                    element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                    element.classList.add('show');
-                } else {
-                    document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
-                }
-                
-                // Contenu de l'info-bulle
-                tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
-
-                // CALCUL DE LA POSITION
-                const rect = element.getBoundingClientRect();
-                let topPos = rect.bottom + 14;
-                
-                // Réinitialise la classe pour la flèche
-                tooltip.classList.remove('tooltip-top');
-
-                // --- ACTIONS 1 & 2 : Si c'est l'étape 6 (Tableau), on met l'info-bulle AU-DESSUS ---
-                if (index === 5) {
-                    // top = position haut élément - hauteur bulle - espace
-                    topPos = rect.top - tooltip.offsetHeight - 14;
-                    tooltip.classList.add('tooltip-top'); // Ajoute la flèche vers le bas
-                }
-                
-                tooltip.style.top = topPos + 'px';
-
-                // Calcul Horizontal (Centrage et Limites)
-                let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-                if (leftPos < 10) leftPos = 10;
-                if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
-                
-                tooltip.style.left = leftPos + 'px';
-                tooltip.classList.add('show');
-            }
-            
-            // 5.5 secondes pour l'étape complexe (Tableau), 3.5 secondes pour le reste
-            const stepDuration = (index === 5) ? 5500 : 3500;
-            setTimeout(() => { showStep(index + 1); }, stepDuration);
-        }
-        
-        overlay.style.display = 'block';
-        overlay.offsetHeight; 
-        overlay.style.opacity = '1';
-        setTimeout(() => showStep(0), 800);
-    }
-});
-
-// === LOGIQUE INTERFACE ===
-document.addEventListener('DOMContentLoaded', function() {
+    // --- LOGIQUE ACCORDÉON & SCROLL ---
     const groups = Array.from(document.querySelectorAll('.table-group'));
     const headerEl = document.querySelector('header');
     const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 10 : 80);
+    
     function smoothScrollTo(element) {
         if (!element) return;
         const offset = getHeaderOffset();
@@ -680,6 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const arrowContainer = group.querySelector('.scroll-arrow-container');
         const tableContainer = group.querySelector('.table-container');
 
+        // Ouvrir la première section par défaut
         if (index === 0) {
             content.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
@@ -731,42 +540,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- GESTION DES MENUS DÉROULANTS (Sommaire & Industries) ---
+    // --- GESTION DES MENUS DÉROULANTS ---
     function setupDropdown(toggleId, menuId) {
         const toggle = document.getElementById(toggleId);
         const menu = document.getElementById(menuId);
         if (toggle && menu) {
             toggle.addEventListener('click', (e) => { 
                 e.stopPropagation(); 
-                // Ferme les autres menus ouverts si nécessaire
                 document.querySelectorAll('.dropdown-menu').forEach(m => {
                     if (m !== menu) m.classList.add('hidden');
                 });
                 menu.classList.toggle('hidden'); 
             });
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Pas de preventDefault si c'est un lien externe ou ancre
-                    menu.classList.add('hidden');
-                    
-                    const href = link.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        const targetId = href.substring(1);
-                        const target = document.getElementById(targetId);
-                        if (target) {
-                            e.preventDefault();
+            
+            // Gestion des liens dans le menu généré dynamiquement
+            // On utilise la délégation d'événement car les liens n'existaient pas au chargement
+            menu.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                // Fermer le menu
+                menu.classList.add('hidden');
+                
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        // Si c'est un lien de section (dans le sommaire)
+                        if (target.classList.contains('section-header')) {
                             const group = target.closest('.table-group');
-                            if (group) {
-                                const btn = group.querySelector('.toggle-details-btn');
-                                if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
-                                else smoothScrollTo(group.querySelector('.section-header'));
-                            } else {
-                                // Cas lien "Mines" vers #top
-                                smoothScrollTo(target);
-                            }
+                            const btn = group.querySelector('.toggle-details-btn');
+                            if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
+                            else smoothScrollTo(target);
+                        } else {
+                            // Autre ancre
+                            smoothScrollTo(target);
                         }
                     }
-                });
+                }
             });
         }
     }
@@ -774,10 +587,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDropdown('sommaireToggle', 'sommaireMenu');
     setupDropdown('industriesToggle', 'industriesMenu');
 
-    // Fermer tous les menus au clic extérieur
     document.addEventListener('click', (e) => {
         document.querySelectorAll('.dropdown-menu').forEach(menu => {
-            const toggleBtn = menu.previousElementSibling; // Le bouton est juste avant
+            const toggleBtn = menu.previousElementSibling; 
             if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
                 menu.classList.add('hidden');
             }
@@ -791,7 +603,90 @@ document.addEventListener('DOMContentLoaded', function() {
             else { try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {} }
         });
     }
-});
+}
+
+function startOnboarding() {
+    if (localStorage.getItem('menuOnboardingDone')) return;
+
+    const isMobile = window.innerWidth < 640;
+    
+    // On cible la première ligne du tableau généré dynamiquement
+    const firstRowSelector = '#catalog-container .table-group:first-child tbody tr:first-child';
+
+    const steps = [
+        { selector: '[data-step="1"]' }, 
+        { selector: '[data-step="2"]' },
+        { selector: '[data-step="3"]' },
+        { selector: '[data-step="4"]' },
+        { selector: '[data-step="5"]' },
+        { 
+            selector: firstRowSelector, 
+            text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Survolez la marque pour voir la liste des consommables." 
+        }
+    ];
+
+    let currentStep = 0;
+    const overlay = document.getElementById('onboarding-overlay');
+    const tooltip = document.getElementById('onboarding-tooltip');
+    const navContainer = document.getElementById('navbar');
+
+    if (!overlay || !tooltip) return;
+
+    function showStep(index) {
+        if (index >= steps.length) {
+            overlay.style.opacity = '0';
+            tooltip.classList.remove('show');
+            if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
+            
+            setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
+            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
+            return;
+        }
+
+        const step = steps[index];
+        const element = document.querySelector(step.selector);
+
+        if (element) {
+            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
+            element.classList.add('highlight-element');
+            
+            if(index === 5) {
+                element.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                element.classList.add('show');
+            } else {
+                document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
+            }
+            
+            tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
+
+            const rect = element.getBoundingClientRect();
+            let topPos = rect.bottom + 14;
+            tooltip.classList.remove('tooltip-top');
+
+            if (index === 5) {
+                topPos = rect.top - tooltip.offsetHeight - 14;
+                tooltip.classList.add('tooltip-top'); 
+            }
+            
+            tooltip.style.top = topPos + 'px';
+            let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+            if (leftPos < 10) leftPos = 10;
+            if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
+            
+            tooltip.style.left = leftPos + 'px';
+            tooltip.classList.add('show');
+        }
+        
+        const stepDuration = (index === 5) ? 5500 : 3500;
+        setTimeout(() => { showStep(index + 1); }, stepDuration);
+    }
+    
+    overlay.style.display = 'block';
+    overlay.offsetHeight; 
+    overlay.style.opacity = '1';
+    setTimeout(() => showStep(0), 800);
+}
 </script>
 </body>
 </html>

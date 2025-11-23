@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_32_Fix_Menu_Dropdown */
+        /* Version_34_Industries_Menu_Added */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -53,13 +53,13 @@
             }
         }
 
-        /* Flèche par défaut (pointe vers le haut, bulle en dessous) */
+        /* Flèche par défaut (pointe vers le haut) */
         .onboarding-tooltip::after {
             content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
             border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
         }
 
-        /* Flèche inversée (pointe vers le bas, bulle au-dessus) */
+        /* Flèche inversée (pointe vers le bas) */
         .onboarding-tooltip.tooltip-top::after {
             top: auto; bottom: -6px;
             border-width: 6px 6px 0 6px;
@@ -67,7 +67,6 @@
         }
 
         .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
-        /* Correction du saut visuel quand la bulle est au-dessus */
         .onboarding-tooltip.tooltip-top.show { transform: translateY(-12px); }
         
         /* Highlight */
@@ -86,7 +85,6 @@
         .table-custom { border-collapse: collapse; width: 100%; }
         .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
         .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
-        /* CSS pour forcer l'affichage au survol ou si classe .show présente */
         .table-custom tr:hover, .table-custom tr.show { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
         
         @media screen and (max-width: 639px) {
@@ -106,7 +104,6 @@
         }
         .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 12px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 8px solid #fff; filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03)); }
         
-        /* Affichage du popup au survol ou si la classe .show est ajoutée (par le guide) */
         .brand-row:hover td:first-child .consumables-popup, 
         .brand-row:focus-within td:first-child .consumables-popup, 
         .brand-row.show td:first-child .consumables-popup { display: block; }
@@ -144,8 +141,9 @@
         
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #119248; color: #fff !important; }
-        .sommaire-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
-        .sommaire-menu a:hover { background-color: #119248; color: #ffffff; }
+        /* Style générique pour tous les sous-menus */
+        .dropdown-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
+        .dropdown-menu a:hover { background-color: #119248; color: #ffffff; }
         
         /* Arrow */
         .scroll-arrow-container { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 20px; cursor: pointer; color: #1e40af; transition: opacity 0.5s; }
@@ -203,7 +201,7 @@
             <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
         </a>
         <nav class="flex-1 min-w-0 overflow-visible" id="navbar">
-            <ul class="flex flex-wrap space-x-2 sm:space-x-8 justify-end sm:justify-start items-center">
+            <ul class="flex flex-wrap space-x-2 sm:space-x-8 justify-end sm:justify-start items-center w-full">
                 <li class="relative">
                     <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
                             data-step="1" data-text="Naviguer entre les familles de produits.">
@@ -211,7 +209,7 @@
                         <span class="hidden sm:inline">Sommaire</span>
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
-                    <ul id="sommaireMenu" class="hidden sommaire-menu absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
+                    <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
                         <li><a href="#section-1">1. Équipements Lourds</a></li>
                         <li><a href="#section-2">2. Traitement Minerais</a></li>
                         <li><a href="#section-3">3. Pompes & Vannes</a></li>
@@ -239,13 +237,24 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#secteurs" id="industriesLink"
-                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
+                <li class="relative">
+                    <button id="industriesToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
                        data-step="4" data-text="Découvrez nos secteurs d'activité.">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
                         <span class="hidden sm:inline">Industries</span>
-                    </a>
+                        <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
+                        <li><a href="#top">Mines</a></li>
+                        <li><a href="#">Pétrole & gaz</a></li>
+                        <li><a href="#">Industrie chimique/pétrochimique</a></li>
+                        <li><a href="#">Énergie & centrales</a></li>
+                        <li><a href="#">Agro-alimentaire</a></li>
+                        <li><a href="#">Cimenterie</a></li>
+                        <li><a href="#">Infrastructure & transport</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">BTP</a></li>
+                    </ul>
                 </li>
 
                 <li>
@@ -316,7 +325,7 @@
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous fournissons des pièces neuves et de première monte, tout en garantissant leur compatibilité et la disponibilité optimale de vos équipements.</p>
                 </div>
                 
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.svg" alt="Équipements Lourds">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-1.jpg" alt="Équipements Lourds">
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
@@ -346,7 +355,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous accompagnons le concentrateur avec des consommables adaptés et des solutions d’analyse garantissant une récupération optimale et un contrôle qualité.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.svg" alt="Traitement Minerais">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-2.jpg" alt="Traitement Minerais">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -374,7 +383,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous maîtrisons la gestion des boues et des fluides agressifs grâce au sourcing de pompes haute résistance, de vannes et de systèmes de dosage fiables.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.svg" alt="Pompes et Vannes">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-3.jpg" alt="Pompes et Vannes">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -402,7 +411,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> Nous assurons la fiabilité électrique et le contrôle des opérations grâce à l’accès à des systèmes d’automatisation robustes.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.svg" alt="Automatisation">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-4.jpg" alt="Automatisation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -430,7 +439,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> La précision métrologique et l’équipement de laboratoire sont essentiels au contrôle de la teneur. Nous fournissons des solutions garantissant la fiabilité.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.svg" alt="Instrumentation">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-5.jpg" alt="Instrumentation">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -458,7 +467,7 @@
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> L’efficacité de la maintenance dépend d’outils industriels fiables. Nous fournissons des équipements de serrage et de soudage hautes performances.</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.svg" alt="Outillage">
+                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="images/section-6.jpg" alt="Outillage">
                 <div class="scroll-arrow-container no-print">
                     <span class="scroll-text">Voir les Marques</span>
                     <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -722,30 +731,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- ACTIVATION DU MENU DÉROULANT ---
-    const toggle = document.getElementById('sommaireToggle');
-    const menu = document.getElementById('sommaireMenu');
-    if (toggle && menu) {
-        toggle.addEventListener('click', (e) => { 
-            e.stopPropagation(); 
-            menu.classList.toggle('hidden'); 
-        });
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                menu.classList.add('hidden');
-                const targetId = link.getAttribute('href').substring(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                    const group = target.closest('.table-group');
-                    const btn = group.querySelector('.toggle-details-btn');
-                    if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
-                    else smoothScrollTo(group.querySelector('.section-header'));
-                }
+    // --- GESTION DES MENUS DÉROULANTS (Sommaire & Industries) ---
+    function setupDropdown(toggleId, menuId) {
+        const toggle = document.getElementById(toggleId);
+        const menu = document.getElementById(menuId);
+        if (toggle && menu) {
+            toggle.addEventListener('click', (e) => { 
+                e.stopPropagation(); 
+                // Ferme les autres menus ouverts si nécessaire
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) m.classList.add('hidden');
+                });
+                menu.classList.toggle('hidden'); 
             });
-        });
-        document.addEventListener('click', (e) => { if (!menu.contains(e.target) && e.target !== toggle) menu.classList.add('hidden'); });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Pas de preventDefault si c'est un lien externe ou ancre
+                    menu.classList.add('hidden');
+                    
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        const targetId = href.substring(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const group = target.closest('.table-group');
+                            if (group) {
+                                const btn = group.querySelector('.toggle-details-btn');
+                                if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
+                                else smoothScrollTo(group.querySelector('.section-header'));
+                            } else {
+                                // Cas lien "Mines" vers #top
+                                smoothScrollTo(target);
+                            }
+                        }
+                    }
+                });
+            });
+        }
     }
+
+    setupDropdown('sommaireToggle', 'sommaireMenu');
+    setupDropdown('industriesToggle', 'industriesMenu');
+
+    // Fermer tous les menus au clic extérieur
+    document.addEventListener('click', (e) => {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            const toggleBtn = menu.previousElementSibling; // Le bouton est juste avant
+            if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    });
     
     const shareBtn = document.getElementById('shareButton');
     if(shareBtn) {
@@ -758,4 +795,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-

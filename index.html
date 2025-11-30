@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MULTIPARTS Côte d'Ivoire : Votre partenaire stratégique pour l'approvisionnement minier, industriel et BTP en Afrique de l'Ouest. Machines complètes, pièces détachées et logistique.">
+    <meta name="description" content="MULTIPARTS Côte d'Ivoire : Votre partenaire stratégique pour l'approvisionnement minier, industriel et BTP en Afrique de l'Ouest.">
     <title>MULTIPARTS - Solutions Industrielles & Minières</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        /* Version_41_DG_Added_Location_Menu */
+        /* Version_43_GDPR_Compliant */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
-            /* Assurez-vous que cover_mines.png est bien dans le dossier images/ sur GitHub */
             background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
             background-size: cover;
             background-position: center;
         }
         .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+        
+        /* Animation discrète pour le bandeau cookie */
+        #cookie-banner { transition: transform 0.5s ease-in-out; }
+        #cookie-banner.hidden-banner { transform: translateY(100%); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
     <nav class="bg-white shadow-md fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,7 +157,7 @@
         </div>
     </section>
 
-    <footer class="bg-blue-900 text-white py-8 mt-12">
+    <footer class="bg-blue-900 text-white py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
             <div>
                 <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
@@ -174,6 +177,7 @@
                     <li><a href="catalogue.html?ind=mines" class="hover:text-yellow-400">Catalogue Mines</a></li>
                     <li><a href="catalogue.html?ind=btp" class="hover:text-yellow-400">Catalogue BTP</a></li>
                     <li><a href="catalogue.html?ind=petrole-gaz" class="hover:text-yellow-400">Catalogue Pétrole</a></li>
+                    <li><button id="open-cookie-settings" class="hover:text-yellow-400 underline cursor-pointer bg-transparent border-0 p-0">Gestion des cookies</button></li>
                 </ul>
             </div>
         </div>
@@ -181,6 +185,81 @@
             © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
         </div>
     </footer>
+
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-900 bg-opacity-95 text-white p-6 z-50 hidden shadow-lg border-t border-gray-700 transform transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-gray-300 text-center md:text-left">
+                <p class="font-bold text-white text-base mb-2">Respect de votre vie privée (RGPD)</p>
+                <p class="mb-1">Conformément au Règlement Général sur la Protection des Données, nous vous informons que ce site utilise des cookies techniques pour son fonctionnement.</p>
+                <p class="text-xs text-gray-400">Vos données de navigation sont utilisées <strong>uniquement par MULTIPARTS</strong> pour améliorer votre expérience et ne sont <strong>jamais partagées avec des tiers</strong> à des fins publicitaires.</p>
+            </div>
+            <div class="flex gap-4 shrink-0">
+                <button id="btn-accept-cookies" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold px-6 py-3 rounded shadow-md transition transform hover:scale-105">
+                    Accepter
+                </button>
+                <button id="btn-refuse-cookies" class="bg-transparent border border-gray-500 hover:border-white text-gray-300 hover:text-white text-sm font-medium px-6 py-3 rounded transition">
+                    Refuser
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // GESTIONNAIRE RGPD "GATEKEEPER"
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const btnAccept = document.getElementById('btn-accept-cookies');
+            const btnRefuse = document.getElementById('btn-refuse-cookies');
+            const btnSettings = document.getElementById('open-cookie-settings');
+
+            // Fonction pour charger les scripts tiers (Google Analytics, etc.)
+            // Cette fonction ne s'exécute QUE si l'utilisateur a explicitement accepté.
+            function loadThirdPartyScripts() {
+                console.log("Consentement accordé : Chargement des scripts tiers autorisés.");
+                // PLACEZ ICI VOS CODES DE SUIVI FUTURS (Ex: Google Analytics)
+                // Exemple :
+                // (function(w,d,s,l,i){...})(window,document,'script','dataLayer','G-XXXXX');
+            }
+
+            // Vérification au chargement de la page
+            const userConsent = localStorage.getItem('cookieConsent');
+
+            if (!userConsent) {
+                // Pas de choix fait : Afficher le bandeau
+                setTimeout(() => {
+                    banner.classList.remove('hidden');
+                }, 1500); // Petit délai pour ne pas être agressif
+            } else if (userConsent === 'accepted') {
+                // Déjà accepté : Charger les scripts
+                loadThirdPartyScripts();
+            }
+            // Si 'refused', on ne fait rien (scripts bloqués par défaut)
+
+            // --- ACTIONS ---
+
+            // 1. ACCEPTER
+            btnAccept.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.classList.add('hidden');
+                loadThirdPartyScripts(); // Lancer les scripts immédiatement
+            });
+
+            // 2. REFUSER
+            btnRefuse.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'refused');
+                banner.classList.add('hidden');
+                console.log("Consentement refusé : Aucun script tiers ne sera chargé.");
+            });
+
+            // 3. GESTION (Réouvrir le bandeau)
+            if(btnSettings) {
+                btnSettings.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    banner.classList.remove('hidden');
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

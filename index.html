@@ -2,16 +2,176 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=catalogue-fournisseurs.html">
-    
-    <script type="text/javascript">
-        // Sécurité supplémentaire en JavaScript si le meta refresh est bloqué
-        window.location.href = "catalogue-fournisseurs.html";
-    </script>
-    
-    <title>Redirection vers le Catalogue...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MULTIPARTS Côte d'Ivoire : Votre partenaire stratégique pour l'approvisionnement minier, industriel et BTP en Afrique de l'Ouest. Machines complètes, pièces détachées et logistique.">
+    <title>MULTIPARTS - Solutions Industrielles & Minières</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png'); /* Utilise votre image existante */
+            background-size: cover;
+            background-position: center;
+        }
+        .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+    </style>
 </head>
-<body>
-    <p>Si vous n'êtes pas redirigé automatiquement, <a href="catalogue-fournisseurs.html">cliquez ici pour voir le Catalogue Fournisseurs</a>.</p>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <img class="h-12 w-auto" src="logo-multiparts.png" alt="Logo MULTIPARTS">
+                        <span class="ml-3 text-2xl font-bold text-blue-800 hidden sm:block">MULTIPARTS</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="catalogue.html" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Catalogue</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium hidden sm:block">Services</a>
+                    <a href="mailto:rafiou.oyeossi@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                La Performance Industrielle <br/> <span class="text-yellow-400">Sans Compromis</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Spécialiste du sourcing critique et de la logistique pour les secteurs <strong>Mines, BTP et Industries</strong> en Afrique de l'Ouest.
+                <br class="hidden sm:block">Pièces détachées, organes complets et machines neuves.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="catalogue.html" class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition">
+                    Accéder au Catalogue Digital
+                </a>
+                <a href="https://wa.me/2250709399529" target="_blank" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-900 transition flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                    Contact WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Votre Industrie, Notre Expertise</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <a href="catalogue.html?ind=mines" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
+                    <div class="h-32 bg-blue-100 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-blue-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 group-hover:text-blue-700">Mines</h3>
+                        <p class="text-xs text-gray-500 mt-1">Extraction & Traitement</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=btp" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
+                    <div class="h-32 bg-yellow-50 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-yellow-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 group-hover:text-yellow-600">BTP & Construction</h3>
+                        <p class="text-xs text-gray-500 mt-1">Engins & Outillage</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=energie" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
+                    <div class="h-32 bg-green-50 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-green-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 group-hover:text-green-600">Énergie & Usine</h3>
+                        <p class="text-xs text-gray-500 mt-1">Automatisation & Process</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=petrole-gaz" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
+                    <div class="h-32 bg-gray-100 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gray-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 group-hover:text-gray-600">Pétrole & Gaz</h3>
+                        <p class="text-xs text-gray-500 mt-1">Vannes & ATEX</p>
+                    </div>
+                </a>
+
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="catalogue.html" class="text-blue-600 font-semibold hover:underline">Voir tous les secteurs &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-gray-100 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900">Pourquoi choisir MULTIPARTS ?</h2>
+                <p class="text-gray-600 mt-2">Plus qu'un fournisseur, un partenaire pour vos projets critiques.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Sourcing Global</h3>
+                    <p class="text-sm text-gray-600">Accès direct aux fabricants mondiaux (OEM) et stocks stratégiques pour réduire vos coûts d'acquisition.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Machines Complètes</h3>
+                    <p class="text-sm text-gray-600">Fourniture d'engins neufs, d'organes complets (moteurs, boîtes) et d'équipements lourds.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Logistique Intégrée</h3>
+                    <p class="text-sm text-gray-600">Solutions de transport multimodal jusqu'à vos sites les plus isolés en Afrique de l'Ouest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-blue-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
+                <p class="text-blue-200">Directeur Projets : Rafiou OYEOSSI</p>
+                <p class="text-blue-200 mt-2">Abidjan, Côte d'Ivoire</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Contact</h4>
+                <p class="mb-1">Tél : <a href="tel:+2252721250146" class="hover:text-yellow-400">+225 27 21 25 01 46</a></p>
+                <p class="mb-1">Mobile : <a href="tel:+2250709399529" class="hover:text-yellow-400">+225 07 09 39 95 29</a></p>
+                <p>Email : <a href="mailto:rafiou.oyeossi@multipartsci.com" class="hover:text-yellow-400">rafiou.oyeossi@multipartsci.com</a></p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="catalogue.html?ind=mines" class="hover:text-yellow-400">Catalogue Mines</a></li>
+                    <li><a href="catalogue.html?ind=btp" class="hover:text-yellow-400">Catalogue BTP</a></li>
+                    <li><a href="catalogue.html?ind=petrole-gaz" class="hover:text-yellow-400">Catalogue Pétrole</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-blue-400 text-xs mt-8 border-t border-blue-800 pt-4">
+            © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
+        </div>
+    </footer>
+
 </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_36_Dynamic_Description */
+        /* Version_39_Strict_Dynamic_Images */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
@@ -385,6 +385,7 @@ function buildPage(data) {
         summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
 
         // 2. Créer le HTML de la section
+        // CHANGE: Image is now conditional
         const sectionHTML = `
         <div class="table-group" data-section="${linkId}">
             <div class="section-header" id="${linkId}">
@@ -400,7 +401,7 @@ function buildPage(data) {
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> ${esc(section.expertiseText)}</p>
                 </div>
-                <img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}">
+                ${section.sectionImage ? `<img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}">` : ''}
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
@@ -464,8 +465,6 @@ function initInteractions() {
     }
     if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
     else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
-    
-    // Sécurité Preloader (max 6s)
     setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
 
     // --- LOGIQUE ACCORDÉON & SCROLL ---

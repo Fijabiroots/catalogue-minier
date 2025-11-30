@@ -8,9 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
+        /* Version_41_DG_Added_Location_Menu */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
-            background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png'); /* Utilise votre image existante */
+            /* Assurez-vous que cover_mines.png est bien dans le dossier images/ sur GitHub */
+            background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
             background-size: cover;
             background-position: center;
         }
@@ -31,6 +33,12 @@
                 <div class="flex items-center space-x-4">
                     <a href="catalogue.html" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Catalogue</a>
                     <a href="#services" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium hidden sm:block">Services</a>
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Localisation
+                    </a>
+
                     <a href="mailto:rafiou.oyeossi@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
                 </div>
             </div>
@@ -65,7 +73,7 @@
                 
                 <a href="catalogue.html?ind=mines" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
                     <div class="h-32 bg-blue-100 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-blue-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        <svg class="w-14 h-14 text-blue-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
                     </div>
                     <div class="p-4 text-center">
                         <h3 class="font-bold text-gray-800 group-hover:text-blue-700">Mines</h3>
@@ -75,7 +83,7 @@
 
                 <a href="catalogue.html?ind=btp" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
                     <div class="h-32 bg-yellow-50 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-yellow-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                        <svg class="w-14 h-14 text-yellow-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
                     </div>
                     <div class="p-4 text-center">
                         <h3 class="font-bold text-gray-800 group-hover:text-yellow-600">BTP & Construction</h3>
@@ -85,7 +93,7 @@
 
                 <a href="catalogue.html?ind=energie" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
                     <div class="h-32 bg-green-50 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-green-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <svg class="w-14 h-14 text-green-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <div class="p-4 text-center">
                         <h3 class="font-bold text-gray-800 group-hover:text-green-600">Énergie & Usine</h3>
@@ -95,7 +103,7 @@
 
                 <a href="catalogue.html?ind=petrole-gaz" class="card-hover group block bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-xl border border-gray-100">
                     <div class="h-32 bg-gray-100 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-gray-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        <svg class="w-14 h-14 text-gray-600 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                     </div>
                     <div class="p-4 text-center">
                         <h3 class="font-bold text-gray-800 group-hover:text-gray-600">Pétrole & Gaz</h3>
@@ -129,7 +137,7 @@
 
                 <div class="bg-white p-6 rounded-lg shadow-sm text-center">
                     <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Machines Complètes</h3>
                     <p class="text-sm text-gray-600">Fourniture d'engins neufs, d'organes complets (moteurs, boîtes) et d'équipements lourds.</p>
@@ -137,7 +145,7 @@
 
                 <div class="bg-white p-6 rounded-lg shadow-sm text-center">
                     <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Logistique Intégrée</h3>
                     <p class="text-sm text-gray-600">Solutions de transport multimodal jusqu'à vos sites les plus isolés en Afrique de l'Ouest.</p>
@@ -150,6 +158,7 @@
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
             <div>
                 <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
+                <p class="text-blue-200">Directeur Général : Michael MENAGER</p>
                 <p class="text-blue-200">Directeur Projets : Rafiou OYEOSSI</p>
                 <p class="text-blue-200 mt-2">Abidjan, Côte d'Ivoire</p>
             </div>

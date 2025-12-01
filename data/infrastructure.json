@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "id": "infrastructure",
+    "pageTitle": "INFRASTRUCTURE & TRANSPORT",
+    "pageSubtitle": "Portuaire, Ferroviaire & Aéroportuaire",
+    "coverImage": "images/cover_infrastructure.png",
+    "description": "Support logistique pour les grands ouvrages : équipements de manutention portuaire, signalisation aéroportuaire et maintenance ferroviaire."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Manutention Portuaire (Grues & Portiques)",
+      "icon": "https://placehold.co/100x50/0ea5e9/ffffff?text=Port",
+      "expertiseText": "Pièces pour portiques STS, RTG et chariots cavaliers.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Composants"],
+      "items": [
+        {
+          "brand": "Konecranes",
+          "specialization": "Grues Portuaires & Lift Trucks",
+          "details": ["Câbles de levage", "Twistlocks (verrous)", "Joysticks", "Cartes électroniques", "Roues"]
+        },
+        {
+          "brand": "Kalmar",
+          "specialization": "Reachstackers & RTG",
+          "details": ["Pièces de spreader", "Vérins hydrauliques", "Filtres", "Transmission", "Pneus"]
+        },
+        {
+          "brand": "Liebherr",
+          "specialization": "Grues Mobiles Portuaires (LHM)",
+          "details": ["Câbles acier", "Poulies", "Pièces moteurs Diesel", "Électronique LICCON"]
+        },
+        {
+          "brand": "Conductix-Wampfler",
+          "specialization": "Alimentation Électrique",
+          "details": ["Enrouleurs de câble motorisés", "Câbles haute tension", "Rails conducteurs", "Collecteurs tournants"]
+        },
+        {
+          "brand": "Cavotec",
+          "specialization": "Systèmes de Connexion",
+          "details": ["Connecteurs de puissance", "Systèmes MoorMaster", "Câbles spéciaux"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Ferroviaire & Voie Ferrée",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Rail",
+      "expertiseText": "Maintenance du matériel roulant et des infrastructures de voie.",
+      "sectionImage": "images/section-2.svg",
+      "tableHeaders": ["Marque", "Pièces"],
+      "items": [
+        {
+          "brand": "Cummins Rail",
+          "specialization": "Moteurs de Locomotive",
+          "details": ["Kits de révision", "Injecteurs", "Turbos", "Filtres"]
+        },
+        {
+          "brand": "SKF",
+          "specialization": "Roulements Essieux",
+          "details": ["Boîtes d'essieux", "Roulements coniques (TBU)", "Graisse ferroviaire", "Capteurs de vitesse"]
+        },
+        {
+          "brand": "Voith",
+          "specialization": "Transmissions",
+          "details": ["Coupleurs", "Transmission hydraulique", "Cardans", "Systèmes de refroidissement"]
+        },
+        {
+          "brand": "Pandrol",
+          "specialization": "Fixation de Rails",
+          "details": ["Clips de fixation", "Selles", "Boulons tire-fond", "Outillage de pose"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Aéroportuaire & Balisage",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Aero",
+      "expertiseText": "Éclairage de piste et équipements de support au sol (GSE).",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "OCEM Airfield",
+          "specialization": "Balisage Lumineux",
+          "details": ["Feux de piste LED", "Régulateurs de courant (CCR)", "Transformateurs d'isolement", "Câbles primaires"]
+        },
+        {
+          "brand": "ADB Safegate",
+          "specialization": "Balisage & Guidage",
+          "details": ["Feux d'approche", "Panneaux de signalisation", "Systèmes de contrôle"]
+        },
+        {
+          "brand": "TLD",
+          "specialization": "Équipement de Piste (GSE)",
+          "details": ["Pièces pour tracteurs avion", "Loaders", "Groupes de démarrage (GPU)", "Air conditionné (ACU)"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Éclairage Industriel & Sécurité",
+      "icon": "https://placehold.co/100x50/f59e0b/ffffff?text=Light",
+      "expertiseText": "Solutions d'éclairage haute puissance pour terminaux et zones de fret.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "3f Filippi",
+          "specialization": "Éclairage Étanche & ATEX",
+          "details": ["Luminaires LED étanches", "Réglettes industrielles", "Drivers de rechange"]
+        },
+        {
+          "brand": "Philips (Signify)",
+          "specialization": "Projecteurs de mât",
+          "details": ["Projecteurs LED haute puissance", "Ballasts", "Lampes à décharge"]
+        },
+        {
+          "brand": "Dialight",
+          "specialization": "Éclairage de Signalisation",
+          "details": ["Balises d'obstacle (Obstruciton lights)", "Voyants industriels", "Éclairage de zone"]
+        }
+      ]
+    }
+  ]
+}

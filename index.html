@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MULTIPARTS Côte d'Ivoire : Votre partenaire stratégique pour l'approvisionnement minier, industriel et BTP en Afrique de l'Ouest.">
-    <title>MULTIPARTS - Solutions Industrielles & Minières</title>
+    
+    <title>MULTIPARTS | Fournisseur Équipements Miniers, BTP & Industriels - Côte d'Ivoire</title>
+    <meta name="description" content="Partenaire stratégique en sourcing de pièces détachées et machines complètes pour Mines, Pétrole & Gaz, Chimie, Énergie, Agro-alimentaire, Cimenterie et BTP en Afrique de l'Ouest.">
+    
+    <meta name="keywords" content="Multiparts, Sourcing industriel, Pièces détachées, Machines neuves, Mines, Carrières, Pétrole et Gaz, Industrie Chimique, Pétrochimie, Énergie, Centrales électriques, Agro-alimentaire, Cimenterie, Infrastructure, Transport, BTP, Construction, Caterpillar, Komatsu, Abidjan, Côte d'Ivoire, Afrique de l'Ouest">
+    <meta name="author" content="MULTIPARTS">
+    
+    <meta property="og:title" content="MULTIPARTS - Solutions Industrielles & Minières">
+    <meta property="og:description" content="Catalogue complet de +150 marques partenaires. Pièces critiques et équipements pour Mines, BTP et Industries.">
+    <meta property="og:image" content="https://catalogue.multipartsci.com/images/cover_mines.png">
+    <meta property="og:url" content="https://catalogue.multipartsci.com/">
+    <meta property="og:type" content="website">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://catalogue.multipartsci.com/">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <style>
-        /* Version_46_GPS_Route_Fix */
+        /* Version_47_Final_SEO_Optimized */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
             background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
@@ -16,8 +31,6 @@
             background-position: center;
         }
         .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
-        
-        /* Animation discrète pour le bandeau cookie */
         #cookie-banner { transition: transform 0.5s ease-in-out; }
         #cookie-banner.hidden-banner { transform: translateY(100%); }
     </style>
@@ -117,7 +130,7 @@
             </div>
             
             <div class="text-center mt-8">
-                <a href="catalogue.html" class="text-blue-600 font-semibold hover:underline">Voir tous les secteurs →</a>
+                <a href="catalogue.html" class="text-blue-600 font-semibold hover:underline">Voir tous les secteurs &rarr;</a>
             </div>
         </div>
     </section>
@@ -157,7 +170,7 @@
         </div>
     </section>
 
-    <footer class="bg-blue-900 text-white py-8 mt-auto">
+    <footer class="bg-blue-900 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
             <div>
                 <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
@@ -205,61 +218,79 @@
     </div>
 
     <script>
-        // GESTIONNAIRE RGPD "GATEKEEPER"
+        // 1. DONNÉES STRUCTURÉES (JSON-LD)
+        const structuredData = {
+          "@context": "https://schema.org",
+          "@type": "IndustrialStore",
+          "name": "MULTIPARTS",
+          "image": "https://catalogue.multipartsci.com/logo-multiparts.png",
+          "description": "Fournisseur de solutions et d'équipements pour l'industrie minière, BTP et pétrolière en Afrique de l'Ouest.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4145 Avenue Paul Akoto Yao",
+            "postOfficeBoxNumber": "18 BP 264",
+            "addressLocality": "Abidjan 18",
+            "addressRegion": "Lagunes",
+            "addressCountry": "CI"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 5.3484, 
+            "longitude": -4.0156 
+          },
+          "url": "https://catalogue.multipartsci.com",
+          "telephone": "+2252721250146",
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:30", "closes": "12:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "13:30", "closes": "17:00" }
+          ]
+        };
+        
+        const scriptJSON = document.createElement('script');
+        scriptJSON.type = 'application/ld+json';
+        scriptJSON.text = JSON.stringify(structuredData);
+        document.head.appendChild(scriptJSON);
+
+        // 2. GESTIONNAIRE RGPD & GOOGLE ANALYTICS
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
             const btnAccept = document.getElementById('btn-accept-cookies');
             const btnRefuse = document.getElementById('btn-refuse-cookies');
             const btnSettings = document.getElementById('open-cookie-settings');
 
-            // Fonction pour charger les scripts tiers (Google Analytics)
             function loadThirdPartyScripts() {
                 console.log("Consentement accordé : Chargement de Google Analytics.");
-                
-                // 1. Création de la balise script Google
                 const script = document.createElement('script');
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JEX4L6S055'; // ID MISE À JOUR
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JEX4L6S055';
                 script.async = true;
                 document.head.appendChild(script);
 
-                // 2. Activation du suivi
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-JEX4L6S055'); // ID MISE À JOUR
+                gtag('config', 'G-JEX4L6S055');
             }
 
-            // Vérification au chargement de la page
             const userConsent = localStorage.getItem('cookieConsent');
 
             if (!userConsent) {
-                // Pas de choix fait : Afficher le bandeau
-                setTimeout(() => {
-                    banner.classList.remove('hidden');
-                }, 1500); // Petit délai pour ne pas être agressif
+                setTimeout(() => { banner.classList.remove('hidden'); }, 1500);
             } else if (userConsent === 'accepted') {
-                // Déjà accepté : Charger les scripts
                 loadThirdPartyScripts();
             }
-            // Si 'refused', on ne fait rien (scripts bloqués par défaut)
 
-            // --- ACTIONS ---
-
-            // 1. ACCEPTER
             btnAccept.addEventListener('click', () => {
                 localStorage.setItem('cookieConsent', 'accepted');
                 banner.classList.add('hidden');
-                loadThirdPartyScripts(); // Lancer les scripts immédiatement
+                loadThirdPartyScripts();
             });
 
-            // 2. REFUSER
             btnRefuse.addEventListener('click', () => {
                 localStorage.setItem('cookieConsent', 'refused');
                 banner.classList.add('hidden');
                 console.log("Consentement refusé : Aucun script tiers ne sera chargé.");
             });
 
-            // 3. GESTION (Réouvrir le bandeau)
             if(btnSettings) {
                 btnSettings.addEventListener('click', (e) => {
                     e.preventDefault();

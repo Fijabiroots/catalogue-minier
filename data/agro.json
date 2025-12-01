@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "id": "agro",
+    "pageTitle": "SOLUTIONS AGRO-ALIMENTAIRE",
+    "pageSubtitle": "Hygiène, Process & Conditionnement",
+    "coverImage": "images/cover_agro.png",
+    "description": "Fournisseur d'équipements pour l'industrie agro-alimentaire : pompes sanitaires, vannes, convoyage, et solutions d'emballage et marquage."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Process Liquide & Sanitaire",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Process",
+      "expertiseText": "Équipements de process respectant les normes d'hygiène les plus strictes (EHEDG, 3A).",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Alfa Laval",
+          "specialization": "Échangeurs & Pompes",
+          "details": ["Joints d'échangeurs plaques", "Pompes centrifuges LKH", "Vannes papillon sanitaires", "Têtes de lavage"]
+        },
+        {
+          "brand": "GEA",
+          "specialization": "Technologie de Process",
+          "details": ["Vannes aseptiques", "Pompes Hilge", "Homogénéisateurs", "Séparateurs"]
+        },
+        {
+          "brand": "SPX Flow (APV/Waukesha)",
+          "specialization": "Composants Process",
+          "details": ["Pompes à lobes", "Vannes mixproof", "Joints et kits de maintenance", "Échangeurs"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Pompes Alimentaires & Transfert",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Pompes",
+      "expertiseText": "Transfert de produits visqueux, fragiles ou liquides avec des solutions de pompage adaptées.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Type"],
+      "items": [
+        {
+          "brand": "Netzsch",
+          "specialization": "Pompes à Cavité Progressive",
+          "details": ["Pompes pour produits visqueux", "Stators alimentaires", "Rotors inox", "Joints aseptiques"]
+        },
+        {
+          "brand": "Grundfos",
+          "specialization": "Pompes Utilités & Process",
+          "details": ["Pompes hygiéniques", "Surpresseurs", "Pompes de dosage", "Kits de réparation"]
+        },
+        {
+          "brand": "Wilden",
+          "specialization": "Pompes Pneumatiques",
+          "details": ["Pompes Saniflo", "Membranes alimentaires", "Distributeurs d'air", "Clapets"]
+        },
+        {
+          "brand": "PCM",
+          "specialization": "Pompes Volumétriques",
+          "details": ["Pompes Moineau", "Pompes Dosys", "Pièces de rechange"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Convoyage & Transmission",
+      "icon": "https://placehold.co/100x50/f59e0b/ffffff?text=Convoyage",
+      "expertiseText": "Bandes, chaînes et composants pour le transport fiable et propre des produits.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Composants"],
+      "items": [
+        {
+          "brand": "Habasit",
+          "specialization": "Bandes Transporteuses",
+          "details": ["Bandes modulaires plastiques", "Bandes tissu alimentaires", "Courroies rondes", "Jonctions"]
+        },
+        {
+          "brand": "Ammeraal Beltech",
+          "specialization": "Bandes de Process",
+          "details": ["Bandes PU/PVC", "Bandes modulaires", "Courroies synchrones", "Tasseaux"]
+        },
+        {
+          "brand": "Rexnord",
+          "specialization": "Chaînes à Palettes",
+          "details": ["Chaînes Inox/Plastique", "Pignons", "Guides de glissement", "Composants de convoyeur"]
+        },
+        {
+          "brand": "System Plast",
+          "specialization": "Composants Convoyeur",
+          "details": ["Chaînes", "Courbes", "Pieds de machine", "Guides latéraux"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Emballage, Marquage & Fin de Ligne",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Packing",
+      "expertiseText": "Consommables pour l'identification des produits et le conditionnement.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Domino",
+          "specialization": "Marquage & Codage",
+          "details": ["Encres", "Solvants", "Filtres pour imprimantes jet d'encre", "Têtes d'impression"]
+        },
+        {
+          "brand": "Videojet",
+          "specialization": "Imprimantes Industrielles",
+          "details": ["Encres CIJ", "Rubans transfert thermique", "Pièces de maintenance", "Filtres"]
+        },
+        {
+          "brand": "Markem-Imaje",
+          "specialization": "Traçabilité",
+          "details": ["Consommables jet d'encre", "Rubans thermiques", "Kits de nettoyage", "Pièces détachées"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Automatisation & Pneumatique",
+      "icon": "https://placehold.co/100x50/93c5fd/ffffff?text=Auto",
+      "expertiseText": "Composants pneumatiques et d'automatisation résistants aux lavages fréquents.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "Festo",
+          "specialization": "Pneumatique",
+          "details": ["Vérins inox", "Distributeurs Clean Design", "Tuyaux air alimentaires", "Raccords"]
+        },
+        {
+          "brand": "SMC",
+          "specialization": "Pneumatique",
+          "details": ["Actionneurs", "FRL", "Raccords inox", "Vannes de process", "Pressostats"]
+        },
+        {
+          "brand": "Sick",
+          "specialization": "Capteurs",
+          "details": ["Cellules photoélectriques (IP69K)", "Codeurs", "Barrières de sécurité"]
+        },
+        {
+          "brand": "IFM Electronic",
+          "specialization": "Capteurs Process",
+          "details": ["Capteurs de pression/température", "Détecteurs inductifs", "Câbles M12 alimentaires"]
+        }
+      ]
+    }
+  ]
+}

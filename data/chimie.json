@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "id": "chimie",
+    "pageTitle": "SOLUTIONS CHIMIE & PÉTROCHIMIE",
+    "pageSubtitle": "Process, Corrosion & Sécurité",
+    "coverImage": "images/cover_chimie.png",
+    "description": "Partenaire des industries chimiques : équipements résistants à la corrosion, pompes de transfert, robinetterie revêtue et instrumentation de sécurité."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Pompes Chimiques & Transfert",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Pompes",
+      "expertiseText": "Pompes conçues pour les fluides agressifs, corrosifs ou dangereux. Technologies étanches et magnétiques.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Technologie"],
+      "items": [
+        {
+          "brand": "Finish Thompson",
+          "specialization": "Pompes Mag-Drive (Magnétiques)",
+          "details": ["Pompes centrifuges PVDF", "Pompes vide-fût", "Kits de maintenance", "Impellers"]
+        },
+        {
+          "brand": "Iwaki",
+          "specialization": "Pompes de Procédé",
+          "details": ["Pompes à entraînement magnétique", "Pompes doseuses électromagnétiques", "Pièces humides"]
+        },
+        {
+          "brand": "Netzsch",
+          "specialization": "Pompes à Cavité Progressive",
+          "details": ["Pompes NEMO", "Stators élastomères", "Rotors inox/titane", "Garnitures mécaniques"]
+        },
+        {
+          "brand": "Debem",
+          "specialization": "Pompes Pneumatiques à Membranes",
+          "details": ["Pompes AODD Cubic/Boxer", "Membranes PTFE", "Boules et sièges", "Kits air"]
+        },
+        {
+          "brand": "Lutz",
+          "specialization": "Pompes Vide-Fûts",
+          "details": ["Moteurs de pompe", "Tubes plongeurs", "Accessoires de pistolet", "Débitmètres"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Robinetterie & Tuyauterie (Revêtue/Plastique)",
+      "icon": "https://placehold.co/100x50/ef4444/ffffff?text=Vannes",
+      "expertiseText": "Vannes et raccords résistants à la corrosion extrême (PFA, PTFE, PVDF).",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Type"],
+      "items": [
+        {
+          "brand": "Richter",
+          "specialization": "Vannes Revêtues PFA",
+          "details": ["Vannes à boisseau sphérique", "Vannes de régulation", "Clapets anti-retour", "Viseurs"]
+        },
+        {
+          "brand": "Georg Fischer (GF)",
+          "specialization": "Systèmes Plastiques",
+          "details": ["Vannes papillon PVC/CPVC", "Vannes à membrane", "Raccords et collages", "Actionneurs"]
+        },
+        {
+          "brand": "KDV",
+          "specialization": "Vannes à Membrane",
+          "details": ["Membranes de rechange", "Corps de vanne revêtus", "Volants manuels"]
+        },
+        {
+          "brand": "Samson",
+          "specialization": "Vannes de Régulation",
+          "details": ["Positionneurs", "Vannes modulaires", "Pièces de rechange (Trim)", "Membranes"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Instrumentation & Analyse",
+      "icon": "https://placehold.co/100x50/a855f7/ffffff?text=Analyse",
+      "expertiseText": "Mesure précise des paramètres critiques : pH, conductivité, débit et niveau en milieu hostile.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Appareils"],
+      "items": [
+        {
+          "brand": "Endress+Hauser",
+          "specialization": "Instrumentation Process",
+          "details": ["Débitmètres électromagnétiques (Promag)", "Sondes pH Memosens", "Transmetteurs de niveau", "Solutions tampon"]
+        },
+        {
+          "brand": "Vega",
+          "specialization": "Mesure de Niveau",
+          "details": ["Radar sans contact (Vegapuls)", "Détecteurs de niveau à vibration (Vegavib)", "Capteurs de pression"]
+        },
+        {
+          "brand": "Wika",
+          "specialization": "Pression & Température",
+          "details": ["Manomètres à membrane (Chimie)", "Doigts de gant Tantale/Hastelloy", "Transmetteurs"]
+        },
+        {
+          "brand": "Mettler Toledo",
+          "specialization": "Analyse en Ligne",
+          "details": ["Sondes pH/ORP", "Transmetteurs", "Analyseurs de gaz", "Électrodes de laboratoire"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Sécurité, EPI & Détection Gaz",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Securite",
+      "expertiseText": "Protection des opérateurs contre les risques chimiques et atmosphères explosives.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Ansell",
+          "specialization": "Protection des Mains",
+          "details": ["Gants résistance chimique (Sol-Vex)", "Gants anti-coupure", "Gants jetables"]
+        },
+        {
+          "brand": "Dräger",
+          "specialization": "Détection Gaz & Respiratoire",
+          "details": ["Détecteurs portables (X-am)", "Masques panoramiques", "Filtres cartouches", "ARI (Appareils Respiratoires)"]
+        },
+        {
+          "brand": "MSA Safety",
+          "specialization": "Sécurité Industrielle",
+          "details": ["Casques V-Gard", "Détecteurs de gaz fixes (Altair)", "Lignes de vie", "Harnais"]
+        },
+        {
+          "brand": "Honeywell",
+          "specialization": "EPI & Détection",
+          "details": ["Combinaisons chimiques", "Lunettes-masques", "Bottes de sécurité", "Détecteurs BW"]
+        },
+        {
+          "brand": "Dupont",
+          "specialization": "Vêtements de Protection",
+          "details": ["Combinaisons Tyvek", "Combinaisons Tychem (Risque chimique)", "Accessoires"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Maintenance & Étanchéité",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Maint",
+      "expertiseText": "Consommables pour l'entretien courant et l'étanchéité des installations.",
+      "sectionImage": "images/section-6.jpg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "Klinger",
+          "specialization": "Joints Industriels",
+          "details": ["Feuilles de joint (Klingersil)", "Joints spiralés", "Joints métalliques"]
+        },
+        {
+          "brand": "Loctite",
+          "specialization": "Adhésifs & Étanchéité",
+          "details": ["Frein-filet", "Pâte à joint", "Colles structurales", "Lubrifiants anti-grippant"]
+        },
+        {
+          "brand": "Chesterton",
+          "specialization": "Étanchéité Dynamique",
+          "details": ["Tresses d'étanchéité", "Garnitures mécaniques", "Joints hydrauliques", "Lubrifiants industriels"]
+        }
+      ]
+    }
+  ]
+}

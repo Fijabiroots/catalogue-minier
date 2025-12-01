@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "id": "cimenterie",
+    "pageTitle": "SOLUTIONS CIMENTERIE & MATÉRIAUX",
+    "pageSubtitle": "Production, Broyage & Cuisson",
+    "coverImage": "images/cover_cimenterie.png",
+    "description": "Partenaire des cimenteries : Pièces pour broyeurs verticaux, fours rotatifs, refroidisseurs et convoyage de vrac lourd."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Concassage & Préparation (Carrière Ciment)",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Cru",
+      "expertiseText": "Solutions pour le concassage du calcaire et l'alimentation du cru.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Pièces"],
+      "items": [
+        {
+          "brand": "Metso",
+          "specialization": "Concasseurs à marteaux/impact",
+          "details": ["Marteaux", "Barres de batteur", "Blindages", "Rotors"]
+        },
+        {
+          "brand": "Hazemag",
+          "specialization": "Concasseurs à impact",
+          "details": ["Batsoirs", "Plaques de choc", "Blindages latéraux", "Rotors"]
+        },
+        {
+          "brand": "ThyssenKrupp",
+          "specialization": "Concasseurs giratoires/mâchoires",
+          "details": ["Mâchoires", "Mantles", "Bagues en bronze", "Systèmes hydrauliques"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Broyage Cru & Ciment (Ball Mill / VRM)",
+      "icon": "https://placehold.co/100x50/475569/ffffff?text=Broyage",
+      "expertiseText": "Pièces d'usure haute performance pour broyeurs à boulets et verticaux (VRM).",
+      "sectionImage": "images/section-2.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Magotteaux",
+          "specialization": "Intérieurs de Broyeurs",
+          "details": ["Billes de broyage haute teneur chrome", "Plaques de blindage", "Cloisons intermédiaires"]
+        },
+        {
+          "brand": "Loesche",
+          "specialization": "Broyeurs Verticaux (VRM)",
+          "details": ["Bandages de galets", "Segments de table", "Systèmes hydrauliques", "Joints d'étanchéité"]
+        },
+        {
+          "brand": "Gebr. Pfeiffer",
+          "specialization": "Broyeurs Verticaux",
+          "details": ["Pièces d'usure MPS", "Galets de broyage", "Revêtements de piste"]
+        },
+        {
+          "brand": "FLSmidth",
+          "specialization": "Séparateurs & Broyeurs",
+          "details": ["Aubes de sélecteur", "Rotors de cage", "Roulements de broyeur"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Cuisson : Four Rotatif & Refroidisseur",
+      "icon": "https://placehold.co/100x50/ef4444/ffffff?text=Four",
+      "expertiseText": "Composants critiques pour la zone chaude : brûleurs, viroles et transport du clinker.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Fives Pillard",
+          "specialization": "Brûleurs Industriels",
+          "details": ["Pièces de brûleur", "Lances", "Systèmes d'allumage", "Détecteurs de flamme"]
+        },
+        {
+          "brand": "Refratechnik",
+          "specialization": "Réfractaires (Sourcing)",
+          "details": ["Briques réfractaires", "Bétons haute température", "Ancrages inox"]
+        },
+        {
+          "brand": "Rexnord",
+          "specialization": "Transport Clinker",
+          "details": ["Chaînes d'élévateur à godets", "Godets", "Pignons", "Chaînes Pan Conveyor"]
+        },
+        {
+          "brand": "Aumund",
+          "specialization": "Manutention Vrac",
+          "details": ["Chaînes pour transporteurs à plaques", "Rouleaux", "Axes et douilles"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Transmission de Puissance & Entraînements",
+      "icon": "https://placehold.co/100x50/eab308/ffffff?text=Power",
+      "expertiseText": "Réducteurs et moteurs pour les couples élevés des fours et broyeurs.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Composants"],
+      "items": [
+        {
+          "brand": "Flender (Siemens)",
+          "specialization": "Réducteurs Lourds",
+          "details": ["Engrenages", "Roulements", "Joints d'arbre", "Accouplements"]
+        },
+        {
+          "brand": "SEW Eurodrive",
+          "specialization": "Motoréducteurs",
+          "details": ["Réducteurs planétaires", "Moteurs frein", "Variateurs", "Huile synthétique"]
+        },
+        {
+          "brand": "Falk (Rexnord)",
+          "specialization": "Accouplements & Réducteurs",
+          "details": ["Accouplements Steelflex", "Accouplements à engrenage", "Pièces de rechange"]
+        },
+        {
+          "brand": "SKF",
+          "specialization": "Roulements & Paliers",
+          "details": ["Roulements à rotule sur rouleaux", "Paliers complets", "Graisse haute température", "Systèmes de lubrification"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Dépoussiérage & Filtration",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Filtre",
+      "expertiseText": "Solutions pour le respect des normes environnementales et la protection des équipements.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Donaldson",
+          "specialization": "Dépoussiéreurs",
+          "details": ["Cartouches filtrantes", "Manches filtrantes", "Poches", "Vannes de décolmatage"]
+        },
+        {
+          "brand": "Camfil",
+          "specialization": "Filtration d'air",
+          "details": ["Filtres haute température", "Systèmes de dépoussiérage", "Cartouches"]
+        },
+        {
+          "brand": "SMC",
+          "specialization": "Vannes à Impulsion",
+          "details": ["Vannes de décolmatage", "Membranes", "Pilotes", "Séquenceurs"]
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "6. Emballage & Expédition",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Packing",
+      "expertiseText": "Maintenance des lignes d'ensachage et de palettisation.",
+      "sectionImage": "images/section-6.jpg",
+      "tableHeaders": ["Marque", "Pièces"],
+      "items": [
+        {
+          "brand": "Haver & Boecker",
+          "specialization": "Ensacheuses Rotatives",
+          "details": ["Becs de remplissage", "Vérins pneumatiques", "Joints gonflables", "Modules de pesage"]
+        },
+        {
+          "brand": "Beumer",
+          "specialization": "Palettisation & Houssage",
+          "details": ["Pièces de tête de houssage", "Chaînes de transport", "Capteurs"]
+        }
+      ]
+    }
+  ]
+}

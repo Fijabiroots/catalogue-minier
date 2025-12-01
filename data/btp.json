@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "id": "btp",
+    "pageTitle": "SOLUTIONS BTP & CONSTRUCTION",
+    "pageSubtitle": "Matériel de Chantier & Génie Civil",
+    "coverImage": "images/cover_btp.png",
+    "description": "Fournisseur complet pour les chantiers de construction et le génie civil en Afrique de l'Ouest. Engins, outillage, échafaudages et EPI."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Engins de Terrassement & Route",
+      "icon": "https://placehold.co/100x50/eab308/ffffff?text=Terrassement",
+      "expertiseText": "Gamme complète de pièces pour les engins de terrassement, compactage et construction routière.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Spécialisation"],
+      "items": [
+        {
+          "brand": "Caterpillar",
+          "specialization": "Engins lourds",
+          "details": ["Pièces moteur", "Hydraulique", "Trains de roulement", "Dents de godet"]
+        },
+        {
+          "brand": "Komatsu",
+          "specialization": "Pelles & Bouteurs",
+          "details": ["Filtres", "Kits joints", "Pièces d'usure", "Pièces de châssis"]
+        },
+        {
+          "brand": "Volvo Construction",
+          "specialization": "Chargeuses & Dumpers",
+          "details": ["Pièces articulées", "Transmission", "Filtration", "Freinage"]
+        },
+        {
+          "brand": "JCB",
+          "specialization": "Chargeuses-pelleteuses",
+          "details": ["Pièces Backhoe", "Télescopiques", "Vérins", "Godets"]
+        },
+        {
+          "brand": "Bobcat",
+          "specialization": "Mini-chargeurs",
+          "details": ["Chenilles caoutchouc", "Pneus", "Pièces moteur", "Accessoires"]
+        },
+        {
+          "brand": "Bomag",
+          "specialization": "Compactage",
+          "details": ["Racleurs", "Buses d'arrosage", "Silentblocs", "Pièces vibrant"]
+        },
+        {
+          "brand": "Dynapac",
+          "specialization": "Finisseurs & Compacteurs",
+          "details": ["Chaînes de finisseur", "Vis de répartition", "Pièces d'usure", "Électronique"]
+        },
+        {
+          "brand": "Wacker Neuson",
+          "specialization": "Petit équipement",
+          "details": ["Pilonneuses", "Plaques vibrantes", "Aiguilles vibrantes", "Filtres"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Levage & Manutention",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Levage",
+      "expertiseText": "Solutions pour le levage sur chantier, la manutention de charges lourdes et le travail en hauteur.",
+      "sectionImage": "images/section-2.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Manitou",
+          "specialization": "Chariots télescopiques",
+          "details": ["Joysticks", "Cartes électroniques", "Vérins", "Fourches"]
+        },
+        {
+          "brand": "Liebherr",
+          "specialization": "Grues",
+          "details": ["Câbles de levage", "Poulies", "Électronique de sécurité", "Moteurs"]
+        },
+        {
+          "brand": "Tadano",
+          "specialization": "Grues mobiles",
+          "details": ["Pièces hydrauliques", "Pardins", "Capteurs de charge", "Filtres"]
+        },
+        {
+          "brand": "Abus",
+          "specialization": "Ponts roulants & Palans",
+          "details": ["Chaînes", "Boîtes à boutons", "Freins", "Galets"]
+        },
+        {
+          "brand": "Genie",
+          "specialization": "Nacelles élévatrices",
+          "details": ["Batteries", "Chargeurs", "Joysticks", "Roues non marquantes"]
+        },
+        {
+          "brand": "Boscaro",
+          "specialization": "Accessoires de grue",
+          "details": ["Bennes à béton", "Fourches lève-palettes", "Bacs à gravats"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Outillage Électroportatif & Consommables",
+      "icon": "https://placehold.co/100x50/f87171/ffffff?text=Outils",
+      "expertiseText": "L'outillage professionnel pour vos équipes : performance, autonomie et robustesse sur le chantier.",
+      "sectionImage": "images/section-6.jpg",
+      "tableHeaders": ["Marque", "Gamme"],
+      "items": [
+        {
+          "brand": "Hilti",
+          "specialization": "Perforation & Fixation",
+          "details": ["Forets SDS", "Chevilles chimiques", "Disques diamant", "Batteries", "Burins"]
+        },
+        {
+          "brand": "Makita",
+          "specialization": "Outillage sans fil",
+          "details": ["Meuleuses", "Visseuses", "Batteries LXT", "Lames de scie"]
+        },
+        {
+          "brand": "DeWalt",
+          "specialization": "Outillage Heavy Duty",
+          "details": ["Scies radiales", "Perceuses", "Batteries FlexVolt", "Accessoires"]
+        },
+        {
+          "brand": "Milwaukee",
+          "specialization": "Outillage M18/M12",
+          "details": ["Clés à choc", "Lampes de chantier", "Batteries RedLithium", "Forets"]
+        },
+        {
+          "brand": "Husqvarna",
+          "specialization": "Découpe béton",
+          "details": ["Disques diamant", "Découpeuses thermiques", "Carotteuses", "Câbles diamantés"]
+        },
+        {
+          "brand": "Bosch Professional",
+          "specialization": "Outillage bleu",
+          "details": ["Lasers lignes", "Détecteurs", "Meuleuses", "Forets béton"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Énergie, Air Comprimé & Soudage",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Energie",
+      "expertiseText": "Assurez l'autonomie de vos chantiers avec nos solutions de génération d'énergie et d'air comprimé.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "Atlas Copco",
+          "specialization": "Compresseurs mobiles",
+          "details": ["Filtres séparateurs", "Huile compresseur", "Marteaux piqueurs", "Burins"]
+        },
+        {
+          "brand": "Chicago Pneumatic",
+          "specialization": "Outils pneumatiques",
+          "details": ["Brise-béton", "Compresseurs", "Kits de maintenance", "Accessoires air"]
+        },
+        {
+          "brand": "Cummins",
+          "specialization": "Groupes électrogènes",
+          "details": ["Filtres", "Alternateurs", "Régulateurs AVR", "Injecteurs"]
+        },
+        {
+          "brand": "Perkins",
+          "specialization": "Moteurs industriels",
+          "details": ["Pièces moteur", "Filtres", "Pompes à eau", "Démarreurs"]
+        },
+        {
+          "brand": "Lincoln Electric",
+          "specialization": "Soudage chantier",
+          "details": ["Postes autonomes", "Électrodes rutiles/basiques", "Fils fourrés", "Torches"]
+        },
+        {
+          "brand": "Miller",
+          "specialization": "Soudage arc",
+          "details": ["Génératrices de soudage", "Postes TIG/MIG", "Masques", "Pièces détachées"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Échafaudage, Accès & Sécurité (EPI)",
+      "icon": "https://placehold.co/100x50/a855f7/ffffff?text=Securite",
+      "expertiseText": "Sécurisez vos travaux en hauteur et protégez vos équipes avec des équipements conformes aux normes internationales.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Layher",
+          "specialization": "Échafaudages",
+          "details": ["Colliers", "Planchers", "Garde-corps", "Vérins de pied", "Échelles"]
+        },
+        {
+          "brand": "Tubesca-Comabi",
+          "specialization": "Accès hauteur",
+          "details": ["Échelles", "Escabeaux", "PIRL", "Roulants aluminium"]
+        },
+        {
+          "brand": "3M",
+          "specialization": "EPI & Sécurité",
+          "details": ["Masques respiratoires", "Casques", "Protections auditives", "Harnais"]
+        },
+        {
+          "brand": "Petzl",
+          "specialization": "Travaux sur corde",
+          "details": ["Harnais", "Casques Vertex", "Descendeurs", "Mousquetons", "Lampes frontales"]
+        },
+        {
+          "brand": "Honeywell",
+          "specialization": "Protection individuelle",
+          "details": ["Gants", "Chaussures de sécurité", "Lignes de vie", "Détecteurs gaz"]
+        },
+        {
+          "brand": "Delta Plus",
+          "specialization": "EPI Chantier",
+          "details": ["Gilets haute visibilité", "Casques", "Gants manutention", "Chaussures"]
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "6. Topographie & Mesure",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Mesure",
+      "expertiseText": "Instruments de précision pour l'implantation, le nivellement et le contrôle dimensionnel sur chantier.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Instruments"],
+      "items": [
+        {
+          "brand": "Laserliner",
+          "specialization": "Lasers & Niveaux",
+          "details": ["Lasers rotatifs", "Télémètres", "Caméras d'inspection", "Trépieds"]
+        },
+        {
+          "brand": "Fluke",
+          "specialization": "Mesure électrique",
+          "details": ["Multimètres", "Pinces ampèremétriques", "Testeurs de terre", "Caméras thermiques"]
+        },
+        {
+          "brand": "Stanley",
+          "specialization": "Mesure manuelle",
+          "details": ["Mètres rubans", "Niveaux à bulle", "Mesures longues", "Traçage"]
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "7. Services BTP",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Services",
+      "expertiseText": "Un accompagnement logistique et technique dédié aux exigences des chantiers de construction.",
+      "sectionImage": "images/section-7.svg",
+      "tableHeaders": ["Service", "Livrables"],
+      "items": [
+        {
+          "brand": "Logistique Chantier",
+          "specialization": "Livraison sur site",
+          "details": ["Consolidation de commandes", "Livraison DDP sur chantier", "Gestion des urgences", "Emballage maritime"]
+        },
+        {
+          "brand": "Sourcing Spécifique",
+          "specialization": "Recherche de moutons à 5 pattes",
+          "details": ["Pièces obsolètes", "Équivalences techniques", "Marques rares", "Négociation tarifaire"]
+        }
+      ]
+    }
+  ]
+}

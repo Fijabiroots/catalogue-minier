@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "id": "carrieres",
+    "pageTitle": "CARRIÈRES & AGRÉGATS",
+    "pageSubtitle": "Production de Granulats",
+    "coverImage": "images/cover_carrieres.png",
+    "description": "Solutions complètes pour l'exploitation de carrières : Forage, Concassage mobile, Criblage et Convoyage."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Forage & Abattage",
+      "icon": "https://placehold.co/100x50/ef4444/ffffff?text=Forage",
+      "expertiseText": "Outils de forage fond de trou et hors du trou pour la production de granulats.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Consommables"],
+      "items": [
+        {
+          "brand": "Sandvik",
+          "specialization": "Forage Top Hammer",
+          "details": ["Taillants (Bits)", "Tiges MF", "Manchons", "Shanks adapters"]
+        },
+        {
+          "brand": "Epiroc",
+          "specialization": "Forage DTH",
+          "details": ["Marteaux fond de trou", "Taillants DTH", "Tubes de forage", "Amortisseurs"]
+        },
+        {
+          "brand": "Atlas Copco",
+          "specialization": "Compresseurs de chantier",
+          "details": ["Filtres", "Huile compresseur", "Séparateurs air/huile", "Flexibles"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Concassage Mobile & Fixe",
+      "icon": "https://placehold.co/100x50/eab308/ffffff?text=Concasseur",
+      "expertiseText": "Pièces d'usure pour concasseurs à mâchoires, cônes et percuteurs.",
+      "sectionImage": "images/section-2.svg",
+      "tableHeaders": ["Marque", "Pièces d'Usure"],
+      "items": [
+        {
+          "brand": "Metso",
+          "specialization": "Lokotrack / Nordberg",
+          "details": ["Mâchoires (Jaw plates)", "Cônes (Mantle & Bowl)", "Battoirs", "Plaques d'impact"]
+        },
+        {
+          "brand": "Sandvik",
+          "specialization": "Concasseurs Mobiles",
+          "details": ["Manganèse de broyage", "Filtres moteur", "Courroies de convoyeur", "Rouleaux"]
+        },
+        {
+          "brand": "Terex (Finlay / Powerscreen)",
+          "specialization": "Installations Mobiles",
+          "details": ["Pièces d'usure", "Tamis", "Moteurs hydrauliques", "Pompes"]
+        },
+        {
+          "brand": "Kleemann",
+          "specialization": "Concasseurs",
+          "details": ["Barres de batteur", "Plaques de blindage", "Pièces électriques"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Criblage & Lavage",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Crible",
+      "expertiseText": "Toiles et grilles pour la classification précise des matériaux.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Média de Criblage"],
+      "items": [
+        {
+          "brand": "Sandvik",
+          "specialization": "Cribles",
+          "details": ["Toiles métalliques", "Toiles caoutchouc", "Systèmes de tension", "Ressorts de crible"]
+        },
+        {
+          "brand": "Multotec",
+          "specialization": "Panneaux Modulaires",
+          "details": ["Dalles polyuréthane", "Systèmes de fixation", "Buses de lavage"]
+        },
+        {
+          "brand": "Trelleborg",
+          "specialization": "Protection Anti-Colmatage",
+          "details": ["Toiles souples", "Systèmes de décolmatage", "Caoutchouc de protection"]
+        },
+        {
+          "brand": "Powerscreen",
+          "specialization": "Cribles Mobiles",
+          "details": ["Grilles à doigts", "Punch plates", "Pièces moteur"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Convoyage de Vrac",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Convoyeur",
+      "expertiseText": "Solutions pour le transport des agrégats : bandes, rouleaux et jonctions.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Composants"],
+      "items": [
+        {
+          "brand": "Rema Tip Top",
+          "specialization": "Bandes & Maintenance",
+          "details": ["Bandes transporteuses", "Colles et rustines", "Garnissage tambour", "Racleurs"]
+        },
+        {
+          "brand": "Flexco",
+          "specialization": "Agrafes & Jonctions",
+          "details": ["Agrafes mécaniques", "Outils de pose", "Racleurs de bande", "Systèmes de centrage"]
+        },
+        {
+          "brand": "Martin Engineering",
+          "specialization": "Nettoyage de Bande",
+          "details": ["Lames de racleur", "Vibrateurs industriels", "Canons à air"]
+        },
+        {
+          "brand": "Sandvik",
+          "specialization": "Rouleaux",
+          "details": ["Rouleaux porteurs", "Rouleaux amortisseurs", "Stations supports", "Tambours"]
+        }
+      ]
+    }
+  ]
+}

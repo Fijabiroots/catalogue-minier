@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "id": "energie",
+    "pageTitle": "SOLUTIONS ÉNERGIE & ELECTRICITÉ",
+    "pageSubtitle": "Production, Transport & Distribution",
+    "coverImage": "images/cover_energie.png",
+    "description": "Fournisseur complet pour la chaîne de valeur énergétique : Centrales électriques, Postes HTA/BT, Lignes de transmission et solutions solaires industrielles."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Production d'Énergie (Thermique & Hybride)",
+      "icon": "https://placehold.co/100x50/eab308/ffffff?text=Generation",
+      "expertiseText": "Pièces de rechange pour groupes électrogènes industriels et turbines. Maintenance préventive et corrective.",
+      "sectionImage": "images/section-1.svg",
+      "tableHeaders": ["Marque", "Composants"],
+      "items": [
+        {
+          "brand": "Caterpillar Energy",
+          "specialization": "Groupes Électrogènes",
+          "details": ["Kits de révision moteur", "Injecteurs", "Turbos", "Filtres à air/huile", "Régulateurs de tension"]
+        },
+        {
+          "brand": "Cummins Power",
+          "specialization": "Génération Diesel/Gaz",
+          "details": ["Pistons & chemises", "Culasses", "Pompes à eau", "Cartes de contrôle (PCC)", "Alternateurs"]
+        },
+        {
+          "brand": "MTU (Rolls-Royce)",
+          "specialization": "Moteurs Stationnaires",
+          "details": ["Injecteurs L’Orange", "Filtres", "Joints de culasse", "Démarreurs", "Capteurs moteur"]
+        },
+        {
+          "brand": "Perkins",
+          "specialization": "Moteurs Industriels",
+          "details": ["Kits joints", "Pompes à injection", "Bougies de préchauffage", "Thermostats", "Filtres"]
+        },
+        {
+          "brand": "Leroy-Somer",
+          "specialization": "Alternateurs",
+          "details": ["Régulateurs AVR", "Diodes tournantes", "Roulements", "Ventilateurs"]
+        },
+        {
+          "brand": "Mecc Alte",
+          "specialization": "Alternateurs",
+          "details": ["Régulateurs de tension", "Ponts de diodes", "Stators & Rotors", "Excitatrices"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Distribution Électrique & HTA/BT",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Elec",
+      "expertiseText": "Matériel de commutation, protection et distribution pour réseaux industriels et miniers.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Schneider Electric",
+          "specialization": "Distribution MT/BT",
+          "details": ["Disjoncteurs Masterpact", "Cellules HTA", "Contacteurs TeSys", "Relais Sepam", "Transformateurs"]
+        },
+        {
+          "brand": "ABB",
+          "specialization": "Appareillage Électrique",
+          "details": ["Disjoncteurs Emax", "Relais de protection", "Sectionneurs", "Variateurs de vitesse", "Démarreurs progressifs"]
+        },
+        {
+          "brand": "Siemens",
+          "specialization": "Énergie & Automation",
+          "details": ["Disjoncteurs 3WL", "Relais Siprotec", "Tableaux Sivacon", "Fusibles HRC"]
+        },
+        {
+          "brand": "Eaton",
+          "specialization": "Protection & Coupure",
+          "details": ["Disjoncteurs Moeller", "Onduleurs (UPS)", "Coffrets", "Arrêts d'urgence"]
+        },
+        {
+          "brand": "Legrand",
+          "specialization": "Infrastructures Électriques",
+          "details": ["Disjoncteurs DMX", "Armoires XL3", "Canalisations électriques (Zucchini)", "Prises industrielles"]
+        },
+        {
+          "brand": "Socomec",
+          "specialization": "Coupure & Inverseurs",
+          "details": ["Inverseurs de source", "Interrupteurs sectionneurs", "Fusibles", "Centrales de mesure"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Contrôle, Automation & Gestion d'Énergie",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Control",
+      "expertiseText": "Systèmes de gestion de l'énergie (PMS) et synchronisation de sources.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Solutions"],
+      "items": [
+        {
+          "brand": "Woodward",
+          "specialization": "Contrôle Moteur & Turbine",
+          "details": ["Régulateurs de vitesse", "Contrôleurs easYgen", "Actuateurs", "Solenoids"]
+        },
+        {
+          "brand": "Deif",
+          "specialization": "Contrôle Genset",
+          "details": ["Contrôleurs AGC", "Synchroniseurs", "Transducteurs", "Afficheurs"]
+        },
+        {
+          "brand": "ComAp",
+          "specialization": "Contrôle Parallèle",
+          "details": ["Contrôleurs InteliGen", "Modules d'extension", "Écrans couleur", "Câbles communication"]
+        },
+        {
+          "brand": "Deep Sea Electronics",
+          "specialization": "Modules de Démarrage",
+          "details": ["Modules DSE", "Chargeurs de batterie", "Relais de contrôle"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Câblage, Connexion & Accessoires",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Cables",
+      "expertiseText": "Câbles de puissance, de contrôle et accessoires de raccordement haute qualité.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "Lapp Kabel",
+          "specialization": "Câbles Industriels",
+          "details": ["Câbles Ölflex", "Presse-étoupes Skintop", "Chaînes porte-câbles", "Connecteurs"]
+        },
+        {
+          "brand": "Helukabel",
+          "specialization": "Câbles & Fils",
+          "details": ["Câbles de commande", "Câbles de données", "Accessoires de câble"]
+        },
+        {
+          "brand": "Harting",
+          "specialization": "Connecteurs Industriels",
+          "details": ["Connecteurs Han", "Embases", "Capots", "Contacts"]
+        },
+        {
+          "brand": "Phoenix Contact",
+          "specialization": "Borniers & Interface",
+          "details": ["Bornes de passage", "Alimentations", "Relais", "Parasurtenseurs"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Énergies Renouvelables (Solaire)",
+      "icon": "https://placehold.co/100x50/f59e0b/ffffff?text=Solaire",
+      "expertiseText": "Composants pour installations photovoltaïques industrielles et sites isolés.",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "JA Solar",
+          "specialization": "Panneaux Solaires",
+          "details": ["Modules Monocristallins", "Panneaux Bifaciaux"]
+        },
+        {
+          "brand": "Longi Solar",
+          "specialization": "Panneaux Solaires",
+          "details": ["Modules Hi-MO", "Cellules haute efficacité"]
+        },
+        {
+          "brand": "Victron Energy",
+          "specialization": "Conversion & Stockage",
+          "details": ["Onduleurs", "Régulateurs de charge MPPT", "Batteries Gel/Lithium", "Moniteurs"]
+        },
+        {
+          "brand": "Enersys",
+          "specialization": "Batteries Industrielles",
+          "details": ["Batteries OPzV", "Batteries Li-Ion", "Racks de batteries"]
+        }
+      ]
+    }
+  ]
+}

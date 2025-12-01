@@ -495,14 +495,16 @@
             "Zetor","Ziegler","Zilog","Zimmer Group","Zippy.","Zivan","Zoomlion","e2s","lskra"
         ];
 
-        const structuredData = {
+        // 1. STRUCTURE PRINCIPALE (Organisation)
+        const orgData = {
           "@context": "https://schema.org",
-          "@type": "IndustrialStore",
+          "@type": "IndustrialStore", // Type précis pour votre activité
           "name": "MULTIPARTS",
           "image": "https://catalogue.multipartsci.com/logo-multiparts.png",
           "description": "Fournisseur d'équipements miniers et industriels en Côte d'Ivoire.",
           "url": "https://catalogue.multipartsci.com",
           "telephone": "+2252721250146",
+          "priceRange": "$$", // Requis pour LocalBusiness
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "4145 Avenue Paul Akoto Yao",
@@ -514,22 +516,39 @@
           "openingHoursSpecification": [
             { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:30", "closes": "12:00" },
             { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "13:30", "closes": "17:00" }
-          ],
-          "makesOffer": brandsList.map(brand => ({
-            "@type": "Offer",
-            "itemOffered": {
-                "@type": "Product",
-                "brand": { "@type": "Brand", "name": brand }
-            }
-          }))
+          ]
+        };
+
+        // 2. INJECTION DES MARQUES (Technique "ItemList" pour éviter les erreurs Produit)
+        // Au lieu de créer des faux produits sans prix, on crée une liste de marques distribuées.
+        const brandData = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Marques Distribuées par MULTIPARTS",
+            "description": "Liste des fabricants d'équipements industriels et miniers disponibles.",
+            "itemListElement": brandsList.map((brand, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": "Brand",
+                    "name": brand
+                }
+            }))
         };
         
-        const scriptJSON = document.createElement('script');
-        scriptJSON.type = 'application/ld+json';
-        scriptJSON.text = JSON.stringify(structuredData);
-        document.head.appendChild(scriptJSON);
+        // Injection des 2 scripts
+        const scriptOrg = document.createElement('script');
+        scriptOrg.type = 'application/ld+json';
+        scriptOrg.text = JSON.stringify(orgData);
+        document.head.appendChild(scriptOrg);
 
-        // GESTION RGPD
+        const scriptBrands = document.createElement('script');
+        scriptBrands.type = 'application/ld+json';
+        scriptBrands.text = JSON.stringify(brandData);
+        document.head.appendChild(scriptBrands);
+
+
+        // GESTION RGPD (Reste inchangé)
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
             const btnAccept = document.getElementById('btn-accept-cookies');

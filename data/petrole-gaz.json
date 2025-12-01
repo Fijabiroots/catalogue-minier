@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "id": "petrole-gaz",
+    "pageTitle": "SOLUTIONS PÉTROLE & GAZ",
+    "pageSubtitle": "Onshore, Offshore & Raffinage",
+    "coverImage": "images/cover_petrole.png",
+    "description": "Partenaire des opérateurs Oil & Gas pour la fourniture d'équipements critiques : vannes API, pompes de procédé, instrumentation et matériel ATEX."
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "1. Vannes, Robinetterie & Actionneurs (API 6D/6A)",
+      "icon": "https://placehold.co/100x50/ef4444/ffffff?text=Vannes",
+      "expertiseText": "Fourniture de vannes manuelles et motorisées pour les applications critiques, hautes pressions et milieux corrosifs.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Type d'équipement"],
+      "items": [
+        {
+          "brand": "Cameron (Schlumberger)",
+          "specialization": "Vannes & Têtes de puits",
+          "details": ["Vannes à boisseau", "BOP (Blowout Preventers)", "Vannes de duse", "Kits de réparation"]
+        },
+        {
+          "brand": "Fisher (Emerson)",
+          "specialization": "Vannes de régulation",
+          "details": ["Vannes de contrôle", "Régulateurs de pression", "Positionneurs DVC", "Pièces internes (Trim)"]
+        },
+        {
+          "brand": "Rotork",
+          "specialization": "Actionneurs & Servomoteurs",
+          "details": ["Actionneurs électriques", "Pneumatiques", "Hydrauliques", "Boîtiers fin de course"]
+        },
+        {
+          "brand": "Neles (Valmet)",
+          "specialization": "Vannes On-Off & Régulation",
+          "details": ["Vannes papillon métal-métal", "Vannes à segment", "Positionneurs", "Kits joints"]
+        },
+        {
+          "brand": "Bray",
+          "specialization": "Vannes Papillon",
+          "details": ["Vannes papillon", "Actionneurs pneumatiques", "Clapets anti-retour", "Solenoids"]
+        },
+        {
+          "brand": "Orbinox",
+          "specialization": "Vannes Guillotine",
+          "details": ["Vannes à guillotine", "Joints de siège", "Vannes de barrage", "Actionneurs"]
+        },
+        {
+          "brand": "Swagelok",
+          "specialization": "Vannes Instrumentation",
+          "details": ["Vannes à pointeau", "Manifolds", "Vannes à boisseau", "Clapets"]
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "2. Pompes de Procédés & Injection (API 610/675)",
+      "icon": "https://placehold.co/100x50/3b82f6/ffffff?text=Pompes",
+      "expertiseText": "Pompes centrifuges et volumétriques conformes aux standards API pour le transfert de brut, raffinés et produits chimiques.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Technologie"],
+      "items": [
+        {
+          "brand": "ITT Goulds",
+          "specialization": "Pompes Process API",
+          "details": ["Pompes centrifuges API 610", "Impellers", "Arbres", "Kits de maintenance"]
+        },
+        {
+          "brand": "Flowserve",
+          "specialization": "Pompes & Garnitures",
+          "details": ["Pompes process", "Garnitures mécaniques", "Systèmes d'étanchéité", "Pièces de rechange"]
+        },
+        {
+          "brand": "LEWA",
+          "specialization": "Pompes Doseuses & Diaphragme",
+          "details": ["Pompes d'injection chimique", "Membranes PTFE", "Clapets", "Têtes de dosage"]
+        },
+        {
+          "brand": "Netzsch",
+          "specialization": "Pompes à Cavité Progressive",
+          "details": ["Pompes PCP (Moineau)", "Stators", "Rotors", "Joints cardan"]
+        },
+        {
+          "brand": "Milton Roy",
+          "specialization": "Dosage de précision",
+          "details": ["Pompes doseuses", "Agitateurs", "Kits de maintenance liquide", "Vannes de contrespression"]
+        },
+        {
+          "brand": "Finish Thompson",
+          "specialization": "Pompes Chimiques",
+          "details": ["Pompes à entraînement magnétique", "Pompes vide-fût", "Turbines PVDF"]
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "3. Instrumentation, Mesure & Analyse",
+      "icon": "https://placehold.co/100x50/a855f7/ffffff?text=Instru",
+      "expertiseText": "Capteurs et transmetteurs de haute précision pour le monitoring de vos installations (Pression, Température, Débit, Niveau).",
+      "sectionImage": "images/section-5.svg",
+      "tableHeaders": ["Marque", "Instruments"],
+      "items": [
+        {
+          "brand": "Rosemount (Emerson)",
+          "specialization": "Transmetteurs",
+          "details": ["Transmetteurs de pression", "Sondes de température", "Débitmètres Vortex", "Manifolds"]
+        },
+        {
+          "brand": "Endress+Hauser",
+          "specialization": "Mesure de débit & niveau",
+          "details": ["Débitmètres massiques (Coriolis)", "Sondes radar", "Analyseurs de liquide", "Transmetteurs"]
+        },
+        {
+          "brand": "Wika",
+          "specialization": "Pression & Température",
+          "details": ["Manomètres", "Doigts de gant", "Sondes RTD/Thermocouples", "Pressostats"]
+        },
+        {
+          "brand": "Vega",
+          "specialization": "Niveau & Pression",
+          "details": ["Radar filoguidé", "Capteurs ultrason", "Détecteurs de niveau à vibration", "Transmetteurs"]
+        },
+        {
+          "brand": "Ashcroft",
+          "specialization": "Instruments de pression",
+          "details": ["Manomètres inox", "Pressostats ATEX", "Diaphragmes de séparation", "Thermomètres"]
+        },
+        {
+          "brand": "MSA Safety",
+          "specialization": "Détection Gaz & Flamme",
+          "details": ["Détecteurs H2S/LEL", "Cellules de rechange", "Balises portables", "Systèmes fixes"]
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "4. Matériel Électrique ATEX & Sécurité",
+      "icon": "https://placehold.co/100x50/f97316/ffffff?text=ATEX",
+      "expertiseText": "Équipements certifiés pour zones à risque d'explosion (Zone 0, 1, 2) garantissant la sécurité des installations.",
+      "sectionImage": "images/section-4.svg",
+      "tableHeaders": ["Marque", "Équipements"],
+      "items": [
+        {
+          "brand": "Stahl",
+          "specialization": "Protection antidéflagrante",
+          "details": ["Boîtes de jonction Ex", "Éclairage ATEX", "Prises de courant", "Barrières Zener"]
+        },
+        {
+          "brand": "Appleton (Emerson)",
+          "specialization": "Éclairage & Distribution",
+          "details": ["Luminaires LED ATEX", "Coffrets de distribution", "Presse-étoupes", "Prises"]
+        },
+        {
+          "brand": "Bartec",
+          "specialization": "Sécurité & Chauffage",
+          "details": ["Traçage électrique", "Postes de commande Ex", "Moteurs antidéflagrants"]
+        },
+        {
+          "brand": "Pepperl+Fuchs",
+          "specialization": "Sécurité Intrinsèque",
+          "details": ["Isolateurs galvaniques", "Barrières Zener", "Capteurs Ex", "HMI ATEX"]
+        },
+        {
+          "brand": "Crouse-Hinds (Eaton)",
+          "specialization": "Matériel électrique Ex",
+          "details": ["Presse-étoupes", "Raccords", "Coffrets antidéflagrants", "Signalisation visuelle"]
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "5. Filtration, Tuyauterie & Raccords (Piping)",
+      "icon": "https://placehold.co/100x50/64748b/ffffff?text=Piping",
+      "expertiseText": "Solutions d'étanchéité et de connexion haute performance pour fluides process et instrumentation.",
+      "sectionImage": "images/section-3.svg",
+      "tableHeaders": ["Marque", "Produits"],
+      "items": [
+        {
+          "brand": "Swagelok",
+          "specialization": "Raccords Instrumentation",
+          "details": ["Raccords double bague", "Tubes inox", "Flexibles métalliques", "Raccords rapides"]
+        },
+        {
+          "brand": "Parker",
+          "specialization": "Filtration & Connexion",
+          "details": ["Raccords A-Lok", "Filtres hydrauliques", "Flexibles process", "Joints toriques"]
+        },
+        {
+          "brand": "Bollfilter",
+          "specialization": "Filtration Automatique",
+          "details": ["Éléments filtrants", "Bougies filtrantes", "Joints", "Pièces de décolmatage"]
+        },
+        {
+          "brand": "Pall",
+          "specialization": "Filtration Process",
+          "details": ["Cartouches coalescentes", "Filtres à gaz", "Séparateurs", "Corps de filtre"]
+        },
+        {
+          "brand": "Klinger",
+          "specialization": "Étanchéité",
+          "details": ["Joints spiralés", "Feuilles de joint", "Joints métalliques", "Tresses"]
+        },
+        {
+          "brand": "Victaulic",
+          "specialization": "Raccords Rainurés",
+          "details": ["Colliers rigides/flexibles", "Joints EPDM/Nitrile", "Coudes & Tés", "Vannes papillon"]
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "7. Services Pétroliers",
+      "icon": "https://placehold.co/100x50/22c55e/ffffff?text=Services",
+      "expertiseText": "Support logistique et technique dédié aux bases vie et sites de production.",
+      "sectionImage": "images/section-7.svg",
+      "tableHeaders": ["Service", "Détails"],
+      "items": [
+        {
+          "brand": "Approvisionnement MRO",
+          "specialization": "Maintenance, Réparation, Opérations",
+          "details": ["Gestion des stocks consommables", "Outillage ATEX", "EPI spécifiques H2S", "Consommables de soudage"]
+        },
+        {
+          "brand": "Logistique Express",
+          "specialization": "Urgences & AOG",
+          "details": ["Expéditions aériennes urgentes", "Dédouanement rapide", "Livraison sur base offshore/onshore"]
+        }
+      ]
+    }
+  ]
+}

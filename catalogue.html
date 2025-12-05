@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_64_Design_Luxe_Banner */
+        /* Version_65_Fix_Hover_Logo_Banner */
         :root {
             --primary-blue: #1e3a8a;
             --hover-blue: #eff6ff;
@@ -23,7 +23,6 @@
             color: var(--text-main);
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* 8. AUGMENTATION DE LA TAILLE DE POLICE GÉNÉRALE */
             font-size: 17px; 
         }
         
@@ -42,7 +41,7 @@
 
         /* --- CONTENEUR PRINCIPAL --- */
         .catalog-container-pro {
-            max-width: 1280px; /* Un peu plus large pour le confort */
+            max-width: 1280px;
             margin: 0 auto;
             background-color: white;
             min-height: 100vh;
@@ -53,7 +52,7 @@
         .content-wrapper { padding: 40px; }
         @media (max-width: 640px) { .content-wrapper { padding: 20px; } }
 
-        /* 6. BANNIÈRE TITRE INDUSTRIE */
+        /* 4. BANNIÈRE PLUS TRANSPARENTE */
         .header-banner { 
             position: relative;
             height: 350px;
@@ -67,16 +66,25 @@
         }
         .header-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95));
+            /* Opacité réduite (0.4 / 0.6) pour voir l'image */
+            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(30, 58, 138, 0.65));
         }
-        .header-content { position: relative; z-index: 10; padding: 0 20px; }
-        .header-title { font-size: 3rem; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 10px; text-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .header-subtitle { font-size: 1.4rem; font-weight: 300; opacity: 0.9; }
+        .header-content { position: relative; z-index: 10; padding: 0 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+        .header-title { font-size: 3rem; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 10px; }
+        .header-subtitle { font-size: 1.4rem; font-weight: 400; opacity: 1; }
 
         @media (max-width: 640px) { .header-banner { height: 250px; } .header-title { font-size: 2rem; } .header-subtitle { font-size: 1.1rem; } }
 
         /* --- TABLEAUX --- */
-        .table-custom { border-collapse: separate; border-spacing: 0; width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; overflow: visible; } /* Overflow visible pour le popup */
+        .table-custom { 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            width: 100%; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 8px; 
+            /* IMPORTANT : Visible pour laisser sortir le popup */
+            overflow: visible; 
+        }
         .table-custom th { 
             background-color: #f8fafc; 
             color: var(--primary-blue); 
@@ -88,44 +96,57 @@
             letter-spacing: 0.05em;
             border-bottom: 2px solid #e2e8f0;
         }
-        .table-custom td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 1.05rem; }
+        .table-custom td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 1.05rem; position: relative; }
         .table-custom tr:last-child td { border-bottom: none; }
         
-        /* 4. HOVER TABLEAU (PC & MOBILE) */
-        .table-custom tr { transition: background-color 0.2s, transform 0.1s; cursor: default; }
-        .table-custom tr:hover, .table-custom tr:focus-within { 
-            background-color: #f0fdf4 !important; /* Vert très léger */
-            transform: scale(1.005); /* Effet léger de zoom */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            z-index: 10; position: relative;
+        .table-custom tr { transition: background-color 0.2s; }
+        .table-custom tr:hover { 
+            background-color: #f0fdf4 !important; 
+            z-index: 50; /* Z-index élevé au survol */
         }
 
         .brand-row td:first-child { width: 35%; font-weight: 700; color: var(--primary-blue); } 
         .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #475569; }
         
-        /* POPUP DÉTAILS */
+        /* 1. CORRECTION POPUP (HOVER) */
         .consumables-popup {
-            display: none; position: absolute; left: 100%; top: 0; margin-left: 20px; 
-            width: 350px; max-width: 300px;
-            background: #ffffff; border: 1px solid #cbd5e1;
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2); 
-            padding: 20px; border-radius: 8px; z-index: 100; 
-            color: #334155; font-size: 0.95rem; line-height: 1.5; font-weight: normal;
+            display: none; 
+            position: absolute; 
+            left: 100%; top: -20px; /* Ajusté pour s'aligner mieux */
+            margin-left: 15px; 
+            width: 350px; 
+            background: #ffffff; 
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25); 
+            padding: 20px; 
+            border-radius: 8px; 
+            z-index: 999; /* Très haut z-index */
+            color: #334155; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            font-weight: normal;
         }
-        .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 20px; width: 16px; height: 16px; background: white; transform: rotate(45deg); border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; }
+        .consumables-popup::before { 
+            content: ""; position: absolute; left: -8px; top: 30px; 
+            width: 16px; height: 16px; background: white; 
+            transform: rotate(45deg); 
+            border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; 
+        }
         
-        /* 3. FIX POPUP TRONQUÉ (Dernières lignes s'ouvrent vers le haut) */
-        .brand-row:hover td:first-child .consumables-popup, 
-        .brand-row:focus-within td:first-child .consumables-popup { display: block; }
+        /* Affichage au survol */
+        .brand-row:hover td:first-child .consumables-popup { display: block; }
 
+        /* Inversion pour les dernières lignes (pour ne pas sortir de l'écran en bas) */
         .brand-row:nth-last-child(-n+3) .consumables-popup {
-            top: auto; bottom: 0; /* S'ouvre vers le haut */
+            top: auto; bottom: 0; 
         }
         .brand-row:nth-last-child(-n+3) .consumables-popup::before {
-            top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none;
+            top: auto; bottom: 20px; 
+            border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; 
+            border-left: none; border-bottom: none;
         }
 
-        /* 4. MOBILE LAYOUT */
+        /* MOBILE LAYOUT */
         @media screen and (max-width: 768px) {
             .table-custom { display: block; border: none; }
             .table-custom thead { display: none; }
@@ -134,20 +155,27 @@
             .table-custom td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
             .table-custom td:first-child { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
             
-            /* Mobile Popup -> Accordéon intégré */
             .consumables-popup { 
-                position: static; margin: 10px 0 0 0; width: 100%; max-width: none; 
+                position: static; margin: 10px 0 0 0; width: 100%; 
                 box-shadow: none; border: 1px dashed #cbd5e1; background: #fff; 
-                padding: 10px; font-size: 0.9rem;
+                padding: 10px; z-index: 1;
             }
             .consumables-popup::before { display: none; }
-            .consumables-inline { display: none; } /* Cache le résumé sur mobile pour éviter la redondance */
+            .consumables-inline { display: none; } 
         }
 
         .no-screen { display: none !important; }        
         
-        /* 2. HOVER SECTIONS (Couleur non agressive) */
-        .table-group { margin-bottom: 30px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; overflow: hidden; transition: box-shadow 0.3s; }
+        /* SECTIONS */
+        .table-group { 
+            margin-bottom: 30px; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 12px; 
+            background: white; 
+            /* IMPORTANT : Visible pour le popup */
+            overflow: visible; 
+            transition: box-shadow 0.3s; 
+        }
         .table-group:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: #cbd5e1; }
         
         .section-header { 
@@ -155,11 +183,18 @@
             padding: 20px 25px; 
             background: #ffffff; 
             cursor: pointer;
-            transition: background 0.3s ease;
+            border-radius: 12px; /* Arrondi par défaut si fermé */
+            transition: background 0.3s ease, border-radius 0.3s;
         }
+        .section-header:hover { background: #eff6ff; }
         
-        /* Couleur hover douce et vive */
-        .section-header:hover { background: #eff6ff; /* Bleu très pâle */ }
+        /* Quand ouvert : arrondi seulement en haut */
+        .table-group.active .section-header { 
+            border-bottom: 1px solid #e2e8f0; 
+            background: #f8fafc; 
+            border-radius: 12px 12px 0 0;
+        }
+
         .section-header h3 { font-size: 1.35rem; font-weight: 800; color: var(--primary-blue); margin: 0; display: flex; align-items: center; gap: 15px; }
         
         .toggle-icon { 
@@ -167,7 +202,6 @@
             display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem; transition: all 0.3s; 
         }
         .table-group.active .toggle-icon { background: var(--primary-blue); color: white; transform: rotate(180deg); }
-        .table-group.active .section-header { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
 
         .section-content { display: none; padding: 30px; } 
         .section-content.open { display: block; animation: slideDown 0.3s ease-out; }
@@ -179,26 +213,11 @@
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
         
-        /* Panneau Jaune Expert (Épuré) */
-        .expertise-intro-box { 
-            background: #fffbeb; 
-            border-left: 6px solid #f59e0b; 
-            padding: 25px; 
-            margin-bottom: 40px;
-            color: #78350f;
-            font-size: 1.1rem;
-            border-radius: 0 8px 8px 0;
-        }
+        .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 25px; margin-bottom: 40px; color: #78350f; font-size: 1.1rem; border-radius: 0 8px 8px 0; }
 
-        /* 5. TAILLE IMAGES SECTIONS */
+        /* IMAGES SECTIONS */
         .section-image-wrapper { text-align: center; margin-bottom: 25px; }
-        .section-image-wrapper img { 
-            max-width: 50%; /* Réduit de moitié (donc réduit de + que le quart demandé) */
-            height: auto; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: inline-block;
-        }
+        .section-image-wrapper img { max-width: 50%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
         @media (max-width: 640px) { .section-image-wrapper img { max-width: 90%; } }
 
         .menu-link { transition: background 0.18s; }
@@ -206,12 +225,8 @@
         .dropdown-menu a { display: block; padding: 10px 16px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
         .dropdown-menu a:hover { background-color: #f1f5f9; color: var(--primary-blue); }
         
-        /* SCROLL ARROW */
         .scroll-arrow-wrapper { text-align: center; margin-bottom: 40px; margin-top: 20px; }
-        .scroll-arrow { 
-            display: inline-flex; flex-direction: column; align-items: center; 
-            color: #94a3b8; cursor: pointer; transition: color 0.3s; 
-        }
+        .scroll-arrow { display: inline-flex; flex-direction: column; align-items: center; color: #94a3b8; cursor: pointer; transition: color 0.3s; }
         .scroll-arrow:hover { color: var(--primary-blue); }
         .scroll-arrow svg { width: 36px; height: 36px; animation: bounce 2s infinite; }
         .scroll-arrow span { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
@@ -242,22 +257,30 @@
         </svg>
     </a>
 
-    <header class="flex items-center px-4 sm:px-6 py-2 bg-white shadow-sm sticky top-0 z-50 no-print border-b border-gray-100">
+    <header class="flex items-center px-4 sm:px-6 py-4 bg-white shadow-sm sticky top-0 z-50 no-print border-b border-gray-100">
         <a href="index.html" class="shrink-0 sm:mr-10">
-            <img src="logo-multiparts.png" alt="Logo" class="h-12 w-auto">
+            <img src="logo-multiparts.png" alt="Logo" class="h-28 w-auto">
         </a>
         <nav class="flex-1 min-w-0 hidden md:block">
-            <ul class="flex flex-wrap space-x-6 justify-end items-center w-full text-base">
+            <ul class="flex flex-wrap space-x-6 justify-end items-center w-full text-lg">
                 <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-bold text-gray-700 px-4 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <button id="sommaireToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                         Sommaire
                     </button>
                     <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-72 bg-white border rounded-md shadow-xl py-2 z-50"></ul>
                 </li>
+                
+                <li>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
+                       <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                       Localisation
+                    </a>
+                </li>
+
                 <li class="relative">
-                    <button id="industriesToggle" class="menu-link font-bold text-gray-700 px-4 py-2 rounded inline-flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                    <button id="industriesToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
                         Industries
                     </button>
                     <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-xl py-2 z-50">
@@ -273,15 +296,17 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2.5 rounded-md font-bold transition shadow-md">
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-md font-bold transition shadow-md">
                         Demander un Devis
                     </a>
                 </li>
             </ul>
         </nav>
+        
         <nav class="flex-1 md:hidden flex justify-end gap-3">
-            <a href="index.html" class="p-2 text-blue-900 bg-blue-50 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg></a>
-            <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+            <a href="index.html" class="p-2 text-blue-900 bg-blue-50 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg></a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" class="p-2 text-gray-700 hover:bg-gray-100 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
+            <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
         </nav>
     </header>
 
@@ -303,7 +328,7 @@
             
             <div class="expertise-intro-box">
                 <div class="flex flex-col items-center justify-center gap-3">
-                    <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <p id="company-activity" class="font-medium leading-relaxed"></p>
                 </div>
             </div>
@@ -361,7 +386,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         initInteractions();
     } catch (error) {
         console.error("Erreur:", error);
-        document.getElementById('page-subtitle').textContent = "Erreur de chargement.";
+        document.getElementById('page-subtitle').textContent = "Erreur de chargement des données.";
         if (industry !== 'mines') window.location.href = '?ind=mines';
     }
 });
@@ -373,7 +398,6 @@ function buildPage(data) {
     document.getElementById('page-subtitle').textContent = data.meta.pageSubtitle;
     document.title = `Catalogue MULTIPARTS - ${data.meta.pageSubtitle}`;
     
-    // BANNIÈRE ARRIÈRE-PLAN
     if(data.meta.coverImage) {
         document.getElementById('header-banner').style.backgroundImage = `url('${esc(data.meta.coverImage)}')`;
     }
@@ -459,7 +483,6 @@ function initInteractions() {
     else images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } });
     setTimeout(finishLoad, 5000);
 
-    // Accordéon
     const groups = document.querySelectorAll('.table-group');
     groups.forEach(group => {
         const header = group.querySelector('.section-header');
@@ -467,8 +490,6 @@ function initInteractions() {
         
         header.addEventListener('click', () => {
             const isOpen = group.classList.contains('active');
-            
-            // Fermer les autres pour plus de clarté
             groups.forEach(g => {
                 g.classList.remove('active');
                 g.querySelector('.section-content').classList.remove('open');

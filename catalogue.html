@@ -9,12 +9,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_62_FullScreen_FooterIntegrated */
+        /* Version_63_Design_Pro_Clean */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Fond très léger */
-            color: #1e293b;
-            line-height: 1.5;
+            background-color: #f3f4f6; /* Gris très léger pour le fond général */
+            color: #334155;
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
         
@@ -31,105 +31,144 @@
         .loader-text { margin-top: 10px; color: #64748b; font-size: 0.9rem; font-weight: 600; }
         body.loading { overflow: hidden; }
 
-        /* --- LAYOUT PLEIN ÉCRAN --- */
-        .catalog-page {
+        /* --- CONTENEUR PRINCIPAL (Carte Blanche) --- */
+        .catalog-container-pro {
+            max-width: 1200px; /* Largeur idéale pour la lecture */
+            margin: 0 auto;
             background-color: white;
-            /* Suppression des ombres et max-width pour le plein écran */
-            box-shadow: none; 
-            max-width: 100%; 
-            margin: 0;
-            padding: 20px 4%; /* Padding responsive */
             min-height: 100vh;
             position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05); /* Ombre diffuse élégante */
         }
         
-        .header { border-bottom: 4px solid #1e40af; padding-bottom: 10px; margin-bottom: 15px; }
+        .content-wrapper { padding: 20px 30px 60px 30px; }
+        @media (max-width: 640px) { .content-wrapper { padding: 15px; } }
 
-        /* Tableaux */
-        .table-custom { border-collapse: collapse; width: 100%; }
-        .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 12px; text-align: left; font-size: 1rem; }
-        .table-custom td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
-        .table-custom tr:hover, .table-custom tr.show { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
+        .header-title-box { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* --- TABLEAUX MODERNES --- */
+        .table-custom { border-collapse: separate; border-spacing: 0; width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .table-custom th { 
+            background-color: #f1f5f9; 
+            color: #475569; 
+            font-weight: 700; 
+            padding: 14px 16px; 
+            text-align: left; 
+            font-size: 0.9rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .table-custom td { padding: 14px 16px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+        .table-custom tr:last-child td { border-bottom: none; }
+        .table-custom tr:hover { background-color: #f8fafc; }
         
+        /* Highlight au clic/focus */
+        .table-custom tr.show { background-color: #f0fdf4 !important; }
+
         @media screen and (max-width: 639px) {
-            .table-custom { display: block; overflow-x: auto; white-space: nowrap; }
-            .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr { display: block; }
-            .table-custom th, .table-custom td { padding: 8px; }
+            .table-custom { display: block; border: none; }
+            .table-custom thead { display: none; }
+            .table-custom tbody, .table-custom tr, .table-custom td { display: block; width: 100%; }
+            .table-custom tr { margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+            .table-custom td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+            .table-custom td:last-child { background: #f8fafc; color: #64748b; font-size: 0.9em; }
         }
 
-        .brand-row td:first-child { position: relative; } 
-        .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #0f172a; font-size: 0.95rem; }
+        .brand-row td:first-child { position: relative; width: 40%; font-weight: 600; color: #1e3a8a; } 
+        .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #64748b; font-size: 0.9rem; }
         
         /* Popup Consommables */
         .consumables-popup {
-            display: none; position: absolute; left: 100%; top: 0; margin-left: 12px; width: 360px; max-width: calc(100vw - 40px);
-            max-height: 320px; overflow-y: auto; background: #ffffff; border: 1px solid rgba(0,0,0,0.12);
-            box-shadow: 0 10px 30px rgba(2,6,23,0.12); padding: 0.6rem; border-radius: 8px; z-index: 60; color: #0b1220; font-size: 0.95rem; line-height: 1.4;
+            display: none; position: absolute; left: 100%; top: 0; margin-left: 15px; width: 320px; max-width: calc(100vw - 40px);
+            max-height: 400px; overflow-y: auto; background: #ffffff; border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); 
+            padding: 16px; border-radius: 8px; z-index: 60; color: #334155; font-size: 0.9rem; line-height: 1.5; font-weight: normal;
         }
-        .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 12px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 8px solid #fff; filter: drop-shadow(-1px 1px 0 rgba(0,0,0,0.03)); }
+        .consumables-popup::before { content: ""; position: absolute; left: -6px; top: 16px; width: 12px; height: 12px; background: white; transform: rotate(45deg); border-left: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
         
         .brand-row:hover td:first-child .consumables-popup, 
         .brand-row:focus-within td:first-child .consumables-popup, 
         .brand-row.show td:first-child .consumables-popup { display: block; }
         
         @media screen and (max-width: 639px) {
-          .consumables-popup { position: static; left: auto; top: auto; margin-left: 0; width: 100%; max-height: none; box-shadow: none; border-radius: 6px; margin-top: 6px; }
+          .consumables-popup { position: static; left: auto; top: auto; margin: 0; width: 100%; max-height: none; box-shadow: none; border: none; background: transparent; padding: 10px 0 0 0; color: #475569; }
           .consumables-popup::before { display: none; }
         }
 
         .no-screen { display: none !important; }        
-        .section-header { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #1e40af; padding-left: 15px; background: #f8fafc; padding: 10px 15px; border-radius: 0 8px 8px 0; }
-        .section-header h3 { font-size: 1.25rem; font-weight: bold; color: #1e40af; margin: 0; padding-left: 10px; line-height: 1.25; }
-        @media screen and (min-width: 640px) { .section-header h3 { font-size: 1.75rem; } }
         
-        .toggle-details-btn { margin-left: 1rem; font-size: 0.95rem; background: white; color: #119248; border: 1px solid #e2e8f0; cursor: pointer; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-        .toggle-details-btn:hover { background: #119248; color: white; border-color: #119248; }
-        .toggle-sign { font-size: 1.1rem; font-weight: 700; }
-        .section-content { display: none; } 
-        .section-content.open { display: block; animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        /* Section Styles */
+        .table-group { margin-bottom: 25px; border: 1px solid #e2e8f0; border-radius: 8px; background: white; overflow: hidden; }
+        
+        .section-header { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 15px 20px; 
+            background: #ffffff; 
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .section-header:hover { background: #f8fafc; }
+        
+        .section-header h3 { font-size: 1.15rem; font-weight: 700; color: #1e3a8a; margin: 0; display: flex; align-items: center; gap: 12px; }
+        @media screen and (min-width: 640px) { .section-header h3 { font-size: 1.3rem; } }
+        
+        .toggle-icon { 
+            width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; color: #64748b; 
+            display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; transition: all 0.2s; 
+        }
+        .table-group.active .toggle-icon { background: #1e40af; color: white; transform: rotate(180deg); }
+        .table-group.active .section-header { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+
+        .section-content { display: none; padding: 20px; } 
+        .section-content.open { display: block; animation: slideDown 0.3s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
           
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
 
         /* Animation WhatsApp */
-        @keyframes whatsapp-wave {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.5); opacity: 0; }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        /* Panneau Jaune (Nouvelle Version Épurée) */
+        .expertise-intro-box { 
+            background: #fffbeb; 
+            border: 1px solid #fcd34d; 
+            border-radius: 8px; 
+            padding: 20px; 
+            text-align: center;
+            margin-bottom: 30px;
+            color: #92400e;
         }
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 56px; height: 56px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s, background-color 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
-        .whatsapp-float::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background-color: #25d366; opacity: 0.6; z-index: -1; animation: whatsapp-wave 2s infinite; }
-        
-        .expertise-box { border-left: 4px solid #22c55e; padding-left: 15px; margin-bottom: 20px; background-color: #f0fdf4; padding: 15px; border-radius: 4px; font-size: 1.05rem; }
-        .fixed-expertise-band { width: 100%; background-color: #166534; color: white; text-align: center; padding: 8px 0; font-size: 0.95rem; position: sticky; top: 80px; z-index: 10; }
-        
+
         .menu-link { transition: background 0.18s; }
-        .menu-link:hover { background: #119248; color: #fff !important; }
+        .menu-link:hover { background: #eff6ff; color: #1e40af !important; }
         .dropdown-menu a { display: block; padding: 8px 12px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
-        .dropdown-menu a:hover { background-color: #119248; color: #ffffff; }
+        .dropdown-menu a:hover { background-color: #f1f5f9; color: #1e40af; }
         
-        /* Arrow */
-        .scroll-arrow-container { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10px; margin-bottom: 20px; cursor: pointer; color: #1e40af; transition: opacity 0.5s; }
-        .scroll-arrow-container.hidden-arrow { opacity: 0; pointer-events: none; }
-        .scroll-text { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; color: #1e40af; }
-        .scroll-arrow { width: 40px; height: 40px; animation: bounce 2s infinite; }
+        /* SCROLL ARROW */
+        .scroll-arrow-wrapper { text-align: center; margin-bottom: 30px; margin-top: 10px; }
+        .scroll-arrow { 
+            display: inline-flex; flex-direction: column; align-items: center; 
+            color: #cbd5e1; cursor: pointer; transition: color 0.3s; 
+        }
+        .scroll-arrow:hover { color: #1e40af; }
+        .scroll-arrow svg { width: 30px; height: 30px; animation: bounce 2s infinite; }
+        .scroll-arrow span { font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin-bottom: 5px; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
         @media print {
-            @page { margin: 2cm; }
-            body { background-color: white; padding-top: 0; }
-            .print-header, .print-footer { display: flex !important; position: fixed; left: 0; right: 0; background: #fff; }
-            .print-header { top: 0; height: 50px; border-bottom: 2px solid #1e40af; z-index: 9999; }
-            .print-footer { bottom: 0; height: 30px; border-top: 1px solid #ccc; font-size: 9pt; color: #555; }
-            .print-header img { height: 38px; width: auto; }
-            .catalog-page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
-            header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline, .whatsapp-float, .back-to-top, #preloader, #onboarding-overlay, .onboarding-tooltip, .main-footer { display: none !important; }
-            .no-screen, .section-content, .consumables-popup { display: block !important; position: static !important; width: 100% !important; box-shadow: none !important; margin: 0 !important; }
-            .consumables-popup { background: #f9fafb !important; border: 1px solid #eee !important; padding: 10px !important; page-break-inside: avoid; }
-            .table-custom { width: 100% !important; border-collapse: collapse !important; }
-            .table-custom th { background-color: #1e40af !important; color: #fff !important; }
-            .table-custom td { border: 1px solid #ddd !important; }
+            .catalog-container-pro { box-shadow: none; max-width: 100%; margin: 0; padding: 0; }
+            .header-title-box, .scroll-arrow-wrapper, .whatsapp-float, .back-to-top, .toggle-icon { display: none !important; }
+            .section-content { display: block !important; padding: 0; }
+            .table-group { border: none; margin-bottom: 20px; }
+            .section-header { border-bottom: 2px solid #000; padding: 10px 0; }
         }
     </style>
 </head>
@@ -143,76 +182,47 @@
         </div>
     </div>
 
-    <div class="print-header no-screen">
-        <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
-        <span style="font-weight:bold; color:#1e40af;">Catalogue</span>
-    </div>
-    <div class="print-footer no-screen">
-        <span>© 2025 MULTIPARTS</span> <span class="page-counter"></span>
-    </div>
-
     <a href="https://wa.me/2250709399529" class="whatsapp-float no-print" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
 
-    <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50 no-print">
-        <a href="index.html" class="shrink-0 sm:mr-24">
-            <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
+    <header class="flex items-center px-4 sm:px-6 py-2 bg-white shadow-sm sticky top-0 z-50 no-print border-b border-gray-100">
+        <a href="index.html" class="shrink-0 sm:mr-10">
+            <img src="logo-multiparts.png" alt="Logo" class="h-10 w-auto">
         </a>
-        <nav class="flex-1 min-w-0 overflow-visible" id="navbar">
-            <ul class="flex flex-wrap space-x-2 sm:space-x-8 justify-end sm:justify-start items-center w-full">
+        <nav class="flex-1 min-w-0">
+            <ul class="flex flex-wrap space-x-2 sm:space-x-6 justify-end sm:justify-start items-center w-full text-sm">
                 <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <button id="sommaireToggle" class="menu-link font-medium text-gray-700 px-3 py-2 rounded inline-flex items-center gap-2 group">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                         <span class="hidden sm:inline">Sommaire</span>
-                        <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
-                    <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
-                    </ul>
+                    <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50"></ul>
                 </li>
-                
                 <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
-                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
-                       <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                       <span class="hidden sm:inline">Localisation</span>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-medium text-gray-700 px-3 py-2 rounded inline-flex items-center gap-2">
+                       <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                       <span class="hidden sm:inline">GPS</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande_Informations_Catalogue_Multiparts" 
-                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
-                        <span class="hidden sm:inline">Contact</span>
-                    </a>
-                </li>
-
                 <li class="relative">
-                    <button id="industriesToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                    <button id="industriesToggle" class="menu-link font-medium text-gray-700 px-3 py-2 rounded inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
                         <span class="hidden sm:inline">Industries</span>
-                        <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
                     </button>
                     <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-lg py-2 z-50">
                         <li><a href="?ind=mines">Mines</a></li>
                         <li><a href="?ind=petrole-gaz">Pétrole & gaz</a></li>
-                        <li><a href="?ind=chimie">Industrie chimique/pétrochimique</a></li>
-                        <li><a href="?ind=energie">Énergie & centrales</a></li>
+                        <li><a href="?ind=chimie">Chimie</a></li>
+                        <li><a href="?ind=energie">Énergie</a></li>
                         <li><a href="?ind=agro">Agro-alimentaire</a></li>
                         <li><a href="?ind=cimenterie">Cimenterie</a></li>
-                        <li><a href="?ind=infrastructure">Infrastructure & transport</a></li>
+                        <li><a href="?ind=infrastructure">Infrastructure</a></li>
                         <li><a href="?ind=carrieres">Carrières</a></li>
                         <li><a href="?ind=btp">BTP</a></li>
                     </ul>
-                </li>
-
-                <li>
-                    <button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-                        <span class="hidden sm:inline">Partager</span>
-                    </button>
                 </li>
             </ul>
         </nav>
@@ -222,194 +232,151 @@
         <strong>MULTIPARTS :</strong> 30 ans d'expertise en sourcing critique international à votre service.
     </div>
 
-    <a href="#top" class="back-to-top no-print" title="Retourner en haut du document">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
+    <a href="#top" class="back-to-top no-print" title="Haut de page">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
     </a>
 
-    <div class="catalog-page page-number" id="top">
-        <header class="header">
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-[#1e40af]" id="page-title">NOS MARQUES PARTENAIRES</h1>
-            <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1" id="page-subtitle">Chargement...</h2>
-        </header>
-
-        <img class="w-full h-auto rounded-lg mb-6" id="cover-image" src="" alt="Cover" onerror="this.style.display='none'">
-
-        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
-            <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 text-sm">
-                <div>
-                    <p id="company-activity"><strong>Activité :</strong> Fournisseur de solutions et d'équipements pour l'industrie minière et de la construction, expert dans l’approvisionnement en pièces critiques, en composants mécaniques, électriques et en services logistiques soutenant les grands projets industriels.</p>
-                </div>
-                <div>
-                    <p><strong>Adresse :</strong> 4145 Avenue Paul Akoto Yao, Abidjan, Côte d’Ivoire</p>
-                    <p><strong>Tél. :</strong> +225 27 21 25 01 46</p>
-                    <p><strong>Mobile :</strong> +225 07 09 39 95 29</p>
-                    <p><strong>Email :</strong> rafiou.oyeossi@multipartsci.com</p>
-                </div>
-            </div>
+    <div class="catalog-container-pro" id="top">
+        
+        <div class="header-title-box">
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-800 tracking-tight" id="page-title">NOS MARQUES</h1>
+            <h2 class="text-lg sm:text-2xl text-blue-700 mt-2 font-light" id="page-subtitle">Chargement...</h2>
         </div>
 
-        <div class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg shadow-sm">
-            <div class="flex items-start">
-                <div class="flex-shrink-0">
-                    <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+        <div class="content-wrapper">
+            <div class="rounded-xl overflow-hidden shadow-md mb-8">
+                <img class="w-full h-auto object-cover max-h-[400px]" id="cover-image" src="" alt="Cover" onerror="this.style.display='none'">
+            </div>
+
+            <div class="expertise-intro-box">
+                <div class="flex flex-col items-center justify-center gap-3">
+                    <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p id="company-activity" class="text-lg font-medium leading-relaxed"></p>
                 </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-bold text-blue-800 uppercase tracking-wide">Offre Globale & Disponibilité</h3>
-                    <div class="mt-1 text-sm text-blue-700">
-                        <p>
-                            <strong>Machines & Organes Complets :</strong> Au-delà des pièces détachées, nous assurons la fourniture des 
-                            <strong>machines neuves</strong> et des <strong>organes complets</strong> (moteurs, boîtes, ponts) de l'ensemble de ces marques partenaires.
-                        </p>
-                        <p class="mt-2 text-xs italic text-blue-600">
-                            * La liste des consommables présentée ci-dessous est donnée à titre indicatif et <strong>n'est pas exhaustive</strong>. Contactez-nous pour toute référence spécifique.
+            </div>
+
+            <div class="mb-10 p-5 bg-slate-50 border border-slate-200 rounded-lg">
+                <div class="flex items-start gap-4">
+                    <div class="bg-blue-100 p-2 rounded-full text-blue-600 shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wide mb-1">Périmètre de fourniture</h3>
+                        <p class="text-sm text-slate-600">
+                            En plus des pièces détachées, nous fournissons les <strong>machines neuves</strong> et <strong>organes complets</strong> (moteurs, boîtes, ponts).
+                            <span class="block mt-1 italic text-slate-500 text-xs">* La liste ci-dessous est indicative. Contactez-nous pour vos besoins spécifiques.</span>
                         </p>
                     </div>
                 </div>
             </div>
+
+            <div class="scroll-arrow-wrapper no-print" onclick="document.getElementById('catalog-container').scrollIntoView({behavior: 'smooth'})">
+                <div class="scroll-arrow">
+                    <span>Découvrir les familles</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+            </div>
+
+            <div id="catalog-container"></div>
         </div>
 
-        <h3 id="industries" class="no-screen text-2xl font-bold mt-8 mb-4 border-l-4 border-indigo-500 pl-3">SOMMAIRE DES FAMILLES DE PRODUITS</h3>
-        <ol class="no-screen list-decimal ml-6 space-y-1 text-gray-700" id="secteurs-list"></ol>
-
-        <div id="catalog-container"></div>
-
+        <footer class="bg-slate-900 text-white py-12 main-footer no-print rounded-b-lg">
+            <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-sm">
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-blue-400">MULTIPARTS</h4>
+                    <p class="text-slate-300">Directeur Général : Michael MENAGER</p>
+                    <p class="text-slate-300">Directeur Projets : Rafiou OYEOSSI</p>
+                    <p class="text-slate-400 mt-2">Abidjan, Côte d'Ivoire</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-blue-400">Contact Rapide</h4>
+                    <p class="mb-2"><a href="tel:+2252721250146" class="hover:text-white transition">📞 +225 27 21 25 01 46</a></p>
+                    <p class="mb-2"><a href="tel:+2250709399529" class="hover:text-white transition">📱 +225 07 09 39 95 29</a></p>
+                    <p><a href="mailto:contact@multipartsci.com" class="hover:text-white transition">✉️ contact@multipartsci.com</a></p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-blue-400">Accès Direct</h4>
+                    <ul class="space-y-2 text-slate-300">
+                        <li><a href="?ind=mines" class="hover:text-white">Mines</a></li>
+                        <li><a href="?ind=btp" class="hover:text-white">BTP & Construction</a></li>
+                        <li><a href="?ind=petrole-gaz" class="hover:text-white">Pétrole & Gaz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-xs mt-10 border-t border-slate-800 pt-6">
+                © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
+            </div>
+        </footer>
     </div>
 
-    <footer class="bg-blue-900 text-white py-8 mt-12 main-footer no-print">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
-            <div>
-                <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
-                <p class="text-blue-200">Directeur Général : Michael MENAGER</p>
-                <p class="text-blue-200">Directeur Projets : Rafiou OYEOSSI</p>
-                <p class="text-blue-200 mt-2">Abidjan, Côte d'Ivoire</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4">Contact</h4>
-                <p class="mb-1">Tél : <a href="tel:+2252721250146" class="hover:text-yellow-400">+225 27 21 25 01 46</a></p>
-                <p class="mb-1">Mobile : <a href="tel:+2250709399529" class="hover:text-yellow-400">+225 07 09 39 95 29</a></p>
-                <p>Email : <a href="mailto:rafiou.oyeossi@multipartsci.com" class="hover:text-yellow-400">rafiou.oyeossi@multipartsci.com</a></p>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
-                <ul class="space-y-2">
-                    <li><a href="?ind=mines" class="hover:text-yellow-400">Catalogue Mines</a></li>
-                    <li><a href="?ind=btp" class="hover:text-yellow-400">Catalogue BTP</a></li>
-                    <li><a href="?ind=petrole-gaz" class="hover:text-yellow-400">Catalogue Pétrole</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center text-blue-400 text-xs mt-8 border-t border-blue-800 pt-4">
-            © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
-        </div>
-    </footer>
-
 <script>
-// --- LOGIQUE PRINCIPALE ---
 document.addEventListener("DOMContentLoaded", async () => {
-    
-    // 1. Récupérer le paramètre d'industrie (par défaut 'mines')
     const urlParams = new URLSearchParams(window.location.search);
     const industry = urlParams.get('ind') || 'mines';
     const dataFile = `data/${industry}.json`;
 
-    // 2. Charger les données
     try {
         const response = await fetch(dataFile);
         if (!response.ok) throw new Error("Fichier introuvable");
         const data = await response.json();
-        
-        // 3. Construire la page
         buildPage(data);
-        
-        // 4. Initialiser les interactions (Scroll, Menus) une fois le DOM prêt
         initInteractions();
-        
     } catch (error) {
         console.error("Erreur:", error);
         document.getElementById('page-subtitle').textContent = "Erreur de chargement des données.";
-        // Fallback: si erreur, essayer de charger mines par défaut si ce n'était pas le cas
-        if (industry !== 'mines') {
-            window.location.href = '?ind=mines';
-        }
+        if (industry !== 'mines') window.location.href = '?ind=mines';
     }
 });
 
 function buildPage(data) {
     const esc = s => (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : '');
 
-    // A. Remplir le Header & Métadonnées
     document.getElementById('page-title').textContent = data.meta.pageTitle;
     document.getElementById('page-subtitle').textContent = data.meta.pageSubtitle;
-    
     const coverImg = document.getElementById('cover-image');
     coverImg.src = data.meta.coverImage;
-    // MODIF : Sécurité JS supplémentaire si l'image casse
     coverImg.onerror = function() { this.style.display = 'none'; };
-
     document.title = `Catalogue MULTIPARTS - ${data.meta.pageSubtitle}`;
     
     if(data.meta.description) {
-        document.getElementById('company-activity').innerHTML = '<strong>Activité :</strong> ' + esc(data.meta.description);
+        document.getElementById('company-activity').innerHTML = esc(data.meta.description);
     }
 
     const container = document.getElementById('catalog-container');
-    const summaryList = document.getElementById('secteurs-list');
     const summaryMenu = document.getElementById('sommaireMenu');
-    
-    container.innerHTML = ''; // Nettoyer
-    summaryList.innerHTML = ''; 
-    summaryMenu.innerHTML = '';
+    container.innerHTML = ''; summaryMenu.innerHTML = '';
 
-    // B. Générer les Sections
-    data.sections.forEach((section, index) => {
-        // 1. Ajouter au sommaire (Page & Menu)
+    data.sections.forEach((section) => {
         const linkId = section.id;
-        const summaryItem = `<li><a href="#${linkId}" class="text-indigo-600 hover:text-indigo-800 transition duration-150">${esc(section.title)}</a></li>`;
-        summaryList.innerHTML += summaryItem;
         summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
 
-        // 2. Créer le HTML de la section
-        // MODIF : Ajout de onerror sur l'image de section pour la cacher si absente
         const sectionHTML = `
-        <div class="table-group" data-section="${linkId}">
-            <div class="section-header" id="${linkId}">
+        <div class="table-group" data-section="${linkId}" id="${linkId}">
+            <div class="section-header">
                 <div class="flex items-center">
-                    <img src="${esc(section.icon)}" class="rounded-md mr-3" alt="Icone" onerror="this.style.display='none'">
+                    <img src="${esc(section.icon)}" class="rounded w-8 h-8 mr-3" alt="" onerror="this.style.display='none'">
                     <h3>${esc(section.title)}</h3>
                 </div>
-                <button type="button" class="toggle-details-btn">
-                    <span class="toggle-sign">+</span> Plus de détails
-                </button>
+                <div class="toggle-icon">+</div>
             </div>
-            <div id="content-${linkId}" class="section-content">
-                <div class="expertise-box">
-                    <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> ${esc(section.expertiseText)}</p>
-                </div>
-                ${section.sectionImage ? `<img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}" onerror="this.style.display='none'">` : ''}
+            <div class="section-content">
+                ${section.sectionImage ? `<img class="w-full sm:w-2/3 mx-auto h-auto rounded-lg mb-6 block shadow-sm border border-gray-100" src="${esc(section.sectionImage)}" alt="${esc(section.title)}" onerror="this.style.display='none'">` : ''}
                 
-                <div class="scroll-arrow-container no-print" title="Voir les marques">
-                    <span class="scroll-text">Voir les Marques</span>
-                    <svg class="scroll-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-
                 <div class="table-container">
-                    <table class="w-full table-custom">
-                        <thead><tr><th class="w-1/2">${esc(section.tableHeaders[0])}</th><th class="w-1/2">${esc(section.tableHeaders[1])}</th></tr></thead>
+                    <table class="table-custom">
+                        <thead><tr><th class="w-1/3">${esc(section.tableHeaders[0])}</th><th class="w-2/3">${esc(section.tableHeaders[1])}</th></tr></thead>
                         <tbody>
                             ${section.items.map(item => {
                                 const detailsList = item.details.map(d => `<li>${esc(d)}</li>`).join('');
-                                const detailsPreview = item.details.slice(0, 3).join(', ') + (item.details.length > 3 ? '…' : '');
+                                const detailsPreview = item.details.slice(0, 4).join(', ') + (item.details.length > 4 ? '…' : '');
                                 return `
                                 <tr class="brand-row" tabindex="0">
                                     <td>
-                                        <strong>${esc(item.brand)}</strong>
-                                        <div class="text-sm text-gray-600">${esc(item.specialization)}</div>
+                                        ${esc(item.brand)}
+                                        <div class="text-xs font-normal text-gray-500 mt-1">${esc(item.specialization)}</div>
                                         <div class="consumables-popup no-print">
-                                            <strong>${esc(section.tableHeaders[1])} — ${esc(item.brand)}</strong>
-                                            <ul style="margin:0;padding-left:18px;">${detailsList}</ul>
+                                            <strong class="block mb-2 text-blue-800 border-b pb-1">${esc(item.brand)} - Détails</strong>
+                                            <ul class="list-disc pl-4 space-y-1">${detailsList}</ul>
                                         </div>
                                     </td>
                                     <td><div class="consumables-inline">${esc(detailsPreview)}</div></td>
@@ -420,170 +387,71 @@ function buildPage(data) {
                 </div>
             </div>
         </div>`;
-        
         container.insertAdjacentHTML('beforeend', sectionHTML);
     });
 }
 
 function initInteractions() {
-    // --- PRELOADER ---
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
     const images = Array.from(document.images);
-    let imagesLoaded = 0;
-    const totalImages = images.length;
+    let imagesLoaded = 0; const totalImages = images.length;
 
     function imageLoaded() {
         imagesLoaded++;
         const percent = Math.round((imagesLoaded / totalImages) * 100);
         if(bar) bar.style.width = percent + '%';
-        if(text) text.textContent = `Chargement des ressources... ${percent}%`;
-
-        if (imagesLoaded === totalImages) {
-            setTimeout(() => {
-                if(preloader) {
-                    preloader.style.opacity = '0';
-                    document.body.classList.remove('loading');
-                    setTimeout(() => { preloader.remove(); }, 500);
-                }
-            }, 300);
-        }
+        if(text) text.textContent = `Chargement... ${percent}%`;
+        if (imagesLoaded === totalImages) finishLoad();
     }
-    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); } } 
-    else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
-    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); }, 500); } }, 6000);
-
-    // --- LOGIQUE ACCORDÉON & SCROLL ---
-    const groups = Array.from(document.querySelectorAll('.table-group'));
-    const headerEl = document.querySelector('header');
-    const getHeaderOffset = () => (headerEl ? headerEl.offsetHeight + 10 : 80);
-    
-    function smoothScrollTo(element) {
-        if (!element) return;
-        const offset = getHeaderOffset();
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    function finishLoad() {
+        setTimeout(() => { if(preloader) { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => preloader.remove(), 500); } }, 300);
     }
+    if (totalImages === 0) finishLoad();
+    else images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } });
+    setTimeout(finishLoad, 5000);
 
-    groups.forEach((group, index) => {
-        const btn = group.querySelector('.toggle-details-btn');
+    // Accordéon
+    const groups = document.querySelectorAll('.table-group');
+    groups.forEach(group => {
+        const header = group.querySelector('.section-header');
         const content = group.querySelector('.section-content');
-        const sign = group.querySelector('.toggle-sign');
-        const arrowContainer = group.querySelector('.scroll-arrow-container');
-        const tableContainer = group.querySelector('.table-container');
-
-        // Ouvrir la première section par défaut
-        if (index === 0) {
-            content.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
-            sign.textContent = '−';
-        } else {
-            content.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-            sign.textContent = '+';
-        }
-
-        btn.addEventListener('click', () => {
-            const isOpen = content.classList.contains('open');
+        
+        header.addEventListener('click', () => {
+            const isOpen = group.classList.contains('active');
+            
+            // Fermer les autres (Optionnel, commenter pour garder plusieurs ouverts)
             groups.forEach(g => {
-                if(g !== group) {
-                    g.querySelector('.section-content').classList.remove('open');
-                    g.querySelector('.toggle-details-btn').setAttribute('aria-expanded', 'false');
-                    g.querySelector('.toggle-sign').textContent = '+';
-                }
+                g.classList.remove('active');
+                g.querySelector('.section-content').classList.remove('open');
+                g.querySelector('.toggle-icon').textContent = '+';
             });
-            if (isOpen) {
-                content.classList.remove('open');
-                btn.setAttribute('aria-expanded', 'false');
-                sign.textContent = '+';
-            } else {
+
+            if (!isOpen) {
+                group.classList.add('active');
                 content.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-                sign.textContent = '−';
-                setTimeout(() => smoothScrollTo(group.querySelector('.section-header')), 50);
+                group.querySelector('.toggle-icon').textContent = '−';
+                setTimeout(() => {
+                    const offset = 80; 
+                    const top = group.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({top: top, behavior: 'smooth'});
+                }, 100);
             }
         });
-
-        if (arrowContainer && tableContainer) {
-            arrowContainer.addEventListener('click', (e) => {
-                e.stopPropagation();
-                smoothScrollTo(tableContainer);
-            });
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        arrowContainer.classList.add('hidden-arrow');
-                    } else {
-                        if (entry.boundingClientRect.top > 0) {
-                             arrowContainer.classList.remove('hidden-arrow');
-                        }
-                    }
-                });
-            }, { threshold: 0.2 });
-            observer.observe(tableContainer);
-        }
     });
 
-    // --- GESTION DES MENUS DÉROULANTS ---
-    function setupDropdown(toggleId, menuId) {
-        const toggle = document.getElementById(toggleId);
-        const menu = document.getElementById(menuId);
-        if (toggle && menu) {
-            toggle.addEventListener('click', (e) => { 
-                e.stopPropagation(); 
-                document.querySelectorAll('.dropdown-menu').forEach(m => {
-                    if (m !== menu) m.classList.add('hidden');
-                });
-                menu.classList.toggle('hidden'); 
-            });
-            
-            menu.addEventListener('click', (e) => {
-                const link = e.target.closest('a');
-                if (!link) return;
-                
-                menu.classList.add('hidden');
-                
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        if (target.classList.contains('section-header')) {
-                            const group = target.closest('.table-group');
-                            const btn = group.querySelector('.toggle-details-btn');
-                            if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
-                            else smoothScrollTo(target);
-                        } else {
-                            smoothScrollTo(target);
-                        }
-                    }
-                }
-            });
+    // Dropdown
+    const setupDropdown = (tid, mid) => {
+        const t = document.getElementById(tid), m = document.getElementById(mid);
+        if(t && m) {
+            t.addEventListener('click', (e) => { e.stopPropagation(); m.classList.toggle('hidden'); });
+            m.addEventListener('click', () => m.classList.add('hidden'));
         }
-    }
-
+    };
     setupDropdown('sommaireToggle', 'sommaireMenu');
     setupDropdown('industriesToggle', 'industriesMenu');
-
-    document.addEventListener('click', (e) => {
-        document.querySelectorAll('.dropdown-menu').forEach(menu => {
-            const toggleBtn = menu.previousElementSibling; 
-            if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-                menu.classList.add('hidden');
-            }
-        });
-    });
-    
-    const shareBtn = document.getElementById('shareButton');
-    if(shareBtn) {
-        shareBtn.addEventListener('click', async () => {
-            if (navigator.share) { try { await navigator.share({ title: document.title, url: window.location.href }); } catch(e) {} }
-            else { try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {} }
-        });
-    }
+    document.addEventListener('click', () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden')));
 }
 </script>
 </body>

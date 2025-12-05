@@ -3,502 +3,617 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catalogue officiel MULTIPARTS : Découvrez nos marques partenaires pour le secteur industriel en Côte d'Ivoire et Afrique de l'Ouest.">
-    <title>Catalogue MULTIPARTS - Marques Partenaires</title>
+    
+    <meta name="google-site-verification" content="Mz3XaCEHlFo4KecK4tqyUmJuaBnqIZIjsVKpzw4sVm8" />
+    
+    <title>MULTIPARTS | Centrale d'Achat +1300 Marques Industrielles - Côte d'Ivoire</title>
+    <meta name="description" content="Distributeur agréé et centrale d'achat pour plus de 1300 marques mondiales (Caterpillar, Komatsu, Siemens, SKF...). Sourcing Mines, BTP et Industrie en Afrique de l'Ouest.">
+    
+    <meta name="keywords" content="Caterpillar, Komatsu, Metso, Sandvik, Epiroc, Volvo, Schneider Electric, Siemens, SKF, Warman, Flygt, Atlas Copco, Hilti, Facom, Sourcing industriel Afrique, Multiparts, 3M, Honeywell, EPI, Ridgid, Fluke, Timken, Schaeffler, ABB, Allen Bradley">
+    <meta name="author" content="MULTIPARTS">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://catalogue.multipartsci.com/">
+
+    <meta property="og:title" content="MULTIPARTS - Le Catalogue aux 1300 Marques Partenaires">
+    <meta property="og:description" content="Accédez à la plus grande base de données de sourcing industriel d'Abidjan. +1300 fabricants : Mines, BTP, Pétrole, Énergie.">
+    <meta property="og:image" content="https://catalogue.multipartsci.com/images/cover_mines.png">
+    <meta property="og:url" content="https://catalogue.multipartsci.com/">
+    <meta property="og:type" content="website">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_64_Design_Luxe_Banner */
-        :root {
-            --primary-blue: #1e3a8a;
-            --hover-blue: #eff6ff;
-            --accent-green: #15803d;
-            --text-main: #334155;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9;
-            color: var(--text-main);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            /* 8. AUGMENTATION DE LA TAILLE DE POLICE GÉNÉRALE */
-            font-size: 17px; 
-        }
-        
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #ffffff; z-index: 9999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease-out, visibility 0.5s;
-        }
-        .loader-content { text-align: center; width: 80%; max-width: 300px; }
-        .loader-bar-bg { width: 100%; height: 6px; background-color: #e2e8f0; border-radius: 3px; margin-top: 20px; overflow: hidden; }
-        .loader-bar-fill { height: 100%; width: 0%; background-color: var(--primary-blue); transition: width 0.2s ease; }
-        .loader-text { margin-top: 10px; color: #64748b; font-size: 0.9rem; font-weight: 600; }
-        body.loading { overflow: hidden; }
-
-        /* --- CONTENEUR PRINCIPAL --- */
-        .catalog-container-pro {
-            max-width: 1280px; /* Un peu plus large pour le confort */
-            margin: 0 auto;
-            background-color: white;
-            min-height: 100vh;
-            position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.08);
-        }
-        
-        .content-wrapper { padding: 40px; }
-        @media (max-width: 640px) { .content-wrapper { padding: 20px; } }
-
-        /* 6. BANNIÈRE TITRE INDUSTRIE */
-        .header-banner { 
-            position: relative;
-            height: 350px;
+        /* Version_61_Finale_NoOverlap */
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
         }
-        .header-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95));
-        }
-        .header-content { position: relative; z-index: 10; padding: 0 20px; }
-        .header-title { font-size: 3rem; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 10px; text-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .header-subtitle { font-size: 1.4rem; font-weight: 300; opacity: 0.9; }
-
-        @media (max-width: 640px) { .header-banner { height: 250px; } .header-title { font-size: 2rem; } .header-subtitle { font-size: 1.1rem; } }
-
-        /* --- TABLEAUX --- */
-        .table-custom { border-collapse: separate; border-spacing: 0; width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; overflow: visible; } /* Overflow visible pour le popup */
-        .table-custom th { 
-            background-color: #f8fafc; 
-            color: var(--primary-blue); 
-            font-weight: 800; 
-            padding: 18px 20px; 
-            text-align: left; 
-            font-size: 1.05rem; 
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        .table-custom td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 1.05rem; }
-        .table-custom tr:last-child td { border-bottom: none; }
+        .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+        #cookie-banner { transition: transform 0.5s ease-in-out; }
+        #cookie-banner.hidden-banner { transform: translateY(100%); }
         
-        /* 4. HOVER TABLEAU (PC & MOBILE) */
-        .table-custom tr { transition: background-color 0.2s, transform 0.1s; cursor: default; }
-        .table-custom tr:hover, .table-custom tr:focus-within { 
-            background-color: #f0fdf4 !important; /* Vert très léger */
-            transform: scale(1.005); /* Effet léger de zoom */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            z-index: 10; position: relative;
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
         }
-
-        .brand-row td:first-child { width: 35%; font-weight: 700; color: var(--primary-blue); } 
-        .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #475569; }
-        
-        /* POPUP DÉTAILS */
-        .consumables-popup {
-            display: none; position: absolute; left: 100%; top: 0; margin-left: 20px; 
-            width: 350px; max-width: 300px;
-            background: #ffffff; border: 1px solid #cbd5e1;
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2); 
-            padding: 20px; border-radius: 8px; z-index: 100; 
-            color: #334155; font-size: 0.95rem; line-height: 1.5; font-weight: normal;
-        }
-        .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 20px; width: 16px; height: 16px; background: white; transform: rotate(45deg); border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; }
-        
-        /* 3. FIX POPUP TRONQUÉ (Dernières lignes s'ouvrent vers le haut) */
-        .brand-row:hover td:first-child .consumables-popup, 
-        .brand-row:focus-within td:first-child .consumables-popup { display: block; }
-
-        .brand-row:nth-last-child(-n+3) .consumables-popup {
-            top: auto; bottom: 0; /* S'ouvre vers le haut */
-        }
-        .brand-row:nth-last-child(-n+3) .consumables-popup::before {
-            top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none;
-        }
-
-        /* 4. MOBILE LAYOUT */
-        @media screen and (max-width: 768px) {
-            .table-custom { display: block; border: none; }
-            .table-custom thead { display: none; }
-            .table-custom tbody, .table-custom tr, .table-custom td { display: block; width: 100%; }
-            .table-custom tr { margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-            .table-custom td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
-            .table-custom td:first-child { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
-            
-            /* Mobile Popup -> Accordéon intégré */
-            .consumables-popup { 
-                position: static; margin: 10px 0 0 0; width: 100%; max-width: none; 
-                box-shadow: none; border: 1px dashed #cbd5e1; background: #fff; 
-                padding: 10px; font-size: 0.9rem;
-            }
-            .consumables-popup::before { display: none; }
-            .consumables-inline { display: none; } /* Cache le résumé sur mobile pour éviter la redondance */
-        }
-
-        .no-screen { display: none !important; }        
-        
-        /* 2. HOVER SECTIONS (Couleur non agressive) */
-        .table-group { margin-bottom: 30px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; overflow: hidden; transition: box-shadow 0.3s; }
-        .table-group:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: #cbd5e1; }
-        
-        .section-header { 
-            display: flex; align-items: center; justify-content: space-between; 
-            padding: 20px 25px; 
-            background: #ffffff; 
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        /* Couleur hover douce et vive */
-        .section-header:hover { background: #eff6ff; /* Bleu très pâle */ }
-        .section-header h3 { font-size: 1.35rem; font-weight: 800; color: var(--primary-blue); margin: 0; display: flex; align-items: center; gap: 15px; }
-        
-        .toggle-icon { 
-            width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; 
-            display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem; transition: all 0.3s; 
-        }
-        .table-group.active .toggle-icon { background: var(--primary-blue); color: white; transform: rotate(180deg); }
-        .table-group.active .section-header { border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
-
-        .section-content { display: none; padding: 30px; } 
-        .section-content.open { display: block; animation: slideDown 0.3s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-          
-        .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: var(--primary-blue); color: white; border-radius: 50%; padding: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
-        .back-to-top:hover { background-color: #172554; }
-
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        
-        /* Panneau Jaune Expert (Épuré) */
-        .expertise-intro-box { 
-            background: #fffbeb; 
-            border-left: 6px solid #f59e0b; 
-            padding: 25px; 
-            margin-bottom: 40px;
-            color: #78350f;
-            font-size: 1.1rem;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* 5. TAILLE IMAGES SECTIONS */
-        .section-image-wrapper { text-align: center; margin-bottom: 25px; }
-        .section-image-wrapper img { 
-            max-width: 50%; /* Réduit de moitié (donc réduit de + que le quart demandé) */
-            height: auto; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: inline-block;
-        }
-        @media (max-width: 640px) { .section-image-wrapper img { max-width: 90%; } }
-
-        .menu-link { transition: background 0.18s; }
-        .menu-link:hover { background: #eff6ff; color: var(--primary-blue) !important; }
-        .dropdown-menu a { display: block; padding: 10px 16px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
-        .dropdown-menu a:hover { background-color: #f1f5f9; color: var(--primary-blue); }
-        
-        /* SCROLL ARROW */
-        .scroll-arrow-wrapper { text-align: center; margin-bottom: 40px; margin-top: 20px; }
-        .scroll-arrow { 
-            display: inline-flex; flex-direction: column; align-items: center; 
-            color: #94a3b8; cursor: pointer; transition: color 0.3s; 
-        }
-        .scroll-arrow:hover { color: var(--primary-blue); }
-        .scroll-arrow svg { width: 36px; height: 36px; animation: bounce 2s infinite; }
-        .scroll-arrow span { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
-
-        @media print {
-            .catalog-container-pro { box-shadow: none; max-width: 100%; margin: 0; padding: 0; }
-            .header-banner, .scroll-arrow-wrapper, .whatsapp-float, .back-to-top, .toggle-icon { display: none !important; }
-            .section-content { display: block !important; padding: 0; }
-            .table-group { border: none; margin-bottom: 20px; }
-            .section-header { border-bottom: 2px solid #000; padding: 10px 0; }
-        }
+        .animate-scroll { animation: bounce-slow 2s infinite; }
     </style>
 </head>
-<body class="loading">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <div id="preloader">
-        <div class="loader-content">
-            <img src="logo-multiparts.png" alt="Chargement..." style="height: 50px; margin: 0 auto;">
-            <div class="loader-bar-bg"><div class="loader-bar-fill" id="loaderBar"></div></div>
-            <div class="loader-text" id="loaderText">Chargement... 0%</div>
-        </div>
-    </div>
-
-    <a href="https://wa.me/2250709399529" class="whatsapp-float no-print" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-        </svg>
-    </a>
-
-    <header class="flex items-center px-4 sm:px-6 py-2 bg-white shadow-sm sticky top-0 z-50 no-print border-b border-gray-100">
-        <a href="index.html" class="shrink-0 sm:mr-10">
-            <img src="logo-multiparts.png" alt="Logo" class="h-12 w-auto">
-        </a>
-        <nav class="flex-1 min-w-0 hidden md:block">
-            <ul class="flex flex-wrap space-x-6 justify-end items-center w-full text-base">
-                <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-bold text-gray-700 px-4 py-2 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                        Sommaire
-                    </button>
-                    <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-72 bg-white border rounded-md shadow-xl py-2 z-50"></ul>
-                </li>
-                <li class="relative">
-                    <button id="industriesToggle" class="menu-link font-bold text-gray-700 px-4 py-2 rounded inline-flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
-                        Industries
-                    </button>
-                    <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-xl py-2 z-50">
-                        <li><a href="?ind=mines">Mines</a></li>
-                        <li><a href="?ind=petrole-gaz">Pétrole & gaz</a></li>
-                        <li><a href="?ind=chimie">Chimie</a></li>
-                        <li><a href="?ind=energie">Énergie</a></li>
-                        <li><a href="?ind=agro">Agro-alimentaire</a></li>
-                        <li><a href="?ind=cimenterie">Cimenterie</a></li>
-                        <li><a href="?ind=infrastructure">Infrastructure</a></li>
-                        <li><a href="?ind=carrieres">Carrières</a></li>
-                        <li><a href="?ind=btp">BTP</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2.5 rounded-md font-bold transition shadow-md">
-                        Demander un Devis
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <nav class="flex-1 md:hidden flex justify-end gap-3">
-            <a href="index.html" class="p-2 text-blue-900 bg-blue-50 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg></a>
-            <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-        </nav>
-    </header>
-
-    <a href="#top" class="back-to-top no-print" title="Haut de page">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-    </a>
-
-    <div class="catalog-container-pro" id="top">
-        
-        <div class="header-banner" id="header-banner">
-            <div class="header-overlay"></div>
-            <div class="header-content">
-                <h1 class="header-title" id="page-title">CHARGEMENT...</h1>
-                <h2 class="header-subtitle" id="page-subtitle">...</h2>
-            </div>
-        </div>
-
-        <div class="content-wrapper">
-            
-            <div class="expertise-intro-box">
-                <div class="flex flex-col items-center justify-center gap-3">
-                    <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <p id="company-activity" class="font-medium leading-relaxed"></p>
-                </div>
-            </div>
-
-            <div class="scroll-arrow-wrapper no-print" onclick="document.getElementById('catalog-container').scrollIntoView({behavior: 'smooth'})">
-                <div class="scroll-arrow">
-                    <span>Découvrir les familles</span>
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-            </div>
-
-            <div id="catalog-container"></div>
-        </div>
-
-        <footer class="bg-slate-900 text-white py-12 main-footer no-print rounded-b-lg">
-            <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-sm">
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-blue-400">MULTIPARTS</h4>
-                    <p class="text-slate-300">Directeur Général : Michael MENAGER</p>
-                    <p class="text-slate-300">Directeur Projets : Rafiou OYEOSSI</p>
-                    <p class="text-slate-400 mt-2">Abidjan, Côte d'Ivoire</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-blue-400">Contact Rapide</h4>
-                    <p class="mb-2"><a href="tel:+2252721250146" class="hover:text-white transition">📞 +225 27 21 25 01 46</a></p>
-                    <p class="mb-2"><a href="tel:+2250709399529" class="hover:text-white transition">📱 +225 07 09 39 95 29</a></p>
-                    <p><a href="mailto:contact@multipartsci.com" class="hover:text-white transition">✉️ contact@multipartsci.com</a></p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-blue-400">Accès Direct</h4>
-                    <ul class="space-y-2 text-slate-300">
-                        <li><a href="?ind=mines" class="hover:text-white">Mines</a></li>
-                        <li><a href="?ind=btp" class="hover:text-white">BTP & Construction</a></li>
-                        <li><a href="?ind=petrole-gaz" class="hover:text-white">Pétrole & Gaz</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center text-slate-500 text-xs mt-10 border-t border-slate-800 pt-6">
-                © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
-            </div>
-        </footer>
-    </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const industry = urlParams.get('ind') || 'mines';
-    const dataFile = `data/${industry}.json`;
-
-    try {
-        const response = await fetch(dataFile);
-        if (!response.ok) throw new Error("Fichier introuvable");
-        const data = await response.json();
-        buildPage(data);
-        initInteractions();
-    } catch (error) {
-        console.error("Erreur:", error);
-        document.getElementById('page-subtitle').textContent = "Erreur de chargement.";
-        if (industry !== 'mines') window.location.href = '?ind=mines';
-    }
-});
-
-function buildPage(data) {
-    const esc = s => (s ? String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>') : '');
-
-    document.getElementById('page-title').textContent = data.meta.pageTitle;
-    document.getElementById('page-subtitle').textContent = data.meta.pageSubtitle;
-    document.title = `Catalogue MULTIPARTS - ${data.meta.pageSubtitle}`;
-    
-    // BANNIÈRE ARRIÈRE-PLAN
-    if(data.meta.coverImage) {
-        document.getElementById('header-banner').style.backgroundImage = `url('${esc(data.meta.coverImage)}')`;
-    }
-    
-    if(data.meta.description) {
-        document.getElementById('company-activity').innerHTML = esc(data.meta.description);
-    }
-
-    const container = document.getElementById('catalog-container');
-    const summaryMenu = document.getElementById('sommaireMenu');
-    container.innerHTML = ''; summaryMenu.innerHTML = '';
-
-    data.sections.forEach((section) => {
-        const linkId = section.id;
-        summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
-
-        const sectionHTML = `
-        <div class="table-group" data-section="${linkId}" id="${linkId}">
-            <div class="section-header">
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <img src="${esc(section.icon)}" class="rounded w-10 h-10 mr-4 shadow-sm" alt="" onerror="this.style.display='none'">
-                    <h3>${esc(section.title)}</h3>
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-14 md:h-16 w-auto" src="logo-multiparts.png" alt="Logo MULTIPARTS">
+                    </a>
                 </div>
-                <div class="toggle-icon">+</div>
-            </div>
-            <div class="section-content">
-                <div class="expertise-box mb-6">
-                    <p class="text-gray-700 italic"><strong>Expertise :</strong> ${esc(section.expertiseText)}</p>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="catalogue.html" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Catalogue</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                    
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" rel="noopener" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Localisation
+                    </a>
+
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
                 </div>
-                
-                ${section.sectionImage ? `
-                <div class="section-image-wrapper">
-                    <img src="${esc(section.sectionImage)}" alt="${esc(section.title)}" onerror="this.style.display='none'">
-                </div>` : ''}
-                
-                <div class="table-container">
-                    <table class="table-custom">
-                        <thead><tr><th class="w-1/3">${esc(section.tableHeaders[0])}</th><th class="w-2/3">${esc(section.tableHeaders[1])}</th></tr></thead>
-                        <tbody>
-                            ${section.items.map(item => {
-                                const detailsList = item.details.map(d => `<li>${esc(d)}</li>`).join('');
-                                const detailsPreview = item.details.slice(0, 4).join(', ') + (item.details.length > 4 ? '…' : '');
-                                return `
-                                <tr class="brand-row" tabindex="0">
-                                    <td>
-                                        ${esc(item.brand)}
-                                        <div class="text-sm font-normal text-gray-500 mt-1">${esc(item.specialization)}</div>
-                                        <div class="consumables-popup no-print">
-                                            <strong class="block mb-2 text-blue-800 border-b pb-1">${esc(item.brand)}</strong>
-                                            <ul class="list-disc pl-4 space-y-1">${detailsList}</ul>
-                                        </div>
-                                    </td>
-                                    <td><div class="consumables-inline">${esc(detailsPreview)}</div></td>
-                                </tr>`;
-                            }).join('')}
-                        </tbody>
-                    </table>
+
+                <div class="flex md:hidden items-center space-x-2">
+                    <a href="catalogue.html" class="p-2 text-blue-800 bg-blue-50 rounded-full hover:bg-blue-100" aria-label="Catalogue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" class="p-2 text-gray-700 hover:bg-gray-100 rounded-full" aria-label="Localisation">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </a>
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full shadow-sm hover:bg-yellow-600" aria-label="Devis">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
                 </div>
             </div>
-        </div>`;
-        container.insertAdjacentHTML('beforeend', sectionHTML);
-    });
-}
+        </div>
+    </nav>
 
-function initInteractions() {
-    const preloader = document.getElementById('preloader');
-    const bar = document.getElementById('loaderBar');
-    const text = document.getElementById('loaderText');
-    const images = Array.from(document.images);
-    let imagesLoaded = 0; const totalImages = images.length;
-
-    function imageLoaded() {
-        imagesLoaded++;
-        const percent = Math.round((imagesLoaded / totalImages) * 100);
-        if(bar) bar.style.width = percent + '%';
-        if(text) text.textContent = `Chargement... ${percent}%`;
-        if (imagesLoaded === totalImages) finishLoad();
-    }
-    function finishLoad() {
-        setTimeout(() => { if(preloader) { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => preloader.remove(), 500); } }, 300);
-    }
-    if (totalImages === 0) finishLoad();
-    else images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } });
-    setTimeout(finishLoad, 5000);
-
-    // Accordéon
-    const groups = document.querySelectorAll('.table-group');
-    groups.forEach(group => {
-        const header = group.querySelector('.section-header');
-        const content = group.querySelector('.section-content');
+    <section class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20 relative">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                La Performance Industrielle <br/> <span class="text-yellow-400">Sans Compromis</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Votre centrale d'achat experte. Plus de <strong>1300 marques partenaires</strong> pour les secteurs Mines, BTP et Industries en Afrique de l'Ouest.
+                <br class="hidden sm:block">Sourcing Global, Achat & Logistique DDP.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="catalogue.html" class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition">
+                    Voir le Catalogue (+1300 Marques)
+                </a>
+                <a href="https://wa.me/2250709399529" target="_blank" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-900 transition flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                    Contact WhatsApp
+                </a>
+            </div>
+        </div>
         
-        header.addEventListener('click', () => {
-            const isOpen = group.classList.contains('active');
-            
-            // Fermer les autres pour plus de clarté
-            groups.forEach(g => {
-                g.classList.remove('active');
-                g.querySelector('.section-content').classList.remove('open');
-                g.querySelector('.toggle-icon').textContent = '+';
-            });
+        <a href="#secteurs" class="hidden md:flex absolute bottom-8 left-0 right-0 mx-auto w-fit flex-col items-center animate-scroll cursor-pointer group z-10">
+            <span class="text-white text-xs font-semibold mb-2 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition shadow-sm">Découvrir nos secteurs</span>
+            <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center p-1 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition shadow-lg">
+                <div class="w-1 h-2 bg-white rounded-full mt-1"></div>
+            </div>
+        </a>
+    </section>
 
-            if (!isOpen) {
-                group.classList.add('active');
-                content.classList.add('open');
-                group.querySelector('.toggle-icon').textContent = '−';
-                setTimeout(() => {
-                    const offset = 20; 
-                    const top = group.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({top: top, behavior: 'smooth'});
-                }, 100);
+    <section id="secteurs" class="py-16 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-4">Votre Industrie, Notre Expertise</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Accédez directement aux pièces et équipements spécifiques à votre secteur d'activité.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                
+                <a href="catalogue.html?ind=mines" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Mines</h3>
+                        <p class="text-xs text-gray-500 mt-1">Extraction & Traitement</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=btp" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-yellow-50 flex items-center justify-center group-hover:bg-yellow-500 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-yellow-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">BTP & Construction</h3>
+                        <p class="text-xs text-gray-500 mt-1">Engins & Outillage</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=petrole-gaz" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-gray-100 flex items-center justify-center group-hover:bg-gray-700 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-gray-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Pétrole & Gaz</h3>
+                        <p class="text-xs text-gray-500 mt-1">Vannes & ATEX</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=energie" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-green-50 flex items-center justify-center group-hover:bg-green-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-green-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Énergie</h3>
+                        <p class="text-xs text-gray-500 mt-1">Production & Réseaux</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=chimie" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-purple-50 flex items-center justify-center group-hover:bg-purple-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-purple-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Chimie</h3>
+                        <p class="text-xs text-gray-500 mt-1">Pompes & Corrosion</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=agro" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-orange-50 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-orange-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Agro-Industrie</h3>
+                        <p class="text-xs text-gray-500 mt-1">Process & Hygiène</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=cimenterie" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-stone-100 flex items-center justify-center group-hover:bg-stone-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-stone-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Cimenterie</h3>
+                        <p class="text-xs text-gray-500 mt-1">Four & Broyage</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=infrastructure" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-cyan-50 flex items-center justify-center group-hover:bg-cyan-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-cyan-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Infrastructure</h3>
+                        <p class="text-xs text-gray-500 mt-1">Portuaire & Ferroviaire</p>
+                    </div>
+                </a>
+
+                <a href="catalogue.html?ind=carrieres" class="card-hover group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all">
+                    <div class="h-24 bg-amber-50 flex items-center justify-center group-hover:bg-amber-600 transition-colors duration-300">
+                        <svg class="w-10 h-10 text-amber-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-gray-800 text-lg">Carrières</h3>
+                        <p class="text-xs text-gray-500 mt-1">Agrégats & Concassage</p>
+                    </div>
+                </a>
+
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="catalogue.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition">
+                    Voir le catalogue complet
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-gray-100 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900">Pourquoi choisir MULTIPARTS ?</h2>
+                <p class="text-gray-600 mt-2">Plus qu'un fournisseur, un partenaire pour vos projets critiques.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Sourcing Global</h3>
+                    <p class="text-sm text-gray-600">Accès direct aux fabricants mondiaux (OEM) et stocks stratégiques pour réduire vos coûts d'acquisition.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Machines Complètes</h3>
+                    <p class="text-sm text-gray-600">Fourniture d'engins neufs, d'organes complets (moteurs, boîtes) et d'équipements lourds.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Logistique Intégrée</h3>
+                    <p class="text-sm text-gray-600">Solutions de transport multimodal jusqu'à vos sites les plus isolés en Afrique de l'Ouest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-blue-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
+                <p class="text-blue-200">Directeur Général : Michael MENAGER</p>
+                <p class="text-blue-200">Directeur Projets : Rafiou OYEOSSI</p>
+                <p class="text-blue-200 mt-2">Abidjan, Côte d'Ivoire</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Contact</h4>
+                <p class="mb-1">Tél : <a href="tel:+2252721250146" class="hover:text-yellow-400">+225 27 21 25 01 46</a></p>
+                <p class="mb-1">Mobile : <a href="tel:+2250709399529" class="hover:text-yellow-400">+225 07 09 39 95 29</a></p>
+                <p>Email : <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="hover:text-yellow-400">contact@multipartsci.com</a></p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="catalogue.html?ind=mines" class="hover:text-yellow-400">Catalogue Mines</a></li>
+                    <li><a href="catalogue.html?ind=btp" class="hover:text-yellow-400">Catalogue BTP</a></li>
+                    <li><a href="catalogue.html?ind=petrole-gaz" class="hover:text-yellow-400">Catalogue Pétrole</a></li>
+                    <li><button id="open-cookie-settings" class="hover:text-yellow-400 underline cursor-pointer bg-transparent border-0 p-0">Gestion des cookies</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-blue-400 text-xs mt-8 border-t border-blue-800 pt-4">
+            © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-900 bg-opacity-95 text-white p-6 z-50 hidden shadow-lg border-t border-gray-700 transform transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-gray-300 text-center md:text-left">
+                <p class="font-bold text-white text-base mb-2">Respect de votre vie privée (RGPD)</p>
+                <p class="mb-1">Conformément au Règlement Général sur la Protection des Données, nous vous informons que ce site utilise des cookies techniques pour son fonctionnement.</p>
+                <p class="text-xs text-gray-400">Vos données de navigation sont utilisées <strong>uniquement par MULTIPARTS</strong> pour améliorer votre expérience et ne sont <strong>jamais partagées avec des tiers</strong> à des fins publicitaires.</p>
+            </div>
+            <div class="flex gap-4 shrink-0">
+                <button id="btn-accept-cookies" class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold px-6 py-3 rounded shadow-md transition transform hover:scale-105">
+                    Accepter
+                </button>
+                <button id="btn-refuse-cookies" class="bg-transparent border border-gray-500 hover:border-white text-gray-300 hover:text-white text-sm font-medium px-6 py-3 rounded transition">
+                    Refuser
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LISTE DES MARQUES (MASSIVE & COMPLÈTE)
+        const brandsList = [
+            "Caterpillar","Komatsu","Hitachi","Volvo Construction Equipment","Liebherr","Bell Equipment","Sandvik","Epiroc",
+            "Atlas Copco","Metso Outotec","FLSmidth","Weir Minerals","Warman","Siemens","Schneider Electric","ABB",
+            "Allen Bradley","Rockwell Automation","Omron","SKF","Timken","FAG","NSK","NTN","Enerpac","Hydratight",
+            "Lincoln Electric","Miller","Hypertherm","Leister","Fluke","Endress+Hauser","Vega","Mettler Toledo",
+            "Pruftechnik","Bosch","DeWalt","Makita","Hilti","Milwaukee","Facom","Snap-on","Bahco","Gedore",
+            "Wacker Neuson","Bomag","Dynapac","XCMG","Sany","LiuGong","Cummins","Perkins","Deutz","MTU",
+            "John Deere","Kubota","Yanmar","Palfinger","Hiab","Manitou","JCB","Bobcat","Karcher","Spitwater",
+            "Piusi","Samoa","Graco","Parker Hannifin","Eaton","Danfoss","Rexroth","Vickers","Denison","Sauer Danfoss",
+            "Poclain","Linde","Kawasaki","Staffa","Bridgestone","Michelin","Goodyear","BKT","Magna","Techking",
+            "Triangle","Camso","Donaldson","Fleetguard","Baldwin","Mann Filter","Sakura","Sure Filter","Wix",
+            "Castrol","Mobil","Shell","TotalEnergies","Texaco","Chevron","Fuchs","Motul","3f Filippi","Abus",
+            "Almonte","AZ Armaturen","Baileigh","Beaver","Boscaro","Camfil","Conductix Wampfler","Dixon","Eden",
+            "ELC","ELS","Finder","Finish Thompson","Husqvarna","HYWG","JS Pumps","KDV","Layher","Linatex",
+            "Magmaweld","MeccAlte","Minsup","Mintap Services","Neles","Noris","OEX","Orbinox","Oxylance",
+            "PBA Safety","Pioneer","PRM Filtration","Regal Rexnord","Richter","ROC","Sanwest","Sigma","SMC",
+            "Straub","Test Sieve","Tosaca","Trafindo","Tsurumi","Ubusch","Uryu","Valmet","Victaulic","Vincer",
+            "Weldy","Ziehl-Abegg","3M","Honeywell","MSA","Drager","Ansell","Delta Plus","Bollé","Dupont",
+            "Kimberly-Clark","Mapa","Mechanix Wear","Petzl","Red Wing","Scott Safety","Sundstrom","Capital Safety",
+            "DBI-SALA","Protecta","Miller Fall Protection","Ridgid","Greenlee","Klauke","Brady","Panduit","Festo",
+            "Norgren","Gates","Optibelt","ContiTech","Dayco","Fenner","Megger","Chauvin Arnoux","Extech",
+            "Kyoritsu","Testo","FLIR","Keysight","Rohde & Schwarz","Tektronix","Hach","Lovibond","Palintest",
+            "A&D","A-T Controls","A.C.I.","AAEON","ABL Lights","ABT POWER","ABUS","AC&M","ADDA","ADF Web","ADLink",
+            "AEG","AFAG","AIM-TTI","AKO","AMK","APEM","ARI-Armaturen","ASCO","ASI","ASM","ATOP Technologies",
+            "AU Optronics","AUMA","AVC","AVS Roemer","AVX.","AZ pneumatica","Aaeon","Acbel","AccuEnergy","Accuride",
+            "Ace","Acksys","Acme","Acopian","Acromag","Acu-Rite","Adafruit","Adamczewski","Adder Technology",
+            "Adel Systems","AdleePower","Adler","Advanced Energy","Advanced Motion Controls","Advantech","Aec","Aeco",
+            "Aerotech","Agilent","Agri-Fab","Agriculture & Tracteurs","Aim-TTi","Air Maze","Air Torque","AirTAC",
+            "Airpax","Airpress","Airtac","Aisin","Akasa","Albright","Alcatel","Alco","Alcoa Wheels","Alcon","Alerton",
+            "Alfa Electric","Alfa Laval","Alfagomma","Alfamatic","Alko","Allegro MicroSystems","Allen Bradley (Rockwell)",
+            "Allied Motion","Allied Telesis","Alpha Wire","Alps Alpine","Alstom","Altech","Altera","Altronix","Ametek",
+            "Ametek (Lamb)","Ammann","Amphenol","Analog Devices","Ancor","Anderson Power","Anderson-Negele","Anly",
+            "Ansmann","Antaira","Anton Paar","Anybus","Apem","Apex Dynamics","Aplisens","Apollo","Appleton",
+            "Applied Materials","Applied Robotics","Aqua Signal","AquaMatic","ArcSafe","Arcol","Arcotronics","Arduino",
+            "Aresta","Areva","Arista","Aritech","Aro","Arteche","Artesyn","Artesyn Technologies","Aruba","Asco",
+            "Ascom","Ascon","Ashcroft","Aspen Pumps","Aspöck","Astec","Astro Tool","Astron","Asus","Aten","Atex",
+            "Atos","Auburn","Auer","Auma","Autec","Autel","Automation Direct","Autonics","Aventics","Avtron","Axiom",
+            "Axiomtek","Axis","Axor","Axor Industries","Azbil.","B&B Electronics","B&R","B.B. Battery","BBC",
+            "BD Sensors","BEI Sensors","BEP","BFI Automation","BFT","BGS","BI Technologies","BM Group","BPW","BST",
+            "BTicino","BW Technologies","Bachmann","Baco","Baldor","Baldwin Filters","Balluff","Banjo","Banner",
+            "Banner Engineering","Bard","Barksdale","Bartec","Barthelme","Base Protection","Basler","Battioni Pagani",
+            "Bauer","Baumer","Baumer Electric","Baumuller","Baumüller","Bauser","Bautz","Be-Ge","Beamex","Beck",
+            "Beckhoff","Bedia","Beghelli","Beijer","Beijer Electronics","Beka","Bel Power","Belden","Belimo","Bell",
+            "Bell & Gossett","Bender","Bendix","Benedict","Benning","Benshaw","Bently Nevada","Bepco","Berger Lahr",
+            "Berges","Bergquist","Bernard","Bernstein","Bersy","Berthold Marx","Bessey","Beta Tools","Biesse",
+            "Bifold","Bihl+Wiedemann","Bimba","Binder","Bindicator","Binotto","Bircher","Bitelli","Bitzer",
+            "Black & Decker","Black Box","Blancett","Blaupunkt","Block","Blue Sea","Bodine","Bodine Electric",
+            "Bollfilter","Bollé Safety","Bondioli & Pavesi","Bonfiglioli","Bonitron","Bopla","Bosch Rexroth","Bourns",
+            "Brabender","Brahma","Brainboxes","Bray","Bray Controls","Bremer","Brennenstuhl","Brigade Electronics",
+            "Briggs & Stratton","Broadcom","Brodersen","Bronkhorst","Brook Crompton","Brother","Brovind Vibrators",
+            "Bruder","Bruel & Kjaer","Bucher","Bucher Hydraulics","Bukh","Bulgin","Bulgin.","Burkert","Burndy",
+            "Burster","Busch","Bussmann","Bussmann.","Bwo Elektronik","Bytronic","C (Partiel)","C&K","C-mac",
+            "CAE Groupe","CAM attachments","CCS","CD Automation","CEJN","CFR","CK Tools","CKD","CMR","CNC","CPS",
+            "CR Magnetics","CRC","CSB","CTA","CTB","CTC Union","CUI Devices","CWT","CX caliper","Cabur","Cadel",
+            "Caldaro AB","Calectro","Calex","Calpeda","Cambium Networks","CamdenBoss","Came","Cameron",
+            "Camille Bauer","Camozzi","Cantex","Cantoni Motor","Carel","Carling Technologies","Carlo Gavazzi",
+            "Carraro","Carrier","Casappa","Case (Case Construction)","Case IH","Castel","Caterpillar (CAT)","Catu",
+            "Cavotec","Ceag","Cegelec","Ceia","Cejn","Celduc","Cemb","Cemp","Centronic","Cepovett","Checkpoint",
+            "Chelsea","Chentronics","Chereau","Cherry","Chicago Miniature","Chicago Pneumatic","Chinfa","Chint",
+            "Chromalox","Cima","Cimon","Cincon","Circutor","Cisco","Citel","Citizen","Claas","Clark (Clark-Michigan)",
+            "Cleaver Brooks","Clifford & Snell","Clippard","Cobo","Cofan","Cognex","Coilcraft","Cole Hersee","ComAp",
+            "Comair Rotron","Comap","Comar","Comat","Comeca","Comepi","Comer","Comitronic","CommScope","Computar Lens",
+            "Comsoft","Comus","Condor","Congatec","Conlog","Consilium","Contactum","Contemporary Controls","Contitech",
+            "Contrel elettronica","Contrinex","Control Techniques","ControlAir","Controlli","Converteam","Cooper",
+            "Cooper Bussmann","Copeland","Copley Controls","Corcom","Cordex","Cornell","Corning","Corpoplast",
+            "Cortem Group","Cosel","Cosmotec","Costech","Cotek","Coto Technology","Crabtree Ceicon","Cramaro","Crane",
+            "Cree","Crevis","Cristec","Crompton Controls","Crouzet","Crowcon","Crown Batteries","Crucial","Crydom",
+            "Crydom.","Curtis","Curtis Industries","Custom Control Sensors","Cutler-Hammer.","CyberPower","D-Link",
+            "DBK","DEHN","DEIF","DEUTZ","DF Electric","DHC","DINA Elektronik","DINspace","DIY More","DMC tools",
+            "DOL Sensors","DSEPower","Daewoo","Daewoo (Doosan)","Dahua","Daifuku","Daikin Air","Daito","Daiwa",
+            "Danaher","Danieli","Data Industrial","Datalogic","Datexel","Dayton","Debem","Deckma","Deep Sea Electronics",
+            "Defa","Define Instruments","Degson Electronics","Dehn","Deif","Delco","Delem","Delevan","Delixi","Dell",
+            "Delock","Delphi Technologies","Delta","Delta Controls","Delta Electronics","Delta-Q","Deltrol Controls",
+            "Demac","Demag","Demex","Denso","Derell","Desco","Det Tronics","Detas","Detcon","Deublin","Deutschmann",
+            "Deutz-Fahr","Dezurik","Dhollandia","Di-Soric","Di-soric","Dialight","Dialog Semiconductor","Diesel Technic",
+            "Digi","Digi International","Digi-Pas","Digital Power","Digitronic","Digitus","Dini Argeo","Dinuy",
+            "Diodes Incorporated","Discover Battery","Display Elektronik","Dixell","Dodge","Doepke","Doga","Dold",
+            "Domino","Dong-A","Dongan Electric","Donghua","Dorman Smith","Dormer","Dortronics","Dranetz","Drawworks",
+            "Dream","Dremel","Dresser","Dropsa","Druck","Dry Contacts","Dräger","Duelco","Duff-Norton","Dungs",
+            "Dunkermotoren","Dunlop","Duplomatic","Duracell","Durakool","Duratool","Dwyer Instruments","Dynadrive",
+            "Dynapar","Dynapar.","Dynex","Dynisco","Dynisco.","Dz Trasmissioni","E - F - G","E+E","E-robur",
+            "E.L.B.","E2V","EAO","EBG","EBM Papst","ECCO","ECE","EMB Motori Elettrici","EMC","EMG","EOS Power",
+            "EP Equipment","ERA","ERC","ERSA","ES Technology","ESA","ESA Elettronica","ESD","ETA","ETI","ETP","EVS",
+            "EWM","EX Heat","EZAutomation","Eagle","EasyIO","Ebara","Eberle","Eberspächer Kalori","Ebm-papst","Ebro",
+            "Eclipse Magnetics","Ecofit","Econ","Edimax","Edison","Edwards EST","Eelectron","Efen","Effbe","Eiwell",
+            "Ejendals","Elap","Elau","Elcart","Elco","Elcon","Electro Sensors","Electro-Craft","Electroid",
+            "Electrolube","Electrolux","Electronicon","Electroswitch","Elektrosistem","Elen","Elero","Elesta",
+            "Elettrotek","Eliwell","Elkay","Elko","Elkron","Elma","Elmex","Elmo","Elmo Motion Control","Elmwood",
+            "Elobau","Elomatic","Elpress","Elster","Eltako","Eltek","Eltra","Elvem","Emacs","Embraco","Emerson",
+            "Emikon","Emko","Emotron","Emri","Enda","Endress + Hauser","Enerdoor","Energic Plus","EnergyPlus",
+            "Enerpower","Enersys","Engel Motor","Enterasys","Entes","Epson","Ergom","Erhardt & Leimer","Erich Jaeger",
+            "Ericsson","Eriez","Eriflex","Erni","Escha","Eska","Esser","EtherWAN","Euchner","Eugen Hensle","Eupec",
+            "EuroValve","Eurogi","Euromag","Euroswitch","Eurotek","Eurotherm","Evco","Ever","Ever Elettronica",
+            "Everbouquet","Evervision","Ewon","Exide","Exlar","Exor","Exor.","Exsys","Extech.","Exter","Extralink",
+            "Extreme Networks","F&F","F&G","F.I.A.M.E.","FDK","FSP Technology","Fabco","Fabrimex","Fagor","Fairchild",
+            "Falk","Fanal","Fandis","Fanso","Fantini Cosmi","Fanuc","Farpointe","Fasco","Fast Global Solutions",
+            "Fastech","Faster","Fastron","Fatek","Faulhaber","Feas","Federal Electric","Federal Signal","Feig",
+            "Feldpausch","Femco","Fendt","Fenix","Fenner Drives","Fenwal","Fergo","FiC","Fiamm",
+            "Fiat-Allis (Fiat-Hitachi / Fiat-Kobelco)","Fiber","Fibox","Fibro","Fichet","Fife","Figaro","Fike",
+            "Filtertechnik","Fine Suntronix","Fini","Finisar","Finmotor","Fireclass","Firestone","Firetrol","Fireye",
+            "Fischer & Krecke","Fischer Connectors","Fisher","Fit","Fitre","Fixation et Montage","Flender",
+            "Flex Power Modules","Flintec","Flir","Flo Control","Flojet Pump","Flomec","Flowline","Flowserve","Flygt",
+            "Fontenax","Forankra","Forbo","Force","Ford","Fortinet","Fortress","Fotek","Fox","Foxboro","Foxconn",
+            "Fracarro","Frako","Franklin","Fratelli Magni","Freescale (NXP)","Frer","Frese","Freudenberg","Frico",
+            "Fruehauf","Frötek","Fuji Electric","Fuji Electric.","Fujinon","Fujitsu","Fullriver","Fulltech",
+            "Furnas Electric","Furuno","GAC","GAI-Tronics","GAT","GCE","GE Fanuc","GEA","GEMS Sensors","GF Signet",
+            "GIC","GILGEN Muller & Weigert","GM International","GMCC","GP Batteries","GP50","GW Instek","Gamatronic",
+            "Gamesa","Gardner Denver","Gardtec","Garmin","Gast","Gaumer Process","Gefran","Gelbau","GemOne","Gemac",
+            "Gems Sensors","Gemu","General Electric","General Electric (GE)","General Monitors","Genie","Gent",
+            "Genteq","Georg Fischer","Georgin","Gestra","Gewiss","Ghisalba","Giddings & Lewis","Gifas","Gilbarco",
+            "Gimatic","Giovenzana","GlassInter","Glenair","Global Specialities","Globe","Goobay","Gore","Gorman Rupp",
+            "Gossen","Goyen","Grace Technologies","Grainger","Grammer","Graphtec","Grasslin","Grayhill",
+            "Green C&C Tech","Greyline Instruments","Greystone","Grohe.","Gromy","Groschopp","Grote","Groth",
+            "Grove","Groz","Grues)","Grundfos","Gruner","Gutor","Gys","HBC","HBC Radiomatic","HBM","HDI",
+            "HK Instruments","HL Planar","HMS","HPX","HSD","HTM Sensors","Habasit","Habermann","Habor","Hager",
+            "Hahn","Hakko","Hallins","Hamm","Hammond","Hammond Manufacturing","Hammond Power Solutions","Hamworthy",
+            "Hanna Instruments","Hansford Sensors","Hanshin","Hanwha","Hanyoung","Harting","Hartland Controls",
+            "Hartmann","Harwin","Hasegawa Electric","Haskel","Hatco","Hatteland JH","Haug","Hawe","Hawke","Haws",
+            "Hayward","Hazel","Hazet","Heat On","Heatterm","Hedland","Heidenhain","Heinemann","Hella",
+            "Hellermann Tyton","HellermannTyton","Helmholz","Helukabel","Helvar","HenLv Power","Hengst","Hengstler",
+            "Hennlich","Henry","Heraeus","Herion","Herma","Heschen","Hetronik","Heyco","HiKOKI","Highly Electric",
+            "Hikvision","Hilscher","Hima","Himel","Hioki","Hiquel","Hirose","Hirschmann","Hiwin Microsystems",
+            "Hobart","Hobut","Hochiki","Hoerbiger","Hoffman","Hohner Automation","Hokuyo","Holec","Holmatro",
+            "Holzmann","Homag","Homer","Hommel Etamic","Honda","Hongfa","Honsberg","Hope Industrial Systems",
+            "Hormann","Horner Automation","Hotron","Hotstart","Hpe Networking","Huawei","Huba Control","Hubbell",
+            "Huber+Suhner","Hubner","Huco","Hummel","Hunter","Husky","Hy-brid Lifts","Hydac","HydraForce",
+            "Hydro Leduc","Hydromax","Hydroparts","Hyster","Hyundai","I-Tork Controls","IBA","IBH Softec","IBM",
+            "ICM","ICP DAS USA","IDEC","IDEM Safety Switches","IEF Werner","IEI","IEI Technology","IFM","IFS",
+            "IKO","ILME","IME","IMO","IMPA","INA","INVT Electric","IPD","IPF Electronic","IRT","ITT Cannon",
+            "ITT Goulds Pumps","ITW","IXON","IXYS","IXYS.","Icar","Icel","Icom","Ideal","Idec","Ifix","Ifm",
+            "Ifm Electronic","Igus","Ikusi","Ilsco","Imago Technologies","Imit","Impco","Impress","Index",
+            "Indramat","Industrial Scientific","Industrie Technik","Industronic","Inelteh","Inficon","Infineon",
+            "Infra","Infranor","Ingersoll Rand","Ingun","Innolux","Inor","Inovance","Instrument Transformer",
+            "Intech","Integra Enclosures","Intel","Intercable","Interlink","International Rectifier","Interroll",
+            "Intorq","Invensys","Invertek","Irwin","Isabellenhutte","Iseo","Iskra","Isoflux","Isuzu","Italmanometri",
+            "Italweber","Itox","Iwaki Pump","Iwasaki Eye","J. Schneider","J.R. Merritt","J.W. Speaker",
+            "JAE Electronics","JET","JLF","JM Concept","JRC","JRCS","JSCC","JSP","JST","JZK","Ja Solar","Jabra",
+            "Jacob","Jaeger","Jaltest","Janex","Jani Electro","Janitza","Janome","Jasc","Jean Muller","Jenaer",
+            "Jennings","Jerguson","Jet Tools","Jetter","John Drummond","John Zink","Johnson / Cinch",
+            "Johnson Controls","Johnson Electric","Jorc","Joslyn Clark","Jost","Jost France","Joucomatic","Jtekt",
+            "Juche","Jumo","Jung","Jung.","Juniper Networks","KB Electronics","KEB","KFB","KSB Etabloc","KTR",
+            "KYB Hydraulics","Kab Seating","Kac Alarm","Kaco","Kacon","Kaeser","Kahn","Kaku","Kalitec","Kalmar",
+            "Kalthoff","Kason","Katko","Kedu","Keithley","Keller","Kemet","Kemmler","Kendeil","Kennametal",
+            "Kenwood","Kerbl","Kern","Kernel","Kestrel","Keyence","Keystone Electronics","Kidde-Fenwal","Killark",
+            "Kimberly Clark","Kinco","Kingstate","Kissling","Klaxon","Klein Tools","Klemsan","Klingenburg",
+            "Klingspor","Klockner Moeller","Knecht","Knick","Knipex","Knott","Knowles Johanson","Koa","Kobelco",
+            "Kobiconn","Kobold","Koganei","Kohl","Kohler","Koino","Kollmorgen","Konecranes","Kongsberg","Kontron",
+            "Konzept","Kopal","Korenix","Korg","Koyo","Kraft & Bauer","Kramer","Kranzle","Kratos Safety",
+            "Kraus & Naimer","Kriwan","Krohne","Kromschroder","Krone","Kronenberg","Krones","Kubler","Kuebler",
+            "Kuhnke","Kuka","Kukko","Kunkle","Kuppers Elektromechanik","Kverneland","Kyland","Kyocera AVX",
+            "Kyocera.","Kärcher","König","L COM","L&T","L-Com","LACROIX Electronics","LDK","LEB","LEM",
+            "LKM Electronic","LMI","LS Electric","LTN","La Marche","Labom","Lae Electronic","Laetus","Laird",
+            "Lam technologies","Lanberg","Langer","Lantech","Lapp","Larson Electronics","Lascar Electronics",
+            "Laserliner","Latty","Lauer","Laumas","Lawson","Leadshine","Leatherman","Lebon","Led Lenser",
+            "Ledtronics","Leeg","Leeson","Lefoo","Legrand","Legris","Lehner Dabitros","Leine & Linde","Leipole",
+            "Lemaitre Sécurité","Lemo","Lenord+Bauer","Lenovo","Lenze","Leoch","Leroy Somer","Leroy-Somer",
+            "Leser","Leuze","Leviton","Leybold","Liebert","Lifeboat","LiftCam","Lika","Limatherm","Limitorque",
+            "LinMot","Linak","Lincoln","Lindenberg","Line Seiki","Linksys","Linsn","Lite-On","Littelfuse",
+            "Litton","Loctite","Logitech","Logopak","Loher","Longi","Lonking","Lonne Motor","Lorlin","Lovato",
+            "Lovato Electric","Lovejoy","Lowara","Lube Corp","Lucas Elektrik","Luda.Farm","Luk","Lumberg",
+            "Lumberg Automation","Lumel","Lumenite","Luminor","Lust","Lutze","Lutze.","Luxco","M System",
+            "M&C Tech Group","M&M International","MAC Valves","MAKESafe Tools","MANN-FILTER","MAS","MCG","MDI",
+            "MES","MEZ Motors","MFG","MGM","MGV","MH Connectors","MHB","MIB","MK Electric","MKB","MKS Instruments",
+            "MORI SEIKI","MP Filtri","MPD","MS Hydraulics","MTE","MTS","MVA","MVG","Mabuchi Motor","Mach 3",
+            "Magafor","Magnescale","Magnetek","Magnetrol","Mahle","Mahr","Malsch","Man Roland","Manitowoc",
+            "Mann+Hummel","Mannesmann","Mapa Professionnel","Mapal","Markal","Marposs","Marquardt","Cutline",
+            "GISS","Mecaline","PTN","Roebuck","Soudal","Spartex","Martor","Masibus","Massey Ferguson",
+            "Masterguard","Matsushita","MaxiGrip","Maxim","Maxon Motor","Mean Well","Measurex","Mecair",
+            "Mecc Alte","Mega","Megatron","Meidensha","Meko","Mennekes","Mentor","Meritor",
+            "Merlin Gerin (Schneider)","Metafram","Metalmec","Micro Detectors","Micro Innovation","Microchip",
+            "Micron","Microprecision","Microsonic","Microswitch (Honeywell)","Milsco","Minarik","Mini Press",
+            "Minolta","Miraglio","Miralbueno","Mitsubishi (Forklift)","Mitsubishi Electric","Mitutoyo",
+            "Modicon (Schneider)","Moeller (Eaton)","Moffett","Molex","Molydal","Monroe","Moog","Motec",
+            "Motortronics","Motovario","Multitel","Murata.","Murr Elektronik","Murrplastik","Mutexil","Myotoku",
+            "NEC","NGK","NKE","NXP.","Nachi","Namco","National Instruments","Nematron","Nemicon","Netgear",
+            "Neugart","New Holland","Newport","Nexcom","Nidec","Nikon","Nilfisk","Nivelco","Nok","Nordic Lights",
+            "Norelem","Norstat","North Star","Northern Monitor","Norton","Novotechnik","Numatics","Nuovafima",
+            "Nutork.","Ohmite","OMCN","Obermeier","Odyssey","Oerlikon","Oilgear","Okuma","Olmo","Omega","Onan",
+            "Onvio","Optex","Optima","Opto 22","Oregon","Oriental Motor","Orion","Orlaco","Osborn","Osram",
+            "Osram.","Ottinger","Otto","Oval.","P : Panasonic","P-Duke","PG Drives Technology","PGC","PLZ","PMA",
+            "PMS Industrie","PULS","Pacific Scientific","Panasonic","Panasonic Industry","Papeco","Parker",
+            "Abicor Binzel","Anyseals","Blickle","Citec","Partenariats (Partnerships)","Parvex","Pascal","Patlite",
+            "Pegson","Pepperl+Fuchs","Petec","Pfannenberg","Pferd","Philadelphia Scientific","Philips",
+            "Phoenix Contact","Pilz","Pizzato","Pneumax","Polycom","Pommier","Portcap","Portwest","Potris",
+            "Power-One","Powerscreen","Powervar","Powerware","Pressol","Prestolite","Prevost","Pro-Face",
+            "Pro-Face.","Pro-Log","ProSoft","Promac","Pyle.","Q-Light","QLogic","Quantum","Quinton Hazell.",
+            "Raspberry Pi","RAM","RAM Mounts","RAVAS","REFIXIT","REO","RGIS","RGS","RKC","RS PRO","RSF Elektronik",
+            "RSF Elektronik.","RStahl.","Racor","Radio-Energie","Radiodetection","Raufoss Kongsberg","Raytek",
+            "Red Lion","Regina","Releco","Reliance Electric","Rema","Renesas","Renishaw","Renold","Rexnord",
+            "Rexroth (Bosch)","Rieker Inc.","Riken","Rittal","Robicon","Rockwell Automation (Allen-Bradley)",
+            "Rodcraft","Rosemount","Ross","Ross Controls","Rossi Boots","Rota","Rotork","Rotronic",
+            "Route & Compactage","Ruko","Rust-Oleum.","Samsung","SAE SMB","SEW Eurodrive","SICK","SIP","SME",
+            "SPAL Automotive","SPE Elettronica","STMicroelectronics.","Safety Jogger","Saia Burgess","Saia-Burgess",
+            "Sampa","Samwha","Sandvik Coromant","Sanyo Denki","Satec","Sauter","Scaime","Scanreco","Schaeffler",
+            "Schaffner","Schaltbau","Schmersal","Schrack","Schroff","Schunk","Schurter","Scully","Sears Seating",
+            "Seat Industries","Secom","Secomea","Securon","Sedis","Seeger","Selet","Semikron","Sensata",
+            "SensoPart","Sentry","Sevcon","Sick","Sidamo","Sifam","Sigmatek","Siko","Simatec","Simrad","Sinoboom",
+            "Sipha","Sirena","Smat Nord","Socomec","Softing","Sola","Solcon","Somfy","Sonnenschein","Sony",
+            "Soudage","Specter","Spectra","Spirax Sarco","Sprint Electric","Square D","Stabilus","Stahl","Stanley",
+            "Star","Stegmann","Stellana","Sterling","Stiga","Stoeber","Stromag","Suco","Sunnex","Sunx","Sunx.",
+            "Supermicro","Sutton Tools","Swagelok","Systemair.","T : TE Connectivity","TCCI","TDK","TE Connectivity",
+            "TESA","Tadano","Taiyo","Takex","Tamagawa","Technifor","Tecnologic","Telemecanique","Teltonika Networks",
+            "Terasaki","Terex (incluant Terex Finlay","Teroson","Tesa","Texas Instruments","Texrope.","Theben",
+            "Thermometrics","Thomson","Thurmetall","Thyracont","Toledo","Topworx","Tork","Toshiba","Total",
+            "Total Control Products","Totalsource","Toyo","Toyota (Industrial)","Traco Power","Trafag","Trafimet.",
+            "Transcoil","Transmission","Trend","Tricoflex","Trio Motion","Trojan Batteries","Trombetta","Trucklite",
+            "Tubesca-Comabi","Turbofilter","Turck","Turck.","Twin Disc.","Tyri","Tyrolit","U-Power.","U.S. Motors",
+            "UBTECH","Unidrive","Unipulse","Unitronics","Univer","Uras.","Usinage","Uwt","Vacon","Vacuumschmelze",
+            "Valeo","Valtra","Varian","Variofit","Varta","Varta.","Veon","Vipa","Vishay","Vision","Vitillo",
+            "Vitten","Vogel","Vogele","Vogt","Volumec.","Volvo (Volvo Construction Equipment)","Vulkoprin",
+            "Vuzix.","WEG","Wago","Waircom","Walterscheid","Walton","Walvoil","Warner Electric","Watlow","Watt",
+            "Weidmüller","Weintek","Weiss","Weller","Wenglor","Werma","West","West Control Solutions","Westermo",
+            "Westinghouse","Westlock","Weweler","Wieland","Wika","Wilela","Wilo","Wippermann","Wittenstein",
+            "Wohner","Wonderware","Woodhead","Woodward","Woodward.","WuBump","Wurth Elektronik.","Würth Elektronik.",
+            "Xecro","Xinchai","Xtreme","Xycom.","Xylem.","Y/Z : Yageo","Yale","Yale.","Yamatake","Yaskawa",
+            "Yokogawa","York","Young","Ytech.","Yuken.","Z-Laser","ZF Electronics","ZF Friedrichshafen","ZF.",
+            "ZIV","Zaes","Zamel","Zander Aachen","Zebra","Zeca","Zelio","Zemic","Zener","Zeta","Zetasassi",
+            "Zetor","Ziegler","Zilog","Zimmer Group","Zippy.","Zivan","Zoomlion","e2s","lskra"
+        ];
+
+        // 1. STRUCTURE PRINCIPALE (Organisation)
+        const orgData = {
+          "@context": "https://schema.org",
+          "@type": "IndustrialStore", // Type précis pour votre activité
+          "name": "MULTIPARTS",
+          "image": "https://catalogue.multipartsci.com/logo-multiparts.png",
+          "description": "Fournisseur d'équipements miniers et industriels en Côte d'Ivoire.",
+          "url": "https://catalogue.multipartsci.com",
+          "telephone": "+2252721250146",
+          "priceRange": "$$", // Requis pour LocalBusiness
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4145 Avenue Paul Akoto Yao",
+            "postOfficeBoxNumber": "18 BP 264",
+            "addressLocality": "Abidjan 18",
+            "addressCountry": "CI"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": 5.3484, "longitude": -4.0156 },
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:30", "closes": "12:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "13:30", "closes": "17:00" }
+          ]
+        };
+
+        // 2. INJECTION DES MARQUES (Technique "ItemList" pour éviter les erreurs Produit)
+        // Au lieu de créer des faux produits sans prix, on crée une liste de marques distribuées.
+        const brandData = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Marques Distribuées par MULTIPARTS",
+            "description": "Liste des fabricants d'équipements industriels et miniers disponibles.",
+            "itemListElement": brandsList.map((brand, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": "Brand",
+                    "name": brand
+                }
+            }))
+        };
+        
+        // Injection des 2 scripts
+        const scriptOrg = document.createElement('script');
+        scriptOrg.type = 'application/ld+json';
+        scriptOrg.text = JSON.stringify(orgData);
+        document.head.appendChild(scriptOrg);
+
+        const scriptBrands = document.createElement('script');
+        scriptBrands.type = 'application/ld+json';
+        scriptBrands.text = JSON.stringify(brandData);
+        document.head.appendChild(scriptBrands);
+
+
+        // GESTION RGPD (Reste inchangé)
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const btnAccept = document.getElementById('btn-accept-cookies');
+            const btnRefuse = document.getElementById('btn-refuse-cookies');
+            const btnSettings = document.getElementById('open-cookie-settings');
+
+            function loadThirdPartyScripts() {
+                const script = document.createElement('script');
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JEX4L6S055';
+                script.async = true;
+                document.head.appendChild(script);
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-JEX4L6S055');
+            }
+
+            const userConsent = localStorage.getItem('cookieConsent');
+            if (!userConsent) {
+                setTimeout(() => { banner.classList.remove('hidden'); }, 1500);
+            } else if (userConsent === 'accepted') {
+                loadThirdPartyScripts();
+            }
+
+            btnAccept.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.classList.add('hidden');
+                loadThirdPartyScripts();
+            });
+            btnRefuse.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'refused');
+                banner.classList.add('hidden');
+            });
+            if(btnSettings) {
+                btnSettings.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    banner.classList.remove('hidden');
+                });
             }
         });
-    });
-
-    const setupDropdown = (tid, mid) => {
-        const t = document.getElementById(tid), m = document.getElementById(mid);
-        if(t && m) {
-            t.addEventListener('click', (e) => { e.stopPropagation(); m.classList.toggle('hidden'); });
-            m.addEventListener('click', () => m.classList.add('hidden'));
-        }
-    };
-    setupDropdown('sommaireToggle', 'sommaireMenu');
-    setupDropdown('industriesToggle', 'industriesMenu');
-    document.addEventListener('click', () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden')));
-}
-</script>
+    </script>
 </body>
 </html>

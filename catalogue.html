@@ -9,10 +9,10 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_39_Strict_Dynamic_Images */
+        /* Version_62_FullScreen_FooterIntegrated */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
+            background-color: #f8fafc; /* Fond très léger */
             color: #1e293b;
             line-height: 1.5;
             scroll-behavior: smooth;
@@ -31,63 +31,30 @@
         .loader-text { margin-top: 10px; color: #64748b; font-size: 0.9rem; font-weight: 600; }
         body.loading { overflow: hidden; }
 
-        /* --- ONBOARDING GUIDE --- */
-        #onboarding-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 60; display: none; opacity: 0; transition: opacity 0.3s;
-        }
-        .onboarding-tooltip {
-            position: absolute; background-color: #1e40af; color: white;
-            padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
-            z-index: 70; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            opacity: 0; transition: opacity 0.3s, transform 0.3s;
-            pointer-events: none; max-width: 250px; text-align: center;
-            line-height: 1.4;
-        }
-        
-        @media screen and (max-width: 640px) {
-            .onboarding-tooltip {
-                max-width: 200px; 
-                white-space: normal;
-            }
-        }
-
-        .onboarding-tooltip::after {
-            content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
-            border-width: 0 6px 6px; border-style: solid; border-color: transparent transparent #1e40af transparent;
-        }
-
-        .onboarding-tooltip.tooltip-top::after {
-            top: auto; bottom: -6px;
-            border-width: 6px 6px 0 6px;
-            border-color: #1e40af transparent transparent transparent;
-        }
-
-        .onboarding-tooltip.show { opacity: 1; transform: translateY(12px); }
-        .onboarding-tooltip.tooltip-top.show { transform: translateY(-12px); }
-        
-        /* Highlight */
-        .highlight-element {
-            position: relative; z-index: 71; background-color: white;
-            border-radius: 6px; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0,0,0,0.5);
-        }
-
+        /* --- LAYOUT PLEIN ÉCRAN --- */
         .catalog-page {
-            background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 10px auto; max-width: 900px; padding: 20px; min-height: 1200px; position: relative;
+            background-color: white;
+            /* Suppression des ombres et max-width pour le plein écran */
+            box-shadow: none; 
+            max-width: 100%; 
+            margin: 0;
+            padding: 20px 4%; /* Padding responsive */
+            min-height: 100vh;
+            position: relative;
         }
+        
         .header { border-bottom: 4px solid #1e40af; padding-bottom: 10px; margin-bottom: 15px; }
 
         /* Tableaux */
         .table-custom { border-collapse: collapse; width: 100%; }
-        .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 8px; text-align: left; }
-        .table-custom td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
+        .table-custom th { background-color: #e0e7ff; color: #1e40af; font-weight: 700; padding: 12px; text-align: left; font-size: 1rem; }
+        .table-custom td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
         .table-custom tr:hover, .table-custom tr.show { background-color: #119248 !important; color: #fff !important; transition: background 0.13s; }
         
         @media screen and (max-width: 639px) {
             .table-custom { display: block; overflow-x: auto; white-space: nowrap; }
             .table-custom thead, .table-custom tbody, .table-custom th, .table-custom td, .table-custom tr { display: block; }
-            .table-custom th, .table-custom td { padding: 6px; }
+            .table-custom th, .table-custom td { padding: 8px; }
         }
 
         .brand-row td:first-child { position: relative; } 
@@ -111,15 +78,16 @@
         }
 
         .no-screen { display: none !important; }        
-        .section-header { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; margin-bottom: 15px; border-left: 4px solid #1e40af; padding-left: 10px; }
-        .section-header h3 { font-size: 1.15rem; font-weight: bold; color: #1e40af; margin: 0; padding-left: 10px; line-height: 1.25; }
-        @media screen and (min-width: 640px) { .section-header h3 { font-size: 1.5rem; } }
+        .section-header { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #1e40af; padding-left: 15px; background: #f8fafc; padding: 10px 15px; border-radius: 0 8px 8px 0; }
+        .section-header h3 { font-size: 1.25rem; font-weight: bold; color: #1e40af; margin: 0; padding-left: 10px; line-height: 1.25; }
+        @media screen and (min-width: 640px) { .section-header h3 { font-size: 1.75rem; } }
         
-        .toggle-details-btn { margin-left: 1rem; font-size: 0.95rem; background: transparent; color: #119248; border: 1px solid transparent; cursor: pointer; padding: 6px 10px; border-radius: 6px; transition: background 0.16s, color 0.16s, border-color 0.16s; display: inline-flex; align-items: center; gap: 8px; }
-        .toggle-details-btn:hover { background: rgba(17,146,72,0.08); border-color: rgba(17,146,72,0.16); }
-        .toggle-sign { font-size: 1.1rem; font-weight: 700; color: #119248; }
+        .toggle-details-btn { margin-left: 1rem; font-size: 0.95rem; background: white; color: #119248; border: 1px solid #e2e8f0; cursor: pointer; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .toggle-details-btn:hover { background: #119248; color: white; border-color: #119248; }
+        .toggle-sign { font-size: 1.1rem; font-weight: 700; }
         .section-content { display: none; } 
-        .section-content.open { display: block; }
+        .section-content.open { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
           
         .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; background-color: #1e40af; color: white; border-radius: 50%; padding: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); transition: background-color 0.3s; }
         .back-to-top:hover { background-color: #1e3a8a; }
@@ -133,7 +101,7 @@
         .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
         .whatsapp-float::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background-color: #25d366; opacity: 0.6; z-index: -1; animation: whatsapp-wave 2s infinite; }
         
-        .expertise-box { border-left: 4px solid #22c55e; padding-left: 10px; margin-bottom: 15px; background-color: #f0fdf4; padding: 10px; border-radius: 4px; }
+        .expertise-box { border-left: 4px solid #22c55e; padding-left: 15px; margin-bottom: 20px; background-color: #f0fdf4; padding: 15px; border-radius: 4px; font-size: 1.05rem; }
         .fixed-expertise-band { width: 100%; background-color: #166534; color: white; text-align: center; padding: 8px 0; font-size: 0.95rem; position: sticky; top: 80px; z-index: 10; }
         
         .menu-link { transition: background 0.18s; }
@@ -156,7 +124,7 @@
             .print-footer { bottom: 0; height: 30px; border-top: 1px solid #ccc; font-size: 9pt; color: #555; }
             .print-header img { height: 38px; width: auto; }
             .catalog-page { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
-            header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline, .whatsapp-float, .back-to-top, #preloader, #onboarding-overlay, .onboarding-tooltip { display: none !important; }
+            header, .no-print, .scroll-arrow-container, .toggle-details-btn, .consumables-inline, .whatsapp-float, .back-to-top, #preloader, #onboarding-overlay, .onboarding-tooltip, .main-footer { display: none !important; }
             .no-screen, .section-content, .consumables-popup { display: block !important; position: static !important; width: 100% !important; box-shadow: none !important; margin: 0 !important; }
             .consumables-popup { background: #f9fafb !important; border: 1px solid #eee !important; padding: 10px !important; page-break-inside: avoid; }
             .table-custom { width: 100% !important; border-collapse: collapse !important; }
@@ -175,9 +143,6 @@
         </div>
     </div>
 
-    <div id="onboarding-overlay"></div>
-    <div id="onboarding-tooltip" class="onboarding-tooltip"></div>
-
     <div class="print-header no-screen">
         <img src="logo-multiparts.svg" alt="Logo MULTIPARTS" />
         <span style="font-weight:bold; color:#1e40af;">Catalogue</span>
@@ -193,14 +158,13 @@
     </a>
 
     <header class="flex items-center px-4 sm:px-6 py-2 sm:py-4 bg-white shadow-md sticky top-0 z-50 no-print">
-        <a href="#top" class="shrink-0 sm:mr-24">
+        <a href="index.html" class="shrink-0 sm:mr-24">
             <img src="logo-multiparts.png" alt="Logo" class="h-10 sm:h-24 w-auto">
         </a>
         <nav class="flex-1 min-w-0 overflow-visible" id="navbar">
             <ul class="flex flex-wrap space-x-2 sm:space-x-8 justify-end sm:justify-start items-center w-full">
                 <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
-                            data-step="1" data-text="Naviguer entre les familles de produits.">
+                    <button id="sommaireToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                         <span class="hidden sm:inline">Sommaire</span>
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
@@ -211,8 +175,7 @@
                 
                 <li>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" 
-                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group" 
-                       data-step="2" data-text="Trouvez notre itinéraire GPS.">
+                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
                        <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                        <span class="hidden sm:inline">Localisation</span>
                     </a>
@@ -220,16 +183,14 @@
 
                 <li>
                     <a href="mailto:rafiou.oyeossi@multipartsci.com?cc=mmultipart@gmail.com&subject=Demande_Informations_Catalogue_Multiparts" 
-                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
-                       data-step="3" data-text="Envoyez un email direct.">
+                       class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 11c-2.348 0-4.25-1.902-4.25-4.25S9.652 10.5 12 10.5s4.25 1.902 4.25 4.25S14.348 19 12 19z"></path></svg>
                         <span class="hidden sm:inline">Contact</span>
                     </a>
                 </li>
 
                 <li class="relative">
-                    <button id="industriesToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
-                       data-step="4" data-text="Découvrez nos secteurs d'activité.">
+                    <button id="industriesToggle" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
                         <span class="hidden sm:inline">Industries</span>
                         <svg class="hidden sm:inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.67l3.71-3.48a.75.75 0 111.04 1.08l-4.25 4a.75.75 0 01-1.04 0l-4.25-4a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/></svg>
@@ -248,9 +209,7 @@
                 </li>
 
                 <li>
-                    <button id="shareButton" 
-                            class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group"
-                            data-step="5" data-text="Partagez le catalogue avec vos contacts.">
+                    <button id="shareButton" class="menu-link font-semibold text-black px-2 py-2 rounded inline-flex items-center gap-2 group">
                         <svg class="w-5 h-5 text-[#1e40af] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                         <span class="hidden sm:inline">Partager</span>
                     </button>
@@ -273,7 +232,7 @@
             <h2 class="text-base sm:text-xl font-semibold text-gray-700 mt-1" id="page-subtitle">Chargement...</h2>
         </header>
 
-        <img class="w-full h-auto rounded-lg mb-6" id="cover-image" src="" alt="Cover">
+        <img class="w-full h-auto rounded-lg mb-6" id="cover-image" src="" alt="Cover" onerror="this.style.display='none'">
 
         <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
             <p class="text-lg font-bold text-yellow-800 mb-2">Présenté par : MULTIPARTS</p>
@@ -317,11 +276,35 @@
 
         <div id="catalog-container"></div>
 
-        <footer class="mt-16 border-t pt-4 text-xs text-gray-600 sm:px-5">
-            <p class="font-bold text-sm mb-2">CLAUSES & INFORMATIONS LÉGALES</p>
-            <p class="mt-4 text-center px-5 sm:px-0">© 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.</p>
-        </footer>
     </div>
+
+    <footer class="bg-blue-900 text-white py-8 mt-12 main-footer no-print">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h4 class="font-bold text-lg mb-4">MULTIPARTS</h4>
+                <p class="text-blue-200">Directeur Général : Michael MENAGER</p>
+                <p class="text-blue-200">Directeur Projets : Rafiou OYEOSSI</p>
+                <p class="text-blue-200 mt-2">Abidjan, Côte d'Ivoire</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Contact</h4>
+                <p class="mb-1">Tél : <a href="tel:+2252721250146" class="hover:text-yellow-400">+225 27 21 25 01 46</a></p>
+                <p class="mb-1">Mobile : <a href="tel:+2250709399529" class="hover:text-yellow-400">+225 07 09 39 95 29</a></p>
+                <p>Email : <a href="mailto:rafiou.oyeossi@multipartsci.com" class="hover:text-yellow-400">rafiou.oyeossi@multipartsci.com</a></p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
+                <ul class="space-y-2">
+                    <li><a href="?ind=mines" class="hover:text-yellow-400">Catalogue Mines</a></li>
+                    <li><a href="?ind=btp" class="hover:text-yellow-400">Catalogue BTP</a></li>
+                    <li><a href="?ind=petrole-gaz" class="hover:text-yellow-400">Catalogue Pétrole</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-blue-400 text-xs mt-8 border-t border-blue-800 pt-4">
+            © 2025 MULTIPARTS Côte d’Ivoire. Tous droits réservés.
+        </div>
+    </footer>
 
 <script>
 // --- LOGIQUE PRINCIPALE ---
@@ -341,7 +324,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 3. Construire la page
         buildPage(data);
         
-        // 4. Initialiser les interactions (Scroll, Menus, Onboarding) une fois le DOM prêt
+        // 4. Initialiser les interactions (Scroll, Menus) une fois le DOM prêt
         initInteractions();
         
     } catch (error) {
@@ -360,10 +343,14 @@ function buildPage(data) {
     // A. Remplir le Header & Métadonnées
     document.getElementById('page-title').textContent = data.meta.pageTitle;
     document.getElementById('page-subtitle').textContent = data.meta.pageSubtitle;
-    document.getElementById('cover-image').src = data.meta.coverImage;
+    
+    const coverImg = document.getElementById('cover-image');
+    coverImg.src = data.meta.coverImage;
+    // MODIF : Sécurité JS supplémentaire si l'image casse
+    coverImg.onerror = function() { this.style.display = 'none'; };
+
     document.title = `Catalogue MULTIPARTS - ${data.meta.pageSubtitle}`;
     
-    // Injection de la description dynamique (Modification demandée)
     if(data.meta.description) {
         document.getElementById('company-activity').innerHTML = '<strong>Activité :</strong> ' + esc(data.meta.description);
     }
@@ -385,12 +372,12 @@ function buildPage(data) {
         summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
 
         // 2. Créer le HTML de la section
-        // CHANGE: Image is now conditional
+        // MODIF : Ajout de onerror sur l'image de section pour la cacher si absente
         const sectionHTML = `
         <div class="table-group" data-section="${linkId}">
             <div class="section-header" id="${linkId}">
                 <div class="flex items-center">
-                    <img src="${esc(section.icon)}" class="rounded-md mr-3" alt="Icone">
+                    <img src="${esc(section.icon)}" class="rounded-md mr-3" alt="Icone" onerror="this.style.display='none'">
                     <h3>${esc(section.title)}</h3>
                 </div>
                 <button type="button" class="toggle-details-btn">
@@ -401,7 +388,7 @@ function buildPage(data) {
                 <div class="expertise-box">
                     <p class="text-gray-700 italic text-sm"><strong>Notre expertise :</strong> ${esc(section.expertiseText)}</p>
                 </div>
-                ${section.sectionImage ? `<img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}">` : ''}
+                ${section.sectionImage ? `<img class="w-1/2 mx-auto h-auto rounded-lg mb-4 block" src="${esc(section.sectionImage)}" alt="${esc(section.title)}" onerror="this.style.display='none'">` : ''}
                 
                 <div class="scroll-arrow-container no-print" title="Voir les marques">
                     <span class="scroll-text">Voir les Marques</span>
@@ -458,14 +445,14 @@ function initInteractions() {
                 if(preloader) {
                     preloader.style.opacity = '0';
                     document.body.classList.remove('loading');
-                    setTimeout(() => { preloader.remove(); startOnboarding(); }, 500);
+                    setTimeout(() => { preloader.remove(); }, 500);
                 }
             }, 300);
         }
     }
-    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); startOnboarding(); } } 
+    if (totalImages === 0) { if(preloader) { preloader.style.display = 'none'; document.body.classList.remove('loading'); } } 
     else { images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } }); }
-    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); startOnboarding(); }, 500); } }, 6000);
+    setTimeout(() => { if(preloader && preloader.style.opacity !== '0') { preloader.style.opacity = '0'; document.body.classList.remove('loading'); setTimeout(() => { preloader.remove(); }, 500); } }, 6000);
 
     // --- LOGIQUE ACCORDÉON & SCROLL ---
     const groups = Array.from(document.querySelectorAll('.table-group'));
@@ -552,13 +539,10 @@ function initInteractions() {
                 menu.classList.toggle('hidden'); 
             });
             
-            // Gestion des liens dans le menu généré dynamiquement
-            // On utilise la délégation d'événement car les liens n'existaient pas au chargement
             menu.addEventListener('click', (e) => {
                 const link = e.target.closest('a');
                 if (!link) return;
                 
-                // Fermer le menu
                 menu.classList.add('hidden');
                 
                 const href = link.getAttribute('href');
@@ -567,14 +551,12 @@ function initInteractions() {
                     const targetId = href.substring(1);
                     const target = document.getElementById(targetId);
                     if (target) {
-                        // Si c'est un lien de section (dans le sommaire)
                         if (target.classList.contains('section-header')) {
                             const group = target.closest('.table-group');
                             const btn = group.querySelector('.toggle-details-btn');
                             if(!group.querySelector('.section-content').classList.contains('open')) btn.click();
                             else smoothScrollTo(target);
                         } else {
-                            // Autre ancre
                             smoothScrollTo(target);
                         }
                     }
@@ -602,90 +584,6 @@ function initInteractions() {
             else { try { await navigator.clipboard.writeText(window.location.href); alert('Lien copié !'); } catch(e) {} }
         });
     }
-}
-
-function startOnboarding() {
-    return; // ONBOARDING DESACTIVÉ TEMPORAIREMENT
-    if (localStorage.getItem('menuOnboardingDone')) return;
-
-    const isMobile = window.innerWidth < 640;
-    
-    // On cible la première ligne du tableau généré dynamiquement
-    const firstRowSelector = '#catalog-container .table-group:first-child tbody tr:first-child';
-
-    const steps = [
-        { selector: '[data-step="1"]' }, 
-        { selector: '[data-step="2"]' },
-        { selector: '[data-step="3"]' },
-        { selector: '[data-step="4"]' },
-        { selector: '[data-step="5"]' },
-        { 
-            selector: firstRowSelector, 
-            text: isMobile ? "Appuyez sur la marque pour voir la liste des consommables." : "Survolez la marque pour voir la liste des consommables." 
-        }
-    ];
-
-    let currentStep = 0;
-    const overlay = document.getElementById('onboarding-overlay');
-    const tooltip = document.getElementById('onboarding-tooltip');
-    const navContainer = document.getElementById('navbar');
-
-    if (!overlay || !tooltip) return;
-
-    function showStep(index) {
-        if (index >= steps.length) {
-            overlay.style.opacity = '0';
-            tooltip.classList.remove('show');
-            if (window.innerWidth < 640 && navContainer) navContainer.scrollTo({ left: 0, behavior: 'smooth' });
-            document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
-            
-            setTimeout(() => { overlay.style.display = 'none'; localStorage.setItem('menuOnboardingDone', 'true'); }, 300);
-            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-            return;
-        }
-
-        const step = steps[index];
-        const element = document.querySelector(step.selector);
-
-        if (element) {
-            document.querySelectorAll('.highlight-element').forEach(el => el.classList.remove('highlight-element'));
-            element.classList.add('highlight-element');
-            
-            if(index === 5) {
-                element.scrollIntoView({ block: 'center', behavior: 'smooth' });
-                element.classList.add('show');
-            } else {
-                document.querySelectorAll('.brand-row.show').forEach(el => el.classList.remove('show'));
-            }
-            
-            tooltip.textContent = step.text || element.getAttribute('data-text') || "Information";
-
-            const rect = element.getBoundingClientRect();
-            let topPos = rect.bottom + 14;
-            tooltip.classList.remove('tooltip-top');
-
-            if (index === 5) {
-                topPos = rect.top - tooltip.offsetHeight - 14;
-                tooltip.classList.add('tooltip-top'); 
-            }
-            
-            tooltip.style.top = topPos + 'px';
-            let leftPos = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
-            if (leftPos < 10) leftPos = 10;
-            if (leftPos + tooltip.offsetWidth > window.innerWidth) leftPos = window.innerWidth - tooltip.offsetWidth - 10;
-            
-            tooltip.style.left = leftPos + 'px';
-            tooltip.classList.add('show');
-        }
-        
-        const stepDuration = (index === 5) ? 5500 : 3500;
-        setTimeout(() => { showStep(index + 1); }, stepDuration);
-    }
-    
-    overlay.style.display = 'block';
-    overlay.offsetHeight; 
-    overlay.style.opacity = '1';
-    setTimeout(() => showStep(0), 800);
 }
 </script>
 </body>

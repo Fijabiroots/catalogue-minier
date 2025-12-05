@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_69_Final_ImagesReducedHalf */
+        /* Version_69_MobileFix_Compact_Menu */
         :root {
             --primary-blue: #1e3a8a;
             --hover-blue: #eff6ff;
@@ -65,7 +65,7 @@
         .brand-row td:first-child { width: 35%; font-weight: 700; color: var(--primary-blue); } 
         .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #475569; }
         
-        /* POPUP DÉTAILS (PC & MOBILE CLIC) */
+        /* POPUP DÉTAILS (PC) */
         .consumables-popup {
             display: none; position: absolute; left: 100%; top: -20px; margin-left: 15px; width: 350px; 
             background: #ffffff; border: 1px solid #cbd5e1; box-shadow: 0 15px 30px rgba(0,0,0,0.25); 
@@ -73,14 +73,13 @@
         }
         .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 30px; width: 16px; height: 16px; background: white; transform: rotate(45deg); border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; }
         
-        /* Desktop Hover */
         @media (min-width: 769px) {
             .brand-row:hover td:first-child .consumables-popup { display: block; }
             .brand-row:nth-last-child(-n+3) .consumables-popup { top: auto; bottom: 0; }
             .brand-row:nth-last-child(-n+3) .consumables-popup::before { top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none; }
         }
 
-        /* MOBILE LAYOUT & POPUP FIX */
+        /* 1. MOBILE POPUP FIX (Alignement Gauche) */
         @media (max-width: 768px) {
             .table-custom { display: block; border: none; }
             .table-custom thead { display: none; }
@@ -90,17 +89,20 @@
             .table-custom td:first-child { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
             .consumables-inline { display: none; } 
 
-            /* Popup Mobile Flottant au Clic */
             .brand-row.mobile-active .consumables-popup { 
                 display: block !important; 
                 position: absolute; 
-                top: 100%; left: 50%; transform: translateX(-50%);
-                margin: 10px 0 0 0; width: 90vw; max-width: 350px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 1px solid #cbd5e1; background: #fff; 
+                top: 100%; 
+                left: 10px; /* ALIGNÉ À GAUCHE au lieu de 50% */
+                margin-top: 5px; 
+                width: 90%; /* Prend 90% de la largeur du parent */
+                max-width: 300px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 1px solid #1e3a8a; background: #fff; 
                 padding: 15px; z-index: 1001;
+                transform: none; /* Suppression du centrage qui causait le décalage */
             }
             .brand-row.mobile-active .consumables-popup::before { display: none; }
-            .brand-row.mobile-active { background-color: #f0fdf4 !important; border-color: #166534; z-index: 100; }
+            .brand-row.mobile-active { background-color: #eff6ff !important; border-color: #1e3a8a; z-index: 100; }
         }
 
         .no-screen { display: none !important; }        
@@ -131,27 +133,22 @@
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
         
+        /* 2. PANNEAU JAUNE (Version Mobile Réduite) */
         .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 20px; margin-bottom: 20px; color: #78350f; font-size: 1rem; border-radius: 0 8px 8px 0; }
+        @media (max-width: 640px) { 
+            .expertise-intro-box { padding: 12px; font-size: 0.85rem; margin-bottom: 15px; } 
+            .expertise-intro-box svg { width: 24px; height: 24px; }
+        }
 
-        /* 1. IMAGES SECTIONS RÉDUITES DE MOITIÉ (V69) */
         .section-image-wrapper { text-align: center; margin-bottom: 25px; }
-        .section-image-wrapper img {
-            max-width: 25%; /* Desktop: Passé de 50% à 25% */
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: inline-block;
-            width: 100%; /* Force le respect de la taille max */
-        }
-        @media (max-width: 640px) {
-            .section-image-wrapper img {
-                max-width: 45%; /* Mobile: Passé de 90% à 45% */
-            }
-        }
+        .section-image-wrapper img { max-width: 25%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; width: 100%; }
+        @media (max-width: 640px) { .section-image-wrapper img { max-width: 45%; } }
 
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #eff6ff; color: var(--primary-blue) !important; }
-        .dropdown-menu a { display: block; padding: 10px 16px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
+        
+        /* 3. MENU SOMMAIRE TEXTE RÉDUIT */
+        .dropdown-menu a { display: block; padding: 8px 14px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; font-size: 0.9rem; }
         .dropdown-menu a:hover { background-color: #f1f5f9; color: var(--primary-blue); }
         
         .scroll-arrow-wrapper { text-align: center; margin-bottom: 30px; margin-top: 10px; display: none; }

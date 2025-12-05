@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_60_Mobile_Optimization */
+        /* Version_61_Finale_NoOverlap */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
             background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
@@ -35,7 +35,6 @@
         #cookie-banner { transition: transform 0.5s ease-in-out; }
         #cookie-banner.hidden-banner { transform: translateY(100%); }
         
-        /* Animation rebond */
         @keyframes bounce-slow {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
@@ -66,16 +65,14 @@
                     <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
                 </div>
 
-                <div class="flex md:hidden items-center space-x-3">
-                    <a href="catalogue.html" class="p-2 text-blue-900 hover:bg-blue-50 rounded-full" aria-label="Catalogue">
+                <div class="flex md:hidden items-center space-x-2">
+                    <a href="catalogue.html" class="p-2 text-blue-800 bg-blue-50 rounded-full hover:bg-blue-100" aria-label="Catalogue">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </a>
-                    
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" class="p-2 text-gray-600 hover:bg-gray-100 rounded-full" aria-label="Localisation">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" class="p-2 text-gray-700 hover:bg-gray-100 rounded-full" aria-label="Localisation">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </a>
-
-                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full shadow-md hover:bg-yellow-600" aria-label="Email">
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full shadow-sm hover:bg-yellow-600" aria-label="Devis">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </a>
                 </div>
@@ -103,7 +100,7 @@
             </div>
         </div>
         
-        <a href="#secteurs" class="absolute bottom-24 md:bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center animate-scroll cursor-pointer group z-10">
+        <a href="#secteurs" class="hidden md:flex absolute bottom-8 left-0 right-0 mx-auto w-fit flex-col items-center animate-scroll cursor-pointer group z-10">
             <span class="text-white text-xs font-semibold mb-2 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition shadow-sm">Découvrir nos secteurs</span>
             <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center p-1 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition shadow-lg">
                 <div class="w-1 h-2 bg-white rounded-full mt-1"></div>

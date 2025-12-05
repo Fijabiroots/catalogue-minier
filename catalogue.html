@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_68_LogoReduced_BannerTall_MobilePopupFix_DynamicFooter */
+        /* Version_69_Final_ImagesReducedHalf */
         :root {
             --primary-blue: #1e3a8a;
             --hover-blue: #eff6ff;
@@ -41,10 +41,9 @@
         .content-wrapper { padding: 20px 40px; }
         @media (max-width: 640px) { .content-wrapper { padding: 15px; } }
 
-        /* 2. HEADER BANNER PLUS HAUTE */
+        /* HEADER BANNER */
         .header-banner { 
-            position: relative; 
-            height: 340px; /* Augmenté pour ne pas compresser l'image */
+            position: relative; height: 340px;
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
@@ -60,7 +59,7 @@
         .table-custom th { background-color: #f8fafc; color: var(--primary-blue); font-weight: 800; padding: 16px 20px; text-align: left; font-size: 1rem; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; }
         .table-custom td { padding: 14px 20px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 1rem; position: relative; }
         .table-custom tr:last-child td { border-bottom: none; }
-        .table-custom tr { transition: background-color 0.2s; cursor: pointer; position: relative; } /* Position relative importante pour le popup mobile */
+        .table-custom tr { transition: background-color 0.2s; cursor: pointer; position: relative; }
         .table-custom tr:hover { background-color: #f0fdf4 !important; z-index: 50; }
 
         .brand-row td:first-child { width: 35%; font-weight: 700; color: var(--primary-blue); } 
@@ -81,7 +80,7 @@
             .brand-row:nth-last-child(-n+3) .consumables-popup::before { top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none; }
         }
 
-        /* 3. MOBILE LAYOUT & POPUP FIX */
+        /* MOBILE LAYOUT & POPUP FIX */
         @media (max-width: 768px) {
             .table-custom { display: block; border: none; }
             .table-custom thead { display: none; }
@@ -94,13 +93,12 @@
             /* Popup Mobile Flottant au Clic */
             .brand-row.mobile-active .consumables-popup { 
                 display: block !important; 
-                position: absolute; /* Rétablissement du absolute */
-                top: 100%; left: 50%; transform: translateX(-50%); /* Centré sous la ligne */
+                position: absolute; 
+                top: 100%; left: 50%; transform: translateX(-50%);
                 margin: 10px 0 0 0; width: 90vw; max-width: 350px;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 1px solid #cbd5e1; background: #fff; 
                 padding: 15px; z-index: 1001;
             }
-            /* Cache la flèche sur mobile car la position varie */
             .brand-row.mobile-active .consumables-popup::before { display: none; }
             .brand-row.mobile-active { background-color: #f0fdf4 !important; border-color: #166534; z-index: 100; }
         }
@@ -135,9 +133,21 @@
         
         .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 20px; margin-bottom: 20px; color: #78350f; font-size: 1rem; border-radius: 0 8px 8px 0; }
 
+        /* 1. IMAGES SECTIONS RÉDUITES DE MOITIÉ (V69) */
         .section-image-wrapper { text-align: center; margin-bottom: 25px; }
-        .section-image-wrapper img { max-width: 50%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
-        @media (max-width: 640px) { .section-image-wrapper img { max-width: 90%; } }
+        .section-image-wrapper img {
+            max-width: 25%; /* Desktop: Passé de 50% à 25% */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: inline-block;
+            width: 100%; /* Force le respect de la taille max */
+        }
+        @media (max-width: 640px) {
+            .section-image-wrapper img {
+                max-width: 45%; /* Mobile: Passé de 90% à 45% */
+            }
+        }
 
         .menu-link { transition: background 0.18s; }
         .menu-link:hover { background: #eff6ff; color: var(--primary-blue) !important; }
@@ -303,7 +313,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const industry = urlParams.get('ind') || 'mines';
     const dataFile = `data/${industry}.json`;
 
-    // Mettre à jour le footer dynamique
     updateFooterLinks(industry);
 
     try {
@@ -319,7 +328,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// Nouvelle fonction pour le footer dynamique
 function updateFooterLinks(currentInd) {
     const allIndustries = [
         { id: 'mines', label: 'Mines' },
@@ -332,16 +340,11 @@ function updateFooterLinks(currentInd) {
         { id: 'carrieres', label: 'Carrières' },
         { id: 'btp', label: 'BTP & Construction' }
     ];
-
-    // Filtrer pour exclure l'industrie courante
     const filtered = allIndustries.filter(ind => ind.id !== currentInd);
-    // Prendre les 3 premiers résultats
     const linksToShow = filtered.slice(0, 3);
-
     const linksHTML = linksToShow.map(link => 
         `<li><a href="?ind=${link.id}" class="hover:text-white transition flex items-center gap-2"><svg class="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg> ${link.label}</a></li>`
     ).join('');
-
     document.getElementById('footer-quick-links').innerHTML = linksHTML;
 }
 
@@ -504,18 +507,14 @@ function initInteractions() {
     setupDropdown('industriesToggle', 'industriesMenu');
     document.addEventListener('click', () => document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden')));
 
-    // 3. GESTION CLIC MOBILE POUR LES DÉTAILS (FLOTTANT)
     document.addEventListener('click', (e) => {
         const row = e.target.closest('.brand-row');
         if (row && window.innerWidth < 769) {
-            // Fermer les autres
             document.querySelectorAll('.brand-row.mobile-active').forEach(r => {
                 if(r !== row) r.classList.remove('mobile-active');
             });
-            // Basculer l'actuel
             row.classList.toggle('mobile-active');
         } 
-        // Fermer si on clique en dehors d'une ligne active sur mobile
         else if (window.innerWidth < 769 && !e.target.closest('.consumables-popup')) {
              document.querySelectorAll('.brand-row.mobile-active').forEach(r => r.classList.remove('mobile-active'));
         }

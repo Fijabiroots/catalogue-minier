@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_58_ScrollIndicator */
+        /* Version_59_Finale_CenterFix */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
             background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
@@ -35,7 +35,7 @@
         #cookie-banner { transition: transform 0.5s ease-in-out; }
         #cookie-banner.hidden-banner { transform: translateY(100%); }
         
-        /* Animation personnalisée pour le défilement */
+        /* Animation rebond */
         @keyframes bounce-slow {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
@@ -88,15 +88,15 @@
             </div>
         </div>
         
-        <a href="#secteurs" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-scroll cursor-pointer group">
-            <span class="text-white text-xs font-semibold mb-2 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition">Découvrir nos secteurs</span>
-            <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center p-1 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition">
+        <a href="#secteurs" class="absolute bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center animate-scroll cursor-pointer group z-10">
+            <span class="text-white text-xs font-semibold mb-2 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition shadow-sm">Découvrir nos secteurs</span>
+            <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center p-1 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition shadow-lg">
                 <div class="w-1 h-2 bg-white rounded-full mt-1"></div>
             </div>
         </a>
     </section>
 
-    <section id="secteurs" class="py-16 bg-white">
+    <section id="secteurs" class="py-16 bg-white scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-blue-900 mb-4">Votre Industrie, Notre Expertise</h2>
             <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Accédez directement aux pièces et équipements spécifiques à votre secteur d'activité.</p>

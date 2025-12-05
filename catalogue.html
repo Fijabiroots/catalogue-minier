@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_70_Mobile_WiderPopup_CompactUI */
+        /* Version_71_Mobile_FullWidthPopup_CompactUI */
         :root {
             --primary-blue: #1e3a8a;
             --hover-blue: #eff6ff;
@@ -79,7 +79,7 @@
             .brand-row:nth-last-child(-n+3) .consumables-popup::before { top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none; }
         }
 
-        /* 1. MOBILE POPUP (ÉLARGI) */
+        /* 1. MOBILE POPUP (CORRIGÉ : LARGEUR 100% DE LA LIGNE) */
         @media (max-width: 768px) {
             .table-custom { display: block; border: none; }
             .table-custom thead { display: none; }
@@ -93,18 +93,19 @@
                 display: block !important; 
                 position: absolute; 
                 top: 100%; 
-                left: 2%; /* Léger décalage gauche */
-                width: 96%; /* PREND PRESQUE TOUTE LA LARGEUR */
-                max-width: none; /* Pas de limite étroite */
-                margin-top: 5px; 
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-                border: 1px solid #cbd5e1; 
+                left: 0; /* Alignement parfait à gauche */
+                width: 100%; /* LARGEUR TOTALE */
+                max-width: none; 
+                margin-top: 0; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+                border: 2px solid #1e3a8a; /* Bordure plus visible */
                 background: #fff; 
                 padding: 15px; 
                 z-index: 1001;
+                border-radius: 0 0 8px 8px; /* Arrondi en bas seulement */
             }
             .brand-row.mobile-active .consumables-popup::before { display: none; }
-            .brand-row.mobile-active { background-color: #f0fdf4 !important; border-color: #166534; z-index: 100; }
+            .brand-row.mobile-active { background-color: #eff6ff !important; border-color: #1e3a8a; z-index: 100; }
         }
 
         .no-screen { display: none !important; }        
@@ -135,11 +136,11 @@
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
         
-        /* 2. PANNEAU JAUNE (Version Mobile Compacte) */
+        /* 2. PANNEAU JAUNE (Version Mobile Ultra Compacte) */
         .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 20px; margin-bottom: 20px; color: #78350f; font-size: 1rem; border-radius: 0 8px 8px 0; }
         @media (max-width: 640px) { 
-            .expertise-intro-box { padding: 10px 15px; font-size: 0.85rem; margin-bottom: 15px; line-height: 1.4; } 
-            .expertise-intro-box svg { width: 20px; height: 20px; }
+            .expertise-intro-box { padding: 12px; font-size: 0.8rem; margin-bottom: 15px; line-height: 1.35; } 
+            .expertise-intro-box svg { width: 18px; height: 18px; }
         }
 
         .section-image-wrapper { text-align: center; margin-bottom: 25px; }
@@ -150,7 +151,7 @@
         .menu-link:hover { background: #eff6ff; color: var(--primary-blue) !important; }
         
         /* 3. MENU SOMMAIRE TEXTE RÉDUIT */
-        .dropdown-menu a { display: block; padding: 8px 14px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; font-size: 0.85rem; }
+        .dropdown-menu a { display: block; padding: 8px 14px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; font-size: 0.85rem; line-height: 1.2; }
         .dropdown-menu a:hover { background-color: #f1f5f9; color: var(--primary-blue); }
         
         .scroll-arrow-wrapper { text-align: center; margin-bottom: 30px; margin-top: 10px; display: none; }

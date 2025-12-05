@@ -24,7 +24,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_59_Finale_CenterFix */
+        /* Version_60_Mobile_Optimization */
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .hero-bg {
             background-image: linear-gradient(rgba(30, 64, 175, 0.85), rgba(30, 58, 138, 0.9)), url('images/cover_mines.png');
@@ -50,19 +50,34 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center">
-                        <img class="h-16 w-auto" src="logo-multiparts.png" alt="Logo MULTIPARTS">
+                        <img class="h-14 md:h-16 w-auto" src="logo-multiparts.png" alt="Logo MULTIPARTS">
                     </a>
                 </div>
-                <div class="flex items-center space-x-4">
+
+                <div class="hidden md:flex items-center space-x-4">
                     <a href="catalogue.html" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Catalogue</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium hidden sm:block">Services</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium">Services</a>
                     
                     <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" rel="noopener" class="text-gray-700 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         Localisation
                     </a>
 
-                    <a href="mailto:rafiou.oyeossi@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-bold transition">Demander un Devis</a>
+                </div>
+
+                <div class="flex md:hidden items-center space-x-3">
+                    <a href="catalogue.html" class="p-2 text-blue-900 hover:bg-blue-50 rounded-full" aria-label="Catalogue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </a>
+                    
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao,+Abidjan" target="_blank" class="p-2 text-gray-600 hover:bg-gray-100 rounded-full" aria-label="Localisation">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </a>
+
+                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full shadow-md hover:bg-yellow-600" aria-label="Email">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -88,7 +103,7 @@
             </div>
         </div>
         
-        <a href="#secteurs" class="absolute bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center animate-scroll cursor-pointer group z-10">
+        <a href="#secteurs" class="absolute bottom-24 md:bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center animate-scroll cursor-pointer group z-10">
             <span class="text-white text-xs font-semibold mb-2 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition shadow-sm">Découvrir nos secteurs</span>
             <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center p-1 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition shadow-lg">
                 <div class="w-1 h-2 bg-white rounded-full mt-1"></div>
@@ -251,7 +266,7 @@
                 <h4 class="font-bold text-lg mb-4">Contact</h4>
                 <p class="mb-1">Tél : <a href="tel:+2252721250146" class="hover:text-yellow-400">+225 27 21 25 01 46</a></p>
                 <p class="mb-1">Mobile : <a href="tel:+2250709399529" class="hover:text-yellow-400">+225 07 09 39 95 29</a></p>
-                <p>Email : <a href="mailto:rafiou.oyeossi@multipartsci.com" class="hover:text-yellow-400">rafiou.oyeossi@multipartsci.com</a></p>
+                <p>Email : <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="hover:text-yellow-400">contact@multipartsci.com</a></p>
             </div>
             <div>
                 <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>

@@ -9,12 +9,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* Version_65_Fix_Hover_Logo_Banner */
+        /* Version_66_Scroll_Fix_Compact_Banner */
         :root {
             --primary-blue: #1e3a8a;
             --hover-blue: #eff6ff;
             --accent-green: #15803d;
             --text-main: #334155;
+            --header-height-offset: 140px; /* Estimation pour le scroll margin CSS */
         }
 
         body {
@@ -26,127 +27,59 @@
             font-size: 17px; 
         }
         
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #ffffff; z-index: 9999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease-out, visibility 0.5s;
-        }
+        /* PRELOADER */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease-out, visibility 0.5s; }
         .loader-content { text-align: center; width: 80%; max-width: 300px; }
         .loader-bar-bg { width: 100%; height: 6px; background-color: #e2e8f0; border-radius: 3px; margin-top: 20px; overflow: hidden; }
         .loader-bar-fill { height: 100%; width: 0%; background-color: var(--primary-blue); transition: width 0.2s ease; }
         .loader-text { margin-top: 10px; color: #64748b; font-size: 0.9rem; font-weight: 600; }
         body.loading { overflow: hidden; }
 
-        /* --- CONTENEUR PRINCIPAL --- */
+        /* CONTENEUR */
         .catalog-container-pro {
-            max-width: 1280px;
-            margin: 0 auto;
-            background-color: white;
-            min-height: 100vh;
-            position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.08);
+            max-width: 1280px; margin: 0 auto; background-color: white; min-height: 100vh; position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.08);
         }
-        
-        .content-wrapper { padding: 40px; }
-        @media (max-width: 640px) { .content-wrapper { padding: 20px; } }
+        .content-wrapper { padding: 30px 40px; }
+        @media (max-width: 640px) { .content-wrapper { padding: 15px; } }
 
-        /* 4. BANNIÈRE PLUS TRANSPARENTE */
+        /* 4. BANNIÈRE RÉDUITE */
         .header-banner { 
             position: relative;
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            height: 220px; /* Réduit de 350px à 220px */
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .header-overlay {
-            position: absolute; inset: 0;
-            /* Opacité réduite (0.4 / 0.6) pour voir l'image */
-            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(30, 58, 138, 0.65));
-        }
+        .header-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(30, 58, 138, 0.65)); }
         .header-content { position: relative; z-index: 10; padding: 0 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
-        .header-title { font-size: 3rem; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 10px; }
-        .header-subtitle { font-size: 1.4rem; font-weight: 400; opacity: 1; }
+        
+        /* Titre réduit */
+        .header-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 5px; }
+        .header-subtitle { font-size: 1.1rem; font-weight: 400; opacity: 1; }
 
-        @media (max-width: 640px) { .header-banner { height: 250px; } .header-title { font-size: 2rem; } .header-subtitle { font-size: 1.1rem; } }
+        @media (max-width: 640px) { .header-banner { height: 180px; } .header-title { font-size: 1.6rem; } .header-subtitle { font-size: 0.9rem; } }
 
-        /* --- TABLEAUX --- */
-        .table-custom { 
-            border-collapse: separate; 
-            border-spacing: 0; 
-            width: 100%; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 8px; 
-            /* IMPORTANT : Visible pour laisser sortir le popup */
-            overflow: visible; 
-        }
-        .table-custom th { 
-            background-color: #f8fafc; 
-            color: var(--primary-blue); 
-            font-weight: 800; 
-            padding: 18px 20px; 
-            text-align: left; 
-            font-size: 1.05rem; 
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 2px solid #e2e8f0;
-        }
+        /* TABLEAUX */
+        .table-custom { border-collapse: separate; border-spacing: 0; width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; overflow: visible; }
+        .table-custom th { background-color: #f8fafc; color: var(--primary-blue); font-weight: 800; padding: 18px 20px; text-align: left; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #e2e8f0; }
         .table-custom td { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 1.05rem; position: relative; }
         .table-custom tr:last-child td { border-bottom: none; }
-        
         .table-custom tr { transition: background-color 0.2s; }
-        .table-custom tr:hover { 
-            background-color: #f0fdf4 !important; 
-            z-index: 50; /* Z-index élevé au survol */
-        }
+        .table-custom tr:hover { background-color: #f0fdf4 !important; z-index: 50; }
 
         .brand-row td:first-child { width: 35%; font-weight: 700; color: var(--primary-blue); } 
         .consumables-inline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; color: #475569; }
         
-        /* 1. CORRECTION POPUP (HOVER) */
+        /* POPUP */
         .consumables-popup {
-            display: none; 
-            position: absolute; 
-            left: 100%; top: -20px; /* Ajusté pour s'aligner mieux */
-            margin-left: 15px; 
-            width: 350px; 
-            background: #ffffff; 
-            border: 1px solid #cbd5e1;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25); 
-            padding: 20px; 
-            border-radius: 8px; 
-            z-index: 999; /* Très haut z-index */
-            color: #334155; 
-            font-size: 0.95rem; 
-            line-height: 1.5; 
-            font-weight: normal;
+            display: none; position: absolute; left: 100%; top: -20px; margin-left: 15px; width: 350px; 
+            background: #ffffff; border: 1px solid #cbd5e1; box-shadow: 0 15px 30px rgba(0,0,0,0.25); 
+            padding: 20px; border-radius: 8px; z-index: 999; color: #334155; font-size: 0.95rem; line-height: 1.5; font-weight: normal;
         }
-        .consumables-popup::before { 
-            content: ""; position: absolute; left: -8px; top: 30px; 
-            width: 16px; height: 16px; background: white; 
-            transform: rotate(45deg); 
-            border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; 
-        }
-        
-        /* Affichage au survol */
+        .consumables-popup::before { content: ""; position: absolute; left: -8px; top: 30px; width: 16px; height: 16px; background: white; transform: rotate(45deg); border-left: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; }
         .brand-row:hover td:first-child .consumables-popup { display: block; }
+        .brand-row:nth-last-child(-n+3) .consumables-popup { top: auto; bottom: 0; }
+        .brand-row:nth-last-child(-n+3) .consumables-popup::before { top: auto; bottom: 20px; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-left: none; border-bottom: none; }
 
-        /* Inversion pour les dernières lignes (pour ne pas sortir de l'écran en bas) */
-        .brand-row:nth-last-child(-n+3) .consumables-popup {
-            top: auto; bottom: 0; 
-        }
-        .brand-row:nth-last-child(-n+3) .consumables-popup::before {
-            top: auto; bottom: 20px; 
-            border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; 
-            border-left: none; border-bottom: none;
-        }
-
-        /* MOBILE LAYOUT */
         @media screen and (max-width: 768px) {
             .table-custom { display: block; border: none; }
             .table-custom thead { display: none; }
@@ -154,12 +87,7 @@
             .table-custom tr { margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
             .table-custom td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
             .table-custom td:first-child { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
-            
-            .consumables-popup { 
-                position: static; margin: 10px 0 0 0; width: 100%; 
-                box-shadow: none; border: 1px dashed #cbd5e1; background: #fff; 
-                padding: 10px; z-index: 1;
-            }
+            .consumables-popup { position: static; margin: 10px 0 0 0; width: 100%; box-shadow: none; border: 1px dashed #cbd5e1; background: #fff; padding: 10px; z-index: 1; }
             .consumables-popup::before { display: none; }
             .consumables-inline { display: none; } 
         }
@@ -168,39 +96,18 @@
         
         /* SECTIONS */
         .table-group { 
-            margin-bottom: 30px; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 12px; 
-            background: white; 
-            /* IMPORTANT : Visible pour le popup */
-            overflow: visible; 
-            transition: box-shadow 0.3s; 
+            margin-bottom: 30px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; overflow: visible; transition: box-shadow 0.3s; 
+            /* IMPORTANT: Permet aux ancres HTML de s'arrêter au bon endroit */
+            scroll-margin-top: 160px; 
         }
         .table-group:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: #cbd5e1; }
         
-        .section-header { 
-            display: flex; align-items: center; justify-content: space-between; 
-            padding: 20px 25px; 
-            background: #ffffff; 
-            cursor: pointer;
-            border-radius: 12px; /* Arrondi par défaut si fermé */
-            transition: background 0.3s ease, border-radius 0.3s;
-        }
+        .section-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 25px; background: #ffffff; cursor: pointer; border-radius: 12px; transition: background 0.3s ease, border-radius 0.3s; }
         .section-header:hover { background: #eff6ff; }
-        
-        /* Quand ouvert : arrondi seulement en haut */
-        .table-group.active .section-header { 
-            border-bottom: 1px solid #e2e8f0; 
-            background: #f8fafc; 
-            border-radius: 12px 12px 0 0;
-        }
-
+        .table-group.active .section-header { border-bottom: 1px solid #e2e8f0; background: #f8fafc; border-radius: 12px 12px 0 0; }
         .section-header h3 { font-size: 1.35rem; font-weight: 800; color: var(--primary-blue); margin: 0; display: flex; align-items: center; gap: 15px; }
         
-        .toggle-icon { 
-            width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; 
-            display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem; transition: all 0.3s; 
-        }
+        .toggle-icon { width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem; transition: all 0.3s; }
         .table-group.active .toggle-icon { background: var(--primary-blue); color: white; transform: rotate(180deg); }
 
         .section-content { display: none; padding: 30px; } 
@@ -213,9 +120,8 @@
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.1); }
         
-        .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 25px; margin-bottom: 40px; color: #78350f; font-size: 1.1rem; border-radius: 0 8px 8px 0; }
+        .expertise-intro-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 25px; margin-bottom: 20px; color: #78350f; font-size: 1.1rem; border-radius: 0 8px 8px 0; }
 
-        /* IMAGES SECTIONS */
         .section-image-wrapper { text-align: center; margin-bottom: 25px; }
         .section-image-wrapper img { max-width: 50%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
         @media (max-width: 640px) { .section-image-wrapper img { max-width: 90%; } }
@@ -225,16 +131,19 @@
         .dropdown-menu a { display: block; padding: 10px 16px; color: #1f2937; text-decoration: none; transition: background-color 0.12s; }
         .dropdown-menu a:hover { background-color: #f1f5f9; color: var(--primary-blue); }
         
-        .scroll-arrow-wrapper { text-align: center; margin-bottom: 40px; margin-top: 20px; }
+        .scroll-arrow-wrapper { text-align: center; margin-bottom: 30px; margin-top: 10px; }
         .scroll-arrow { display: inline-flex; flex-direction: column; align-items: center; color: #94a3b8; cursor: pointer; transition: color 0.3s; }
         .scroll-arrow:hover { color: var(--primary-blue); }
         .scroll-arrow svg { width: 36px; height: 36px; animation: bounce 2s infinite; }
         .scroll-arrow span { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
+        /* HEADER & INFO BAND HEIGHT CALCULATION FIX */
+        .sticky-header-container { position: sticky; top: 0; z-index: 50; }
+
         @media print {
             .catalog-container-pro { box-shadow: none; max-width: 100%; margin: 0; padding: 0; }
-            .header-banner, .scroll-arrow-wrapper, .whatsapp-float, .back-to-top, .toggle-icon { display: none !important; }
+            .header-banner, .scroll-arrow-wrapper, .whatsapp-float, .back-to-top, .toggle-icon, .sticky-header-container { display: none !important; }
             .section-content { display: block !important; padding: 0; }
             .table-group { border: none; margin-bottom: 20px; }
             .section-header { border-bottom: 2px solid #000; padding: 10px 0; }
@@ -257,58 +166,64 @@
         </svg>
     </a>
 
-    <header class="flex items-center px-4 sm:px-6 py-4 bg-white shadow-sm sticky top-0 z-50 no-print border-b border-gray-100">
-        <a href="index.html" class="shrink-0 sm:mr-10">
-            <img src="logo-multiparts.png" alt="Logo" class="h-28 w-auto">
-        </a>
-        <nav class="flex-1 min-w-0 hidden md:block">
-            <ul class="flex flex-wrap space-x-6 justify-end items-center w-full text-lg">
-                <li class="relative">
-                    <button id="sommaireToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2 group">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                        Sommaire
-                    </button>
-                    <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-72 bg-white border rounded-md shadow-xl py-2 z-50"></ul>
-                </li>
-                
-                <li>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
-                       <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                       Localisation
-                    </a>
-                </li>
+    <div class="sticky-header-container no-print">
+        <header class="flex items-center px-4 sm:px-6 py-4 bg-white shadow-sm border-b border-gray-100">
+            <a href="index.html" class="shrink-0 sm:mr-10">
+                <img src="logo-multiparts.png" alt="Logo" class="h-28 w-auto">
+            </a>
+            <nav class="flex-1 min-w-0 hidden md:block">
+                <ul class="flex flex-wrap space-x-6 justify-end items-center w-full text-lg">
+                    <li class="relative">
+                        <button id="sommaireToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2 group">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                            Sommaire
+                        </button>
+                        <ul id="sommaireMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-72 bg-white border rounded-md shadow-xl py-2 z-50"></ul>
+                    </li>
+                    
+                    <li>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" rel="noopener" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
+                           <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                           Localisation
+                        </a>
+                    </li>
 
-                <li class="relative">
-                    <button id="industriesToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
-                        Industries
-                    </button>
-                    <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-xl py-2 z-50">
-                        <li><a href="?ind=mines">Mines</a></li>
-                        <li><a href="?ind=petrole-gaz">Pétrole & gaz</a></li>
-                        <li><a href="?ind=chimie">Chimie</a></li>
-                        <li><a href="?ind=energie">Énergie</a></li>
-                        <li><a href="?ind=agro">Agro-alimentaire</a></li>
-                        <li><a href="?ind=cimenterie">Cimenterie</a></li>
-                        <li><a href="?ind=infrastructure">Infrastructure</a></li>
-                        <li><a href="?ind=carrieres">Carrières</a></li>
-                        <li><a href="?ind=btp">BTP</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-md font-bold transition shadow-md">
-                        Demander un Devis
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        
-        <nav class="flex-1 md:hidden flex justify-end gap-3">
-            <a href="index.html" class="p-2 text-blue-900 bg-blue-50 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg></a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" class="p-2 text-gray-700 hover:bg-gray-100 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
-            <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-        </nav>
-    </header>
+                    <li class="relative">
+                        <button id="industriesToggle" class="menu-link font-bold text-gray-700 px-4 py-3 rounded inline-flex items-center gap-2">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-2M5 21h2M12 11V7m0 8v-4m0 8h.01"></path></svg>
+                            Industries
+                        </button>
+                        <ul id="industriesMenu" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white border rounded-md shadow-xl py-2 z-50">
+                            <li><a href="?ind=mines">Mines</a></li>
+                            <li><a href="?ind=petrole-gaz">Pétrole & gaz</a></li>
+                            <li><a href="?ind=chimie">Chimie</a></li>
+                            <li><a href="?ind=energie">Énergie</a></li>
+                            <li><a href="?ind=agro">Agro-alimentaire</a></li>
+                            <li><a href="?ind=cimenterie">Cimenterie</a></li>
+                            <li><a href="?ind=infrastructure">Infrastructure</a></li>
+                            <li><a href="?ind=carrieres">Carrières</a></li>
+                            <li><a href="?ind=btp">BTP</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-md font-bold transition shadow-md">
+                            Demander un Devis
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <nav class="flex-1 md:hidden flex justify-end gap-3">
+                <a href="index.html" class="p-2 text-blue-900 bg-blue-50 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg></a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=4145+Avenue+Paul+Akoto+Yao+Abidjan" target="_blank" class="p-2 text-gray-700 hover:bg-gray-100 rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
+                <a href="mailto:contact@multipartsci.com?cc=procurement@multipartsci.com" class="p-2 bg-yellow-500 text-white rounded-full"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+            </nav>
+        </header>
+
+        <div class="fixed-expertise-band bg-green-800 text-white text-center py-2 text-sm shadow-md">
+            <strong>MULTIPARTS :</strong> 30 ans d'expertise en sourcing critique international à votre service.
+        </div>
+    </div>
 
     <a href="#top" class="back-to-top no-print" title="Haut de page">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
@@ -333,7 +248,7 @@
                 </div>
             </div>
 
-            <div class="scroll-arrow-wrapper no-print" onclick="document.getElementById('catalog-container').scrollIntoView({behavior: 'smooth'})">
+            <div class="scroll-arrow-wrapper no-print" id="discover-btn">
                 <div class="scroll-arrow">
                     <span>Découvrir les familles</span>
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -386,7 +301,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         initInteractions();
     } catch (error) {
         console.error("Erreur:", error);
-        document.getElementById('page-subtitle').textContent = "Erreur de chargement des données.";
+        document.getElementById('page-subtitle').textContent = "Erreur de chargement.";
         if (industry !== 'mines') window.location.href = '?ind=mines';
     }
 });
@@ -412,10 +327,10 @@ function buildPage(data) {
 
     data.sections.forEach((section) => {
         const linkId = section.id;
-        summaryMenu.innerHTML += `<li><a href="#${linkId}">${esc(section.title)}</a></li>`;
+        summaryMenu.innerHTML += `<li><a href="#${linkId}" data-target="${linkId}">${esc(section.title)}</a></li>`;
 
         const sectionHTML = `
-        <div class="table-group" data-section="${linkId}" id="${linkId}">
+        <div class="table-group" id="${linkId}">
             <div class="section-header">
                 <div class="flex items-center">
                     <img src="${esc(section.icon)}" class="rounded w-10 h-10 mr-4 shadow-sm" alt="" onerror="this.style.display='none'">
@@ -427,12 +342,10 @@ function buildPage(data) {
                 <div class="expertise-box mb-6">
                     <p class="text-gray-700 italic"><strong>Expertise :</strong> ${esc(section.expertiseText)}</p>
                 </div>
-                
                 ${section.sectionImage ? `
                 <div class="section-image-wrapper">
                     <img src="${esc(section.sectionImage)}" alt="${esc(section.title)}" onerror="this.style.display='none'">
                 </div>` : ''}
-                
                 <div class="table-container">
                     <table class="table-custom">
                         <thead><tr><th class="w-1/3">${esc(section.tableHeaders[0])}</th><th class="w-2/3">${esc(section.tableHeaders[1])}</th></tr></thead>
@@ -463,12 +376,12 @@ function buildPage(data) {
 }
 
 function initInteractions() {
+    // LOADER
     const preloader = document.getElementById('preloader');
     const bar = document.getElementById('loaderBar');
     const text = document.getElementById('loaderText');
     const images = Array.from(document.images);
     let imagesLoaded = 0; const totalImages = images.length;
-
     function imageLoaded() {
         imagesLoaded++;
         const percent = Math.round((imagesLoaded / totalImages) * 100);
@@ -483,6 +396,27 @@ function initInteractions() {
     else images.forEach(img => { if (img.complete) imageLoaded(); else { img.addEventListener('load', imageLoaded); img.addEventListener('error', imageLoaded); } });
     setTimeout(finishLoad, 5000);
 
+    // CALCUL DU DÉCALAGE POUR LE SCROLL
+    function getScrollOffset() {
+        const header = document.querySelector('.sticky-header-container');
+        return header ? header.offsetHeight + 20 : 160;
+    }
+
+    function scrollToSection(element) {
+        if (!element) return;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - getScrollOffset();
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+
+    // GESTION BOUTON DECOUVRIR
+    document.getElementById('discover-btn').addEventListener('click', () => {
+        // Scrolle vers le premier élément de groupe
+        const firstGroup = document.querySelector('.table-group');
+        scrollToSection(firstGroup);
+    });
+
+    // ACCORDÉON
     const groups = document.querySelectorAll('.table-group');
     groups.forEach(group => {
         const header = group.querySelector('.section-header');
@@ -500,20 +434,37 @@ function initInteractions() {
                 group.classList.add('active');
                 content.classList.add('open');
                 group.querySelector('.toggle-icon').textContent = '−';
-                setTimeout(() => {
-                    const offset = 20; 
-                    const top = group.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({top: top, behavior: 'smooth'});
-                }, 100);
+                // Attendre que le contenu s'ouvre pour scroller
+                setTimeout(() => scrollToSection(group), 50);
             }
         });
     });
 
+    // MENUS DÉROULANTS (Sommaire + Industries)
     const setupDropdown = (tid, mid) => {
         const t = document.getElementById(tid), m = document.getElementById(mid);
         if(t && m) {
             t.addEventListener('click', (e) => { e.stopPropagation(); m.classList.toggle('hidden'); });
-            m.addEventListener('click', () => m.classList.add('hidden'));
+            m.addEventListener('click', (e) => {
+                // Si c'est un lien du sommaire (ancre interne)
+                const link = e.target.closest('a');
+                if (link && link.hash) {
+                    e.preventDefault();
+                    m.classList.add('hidden');
+                    const targetId = link.hash.substring(1);
+                    const targetGroup = document.getElementById(targetId);
+                    if (targetGroup) {
+                        // Ouvrir la section si fermée
+                        if (!targetGroup.classList.contains('active')) {
+                            targetGroup.querySelector('.section-header').click();
+                        } else {
+                            scrollToSection(targetGroup);
+                        }
+                    }
+                } else {
+                    m.classList.add('hidden');
+                }
+            });
         }
     };
     setupDropdown('sommaireToggle', 'sommaireMenu');

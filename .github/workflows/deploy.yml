@@ -19,7 +19,8 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /public_html/
+        # Correction du chemin ici pour viser le dossier du domaine spécifique :
+        server-dir: /domains/multipartsci.com/public_html/
         exclude: |
           **/.git*
           **/.github*
